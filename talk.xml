@@ -1,0 +1,723 @@
+<presentation>
+  <title>Git for Sys Admins</title>
+  <subtitle></subtitle>
+  <author>Andrew Ruthven</author>
+  <email>puck@catalyst.net.nz</email>
+
+<!--
+
+  <slide>
+    <title>Title Here</title>
+    <screenshot>filename.png</screenshot>
+    <image src="file.jpg" />
+    <bullet></bullet>
+    <code syntax="perl"><![CDATA[
+    ]]></code>
+    <notes>
+    </notes>
+  </slide>
+
+-->
+
+  <slide>
+    <title>Overview</title>
+    <bullet>Why revision control?</bullet>
+    <bullet>Why git?</bullet>
+    <bullet>Create a local repository</bullet>
+    <bullet>Managing files</bullet>
+    <bullet>Change logs</bullet>
+    <bullet>Branching</bullet>
+    <bullet>Merging</bullet>
+    <bullet>Remote repositories</bullet>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Why revision control?</title>
+    <bullet>View history</bullet>
+    <bullet>Roll back changes</bullet>
+    <bullet>Apply blame</bullet>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>What options?</title>
+		<bullet>Lots of options...</bullet>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>What options?</title>
+		<bullet>Lots of options...</bullet>
+    <bullet>RCS</bullet>
+    <bullet>CVS</bullet>
+    <bullet>Subversion</bullet>
+    <bullet>Darcs</bullet>
+    <bullet>Perforce</bullet>
+		<bullet>...</bullet>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Why git?</title>
+    <bullet>The cool kids use it</bullet>
+    <bullet>It is fast</bullet>
+    <bullet>Branching is trivial</bullet>
+    <bullet>Reasonable tool support</bullet>
+    <bullet>Under heavy development by lots of good people</bullet>
+		<bullet>Instead of just having a checkout, you have a local code repository <em>and</em> a checkout</bullet>
+    <notes>
+    </notes>
+  </slide>
+
+	<slide>
+    <title>Local Repository - WTF?</title>
+    <bullet>Hold on, local repository?</bullet>
+    <bullet>Yeah!</bullet>
+    <bullet>A local repository that you check commits into, like RCS</bullet>
+		<bullet>But you can also talk to a remote repository, like CVS</bullet>
+		<bullet>Actually, lots of remote repositories, not at all like CVS</bullet>
+		<bullet>And be disconnected from the network, yet still view logs and manage your repository</bullet>
+		<bullet>Awesome!</bullet>
+  </slide>
+
+  <slide>
+    <title>Local Repository - Create</title>
+    <bullet>Use <tt>git init</tt></bullet>
+		<code>
+puck@dirk:/tmp/test$ git init
+Initialized empty Git repository in .git/
+puck@dirk:/tmp/test$ 
+    </code>
+    <bullet>Check the status with <tt>git status</tt></bullet>
+    <code>
+puck@dirk:/tmp/test$ git status
+# On branch master
+#
+# Initial commit
+#
+nothing to commit (create/copy files and use "git add" to track)
+puck@dirk:/tmp/test$ 
+    </code>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Managing Files - Add</title>
+    <bullet>Tell git about files with <tt>git add &lt;files></tt></bullet>
+    <code>
+puck@dirk:/tmp/test$ touch super-script.pl
+puck@dirk:/tmp/test$ git add super-script.pl 
+    </code>
+		<bullet>Check the status</bullet>
+		<code>
+puck@dirk:/tmp/test$ git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached &lt;file>..." to unstage)
+#
+#       new file: super-script.pl
+#
+puck@dirk:/tmp/test$ 
+    </code>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Local Repository - Commiting</title>
+    <bullet>We have an Outstanding commit.</bullet>
+    <bullet>Every change needs to be committed</bullet>
+		<bullet>Commit with <tt>git commit &lt;files></tt></bullet>
+		<bullet>You will be asked for a commit message</bullet>
+		<code>
+puck@dirk:/tmp/test$ git commit super-script.pl 
+Created initial commit f0f9996: Add a message.
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 super-script.pl
+puck@dirk:/tmp/test$ 
+</code>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Managing Files - Permissions</title>
+    <bullet>Oops, that file isn't executable</bullet>
+		<code>
+puck@dirk:/tmp/test$ chmod 755 super-script.pl 
+puck@dirk:/tmp/test$ git commit super-script.pl 
+Created commit 0983c44: Make it executable.
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ mode change 100644 => 100755 super-script.pl
+puck@dirk:/tmp/test$ 
+    </code>
+    <notes>
+    </notes>
+  </slide>
+
+
+  <slide>
+    <title>Managing Files - Move</title>
+    <bullet>To rename a file use <tt>git mv &lt;source> &lt;dest></tt></bullet>
+    <code>
+puck@dirk:/tmp/test$ git mv super-script.pl silly-script.pl
+    </code>
+		<bullet>Check the status</bullet>
+		<code>
+puck@dirk:/tmp/test$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD &lt;file>..." to unstage)
+#
+#       renamed:    super-script.pl -> silly-script.pl
+#
+puck@dirk:/tmp/test$ 
+    </code>
+		<bullet>And commit the change</bullet>
+    <code>
+puck@dirk:/tmp/test$ git commit
+Created commit 9febb7d: Rename the file.
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+ create mode 100755 silly-script.pl
+ delete mode 100755 super-script.pl
+puck@dirk:/tmp/test$ 
+    </code>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Local Repository - Abort a change</title>
+    <bullet>What if you make a bogus edit?</bullet>
+		<bullet>Use <tt>git reset</tt> and <tt>git checkout</tt></bullet>
+		<code>
+uck@dirk:/tmp/test$ vi silly-script.pl 
+    </code>
+    <bullet>Tell git we want to commit this edit</bullet>
+    <code>
+puck@dirk:/tmp/test$ git add silly-script.pl 
+puck@dirk:/tmp/test$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD &lt;file>..." to unstage)
+#
+#       modified:   silly-script.pl
+#
+     </code>
+     <bullet>Bugger, I actually stuffed that file up</bullet>
+     <code>
+puck@dirk:/tmp/test$ git reset HEAD silly-script.pl 
+silly-script.pl: needs update
+     </code>
+     <bullet>The change is still present locally, checkout from the repo</bullet>
+     <code>
+puck@dirk:/tmp/test$ git checkout silly-script.pl 
+puck@dirk:/tmp/test$ git status
+# On branch master
+nothing to commit (working directory clean)
+puck@dirk:/tmp/test$ 
+    </code>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Managing Files - Delete</title>
+    <bullet>To delete a file use <tt>git rm &lt;files></tt></bullet>
+    <code>
+puck@dirk:/tmp/test$ git rm another-script.pl 
+    </code>
+		<bullet>Check the status</bullet>
+		<code>
+puck@dirk:/tmp/test$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD &lt;file>..." to unstage)
+#
+#       deleted:    another-script.pl
+#
+puck@dirk:/tmp/test$ 
+    </code>
+		<bullet>And commit the change</bullet>
+    <code>
+puck@dirk:/tmp/test$ git commit
+Created commit 3775844: Remove another-script.pl
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 another-script.pl
+puck@dirk:/tmp/test$ 
+    </code>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Change Logs</title>
+    <bullet>See what is going on</bullet>
+		<bullet>Use <tt>git log</tt></bullet>
+		<bullet>By default the output is piped into $PAGER</bullet>
+<code>
+puck@dirk:/tmp/test$ git log
+commit 37758448cc77910eb99f28311bf9f003c71dd5fc
+Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
+Date:   Fri Aug 24 09:44:31 2007 +1200
+
+    Remove another-script.pl
+
+commit 2ea37fe6584d077619687f15ccf7a3059d0e2f6e
+Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
+Date:   Fri Aug 24 09:43:49 2007 +1200
+
+    Test script.
+
+commit 37758448cc77910eb99f28311bf9f003c71dd5fc
+Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
+Date:   Fri Aug 24 09:44:31 2007 +1200
+
+    Remove another-script.pl
+
+commit 2ea37fe6584d077619687f15ccf7a3059d0e2f6e
+Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
+Date:   Fri Aug 24 09:43:49 2007 +1200
+
+    Test script.
+
+commit 9febb7ddd435d0486327f0f220cfcdc899ae2aff
+Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
+Date:   Fri Aug 24 09:03:09 2007 +1200
+
+    Rename the file.
+
+commit b954c9ad6b3fc0f870b035bd33507c89dfae7afe
+Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
+Date:   Fri Aug 24 08:59:54 2007 +1200
+
+    Make the script do something!
+puck@dirk:/tmp/test$ git log | cat
+commit 37758448cc77910eb99f28311bf9f003c71dd5fc
+Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
+Date:   Fri Aug 24 09:44:31 2007 +1200
+
+    Remove another-script.pl
+
+commit 2ea37fe6584d077619687f15ccf7a3059d0e2f6e
+Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
+Date:   Fri Aug 24 09:43:49 2007 +1200
+
+    Test script.
+
+commit 9febb7ddd435d0486327f0f220cfcdc899ae2aff
+Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
+Date:   Fri Aug 24 09:03:09 2007 +1200
+
+    Rename the file.
+
+commit b954c9ad6b3fc0f870b035bd33507c89dfae7afe
+Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
+Date:   Fri Aug 24 08:59:54 2007 +1200
+
+    Make the script do something!
+
+commit 0983c44fe6ad9823a62eb250ed08f78025f196df
+Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
+Date:   Fri Aug 24 08:53:43 2007 +1200
+
+    Make it executable.
+
+commit f0f99962e54e1fac77083b397426c4789ae061cb
+Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
+Date:   Fri Aug 24 08:51:36 2007 +1200
+
+    Add a message.
+puck@dirk:/tmp/test$ 
+</code>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Change Logs</title>
+    <bullet>Can specify a file or directory</bullet>
+<code>
+puck@dirk:/tmp/test$ git log silly-script.pl 
+</code>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Change Logs - Annotate</title>
+    <bullet>Show who made changes to what line</bullet>
+		<bullet>Also known as the blame log</bullet>
+<code>
+puck@dirk:/tmp/test$ git blame silly-script.pl
+puck@dirk:/tmp/test$ git blame silly-script.pl  | cat
+b954c9ad super-script.pl (Andrew Ruthven 2007-08-24 08:59:54 +1200 1) #!/usr/bin/perl -w
+b954c9ad super-script.pl (Andrew Ruthven 2007-08-24 08:59:54 +1200 2) 
+b954c9ad super-script.pl (Andrew Ruthven 2007-08-24 08:59:54 +1200 3) print "silly script\n";
+024e0ea8 silly-script.pl (Bad Coder      2007-08-24 10:02:11 +1200 4) I'm in ur code, breaking ur code.
+puck@dirk:/tmp/test$ 
+</code>
+    <bullet>Who is this Bad Coder fella?</bullet>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+	  <title>Local Repository - Reverting</title>
+		<bullet>Sometimes we want to undo a commit</bullet>
+		<bullet>Many different ways, one way to leave an audit trail:</bullet>
+		<bullet><tt>git revert &lt;commit ID></tt></bullet>
+<code>
+puck@dirk:/tmp/test$ git revert 024e0ea8
+Finished one revert.
+Created commit 5fa7f09: Revert "Break it"
+ 1 files changed, 0 insertions(+), 1 deletions(-)
+puck@dirk:/tmp/test$ 
+</code>
+  </slide>
+
+  <slide>
+    <title>Change Logs - GUI</title>
+    <bullet>Not strictly change logs, but...</bullet>
+    <bullet>gitk</bullet>
+    <bullet>git-gui</bullet>
+    <bullet>Many more</bullet>
+    <bullet> -- demo</bullet>
+  </slide>
+
+  <slide>
+    <title>Branching - List</title>
+    <bullet>To show branches use <tt>git branch</tt></bullet>
+<code>
+puck@dirk:/tmp/test$ git branch
+* master
+puck@dirk:/tmp/test$ 
+</code>
+    <bullet>Only one branch called <tt>master</tt></bullet>
+  </slide>
+
+  <slide>
+    <title>Branching - Create</title>
+    <bullet>Use <tt>git checkout -b &lt;new-name></tt></bullet>
+<code>
+puck@dirk:/tmp/test$ git checkout -b new-branch
+Switched to a new branch "new-branch"
+puck@dirk:/tmp/test$ git branch
+  master
+* new-branch
+puck@dirk:/tmp/test$ 
+</code>
+    <bullet>Can also create a new branch without being on the source branch</bullet>
+<code>
+puck@dirk:/tmp/test$ git checkout -b another-branch master
+Switched to a new branch "another-branch"
+puck@dirk:/tmp/test$ git branch
+* another-branch
+  master
+  new-branch
+puck@dirk:/tmp/test$ 
+</code>
+  </slide>
+
+  <slide>
+    <title>Branching - Change Branch</title>
+    <bullet>Just use <tt>git checkout</tt> without the <tt>-b</tt></bullet>
+<code>
+puck@dirk:/tmp/test$ git checkout new-branch
+Switched to branch "new-branch"
+puck@dirk:/tmp/test$ git branch
+  another-branch
+  master
+* new-branch
+puck@dirk:/tmp/test$ 
+</code>
+  </slide>
+
+  <slide>
+    <title>Branching - What's the deal?</title>
+    <bullet>You can make commits on a branch without polluting other branches</bullet>
+<code>
+puck@dirk:/tmp/test$ echo "# From new-branch" >> silly-script.pl 
+puck@dirk:/tmp/test$ git commit silly-script.pl 
+Created commit c0a3ea5: From new-branch
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+puck@dirk:/tmp/test$ 
+</code>
+    <bullet>Check the file, then jump to another branch, it ain't there</bullet>
+<code>
+puck@dirk:/tmp/test$ cat silly-script.pl 
+#!/usr/bin/perl -w
+
+print "silly script\n";
+# From new-branch
+puck@dirk:/tmp/test$ git checkout master
+Switched to branch "master"
+puck@dirk:/tmp/test$ cat silly-script.pl 
+#!/usr/bin/perl -w
+
+print "silly script\n";
+puck@dirk:/tmp/test$ 
+</code>
+  </slide>
+
+	<slide>
+    <title>Merging - Simple Case</title>
+		<bullet>Just say <tt>git merge &lt;other branch></tt></bullet>
+<code>
+puck@dirk:/tmp/test$ git merge new-branch
+Updating 5fa7f09..c0a3ea5
+
+Fast forward
+ silly-script.pl |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+puck@dirk:/tmp/test$ 
+</code>
+    <bullet>If there are no conflicts, the merge just happens</bullet>
+		<bullet>Conflicts are more difficult</bullet>
+  </slide>
+
+  <slide>
+    <title>Merging - With conflicts</title>
+    <bullet>If there are conflicts then git will stop and let you fix it.</bullet>
+		<bullet>Lots of tools to help fix things up.  Hand edit, xxdiff, smartmerge, etc</bullet>
+<code>
+puck@dirk:/tmp/test$ git merge new-branch
+Auto-merged silly-script.pl
+CONFLICT (content): Merge conflict in silly-script.pl
+Automatic merge failed; fix conflicts and then commit the result.
+puck@dirk:/tmp/test$ cat silly-script.pl 
+#!/usr/bin/perl -w
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:silly-script.pl
+print "silly script - change on master\n";
+=======
+print "change on new-branch - silly script\n";
+>>>>>>> new-branch:silly-script.pl
+# From new-branch
+puck@dirk:/tmp/test$ 
+</code>
+    <bullet>Fix it, in this case use vi</bullet>
+<code>
+puck@dirk:/tmp/test$ vi silly-script.pl 
+puck@dirk:/tmp/test$ cat silly-script.pl 
+#!/usr/bin/perl -w
+
+print "change on new-branch - silly script - change on master\n";
+# From new-branch
+</code>
+    <bullet>Now that we've fixed the code, tell git that it has been fixed and commit it</bullet>
+<code>
+puck@dirk:/tmp/test$ git add silly-script.pl 
+puck@dirk:/tmp/test$ git commit
+Created commit 2f8f119: Merge branch 'new-branch'
+puck@dirk:/tmp/test$ 
+</code>
+    <bullet>In this case the commit message is automatically created</bullet>
+<code>
+Merge branch 'new-branch'
+
+Conflicts:
+
+        silly-script.pl
+
+</code>
+  </slide>
+
+  <slide>
+    <title>Merging - How does it look?</title>
+    <bullet>Looking at the trees in gitk is cool.</bullet>
+  </slide>
+
+  <slide>
+    <title>Remote Repositories - Clone</title>
+    <bullet>Easy to do, <tt>git clone &lt;URL> &lt;local dir></tt></bullet>
+    <bullet>&lt;local dir> is optional</bullet>
+<code>
+puck@dirk:/tmp/test$ cd ..
+puck@dirk:/tmp$ git clone test test2
+Initialized empty Git repository in /tmp/test2/.git/
+remote: Generating pack...
+remote: Done counting 29 objects.
+Deltifying 29 objects...
+ 100% (29/29) donete: done
+remote: Total 29 (delta 4), reused 0 (delta 0)
+Indexing 29 objects...
+ 100% (29/29) done
+Resolving 4 deltas...
+ 100% (4/4) done
+
+puck@dirk:/tmp$ 
+</code>
+    <bullet>Let's see what it looks like</bullet>
+<code>
+puck@dirk:/tmp$ cd test2
+puck@dirk:/tmp/test2$ ls
+silly-script.pl
+puck@dirk:/tmp/test2$ 
+</code>
+    <bullet>Looks familiar, how about the branches?</bullet>
+<code>
+puck@dirk:/tmp/test2$ git branch
+* master
+puck@dirk:/tmp/test2$ 
+</code>
+    <bullet>Only master, not the others.  Use <tt>git branch -a</tt> to see remote branches</bullet>
+<code>
+puck@dirk:/tmp/test2$ git branch -a
+* master
+  origin/HEAD
+  origin/another-branch
+  origin/master
+  origin/new-branch
+puck@dirk:/tmp/test2$
+</code>
+  </slide>
+
+  <slide>
+    <title>Remote Repositories - Local branch</title>
+    <bullet>You may want to work on a remote branch</bullet>
+		<bullet>Very similar to copying local branches</bullet>
+<code>
+puck@dirk:/tmp/test2$ git checkout -b pucks-working origin/new-branch
+Switched to a new branch "pucks-working"
+puck@dirk:/tmp/test2$ git branch -a
+  master
+* pucks-working
+  origin/HEAD
+  origin/another-branch
+  origin/master
+  origin/new-branch
+puck@dirk:/tmp/test2$ 
+</code>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Remote Repositories - Local changes</title>
+    <bullet>Very similar work flow</bullet>
+<code>
+puck@dirk:/tmp/test2$ vi silly-script.pl 
+puck@dirk:/tmp/test2$ cat silly-script.pl 
+#!/usr/bin/perl -w
+
+print "change on new-branch - silly script - change on master\n";
+# From new-branch
+# Make a change on test2.
+puck@dirk:/tmp/test2$ git commit silly-script.pl 
+Created commit c2f770f: Change on test2 clone.
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+puck@dirk:/tmp/test2$ git push
+Everything up-to-date
+puck@dirk:/tmp/test2$ 
+</code>
+    <bullet>We we need to push our changes</bullet>
+<code>
+puck@dirk:/tmp/test2$ git push
+updating 'refs/heads/master'
+  from 2f8f119f7f197d1b6c3af53cc1aea29215702fba
+  to   c2f770f85e11046187075c53d640998aa767cf7e
+Generating pack...
+Done counting 5 objects.
+Result has 3 objects.
+Deltifying 3 objects...
+ 100% (3/3) done
+Writing 3 objects...
+ 100% (3/3) done
+Unpacking 3 objects...
+ 100% (3/3) done
+Total 3 (delta 1), reused 0 (delta 0)
+refs/heads/master: 2f8f119f7f197d1b6c3af53cc1aea29215702fba -> c2f770f85e11046187075c53d640998aa767cf7e
+puck@dirk:/tmp/test2$ 
+</code>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Remote Repositories - Fetch</title>
+    <bullet>Lots of different approaches</bullet>
+    <bullet>Some people use <tt>git pull</tt></bullet>
+    <bullet>Others use <tt>git fetch</tt> then <tt>git rebase</tt></bullet>
+    <bullet>Still others use stacked git</bullet>
+    <bullet>I use <tt>git fetch</tt> then <tt>git rebase</tt> so I have a bit more control</bullet>
+<code>
+puck@dirk:/tmp/test2$ git fetch
+* refs/remotes/origin/master: fast forward to branch 'master' of /tmp/test/
+  old..new: 2f8f119..c2f770f
+puck@dirk:/tmp/test2$ git rebase c2f770f
+Current branch master is up to date.
+puck@dirk:/tmp/test2$ 
+</code>
+    <bullet>No changes required</bullet>
+		<bullet>If we had local changes they'd be "replayed" on the top of the changes we'd fetched</bullet>
+  </slide>
+
+  <slide>
+    <title>Remote Repositories - URLs</title>
+    <bullet>There are many different ways to get remote repositories, some are:</bullet>
+    <bullet>Local directory</bullet>
+<code>
+puck@dirk:/tmp$ git clone test test2
+Initialized empty Git repository in /tmp/test2/.git/
+remote: Generating pack...
+remote: Done counting 29 objects.
+Deltifying 29 objects...
+ 100% (29/29) donete: done
+remote: Total 29 (delta 4), reused 0 (delta 0)
+Indexing 29 objects...
+ 100% (29/29) done
+Resolving 4 deltas...
+ 100% (4/4) done
+</code>
+      <bullet>HTTP</bullet>
+<code>
+puck@dirk:/tmp$ git clone http://gitprivate.catalyst.net.nz/catalyst-systemsadministrator.git
+Initialized empty Git repository in /tmp/catalyst-systemsadministrator/.git/
+got e8cc197ae63382e20adbedeb2491f7bd517c2ba4
+walk e8cc197ae63382e20adbedeb2491f7bd517c2ba4
+got 7ba4fe662265a0fcae049c2d1d34f804c7c1f623
+got 1596463cebc5b4fd366775c9e9f2bfad7167a911
+Getting alternates list for http://gitprivate.catalyst.net.nz/catalyst-systemsadministrator.git
+got 35aef72bdb120b8e49b7b96b369e6fc7a9b99d51
+walk 1596463cebc5b4fd366775c9e9f2bfad7167a911
+Getting pack list for http://gitprivate.catalyst.net.nz/catalyst-systemsadministrator.git
+got 3659410cbe90d1e968cc9e7921b8aa95c4848618
+got d03dfdf805a54193da4a1aaf2869ff23c830606f
+...
+</code>
+    <bullet>SSH</bullet>
+<code>
+puck@dirk:/tmp$ git clone git+ssh://git.catalyst.net.nz/git/private/catalyst-systemsadministrator.git
+Initialized empty Git repository in /tmp/catalyst-systemsadministrator/.git/
+remote: Generating pack...
+remote: Done counting 453 objects.
+remote: Deltifying 453 objects...
+remote:  100% (453/453) done
+Indexing 453 objects...
+remote: Total 453 (delta 208), reused 379 (delta 169)
+ 100% (453/453) done
+Resolving 208 deltas...
+ 100% (208/208) done
+
+puck@dirk:/tmp$ 
+</code>
+  </slide>
+
+  <slide>
+    <title>The End</title>
+    <bullet>Questions?</bullet>
+    <notes>
+    </notes>
+  </slide>
+
+</presentation>

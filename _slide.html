@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title><% h($ARGS{title}) %></title>
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <link rel="top"        href="index.html" />
+  <link rel="previous"   href="<% $ARGS{prev} %>" />
+  <link rel="next"       href="<% $ARGS{next} %>" />
+% foreach my $href (@{$ARGS{prefetch}}) {
+  <link rel="prefetch"   href="<% $href %>" />
+% }
+  <script type="text/javascript" src="space_next.js"></script>
+</head>
+<body>
+
+  <h1><% h($ARGS{title}) %>&nbsp;</h1>
+
+%   if($ARGS{image_src}) {
+<p class="pic"><img src="images/<% $ARGS{image_src} %>" alt="<% $ARGS{image_src} %>" /></p>
+%   }
+% foreach my $item (@{$ARGS{content}}) {
+%   my($type, $data) = @$item;
+%   if($type eq 'bullets') {
+<& .bullets, $data &>
+%   }
+%   elsif($type eq 'screenshot') {
+<table cellpadding="0" cellspacing="0" border="0" align="center">
+  <tr>
+    <td><img src="images/<% $data %>" alt="<% $data %>" /></td>
+%     if($ARGS{commentary}) {
+    <td valign="top"><div class="commentary"><% $ARGS{commentary} %></div></td>
+%     }
+  </tr>
+</table>
+%   }
+%   elsif($type eq 'code'){
+<& .code, $data &>
+%   }
+% }
+
+<div id="nav">\
+% if($ARGS{prev}) {
+<a
+  id="nav-prev" title="Previous Slide" href="<% $ARGS{prev} %>"><img
+  src="images/nav_prev.png" alt="Previous" /></a>\
+% }
+<a
+  id="nav-toc" title="Table of Contents" href="toc.html"><img
+  src="images/nav_toc.png" alt="Table of Contents" /></a>\
+% if($ARGS{next}) {
+<a
+  id="nav-next" title="Next Slide" href="<% $ARGS{next} %>"><img
+  src="images/nav_next.png" alt="Next" /></a>\
+% }
+</div>
+
+</body>
+</html>
+<%def .bullets>
+  <ul>
+% foreach my $item (@{$_[0]}) {
+    <li><% $item %></li>
+% }
+  </ul>\
+</%def>
+<%def .code>
+% if($_[0] =~ m{<span\s+class="syn.*"}) {
+  <pre class="code"><% $_[0] %></pre>\
+% }
+% else {
+  <pre class="code"><% h($_[0]) %></pre>\
+% }
+</%def>
