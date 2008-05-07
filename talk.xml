@@ -658,7 +658,7 @@ puck@dirk:/tmp/test2$
 puck@dirk:/tmp/test2$ git fetch
 * refs/remotes/origin/master: fast forward to branch 'master' of /tmp/test/
   old..new: 2f8f119..c2f770f
-puck@dirk:/tmp/test2$ git rebase c2f770f
+puck@dirk:/tmp/test2$ git rebase origin/master
 Current branch master is up to date.
 puck@dirk:/tmp/test2$ 
 </code>
