@@ -65,12 +65,15 @@
   <slide>
     <title>Why git?</title>
     <bullet>The cool kids use it</bullet>
+    <bullet>Reasonable tool support, getting better every version</bullet>
+    <bullet>Under heavy development by lots of good people</bullet>
+    <bullet>Merging of branches is fantatic, you can even apply commits out of order</bullet>
+    <bullet>You can work offline</bullet>
+    <bullet>Instead of just having a checkout, you have a local code repository <em>and</em> a checkout</bullet>
+    <notes>
+    <bullet>Cool kids: Debian developers, etckeeper</bullet>
     <bullet>It is fast</bullet>
     <bullet>Branching is trivial</bullet>
-    <bullet>Reasonable tool support</bullet>
-    <bullet>Under heavy development by lots of good people</bullet>
-		<bullet>Instead of just having a checkout, you have a local code repository <em>and</em> a checkout</bullet>
-    <notes>
     </notes>
   </slide>
 
@@ -79,10 +82,11 @@
     <bullet>Hold on, local repository?</bullet>
     <bullet>Yeah!</bullet>
     <bullet>A local repository that you check commits into, like RCS</bullet>
-		<bullet>But you can also talk to a remote repository, like CVS</bullet>
-		<bullet>Actually, lots of remote repositories, not at all like CVS</bullet>
-		<bullet>And be disconnected from the network, yet still view logs and manage your repository</bullet>
-		<bullet>Awesome!</bullet>
+    <bullet>But you can also talk to a remote repository, like CVS</bullet>
+    <bullet>Actually, lots of remote repositories, not at all like CVS</bullet>
+    <bullet>And be disconnected from the network, yet still view logs and manage your repository</bullet>
+    <bullet>Remotes can be on other computers, the local computer, USB sticks, etc</bullet>
+    <bullet>Awesome!</bullet>
   </slide>
 
   <slide>
