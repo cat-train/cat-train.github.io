@@ -65,10 +65,9 @@
   <slide>
     <title>Why git?</title>
     <bullet>The cool kids use it</bullet>
-    <bullet>Reasonable tool support, getting better every version</bullet>
-    <bullet>Under heavy development by lots of good people</bullet>
-    <bullet>Merging of branches is fantatic, you can even apply commits out of order</bullet>
+    <bullet>Merging of branches is fantastic, you can even apply commits out of order</bullet>
     <bullet>You can work offline</bullet>
+		<bullet>As light weight as RCS, but better!</bullet>
     <bullet>Instead of just having a checkout, you have a local code repository <em>and</em> a checkout</bullet>
     <notes>
     <bullet>Cool kids: Debian developers, etckeeper</bullet>
@@ -88,6 +87,16 @@
     <bullet>Remotes can be on other computers, the local computer, USB sticks, etc</bullet>
     <bullet>Awesome!</bullet>
   </slide>
+
+	<slide>
+    <title>Why not git?</title>
+		<bullet>There are sooo many commands!</bullet>
+    <bullet>You can safely ignore most of them.</bullet>
+		<bullet>When you do want to send patches as emails, the command is there.</bullet>
+		<bullet>When you want to import patches from a mailbox, the command is there.</bullet>
+		<bullet>You get the idea.</bullet>
+	</slide>
+
 
   <slide>
     <title>Local Repository - Create</title>
@@ -232,6 +241,13 @@ puck@dirk:/tmp/test$
     </code>
     <notes>
     </notes>
+  </slide>
+
+  <slide>
+    <title>Local Repository - Abort a huge mistake</title>
+    <bullet>What if you screw things up?</bullet>
+		<bullet>If you haven't committed yet, you can run <tt>git reset --hard</tt></bullet>
+		<bullet>This throws away <b>all</b> local changes, except unknown files</bullet>
   </slide>
 
   <slide>
