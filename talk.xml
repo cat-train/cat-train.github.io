@@ -153,8 +153,8 @@ puck@dirk:/tmp/test$
 		<bullet>You will be asked for a commit message</bullet>
 		<code>
 puck@dirk:/tmp/test$ git commit super-script.pl 
-Created initial commit f0f9996: Add a message.
- 0 files changed, 0 insertions(+), 0 deletions(-)
+Created commit ae54011: Add a message.
+ 1 files changed, 3 insertions(+), 0 deletions(-)
  create mode 100644 super-script.pl
 puck@dirk:/tmp/test$ 
 </code>
@@ -168,7 +168,7 @@ puck@dirk:/tmp/test$
 		<code>
 puck@dirk:/tmp/test$ chmod 755 super-script.pl 
 puck@dirk:/tmp/test$ git commit super-script.pl 
-Created commit 0983c44: Make it executable.
+Created commit 378af93: Make it executable.
  0 files changed, 0 insertions(+), 0 deletions(-)
  mode change 100644 => 100755 super-script.pl
 puck@dirk:/tmp/test$ 
@@ -198,10 +198,9 @@ puck@dirk:/tmp/test$
 		<bullet>And commit the change</bullet>
     <code>
 puck@dirk:/tmp/test$ git commit
-Created commit 9febb7d: Rename the file.
- 2 files changed, 3 insertions(+), 3 deletions(-)
- create mode 100755 silly-script.pl
- delete mode 100755 super-script.pl
+Created commit fabd446: Rename the file.
+ 1 files changed, 0 insertions(+), 0 deletions(-)
+ rename super-script.pl => silly-script.pl (100%)
 puck@dirk:/tmp/test$ 
     </code>
     <notes>
@@ -270,7 +269,7 @@ puck@dirk:/tmp/test$
 		<bullet>And commit the change</bullet>
     <code>
 puck@dirk:/tmp/test$ git commit
-Created commit 3775844: Remove another-script.pl
+Created commit bd10c5f: Remove another-script.pl
  0 files changed, 0 insertions(+), 0 deletions(-)
  delete mode 100644 another-script.pl
 puck@dirk:/tmp/test$ 
@@ -286,75 +285,63 @@ puck@dirk:/tmp/test$
 		<bullet>By default the output is piped into $PAGER</bullet>
 <code>
 puck@dirk:/tmp/test$ git log
-commit 37758448cc77910eb99f28311bf9f003c71dd5fc
-Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
-Date:   Fri Aug 24 09:44:31 2007 +1200
+commit bd10c5f5179b4c6b52d586cc5355e3018b3c8c37
+Author: Andrew Ruthven <puck@catalyst.net.nz>
+Date:   Fri May 9 17:08:02 2008 +1200
 
     Remove another-script.pl
 
-commit 2ea37fe6584d077619687f15ccf7a3059d0e2f6e
-Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
-Date:   Fri Aug 24 09:43:49 2007 +1200
+commit cc260920d4b1aa87e000d2a52643b22b725d4922
+Author: Andrew Ruthven <puck@catalyst.net.nz>
+Date:   Fri May 9 17:07:35 2008 +1200
 
-    Test script.
+    Add a test script.
 
-commit 37758448cc77910eb99f28311bf9f003c71dd5fc
-Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
-Date:   Fri Aug 24 09:44:31 2007 +1200
-
-    Remove another-script.pl
-
-commit 2ea37fe6584d077619687f15ccf7a3059d0e2f6e
-Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
-Date:   Fri Aug 24 09:43:49 2007 +1200
-
-    Test script.
-
-commit 9febb7ddd435d0486327f0f220cfcdc899ae2aff
-Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
-Date:   Fri Aug 24 09:03:09 2007 +1200
+commit fabd44619bd37f47b9e1e193ee4ded97e64f8f4a
+Author: Andrew Ruthven <puck@catalyst.net.nz>
+Date:   Fri May 9 17:03:04 2008 +1200
 
     Rename the file.
 
-commit b954c9ad6b3fc0f870b035bd33507c89dfae7afe
-Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
-Date:   Fri Aug 24 08:59:54 2007 +1200
-
-    Make the script do something!
-puck@dirk:/tmp/test$ git log | cat
-commit 37758448cc77910eb99f28311bf9f003c71dd5fc
-Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
-Date:   Fri Aug 24 09:44:31 2007 +1200
-
-    Remove another-script.pl
-
-commit 2ea37fe6584d077619687f15ccf7a3059d0e2f6e
-Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
-Date:   Fri Aug 24 09:43:49 2007 +1200
-
-    Test script.
-
-commit 9febb7ddd435d0486327f0f220cfcdc899ae2aff
-Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
-Date:   Fri Aug 24 09:03:09 2007 +1200
-
-    Rename the file.
-
-commit b954c9ad6b3fc0f870b035bd33507c89dfae7afe
-Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
-Date:   Fri Aug 24 08:59:54 2007 +1200
-
-    Make the script do something!
-
-commit 0983c44fe6ad9823a62eb250ed08f78025f196df
-Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
-Date:   Fri Aug 24 08:53:43 2007 +1200
+commit 378af932284a01c8cb6c3de202182ecac0fa7969
+Author: Andrew Ruthven <puck@catalyst.net.nz>
+Date:   Fri May 9 17:02:24 2008 +1200
 
     Make it executable.
 
-commit f0f99962e54e1fac77083b397426c4789ae061cb
-Author: Andrew Ruthven &lt;puck@dirk.catalyst.net.nz>
-Date:   Fri Aug 24 08:51:36 2007 +1200
+commit ae540117822f58ca7974c69fe13270959cc04f34
+Author: Andrew Ruthven <puck@catalyst.net.nz>
+Date:   Fri May 9 17:01:41 2008 +1200
+
+    Add a message.
+puck@dirk:/tmp/test$ git log | cat
+commit bd10c5f5179b4c6b52d586cc5355e3018b3c8c37
+Author: Andrew Ruthven <puck@catalyst.net.nz>
+Date:   Fri May 9 17:08:02 2008 +1200
+
+    Remove another-script.pl
+
+commit cc260920d4b1aa87e000d2a52643b22b725d4922
+Author: Andrew Ruthven <puck@catalyst.net.nz>
+Date:   Fri May 9 17:07:35 2008 +1200
+
+    Add a test script.
+
+commit fabd44619bd37f47b9e1e193ee4ded97e64f8f4a
+Author: Andrew Ruthven <puck@catalyst.net.nz>
+Date:   Fri May 9 17:03:04 2008 +1200
+
+    Rename the file.
+
+commit 378af932284a01c8cb6c3de202182ecac0fa7969
+Author: Andrew Ruthven <puck@catalyst.net.nz>
+Date:   Fri May 9 17:02:24 2008 +1200
+
+    Make it executable.
+
+commit ae540117822f58ca7974c69fe13270959cc04f34
+Author: Andrew Ruthven <puck@catalyst.net.nz>
+Date:   Fri May 9 17:01:41 2008 +1200
 
     Add a message.
 puck@dirk:/tmp/test$ 
@@ -380,10 +367,10 @@ puck@dirk:/tmp/test$ git log silly-script.pl
 <code>
 puck@dirk:/tmp/test$ git blame silly-script.pl
 puck@dirk:/tmp/test$ git blame silly-script.pl  | cat
-b954c9ad super-script.pl (Andrew Ruthven 2007-08-24 08:59:54 +1200 1) #!/usr/bin/perl -w
-b954c9ad super-script.pl (Andrew Ruthven 2007-08-24 08:59:54 +1200 2) 
-b954c9ad super-script.pl (Andrew Ruthven 2007-08-24 08:59:54 +1200 3) print "silly script\n";
-024e0ea8 silly-script.pl (Bad Coder      2007-08-24 10:02:11 +1200 4) I'm in ur code, breaking ur code.
+^ae54011 super-script.pl (Andrew Ruthven 2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
+^ae54011 super-script.pl (Andrew Ruthven 2008-05-09 17:01:41 +1200 2) 
+^ae54011 super-script.pl (Andrew Ruthven 2008-05-09 17:01:41 +1200 3) print "silly script\n";
+2c08faf4 silly-script.pl (Bad Coder      2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur code.
 puck@dirk:/tmp/test$ 
 </code>
     <bullet>Who is this Bad Coder fella?</bullet>
@@ -397,9 +384,9 @@ puck@dirk:/tmp/test$
 		<bullet>Many different ways, one way to leave an audit trail:</bullet>
 		<bullet><tt>git revert &lt;commit ID></tt></bullet>
 <code>
-puck@dirk:/tmp/test$ git revert 024e0ea8
+puck@dirk:/tmp/test$ git revert 2c08faf4
 Finished one revert.
-Created commit 5fa7f09: Revert "Break it"
+Created commit e766bfb: Revert "Break the code!"
  1 files changed, 0 insertions(+), 1 deletions(-)
 puck@dirk:/tmp/test$ 
 </code>
@@ -468,7 +455,7 @@ puck@dirk:/tmp/test$
 <code>
 puck@dirk:/tmp/test$ echo "# From new-branch" >> silly-script.pl 
 puck@dirk:/tmp/test$ git commit silly-script.pl 
-Created commit c0a3ea5: From new-branch
+Created commit a6ed2cf: From new-branch
  1 files changed, 1 insertions(+), 0 deletions(-)
 puck@dirk:/tmp/test$ 
 </code>
@@ -494,8 +481,7 @@ puck@dirk:/tmp/test$
 		<bullet>Just say <tt>git merge &lt;other branch></tt></bullet>
 <code>
 puck@dirk:/tmp/test$ git merge new-branch
-Updating 5fa7f09..c0a3ea5
-
+Updating e766bfb..a6ed2cf
 Fast forward
  silly-script.pl |    1 +
  1 files changed, 1 insertions(+), 0 deletions(-)
@@ -538,7 +524,7 @@ print "change on new-branch - silly script - change on master\n";
 <code>
 puck@dirk:/tmp/test$ git add silly-script.pl 
 puck@dirk:/tmp/test$ git commit
-Created commit 2f8f119: Merge branch 'new-branch'
+Created commit a411f2a: Merge branch 'new-branch'
 puck@dirk:/tmp/test$ 
 </code>
     <bullet>In this case the commit message is automatically created</bullet>
