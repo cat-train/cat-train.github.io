@@ -122,6 +122,7 @@ puck@dirk:/tmp/test$
 
   <slide>
     <title>Managing Files - Add</title>
+    <bullet>Using the index to stage the commit</bullet>
     <bullet>Tell git about files with <tt>git add &lt;files></tt></bullet>
     <code>
 puck@dirk:/tmp/test$ touch super-script.pl
