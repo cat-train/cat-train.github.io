@@ -285,6 +285,7 @@ puck@dirk:/tmp/test$
 		<bullet>Use <tt>git log</tt></bullet>
 		<bullet>By default the output is piped into $PAGER</bullet>
 <code>
+<![CDATA[
 puck@dirk:/tmp/test$ git log
 commit bd10c5f5179b4c6b52d586cc5355e3018b3c8c37
 Author: Andrew Ruthven <puck@catalyst.net.nz>
@@ -346,6 +347,7 @@ Date:   Fri May 9 17:01:41 2008 +1200
 
     Add a message.
 puck@dirk:/tmp/test$ 
+]]>
 </code>
     <notes>
     </notes>
