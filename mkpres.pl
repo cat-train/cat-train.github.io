@@ -89,7 +89,7 @@ sub gen_slides {
   my $count = 1;
   foreach my $slide ($doc->findnodes('/presentation/slide')) {
     my @content;
-    foreach my $node ($slide->findnodes('./screenshot|./bullet|./code')) {
+    foreach my $node ($slide->findnodes('./screenshot|./bullet|./code|./quote')) {
       my $type = $node->nodeName;
       if($type eq 'screenshot') {
         my $filename = $node->to_literal;
@@ -98,6 +98,10 @@ sub gen_slides {
       }
       elsif($type eq 'bullet') {
         push @content, [ bullets => [] ] if(!@content or $content[-1] ne 'bullets');
+        push @{$content[-1][1]}, join '', map { $_->toString} $node->childNodes;
+      }
+      elsif($type eq 'quote') {
+        push @content, [ quotes => [] ] if(!@content or $content[-1] ne 'quotes');
         push @{$content[-1][1]}, join '', map { $_->toString} $node->childNodes;
       }
       else {

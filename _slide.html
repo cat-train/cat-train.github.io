@@ -38,6 +38,9 @@
 %   elsif($type eq 'code'){
 <& .code, $data &>
 %   }
+%   elsif($type eq 'quotes'){
+<& .quote, $data &>
+%   }
 % }
 
 <div id="nav">\
@@ -71,5 +74,10 @@
 % }
 % else {
   <pre class="code"><% h($_[0]) %></pre>\
+% }
+</%def>
+<%def .quote>
+% foreach my $item (@{$_[0]}) {
+    <% $item %>
 % }
 </%def>
