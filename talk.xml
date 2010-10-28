@@ -230,6 +230,9 @@ puck@dirk:/tmp/test$
     <title>Commiting changes - some useful options</title>
     <bullet>You don't <tt>have</tt> to add all your changes manually</bullet>
     <code>
+puck@dirk:/tmp/test$ git commit &lt;file>
+    </code>
+    <code>
 puck@dirk:/tmp/test$ git commit -a
     </code>
     <bullet>If you don't want to use an editor...</bullet>
@@ -263,7 +266,6 @@ puck@dirk:/tmp/test$
     <code>
 puck@dirk:/tmp/test$ git mv super-script.pl silly-script.pl
     </code>
-    <bullet>Check the status</bullet>
     <code>
 puck@dirk:/tmp/test$ git status
 # On branch master
@@ -292,7 +294,6 @@ puck@dirk:/tmp/test$
     <code>
 puck@dirk:/tmp/test$ git rm another-script.pl 
     </code>
-    <bullet>Check the status</bullet>
     <code>
 puck@dirk:/tmp/test$ git status
 # On branch master
