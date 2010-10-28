@@ -36,29 +36,28 @@
 
   <slide>
     <title>Why revision control?</title>
+    <bullet>Track software</bullet>
     <bullet>View history</bullet>
+    <bullet>Look back to find when bugs where created</bullet>
+    <bullet>Reasoning behind why something is how it is</bullet>
     <bullet>Roll back changes</bullet>
-    <bullet>Apply blame</bullet>
+    <bullet>Apply kudos for commits</bullet>
     <bullet>Redundant storage of your important stuff</bullet>
     <notes>
+    Without revision control you end up with countless copies of files with no idea what is what.  Anecdote - files called readme.tt, readme.ttt, readme.tttt
     </notes>
   </slide>
 
   <slide>
     <title>What options?</title>
     <bullet>Lots of options...</bullet>
-    <notes>
-    </notes>
-  </slide>
-
-  <slide>
-    <title>What options?</title>
-    <bullet>Lots of options...</bullet>
+    <pause />
     <bullet>RCS</bullet>
     <bullet>CVS</bullet>
     <bullet>Subversion</bullet>
     <bullet>Darcs</bullet>
     <bullet>Perforce</bullet>
+    <bullet>Bzr</bullet>
     <bullet>...</bullet>
     <notes>
     </notes>
@@ -66,9 +65,9 @@
 
   <slide>
     <title>Why not git?</title>
-    <bullet>There are some new concepts </bullet>
+    <bullet>There are some new concepts</bullet>
     <bullet>There are sooo many commands!</bullet>
-    <bullet>You can safely ignore most of them.</bullet>
+    <bullet>You can safely ignore most of those commands.</bullet>
     <bullet>When you do want to send patches as emails, the command is there.</bullet>
     <bullet>When you want to import patches from a mailbox, the command is there.</bullet>
     <bullet>You get the idea.</bullet>
@@ -76,7 +75,7 @@
 
   <slide>
     <title>Why git?</title>
-    <bullet>The cool kids use it</bullet>
+    <bullet>The cool kids use it (including the Koha devs)</bullet>
     <bullet>It is fast</bullet>
     <bullet>As light weight as RCS, but <tt>much</tt> better!</bullet>
     <bullet>You can work offline</bullet>
