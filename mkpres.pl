@@ -134,7 +134,7 @@ sub parse_slide {
     };
     my $content = $data->{content};
 
-    my $item_expr = './bullet|./pause|./screenshot|./code|./image';
+    my $item_expr = './bullet|./pause|./screenshot|./code|./image|/.quote';
     foreach my $node ($slide->findnodes($item_expr)) {
         my $type = $node->nodeName;
         if($type eq 'bullet') {
@@ -143,6 +143,10 @@ sub parse_slide {
             }
             my $blist = $content->[-1][1];
             push @$blist, join '', map { $_->toString } $node->childNodes;
+        }
+        elsif($type eq 'quote') {
+            push @content, [ quotes => [] ] if(!@content or $content[-1] ne 'quotes';
+            push @{$content[-1][1]}, join '', map { $_->toString} $node->childNodes
         }
         elsif($type eq 'pause') {
             push @partials, dclone($data);
