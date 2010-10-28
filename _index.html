@@ -9,15 +9,16 @@
   <link rel="next"       href="<% $ARGS{next} %>" />
   <script type="text/javascript" src="space_next.js"></script>
 </head>
-<body>
+<body id="index">
 
   <h1>&nbsp;</h1>
 
+  <div id="title-panel">
   <div id="title-header"><% $ARGS{title} %></div>
-
 % if($ARGS{subtitle}) {
   <div id="title-subtitle"><% $ARGS{subtitle} %></div>
 % }
+  </div>
 
   <div id="title-author">
     <% $ARGS{author} %><br />
@@ -26,8 +27,19 @@
 % }
   </div>
 
-  <div id="nav"><a id="nav-next" href="slide01.html"><img
+  <div id="title-logo"></div>
+
+  <div id="nav"><a id="nav-next" href="<% $ARGS{next} %>"><img
   src="images/nav_next.png" alt="Next" /></a></div>
+
+  <ul id="footer">
+% if($ARGS{event}) {
+    <li><% $ARGS{event} %></li>
+% }
+% if($ARGS{date}) {
+    <li><% $ARGS{date} %></li>
+% }
+  </ul>
 
 </body>
 </html>
