@@ -1,7 +1,7 @@
 <presentation>
-  <title>Git for Sys Admins</title>
+  <title>Git - Source code control for humans</title>
   <subtitle></subtitle>
-  <author>Andrew Ruthven</author>
+  <author>Andrew Ruthven / Evan Giles</author>
   <email>puck@catalyst.net.nz</email>
 
 <!--
@@ -29,7 +29,6 @@
     <bullet>Branching</bullet>
     <bullet>Merging</bullet>
     <bullet>Remote repositories</bullet>
-    <bullet>A closer look at some concepts</bullet>
     <notes>
     </notes>
   </slide>
@@ -41,7 +40,7 @@
     <bullet>Look back to find when bugs where created</bullet>
     <bullet>Reasoning behind why something is how it is</bullet>
     <bullet>Roll back changes</bullet>
-    <bullet>Apply kudos for commits</bullet>
+    <bullet>Apply kudos for effort</bullet>
     <bullet>Redundant storage of your important stuff</bullet>
     <notes>
     Without revision control you end up with countless copies of files with no idea what is what.  Anecdote - files called readme.tt, readme.ttt, readme.tttt
@@ -80,8 +79,8 @@
     <bullet>As light weight as RCS, but <tt>much</tt> better!</bullet>
     <bullet>You can work offline</bullet>
     <bullet>Branching is trivial</bullet>
-    <bullet>Merging of branches is fantastic</bullet>
-    <bullet>You can even apply commits out of order</bullet>
+    <bullet>Merging of branches actually makes sense</bullet>
+    <bullet>Once you master the concepts, you can do some really creative (and useful!) stuff</bullet>
     <bullet>Instead of just having a checkout, you have a local code repository <em>and</em> a checkout</bullet>
   </slide>
 
@@ -100,7 +99,7 @@
 
   <slide>
     <title>Create a new repository</title>
-    <bullet>..or, more specifically, create a <tt>local</tt> repository</bullet>
+    <bullet>..or, more specifically, create a new <tt>local</tt> repository</bullet>
     <bullet>Use <tt>git init</tt></bullet>
     <code>
 puck@dirk:/tmp/test$ git init
@@ -187,7 +186,7 @@ puck@dirk:/tmp/test$ git status
 #
 
     </code>
-    <bullet>Tell git about files with <tt>git add &lt;files></tt></bullet>
+    <bullet>Tell git that you have changed something with <tt>git add &lt;files></tt></bullet>
     <code>
 puck@dirk:/tmp/test$ git add super-script.pl 
     </code>
@@ -214,7 +213,7 @@ puck@dirk:/tmp/test$ git status
     <bullet>This is deliberate - so you can build up more complex commits</bullet>
     <bullet>Every change needs to be committed</bullet>
     <bullet>Commit with <tt>git commit &lt;files></tt></bullet>
-    <bullet>You will be asked for a commit message</bullet>
+    <bullet>You will be asked for a commit message (please include the WR number)</bullet>
     <code>
 puck@dirk:/tmp/test$ git commit super-script.pl 
 Created commit ae54011: Add a message.
@@ -312,49 +311,6 @@ Created commit bd10c5f: Remove another-script.pl
  delete mode 100644 another-script.pl
 puck@dirk:/tmp/test$ 
     </code>
-    <notes>
-    </notes>
-  </slide>
-
-  <slide>
-    <title>Local Repository - Abort a change</title>
-    <bullet>What if you screw things up?</bullet>
-    <bullet>If you haven't committed yet, you can run <tt>git reset --hard</tt></bullet>
-    <bullet>This throws away <b>all</b> local changes, except unknown files</bullet>
-  </slide>
-
-  <slide>
-    <title>Local Repository - Abort a change.. more carefully</title>
-    <bullet>What if you make a bogus edit?</bullet>
-    <code>
-uck@dirk:/tmp/test$ echo "I am sooo drunk!" > silly-script.pl 
-    </code>
-    <bullet> and tell git we want to commit this edit</bullet>
-    <code>
-puck@dirk:/tmp/test$ git add silly-script.pl 
-puck@dirk:/tmp/test$ git status
-# On branch master
-# Changes to be committed:
-#   (use "git reset HEAD &lt;file>..." to unstage)
-#
-#       modified:   silly-script.pl
-#
-     </code>
-     <bullet>Oops</bullet>
-     <bullet>Use <tt>git reset</tt> to undo the <tt>git add</tt></bullet>
-     <code>
-puck@dirk:/tmp/test$ git reset HEAD silly-script.pl 
-silly-script.pl: needs update
-     </code>
-     <bullet>And <tt>git checkout</tt> to undo the edit</bullet>
-     <code>
-puck@dirk:/tmp/test$ git checkout silly-script.pl 
-puck@dirk:/tmp/test$ git status
-# On branch master
-nothing to commit (working directory clean)
-puck@dirk:/tmp/test$ 
-    </code>
-     <bullet>I actually use <tt>gitk</tt> for this</bullet>
     <notes>
     </notes>
   </slide>
@@ -462,7 +418,60 @@ puck@dirk:/tmp/test$
   </slide>
 
   <slide>
-    <title>Reverting changes </title>
+    <title>Change Logs - GUI</title>
+    <bullet>Not strictly change logs, but...</bullet>
+    <bullet>gitk</bullet>
+    <bullet>git-gui</bullet>
+    <bullet>Many more</bullet>
+    <bullet> ( Demo )</bullet>
+  </slide>
+
+  <slide>
+    <title>Abort a change (early)</title>
+    <bullet>What if you screw things up?</bullet>
+    <bullet>If the error is just in you checkout, you can run <tt>git reset --hard</tt></bullet>
+    <bullet>This throws away <b>all</b> local changes, except unknown files</bullet>
+    <bullet>You could also use <tt>gitk</tt></bullet>
+  </slide>
+
+  <slide>
+    <title>Abort a change.. (not that early)</title>
+    <bullet>What if you screw things up?</bullet>
+    <code>
+puck@dirk:/tmp/test$ echo "I am sooo drunk!" > silly-script.pl 
+    </code>
+    <bullet>... and tell git we are going to commit something</bullet>
+    <code>
+puck@dirk:/tmp/test$ git add silly-script.pl 
+puck@dirk:/tmp/test$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD &lt;file>..." to unstage)
+#
+#       modified:   silly-script.pl
+#
+     </code>
+     <bullet>... and then decide that it was all a mistake</bullet>
+     <bullet>Use <tt>git reset</tt> to undo the <tt>git add</tt></bullet>
+     <code>
+puck@dirk:/tmp/test$ git reset HEAD silly-script.pl 
+silly-script.pl: needs update
+     </code>
+     <bullet>And <tt>git checkout</tt> to undo the edit</bullet>
+     <code>
+puck@dirk:/tmp/test$ git checkout silly-script.pl 
+puck@dirk:/tmp/test$ git status
+# On branch master
+nothing to commit (working directory clean)
+puck@dirk:/tmp/test$ 
+    </code>
+    <bullet>You could also use <tt>gitk</tt></bullet>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Abort a change (late)</title>
     <bullet>Sometimes we want to undo a commit</bullet>
     <bullet>Many different ways, one way to leave an audit trail:</bullet>
     <bullet><tt>git revert &lt;commit ID></tt></bullet>
@@ -476,12 +485,77 @@ puck@dirk:/tmp/test$
   </slide>
 
   <slide>
-    <title>Change Logs - GUI</title>
-    <bullet>Not strictly change logs, but...</bullet>
-    <bullet>gitk</bullet>
-    <bullet>git-gui</bullet>
-    <bullet>Many more</bullet>
-    <bullet> -- demo</bullet>
+    <title>Creating Repositories - Revisted</title>
+    <bullet>There are many different ways to get remote repositories, some are:</bullet>
+    <bullet>Create a new one (we've already covered this)</bullet>
+    <code>
+puck@dirk:/tmp/test$ git init
+Initialized empty Git repository in .git/
+puck@dirk:/tmp/test$ 
+    </code>
+    <bullet>In practise, you'll actually use <tt>git clone &lt;URL> &lt;local dir></tt></bullet>
+    <bullet>&lt;local dir> is optional</bullet>
+    <bullet>To check out the source code for this course</bullet>
+    <code>
+puck@dirk:/tmp$ git clone git clone git+ssh://gitprivate.catalyst.net.nz/git/private/git-training.git
+Cloning into git-training...
+remote: Counting objects: 90, done.
+remote: Compressing objects: 100% (43/43), done.
+remote: Total 90 (delta 44), reused 90 (delta 44)
+Receiving objects: 100% (90/90), 31.62 KiB, done.
+Resolving deltas: 100% (44/44), done.
+puck@dirk:/tmp$ 
+    </code>
+    <code>
+puck@dirk:/tmp$ cd git-training
+puck@dirk:/tmp/git-training$ ls talk.xml
+talk.xml
+    </code>
+  </slide>
+
+  <slide>
+    <title>Remote repositories - URLs </title>
+    <bullet>Clone an existing repository via HTTP</bullet>
+<code>
+puck@dirk:/tmp$ git clone http://gitprivate.catalyst.net.nz/catalyst-systemsadministrator.git
+</code>
+    <bullet>Clone an existing repository via SSH</bullet>
+<code>
+puck@dirk:/tmp$ git clone git+ssh://git.catalyst.net.nz/git/private/catalyst-systemsadministrator.git
+</code>
+    <bullet>Clone an existing repository Local repository (this is just a bit mad)</bullet>
+<code>
+puck@dirk:/tmp$ git clone test test2
+</code>
+  </slide>
+
+  <slide>
+    <title>Sharing your changes with others</title>
+    <bullet>If we assume we have a cloned repo....</bullet>
+    <bullet>and we have committed some changes....</bullet>
+    <bullet>To share those changes we would normally use <tt>git push</tt></bullet>
+    <code>
+### Make a reasonable example here....
+puck@dirk:/tmp$ git push
+puck@dirk:/tmp$ 
+    </code>
+    <bullet>Only, it doesn't always let you push....</bullet>
+    <bullet>Why not?</bullet>
+    <bullet>What should you do next?</bullet>
+    <bullet>( Demo / Discussion )</bullet>
+  </slide>
+
+  <slide>
+    <title>Recap</title>
+    <bullet>You can now create (or copy an existing) git repository</bullet>
+    <bullet>You can now view changes to your (local) repository</bullet>
+    <bullet><tt>gitk</tt> lets you visualise the commit history, which helps a lot</bullet>
+    <bullet>It is important to understand that git thinks in <tt>commits</tt></bullet>
+    <bullet>...and that each commit builds upon a previous commit</bullet>
+    <bullet>...and that a series of commits provides a complete history</bullet>
+    <bullet>...and that you can re-write history (to some degree)!</bullet>
+    <bullet>Remote repositories actually represent divergent history</bullet>
+    <bullet>..which we can call... <tt>branches</tt></bullet>
   </slide>
 
   <slide>
@@ -626,108 +700,6 @@ Conflicts:
     <bullet>Looking at the trees in gitk is cool.</bullet>
   </slide>
 
-  <slide>
-    <title>Remote repositories - URLs</title>
-    <bullet>There are many different ways to get remote repositories, some are:</bullet>
-      <bullet>HTTP</bullet>
-<code>
-puck@dirk:/tmp$ git clone http://gitprivate.catalyst.net.nz/catalyst-systemsadministrator.git
-Initialized empty Git repository in /tmp/catalyst-systemsadministrator/.git/
-got e8cc197ae63382e20adbedeb2491f7bd517c2ba4
-walk e8cc197ae63382e20adbedeb2491f7bd517c2ba4
-got 7ba4fe662265a0fcae049c2d1d34f804c7c1f623
-got 1596463cebc5b4fd366775c9e9f2bfad7167a911
-Getting alternates list for http://gitprivate.catalyst.net.nz/catalyst-systemsadministrator.git
-got 35aef72bdb120b8e49b7b96b369e6fc7a9b99d51
-walk 1596463cebc5b4fd366775c9e9f2bfad7167a911
-Getting pack list for http://gitprivate.catalyst.net.nz/catalyst-systemsadministrator.git
-got 3659410cbe90d1e968cc9e7921b8aa95c4848618
-got d03dfdf805a54193da4a1aaf2869ff23c830606f
-...
-</code>
-    <bullet>SSH</bullet>
-<code>
-puck@dirk:/tmp$ git clone git+ssh://git.catalyst.net.nz/git/private/catalyst-systemsadministrator.git
-Initialized empty Git repository in /tmp/catalyst-systemsadministrator/.git/
-remote: Generating pack...
-remote: Done counting 453 objects.
-remote: Deltifying 453 objects...
-remote:  100% (453/453) done
-Indexing 453 objects...
-remote: Total 453 (delta 208), reused 379 (delta 169)
- 100% (453/453) done
-Resolving 208 deltas...
- 100% (208/208) done
-
-puck@dirk:/tmp$ 
-</code>
-    <bullet>Local directory (this is just a bit mad)</bullet>
-<code>
-puck@dirk:/tmp$ git clone test test2
-Initialized empty Git repository in /tmp/test2/.git/
-remote: Generating pack...
-remote: Done counting 29 objects.
-Deltifying 29 objects...
- 100% (29/29) donete: done
-remote: Total 29 (delta 4), reused 0 (delta 0)
-Indexing 29 objects...
- 100% (29/29) done
-Resolving 4 deltas...
- 100% (4/4) done
-</code>
-  </slide>
-  <slide>
-    <title>Remote repositories - Clone</title>
-    <bullet>Easy to do, <tt>git clone &lt;URL> &lt;local dir></tt></bullet>
-    <bullet>&lt;local dir> is optional</bullet>
-    <code>
-puck@dirk:/tmp/test$ cd ..
-puck@dirk:/tmp$ git clone http://gitprivate.catalyst.net.nz/git-training.git
-Initialized empty Git repository in /tmp/git-training/.git/
-puck@dirk:/tmp$ 
-    </code>
-    <bullet>You now have the source code for this course, checked out</bullet>
-    <code>
-puck@dirk:/tmp$ cd git-training
-puck@dirk:/tmp/git-training$ ls talk.xml
-talk.xml
-    </code>
-  </slide>
-
-  <slide>
-    <title>Remote repositories - Clone local</title>
-    <bullet>Easy to do, <tt>git clone &lt;URL> &lt;local dir></tt></bullet>
-    <bullet>&lt;local dir> is optional</bullet>
-<code>
-puck@dirk:/tmp/test$ cd ..
-puck@dirk:/tmp$ git clone test test2
-Initialized empty Git repository in /tmp/test2/.git/
-puck@dirk:/tmp$ 
-</code>
-    <bullet>You now made a copy of your previous work</bullet>
-<code>
-puck@dirk:/tmp$ cd test2
-puck@dirk:/tmp/test2$ ls 
-silly-script.pl
-puck@dirk:/tmp/test2$ 
-</code>
-    <bullet>Looks familiar, how about the branches?</bullet>
-<code>
-puck@dirk:/tmp/test2$ git branch
-* master
-puck@dirk:/tmp/test2$ 
-</code>
-    <bullet>Only master, not the others.  Use <tt>git branch -a</tt> to see remote branches</bullet>
-<code>
-puck@dirk:/tmp/test2$ git branch -a
-* master
-  origin/HEAD
-  origin/another-branch
-  origin/master
-  origin/new-branch
-puck@dirk:/tmp/test2$
-</code>
-  </slide>
 
   <slide>
     <title>Remote repositories - Local branch</title>
@@ -811,27 +783,11 @@ puck@dirk:/tmp/test2$
 
 
   <slide>
-    <title>A closer look at some concepts</title>
-    <quote>http://www.eecs.harvard.edu/~cduan/technical/git/
-
-    A Story
-
-    When I first started using Git, I read plenty of tutorials, as well as the user manual. Though I picked up the basic usage patterns and commands, I never felt like I grasped what was going on 'under the hood,' so to speak. Frequently this resulted in cryptic error messages, caused by my random guessing at the right command to use at a given time. These difficulties worsened as I began to need more advanced (and less well documented) features.
-
-    After a few months, I started to understand those under-the-hood concepts. Once I did, suddenly everything made sense. I could understand the manual pages and perform all sorts of source control tasks. Everything that seemed so cryptic and obscure now was perfectly clear.
-
-    Understanding Git
-
-    The conclusion I draw from this is that you can only really use Git if you understand how Git works. Merely memorizing which commands you should run at what times will work in the short run, but it's only a matter of time before you get stuck or, worse, break something.
-
-    Half of the existing resources on Git, unfortunately, take just that approach: they walk you through which commands to run when, and expect that you should do fine if you just mimic those commands. The other half does go through all the concepts, but from what I have seen, they explain Git in a manner that assumes you already understand how Git works.  </quote>
-    <notes>
-    </notes>
-  </slide>
-
-  <slide>
     <title>The End</title>
     <bullet>Questions?</bullet>
+    <pause/>
+    <bullet>http://www.eecs.harvard.edu/~cduan/technical/git/</bullet>
+    <bullet>http://www.alistapart.com/articles/get-started-with-git/</bullet>
     <notes>
     </notes>
   </slide>
