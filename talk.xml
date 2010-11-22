@@ -672,99 +672,12 @@ puck@dirk:/tmp$ git clone test test2
 
   <slide>
     <title>Sharing your changes with others</title>
-    <bullet>If we assume we have a cloned repo....</bullet>
-    <bullet>and we have committed some changes....</bullet>
-    <bullet>To share those changes we would normally use <tt>git push</tt></bullet>
-    <code>
-### Make a reasonable example here....
-puck@dirk:/tmp$ git push
-puck@dirk:/tmp$ 
-    </code>
-    <bullet>Only, it doesn't always let you push....</bullet>
-    <bullet>Why not?</bullet>
-    <bullet>What should you do next?</bullet>
-    <bullet>( Demo / Discussion )</bullet>
-  </slide>
-
-
-  <slide>
-    <title>Remote repositories - Local branch</title>
-    <bullet>You may want to work on a remote branch</bullet>
-    <bullet>Very similar to copying local branches</bullet>
-<code>
-puck@dirk:/tmp/test2$ git checkout -b pucks-working origin/new-branch
-Switched to a new branch "pucks-working"
-puck@dirk:/tmp/test2$ git branch -a
-  master
-* pucks-working
-  origin/HEAD
-  origin/another-branch
-  origin/master
-  origin/new-branch
-puck@dirk:/tmp/test2$ 
-</code>
-    <notes>
-    </notes>
-  </slide>
-
-  <slide>
-    <title>Remote repositories - Local changes</title>
-    <bullet>Very similar work flow</bullet>
-<code>
-puck@dirk:/tmp/test2$ vi silly-script.pl 
-puck@dirk:/tmp/test2$ cat silly-script.pl 
-#!/usr/bin/perl -w
-
-print "change on new-branch - silly script - change on master\n";
-# From new-branch
-# Make a change on test2.
-puck@dirk:/tmp/test2$ git commit silly-script.pl 
-Created commit c2f770f: Change on test2 clone.
- 1 files changed, 1 insertions(+), 0 deletions(-)
-puck@dirk:/tmp/test2$ git push
-Everything up-to-date
-puck@dirk:/tmp/test2$ 
-</code>
-    <bullet>We we need to push our changes</bullet>
-<code>
-puck@dirk:/tmp/test2$ git push
-updating 'refs/heads/master'
-  from 2f8f119f7f197d1b6c3af53cc1aea29215702fba
-  to   c2f770f85e11046187075c53d640998aa767cf7e
-Generating pack...
-Done counting 5 objects.
-Result has 3 objects.
-Deltifying 3 objects...
- 100% (3/3) done
-Writing 3 objects...
- 100% (3/3) done
-Unpacking 3 objects...
- 100% (3/3) done
-Total 3 (delta 1), reused 0 (delta 0)
-refs/heads/master: 2f8f119f7f197d1b6c3af53cc1aea29215702fba -> c2f770f85e11046187075c53d640998aa767cf7e
-puck@dirk:/tmp/test2$ 
-</code>
-    <notes>
-    </notes>
-  </slide>
-
-  <slide>
-    <title>Remote repositories - Fetch</title>
-    <bullet>Lots of different approaches</bullet>
-    <bullet>Some people use <tt>git pull</tt></bullet>
-    <bullet>Others use <tt>git fetch</tt> then <tt>git rebase</tt></bullet>
-    <bullet>Still others use stacked git</bullet>
-    <bullet>I use <tt>git fetch</tt> then <tt>git rebase</tt> so I have a bit more control</bullet>
-<code>
-puck@dirk:/tmp/test2$ git fetch
-* refs/remotes/origin/master: fast forward to branch 'master' of /tmp/test/
-  old..new: 2f8f119..c2f770f
-puck@dirk:/tmp/test2$ git rebase origin/master
-Current branch master is up to date.
-puck@dirk:/tmp/test2$ 
-</code>
-    <bullet>No changes required</bullet>
-    <bullet>If we had local changes they'd be "replayed" on the top of the changes we'd fetched</bullet>
+    <bullet>git fetch</bullet>
+    <bullet>git merge</bullet>
+    <bullet>git rebase</bullet>
+    <bullet>git push</bullet>
+    <bullet>git pull</bullet>
+    <bullet>Discuss....</bullet>
   </slide>
 
   <slide>
