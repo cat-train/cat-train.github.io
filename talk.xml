@@ -445,9 +445,10 @@ puck@dirk:/tmp/test$
   </slide>
 
   <slide>
-    <title>Some more concepts</title>
+    <title>Some more concepts - commits</title>
     <bullet>It is important to understand that git thinks in <tt>commits</tt></bullet>
     <bullet>Each commit builds upon a previous commit</bullet>
+    <bullet>Each commit refers to a previous commit (it's parent)</bullet>
     <bullet>...and a series of commits provide a complete history of the project</bullet>
     <bullet><tt>gitk</tt> lets you visualise the commit history, which helps a lot</bullet>
     <bullet>Commits can be referenced by their SHA1 checksum</bullet>
@@ -464,6 +465,7 @@ puck@dirk:/tmp/test$ git branch
 puck@dirk:/tmp/test$ 
 </code>
     <bullet>Only one branch called <tt>master</tt></bullet>
+    <bullet>The '*' indicates that it is your current branch</bullet>
   </slide>
 
   <slide>
@@ -477,7 +479,9 @@ puck@dirk:/tmp/test$ git branch
 * new-branch
 puck@dirk:/tmp/test$ 
 </code>
-    <bullet>Can also create a new branch without being on the source branch</bullet>
+    <bullet>Will create "new-branch", and check it out for you </bullet>
+    <bullet>new-branch will be created at the commit your previously had checked out</bullet>
+    <bullet>Can also create a new branch at another location</bullet>
 <code>
 puck@dirk:/tmp/test$ git checkout -b another-branch master
 Switched to a new branch "another-branch"
@@ -501,6 +505,7 @@ puck@dirk:/tmp/test$ git branch
 * new-branch
 puck@dirk:/tmp/test$ 
 </code>
+    <bullet>Don't forget to see how this is shown in <tt>gitk</tt></bullet>
   </slide>
 
   <slide>
@@ -531,60 +536,92 @@ puck@dirk:/tmp/test$
   </slide>
 
   <slide>
-    <title>Abort a change (early)</title>
-    <bullet>What if you screw things up?</bullet>
-    <bullet>If the error is just in you checkout, you can run <tt>git reset --hard</tt></bullet>
-    <bullet>This throws away <b>all</b> local changes, except unknown files</bullet>
-    <bullet>You could also use <tt>gitk</tt></bullet>
+    <title>Branching - Why?</title>
+    <bullet>Many (most) projects have a branch for each release</bullet>
+    <bullet>Branches are useful for experimntal features / refactoring</bullet>
+    <bullet>Branches happen (without even trying) when several people try to work on the same project - but I'll explain that soon ;)</bullet>
   </slide>
 
   <slide>
-    <title>Abort a change.. (not that early)</title>
-    <bullet>What if you screw things up?</bullet>
+    <title>Merging - Simple Case</title>
+    <bullet>You should now be on the master branch</bullet>
     <code>
-puck@dirk:/tmp/test$ echo "I am sooo drunk!" > silly-script.pl 
-    </code>
-    <bullet>... and tell git we are going to commit something</bullet>
-    <code>
-puck@dirk:/tmp/test$ git add silly-script.pl 
-puck@dirk:/tmp/test$ git status
-# On branch master
-# Changes to be committed:
-#   (use "git reset HEAD &lt;file>..." to unstage)
-#
-#       modified:   silly-script.pl
-#
-     </code>
-     <bullet>... and then decide that it was all a mistake</bullet>
-     <bullet>Use <tt>git reset</tt> to undo the <tt>git add</tt></bullet>
-     <code>
-puck@dirk:/tmp/test$ git reset HEAD silly-script.pl 
-silly-script.pl: needs update
-     </code>
-     <bullet>And <tt>git checkout</tt> to undo the edit</bullet>
-     <code>
-puck@dirk:/tmp/test$ git checkout silly-script.pl 
 puck@dirk:/tmp/test$ git status
 # On branch master
 nothing to commit (working directory clean)
 puck@dirk:/tmp/test$ 
     </code>
-    <bullet>You could also use <tt>gitk</tt></bullet>
-    <notes>
-    </notes>
+    <bullet>Just say <tt>git merge &lt;other branch></tt></bullet>
+    <code>
+puck@dirk:/tmp/test$ git merge new-branch
+Updating e766bfb..a6ed2cf
+Fast forward
+ silly-script.pl |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+puck@dirk:/tmp/test$ 
+    </code>
+    <bullet>If there are no conflicts, this will make a new commit object</bullet>
+    <bullet>In this case the commit message is automatically created</bullet>
+<code>
+Merge branch 'new-branch'
+
+Conflicts:
+
+        silly-script.pl
+
+</code>
   </slide>
 
   <slide>
-    <title>Abort a change (late)</title>
-    <bullet>Sometimes we want to undo a commit</bullet>
-    <bullet>Many different ways, one way to leave an audit trail:</bullet>
-    <bullet><tt>git revert &lt;commit ID></tt></bullet>
+    <title>Merging - How does it look?</title>
+    <bullet>Looking at the trees in gitk is cool.</bullet>
+  </slide>
+
+  <slide>
+    <title>Merging - With conflicts</title>
+    <bullet>Conflicts are more difficult</bullet>
+    <bullet>If there are conflicts then git will stop and let you fix it.</bullet>
+    <bullet>Lots of tools to help fix things up.  Hand edit, xxdiff, smartmerge, etc</bullet>
 <code>
-puck@dirk:/tmp/test$ git revert 2c08faf4
-Finished one revert.
-Created commit e766bfb: Revert "Break the code!"
- 1 files changed, 0 insertions(+), 1 deletions(-)
+puck@dirk:/tmp/test$ git merge new-branch
+Auto-merged silly-script.pl
+CONFLICT (content): Merge conflict in silly-script.pl
+Automatic merge failed; fix conflicts and then commit the result.
+puck@dirk:/tmp/test$ cat silly-script.pl 
+#!/usr/bin/perl -w
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:silly-script.pl
+print "silly script - change on master\n";
+=======
+print "change on new-branch - silly script\n";
+>>>>>>> new-branch:silly-script.pl
+# From new-branch
 puck@dirk:/tmp/test$ 
+</code>
+    <bullet>Fix it, in this case use vi</bullet>
+<code>
+puck@dirk:/tmp/test$ vi silly-script.pl 
+puck@dirk:/tmp/test$ cat silly-script.pl 
+#!/usr/bin/perl -w
+
+print "change on new-branch - silly script - change on master\n";
+# From new-branch
+</code>
+    <bullet>Now that we've fixed the code, tell git that it has been fixed and commit it</bullet>
+<code>
+puck@dirk:/tmp/test$ git add silly-script.pl 
+puck@dirk:/tmp/test$ git commit
+Created commit a411f2a: Merge branch 'new-branch'
+puck@dirk:/tmp/test$ 
+</code>
+    <bullet>In this case the commit message is automatically created</bullet>
+<code>
+Merge branch 'new-branch'
+
+Conflicts:
+
+        silly-script.pl
+
 </code>
   </slide>
 
@@ -597,7 +634,7 @@ puck@dirk:/tmp/test$ git init
 Initialized empty Git repository in .git/
 puck@dirk:/tmp/test$ 
     </code>
-    <bullet>In practise, you'll actually use <tt>git clone &lt;URL> &lt;local dir></tt></bullet>
+    <bullet>In practise, you're more likely to use <tt>git clone &lt;URL> &lt;local dir></tt></bullet>
     <bullet>&lt;local dir> is optional</bullet>
     <bullet>To check out the source code for this course</bullet>
     <code>
@@ -647,73 +684,6 @@ puck@dirk:/tmp$
     <bullet>Why not?</bullet>
     <bullet>What should you do next?</bullet>
     <bullet>( Demo / Discussion )</bullet>
-  </slide>
-
-  <slide>
-    <title>Merging - Simple Case</title>
-    <bullet>Just say <tt>git merge &lt;other branch></tt></bullet>
-<code>
-puck@dirk:/tmp/test$ git merge new-branch
-Updating e766bfb..a6ed2cf
-Fast forward
- silly-script.pl |    1 +
- 1 files changed, 1 insertions(+), 0 deletions(-)
-puck@dirk:/tmp/test$ 
-</code>
-    <bullet>If there are no conflicts, the merge just happens</bullet>
-    <bullet>Conflicts are more difficult</bullet>
-  </slide>
-
-  <slide>
-    <title>Merging - With conflicts</title>
-    <bullet>If there are conflicts then git will stop and let you fix it.</bullet>
-    <bullet>Lots of tools to help fix things up.  Hand edit, xxdiff, smartmerge, etc</bullet>
-<code>
-puck@dirk:/tmp/test$ git merge new-branch
-Auto-merged silly-script.pl
-CONFLICT (content): Merge conflict in silly-script.pl
-Automatic merge failed; fix conflicts and then commit the result.
-puck@dirk:/tmp/test$ cat silly-script.pl 
-#!/usr/bin/perl -w
-
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:silly-script.pl
-print "silly script - change on master\n";
-=======
-print "change on new-branch - silly script\n";
->>>>>>> new-branch:silly-script.pl
-# From new-branch
-puck@dirk:/tmp/test$ 
-</code>
-    <bullet>Fix it, in this case use vi</bullet>
-<code>
-puck@dirk:/tmp/test$ vi silly-script.pl 
-puck@dirk:/tmp/test$ cat silly-script.pl 
-#!/usr/bin/perl -w
-
-print "change on new-branch - silly script - change on master\n";
-# From new-branch
-</code>
-    <bullet>Now that we've fixed the code, tell git that it has been fixed and commit it</bullet>
-<code>
-puck@dirk:/tmp/test$ git add silly-script.pl 
-puck@dirk:/tmp/test$ git commit
-Created commit a411f2a: Merge branch 'new-branch'
-puck@dirk:/tmp/test$ 
-</code>
-    <bullet>In this case the commit message is automatically created</bullet>
-<code>
-Merge branch 'new-branch'
-
-Conflicts:
-
-        silly-script.pl
-
-</code>
-  </slide>
-
-  <slide>
-    <title>Merging - How does it look?</title>
-    <bullet>Looking at the trees in gitk is cool.</bullet>
   </slide>
 
 
@@ -795,6 +765,64 @@ puck@dirk:/tmp/test2$
 </code>
     <bullet>No changes required</bullet>
     <bullet>If we had local changes they'd be "replayed" on the top of the changes we'd fetched</bullet>
+  </slide>
+
+  <slide>
+    <title>Abort a change (early)</title>
+    <bullet>What if you screw things up?</bullet>
+    <bullet>If the error is just in you checkout, you can run <tt>git reset --hard</tt></bullet>
+    <bullet>This throws away <b>all</b> local changes, except unknown files</bullet>
+    <bullet>You could also use <tt>gitk</tt></bullet>
+  </slide>
+
+  <slide>
+    <title>Abort a change.. (not that early)</title>
+    <bullet>What if you screw things up?</bullet>
+    <code>
+puck@dirk:/tmp/test$ echo "I am sooo drunk!" > silly-script.pl 
+    </code>
+    <bullet>... and tell git we are going to commit something</bullet>
+    <code>
+puck@dirk:/tmp/test$ git add silly-script.pl 
+puck@dirk:/tmp/test$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD &lt;file>..." to unstage)
+#
+#       modified:   silly-script.pl
+#
+     </code>
+     <bullet>... and then decide that it was all a mistake</bullet>
+     <bullet>Use <tt>git reset</tt> to undo the <tt>git add</tt></bullet>
+     <code>
+puck@dirk:/tmp/test$ git reset HEAD silly-script.pl 
+silly-script.pl: needs update
+     </code>
+     <bullet>And <tt>git checkout</tt> to undo the edit</bullet>
+     <code>
+puck@dirk:/tmp/test$ git checkout silly-script.pl 
+puck@dirk:/tmp/test$ git status
+# On branch master
+nothing to commit (working directory clean)
+puck@dirk:/tmp/test$ 
+    </code>
+    <bullet>You could also use <tt>gitk</tt></bullet>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Abort a change (late)</title>
+    <bullet>Sometimes we want to undo a commit</bullet>
+    <bullet>Many different ways, one way to leave an audit trail:</bullet>
+    <bullet><tt>git revert &lt;commit ID></tt></bullet>
+<code>
+puck@dirk:/tmp/test$ git revert 2c08faf4
+Finished one revert.
+Created commit e766bfb: Revert "Break the code!"
+ 1 files changed, 0 insertions(+), 1 deletions(-)
+puck@dirk:/tmp/test$ 
+</code>
   </slide>
 
 
