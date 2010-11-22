@@ -96,6 +96,22 @@
     <bullet>Awesome! but we'll come back to this....</bullet>
   </slide>
 
+  <slide>
+    <title>Installing</title>
+    <bullet>required <tt>git-core</tt></bullet>
+    <bullet>useful <tt>gitk</tt></bullet>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Configuring</title>
+    <bullet>not actually required</bullet>
+    <bullet>use <tt>git-config</tt></bullet>
+    <bullet>or <tt>vim</tt></bullet>
+    <notes>
+    </notes>
+  </slide>
 
   <slide>
     <title>Create a new repository</title>
@@ -421,7 +437,7 @@ puck@dirk:/tmp/test$
     <title>Change Logs - GUI</title>
     <bullet>Not strictly change logs, but...</bullet>
     <bullet>gitk</bullet>
-    <bullet>git-gui</bullet>
+    <bullet>git gui</bullet>
     <bullet>Many more</bullet>
     <bullet> ( Demo )</bullet>
   </slide>
@@ -497,7 +513,7 @@ puck@dirk:/tmp/test$
     <bullet>&lt;local dir> is optional</bullet>
     <bullet>To check out the source code for this course</bullet>
     <code>
-puck@dirk:/tmp$ git clone git clone git+ssh://gitprivate.catalyst.net.nz/git/private/git-training.git
+puck@dirk:/tmp$ git clone git+ssh://gitprivate.catalyst.net.nz/git/private/git-training.git
 Cloning into git-training...
 remote: Counting objects: 90, done.
 remote: Compressing objects: 100% (43/43), done.
@@ -517,11 +533,11 @@ talk.xml
     <title>Remote repositories - URLs </title>
     <bullet>Clone an existing repository via HTTP</bullet>
 <code>
-puck@dirk:/tmp$ git clone http://gitprivate.catalyst.net.nz/catalyst-systemsadministrator.git
+puck@dirk:/tmp$ git clone http://gitprivate.catalyst.net.nz/git-training-example.git
 </code>
     <bullet>Clone an existing repository via SSH</bullet>
 <code>
-puck@dirk:/tmp$ git clone git+ssh://git.catalyst.net.nz/git/private/catalyst-systemsadministrator.git
+puck@dirk:/tmp$ git clone git+ssh://git.catalyst.net.nz/git/private/git-training-example.git
 </code>
     <bullet>Clone an existing repository Local repository (this is just a bit mad)</bullet>
 <code>
