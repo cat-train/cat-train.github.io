@@ -86,8 +86,18 @@
 
   <slide>
     <title>Installing</title>
-    <bullet>required <tt>git-core</tt></bullet>
-    <bullet>useful <tt>gitk</tt></bullet>
+    <code>
+# Required
+sudo aptitude install git-core
+    </code>
+    <code>
+# Almost required :)
+sudo aptitude install gitk
+    </code>
+    <code>
+# See also...
+sudo aptitude search git
+    </code>
     <notes>
     </notes>
   </slide>
