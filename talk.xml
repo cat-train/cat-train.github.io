@@ -648,7 +648,7 @@ puck@dirk:/tmp/test$
     <bullet>&lt;local dir> is optional</bullet>
     <bullet>To check out the source code for this course</bullet>
     <code>
-puck@dirk:/tmp$ git clone git+ssh://gitprivate.catalyst.net.nz/git/private/git-training.git
+puck@dirk:/tmp$ git clone http://gitprivate.catalyst.net.nz/git-training.git
 Cloning into git-training...
 remote: Counting objects: 90, done.
 remote: Compressing objects: 100% (43/43), done.
@@ -691,63 +691,11 @@ puck@dirk:/tmp$ git clone test test2
   </slide>
 
   <slide>
-    <title>Abort a change (early)</title>
-    <bullet>What if you screw things up?</bullet>
-    <bullet>If the error is just in you checkout, you can run <tt>git reset --hard</tt></bullet>
-    <bullet>This throws away <b>all</b> local changes, except unknown files</bullet>
-    <bullet>You could also use <tt>gitk</tt></bullet>
+    <title>Loose ends</title>
+    <bullet>git revert</bullet>
+    <bullet>git cherrypick</bullet>
+    <bullet>git tag</bullet>
   </slide>
-
-  <slide>
-    <title>Abort a change.. (not that early)</title>
-    <bullet>What if you screw things up?</bullet>
-    <code>
-puck@dirk:/tmp/test$ echo "I am sooo drunk!" > silly-script.pl 
-    </code>
-    <bullet>... and tell git we are going to commit something</bullet>
-    <code>
-puck@dirk:/tmp/test$ git add silly-script.pl 
-puck@dirk:/tmp/test$ git status
-# On branch master
-# Changes to be committed:
-#   (use "git reset HEAD &lt;file>..." to unstage)
-#
-#       modified:   silly-script.pl
-#
-     </code>
-     <bullet>... and then decide that it was all a mistake</bullet>
-     <bullet>Use <tt>git reset</tt> to undo the <tt>git add</tt></bullet>
-     <code>
-puck@dirk:/tmp/test$ git reset HEAD silly-script.pl 
-silly-script.pl: needs update
-     </code>
-     <bullet>And <tt>git checkout</tt> to undo the edit</bullet>
-     <code>
-puck@dirk:/tmp/test$ git checkout silly-script.pl 
-puck@dirk:/tmp/test$ git status
-# On branch master
-nothing to commit (working directory clean)
-puck@dirk:/tmp/test$ 
-    </code>
-    <bullet>You could also use <tt>gitk</tt></bullet>
-    <notes>
-    </notes>
-  </slide>
-
-  <slide>
-    <title>Abort a change (late)</title>
-    <bullet>Sometimes we want to undo a commit</bullet>
-    <bullet>Many different ways, one way to leave an audit trail:</bullet>
-    <bullet><tt>git revert &lt;commit ID></tt></bullet>
-<code>
-puck@dirk:/tmp/test$ git revert 2c08faf4
-Finished one revert.
-Created commit e766bfb: Revert "Break the code!"
- 1 files changed, 0 insertions(+), 1 deletions(-)
-puck@dirk:/tmp/test$ 
-</code>
-  </slide>
-
 
   <slide>
     <title>The End</title>
