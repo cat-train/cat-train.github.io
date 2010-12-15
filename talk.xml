@@ -23,9 +23,7 @@
     <title>Overview</title>
     <bullet>Why use revision control?</bullet>
     <bullet>Why use git?</bullet>
-    <bullet>Create a new repository</bullet>
-    <bullet>Managing files</bullet>
-    <bullet>Change logs</bullet>
+    <bullet>Managing your files</bullet>
     <bullet>Branching</bullet>
     <bullet>Merging</bullet>
     <bullet>Remote repositories</bullet>
@@ -35,7 +33,7 @@
 
   <slide>
     <title>Why use revision control?</title>
-    <bullet>Track software</bullet>
+    <bullet>Track changes (to almost anything)</bullet>
     <bullet>View history</bullet>
     <bullet>Look back to find when bugs where created</bullet>
     <bullet>Reasoning behind why something is how it is</bullet>
@@ -63,21 +61,9 @@
   </slide>
 
   <slide>
-    <title>Why not use git?</title>
-    <bullet>There are some new concepts</bullet>
-    <bullet>There are sooo many commands!</bullet>
-    <pause />
-    <bullet>You can safely ignore most of those commands.</bullet>
-    <bullet>When you do want to send patches as emails, the command is there.</bullet>
-    <bullet>When you want to import patches from a mailbox, the command is there.</bullet>
-    <bullet>You get the idea.</bullet>
-  </slide>
-
-  <slide>
     <title>Why should you use git?</title>
-    <bullet>The cool kids use it (including the Koha devs)</bullet>
+    <bullet>The cool kids use it</bullet>
     <bullet>It is fast</bullet>
-    <bullet>As light weight as RCS, but <tt>much</tt> better!</bullet>
     <bullet>Branching is trivial</bullet>
     <bullet>Merging of branches actually makes sense</bullet>
     <bullet>You can be disconnected from the network, yet still continue working</bullet>
@@ -108,7 +94,7 @@ sudo aptitude search git
     <bullet>Project data is stoed in <tt>$PROJECT/.git/config</tt></bullet>
     <bullet>use <tt>git config</tt> to see and modify it</bullet>
     <bullet>..or <tt>vim</tt></bullet>
-    <bullet>Not actually required</bullet>
+    <bullet>But you don't have to do this</bullet>
     <notes>
     </notes>
   </slide>
@@ -127,6 +113,8 @@ sudo aptitude search git
     <title>Create a new repository</title>
     <bullet>Use <tt>git init</tt></bullet>
     <code>
+puck@dirk:~$ mkdir /tmp/test
+puck@dirk:~$ cd /tmp/test
 puck@dirk:/tmp/test$ git init
 Initialized empty Git repository in .git/
 puck@dirk:/tmp/test$ 
@@ -237,7 +225,8 @@ puck@dirk:/tmp/test$ git status
     <bullet>This is deliberate - so you can build up more complex commits</bullet>
     <bullet>Every change needs to be committed</bullet>
     <bullet>Commit with <tt>git commit &lt;files></tt></bullet>
-    <bullet>You will be asked for a commit message (please include the WR number)</bullet>
+    <bullet>You will be stuck in an editor so you can input a commit message </bullet>
+    <bullet>NORMALLY, you will make your commit message meaningful</bullet>
     <code>
 puck@dirk:/tmp/test$ git commit super-script.pl 
 Created commit ae54011: Add a message.
@@ -258,7 +247,11 @@ puck@dirk:/tmp/test$ git commit &lt;file>
     <code>
 puck@dirk:/tmp/test$ git commit -a
     </code>
-    <bullet>You don't have to use an editor...</bullet>
+    <bullet>You can have an easier editor...</bullet>
+    <code>
+puck@dirk:/tmp/test$ EDITOR=gedit git commit -a
+    </code>
+    <bullet>You don't have to use an editor at all...</bullet>
     <code>
 puck@dirk:/tmp/test$ git commit -m 'commit message goes here'
     </code>
@@ -269,7 +262,6 @@ puck@dirk:/tmp/test$ git commit -m 'commit message goes here'
   <slide>
     <title>Managing Files - Permissions</title>
     <bullet>Oops, that file isn't executable</bullet>
-    <bullet>Unlike <tt>some</tt> revision control systems, git is aware of file permissions</bullet>
     <code>
 puck@dirk:/tmp/test$ chmod 755 super-script.pl 
 puck@dirk:/tmp/test$ git commit super-script.pl 
@@ -317,8 +309,6 @@ puck@dirk:/tmp/test$
     <code>
 # This won't actually work, because we haven't created "another-script.pl"
 # ... but you can try it, if you like....
-    </code>
-    <code>
 puck@dirk:/tmp/test$ git rm another-script.pl 
     </code>
     <code>
@@ -351,63 +341,21 @@ puck@dirk:/tmp/test$
 <code>
 <![CDATA[
 puck@dirk:/tmp/test$ git log
-commit bd10c5f5179b4c6b52d586cc5355e3018b3c8c37
-Author: Andrew Ruthven <puck@catalyst.net.nz>
-Date:   Fri May 9 17:08:02 2008 +1200
-
-    Remove another-script.pl
-
-commit cc260920d4b1aa87e000d2a52643b22b725d4922
-Author: Andrew Ruthven <puck@catalyst.net.nz>
-Date:   Fri May 9 17:07:35 2008 +1200
-
-    Add a test script.
-
-commit fabd44619bd37f47b9e1e193ee4ded97e64f8f4a
-Author: Andrew Ruthven <puck@catalyst.net.nz>
-Date:   Fri May 9 17:03:04 2008 +1200
+commit 09f90bc2a74f7ca2f825c4a386e168649b9fec97
+Author: Evan Giles <evan@catalyst.net.nz>
+Date:   Thu Dec 16 11:53:48 2010 +1300
 
     Rename the file.
 
-commit 378af932284a01c8cb6c3de202182ecac0fa7969
-Author: Andrew Ruthven <puck@catalyst.net.nz>
-Date:   Fri May 9 17:02:24 2008 +1200
+commit f7123c5ffdccbed11b50b0b74a181186e1a13028
+Author: Evan Giles <evan@catalyst.net.nz>
+Date:   Thu Dec 16 11:53:25 2010 +1300
 
-    Make it executable.
+    Make it executable
 
-commit ae540117822f58ca7974c69fe13270959cc04f34
-Author: Andrew Ruthven <puck@catalyst.net.nz>
-Date:   Fri May 9 17:01:41 2008 +1200
-
-    Add a message.
-puck@dirk:/tmp/test$ git log | cat
-commit bd10c5f5179b4c6b52d586cc5355e3018b3c8c37
-Author: Andrew Ruthven <puck@catalyst.net.nz>
-Date:   Fri May 9 17:08:02 2008 +1200
-
-    Remove another-script.pl
-
-commit cc260920d4b1aa87e000d2a52643b22b725d4922
-Author: Andrew Ruthven <puck@catalyst.net.nz>
-Date:   Fri May 9 17:07:35 2008 +1200
-
-    Add a test script.
-
-commit fabd44619bd37f47b9e1e193ee4ded97e64f8f4a
-Author: Andrew Ruthven <puck@catalyst.net.nz>
-Date:   Fri May 9 17:03:04 2008 +1200
-
-    Rename the file.
-
-commit 378af932284a01c8cb6c3de202182ecac0fa7969
-Author: Andrew Ruthven <puck@catalyst.net.nz>
-Date:   Fri May 9 17:02:24 2008 +1200
-
-    Make it executable.
-
-commit ae540117822f58ca7974c69fe13270959cc04f34
-Author: Andrew Ruthven <puck@catalyst.net.nz>
-Date:   Fri May 9 17:01:41 2008 +1200
+commit 8657bea3230587abdcbe39e6bf699c9ee8f505a6
+Author: Evan Giles <evan@catalyst.net.nz>
+Date:   Thu Dec 16 11:52:51 2010 +1300
 
     Add a message.
 puck@dirk:/tmp/test$ 
@@ -474,7 +422,7 @@ puck@dirk:/tmp/test$ git branch
 * master
 puck@dirk:/tmp/test$ 
 </code>
-    <bullet>Only one branch called <tt>master</tt></bullet>
+    <bullet>Only one branch, called <tt>master</tt></bullet>
     <bullet>The '*' indicates that it is your current branch</bullet>
   </slide>
 
@@ -490,7 +438,7 @@ puck@dirk:/tmp/test$ git branch
 puck@dirk:/tmp/test$ 
 </code>
     <bullet>Will create "new-branch", and check it out for you </bullet>
-    <bullet>new-branch will be created at the commit your previously had checked out</bullet>
+    <bullet>new-branch will be created at the commit you previously had checked out</bullet>
     <bullet>Can also create a new branch at another location</bullet>
 <code>
 puck@dirk:/tmp/test$ git checkout -b another-branch master
@@ -528,21 +476,17 @@ Created commit a6ed2cf: From new-branch
  1 files changed, 1 insertions(+), 0 deletions(-)
 puck@dirk:/tmp/test$ 
 </code>
-    <bullet>Check the file, then jump to another branch, it ain't there</bullet>
-<code>
+    <bullet>Check the file, then jump to another branch, the text we added ain't there</bullet>
+    <code>
 puck@dirk:/tmp/test$ cat silly-script.pl 
-#!/usr/bin/perl -w
-
-print "silly script\n";
+DATA
 # From new-branch
 puck@dirk:/tmp/test$ git checkout master
 Switched to branch "master"
 puck@dirk:/tmp/test$ cat silly-script.pl 
-#!/usr/bin/perl -w
-
-print "silly script\n";
+DATA
 puck@dirk:/tmp/test$ 
-</code>
+    </code>
   </slide>
 
   <slide>
@@ -571,68 +515,63 @@ Fast forward
 puck@dirk:/tmp/test$ 
     </code>
     <bullet>If there are no conflicts, this will make a new commit object</bullet>
-    <bullet>In this case the commit message is automatically created</bullet>
-<code>
-Merge branch 'new-branch'
-
-Conflicts:
-
-        silly-script.pl
-
-</code>
-  </slide>
-
-  <slide>
-    <title>Merging - How does it look?</title>
-    <bullet>Looking at the trees in gitk is cool.</bullet>
+    <bullet>In this case the commit is just a copy of the commit from new-branch</bullet>
+    <bullet>use <tt>gitk</tt> to see what happened</bullet>
   </slide>
 
   <slide>
     <title>Merging - With conflicts</title>
-    <bullet>Conflicts are more difficult</bullet>
-    <bullet>If there are conflicts then git will stop and let you fix it.</bullet>
-    <bullet>Lots of tools to help fix things up.  Hand edit, xxdiff, smartmerge, etc</bullet>
-<code>
+    <bullet>Conflicts are more difficult (lets create one)</bullet>
+    <code>
+puck@dirk:/tmp/test$ echo "New value for data" > silly-script.pl
+puck@dirk:/tmp/test$ git commit -a -m 'update script with a new value'
+puck@dirk:/tmp/test$ git checkout new-branch
+puck@dirk:/tmp/test$ echo "different value for data" > silly-script.pl
+puck@dirk:/tmp/test$ git commit -a -m 'update script with a different value'
+puck@dirk:/tmp/test$ git checkout master
+    </code>
+    <bullet>If there are conflicts then git will stop and make you fix it.</bullet>
+    <code>
 puck@dirk:/tmp/test$ git merge new-branch
 Auto-merged silly-script.pl
 CONFLICT (content): Merge conflict in silly-script.pl
 Automatic merge failed; fix conflicts and then commit the result.
 puck@dirk:/tmp/test$ cat silly-script.pl 
-#!/usr/bin/perl -w
-
 &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:silly-script.pl
-print "silly script - change on master\n";
+New value for data
 =======
-print "change on new-branch - silly script\n";
+different value for data
 >>>>>>> new-branch:silly-script.pl
-# From new-branch
 puck@dirk:/tmp/test$ 
-</code>
-    <bullet>Fix it, in this case use vi</bullet>
-<code>
+    </code>
+    <bullet>Lots of tools to help fix things up.  Hand edit, xxdiff, smartmerge, etc</bullet>
+    <bullet>We'll fix it by editing the file</bullet>
+    <code>
 puck@dirk:/tmp/test$ vi silly-script.pl 
 puck@dirk:/tmp/test$ cat silly-script.pl 
-#!/usr/bin/perl -w
-
-print "change on new-branch - silly script - change on master\n";
-# From new-branch
-</code>
+New, different value for data
+    </code>
     <bullet>Now that we've fixed the code, tell git that it has been fixed and commit it</bullet>
-<code>
+    <code>
 puck@dirk:/tmp/test$ git add silly-script.pl 
 puck@dirk:/tmp/test$ git commit
 Created commit a411f2a: Merge branch 'new-branch'
 puck@dirk:/tmp/test$ 
-</code>
-    <bullet>In this case the commit message is automatically created</bullet>
-<code>
+    </code>
+    <bullet>In this case the commit message is automatically created, but you can edit it</bullet>
+    <code>
 Merge branch 'new-branch'
 
 Conflicts:
 
         silly-script.pl
 
-</code>
+    </code>
+  </slide>
+
+  <slide>
+    <title>Merging - How does it look?</title>
+    <bullet>Looking at the trees in gitk helps you understand stuff.</bullet>
   </slide>
 
   <slide>
