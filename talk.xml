@@ -691,10 +691,12 @@ puck@dirk:/tmp$ git clone test test2
   </slide>
 
   <slide>
-    <title>Loose ends</title>
+    <title>A preview of the intermediate course :)</title>
     <bullet>git revert</bullet>
     <bullet>git cherrypick</bullet>
     <bullet>git tag</bullet>
+    <bullet>git commit --amend</bullet>
+    <bullet>git rebase --interactive</bullet>
   </slide>
 
   <slide>
