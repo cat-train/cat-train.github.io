@@ -68,6 +68,7 @@
     <bullet>Merging of branches actually makes sense</bullet>
     <bullet>You can be disconnected from the network, yet still continue working</bullet>
     <bullet>Once you master the concepts, you can do some really creative (and useful!) stuff</bullet>
+    <bullet>http://www.whygitisbetterthanx.com</bullet>
   </slide>
 
   <slide>
@@ -77,7 +78,7 @@
 sudo aptitude install git-core
     </code>
     <code>
-# Almost required :)
+# Recommended
 sudo aptitude install gitk
     </code>
     <code>
@@ -101,7 +102,7 @@ sudo aptitude search git
 
   <slide>
     <title>Some concepts to begin with</title>
-    <bullet>git is just a bit different</bullet>
+    <bullet><tt>git</tt> is just a bit different from other revision control systems</bullet>
     <bullet>You get a <tt>checkout</tt> - so you can work with your project</bullet>
     <bullet>You get an <tt>index</tt>, which can be used to prepare commits</bullet>
     <bullet>You get a <tt>local repository</tt>,  which will hold all your commits</bullet>
@@ -412,6 +413,7 @@ puck@dirk:/tmp/test$
     <bullet>Commits can be referenced by their SHA1 checksum</bullet>
     <bullet> - or an abbreviation of it</bullet>
     <bullet> - or by a number of things that might refer to them</bullet>
+    <bullet>Commits are totally unchangeable</bullet>
   </slide>
 
   <slide>
@@ -576,7 +578,7 @@ Conflicts:
 
   <slide>
     <title>Creating Repositories - Revisted</title>
-    <bullet>There are many different ways to get remote repositories, some are:</bullet>
+    <bullet>There are many different ways to get repositories, some are:</bullet>
     <bullet>Create a new one (we've already covered this)</bullet>
     <code>
 puck@dirk:/tmp/test$ git init
@@ -585,10 +587,10 @@ puck@dirk:/tmp/test$
     </code>
     <bullet>In practise, you're more likely to use <tt>git clone &lt;URL> &lt;local dir></tt></bullet>
     <bullet>&lt;local dir> is optional</bullet>
-    <bullet>To check out the source code for this course</bullet>
+    <bullet>To check out the source code a random Catalyst project</bullet>
     <code>
-puck@dirk:/tmp$ git clone http://gitprivate.catalyst.net.nz/git-training.git
-Cloning into git-training...
+puck@dirk:/tmp$ git clone http://git.catalyst.net.nz/BucketVoting.git
+Cloning into BucketVoting...
 remote: Counting objects: 90, done.
 remote: Compressing objects: 100% (43/43), done.
 remote: Total 90 (delta 44), reused 90 (delta 44)
@@ -597,9 +599,8 @@ Resolving deltas: 100% (44/44), done.
 puck@dirk:/tmp$ 
     </code>
     <code>
-puck@dirk:/tmp$ cd git-training
-puck@dirk:/tmp/git-training$ ls talk.xml
-talk.xml
+puck@dirk:/tmp$ cd BucketVoting
+puck@dirk:/tmp/git-training$ ls 
     </code>
   </slide>
 
