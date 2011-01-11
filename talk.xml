@@ -1,5 +1,5 @@
 <presentation>
-  <title>Git - Source code control for humans</title>
+  <title>Git - Revision control for humans</title>
   <subtitle></subtitle>
   <author>Andrew Ruthven / Evan Giles</author>
   <email>puck@catalyst.net.nz</email>
@@ -36,7 +36,7 @@
     <bullet>Track changes (to almost anything)</bullet>
     <bullet>View history</bullet>
     <bullet>Look back to find when bugs where created</bullet>
-    <bullet>Reasoning behind why something is how it is</bullet>
+    <bullet>Find the reasoning behind why something is how it is</bullet>
     <bullet>Roll back changes</bullet>
     <bullet>Apply kudos for effort</bullet>
     <bullet>Backups of your important stuff</bullet>
@@ -67,6 +67,7 @@
     <bullet>Branching is trivial</bullet>
     <bullet>Merging of branches actually makes sense</bullet>
     <bullet>You can be disconnected from the network, yet still continue working</bullet>
+    <bullet>It does not dictate your workflow</bullet>
     <bullet>Once you master the concepts, you can do some really creative (and useful!) stuff</bullet>
     <bullet>http://www.whygitisbetterthanx.com</bullet>
   </slide>
@@ -339,8 +340,8 @@ puck@dirk:/tmp/test$
     <bullet>See what is going on</bullet>
     <bullet>Use <tt>git log</tt></bullet>
     <bullet>By default the output is piped into $PAGER</bullet>
-<code>
-<![CDATA[
+    <code>
+    <![CDATA[
 puck@dirk:/tmp/test$ git log
 commit 09f90bc2a74f7ca2f825c4a386e168649b9fec97
 Author: Evan Giles <evan@catalyst.net.nz>
@@ -360,8 +361,8 @@ Date:   Thu Dec 16 11:52:51 2010 +1300
 
     Add a message.
 puck@dirk:/tmp/test$ 
-]]>
-</code>
+    ]]>
+    </code>
     <notes>
     </notes>
   </slide>
@@ -408,12 +409,16 @@ puck@dirk:/tmp/test$
     <bullet>It is important to understand that git thinks in <tt>commits</tt></bullet>
     <bullet>Each commit builds upon a previous commit</bullet>
     <bullet>Each commit refers to a previous commit (it's parent)</bullet>
-    <bullet>...and a series of commits provide a complete history of the project</bullet>
+    <bullet> - and a series of commits provide a complete history of the project</bullet>
     <bullet><tt>gitk</tt> lets you visualise the commit history, which helps a lot</bullet>
     <bullet>Commits can be referenced by their SHA1 checksum</bullet>
     <bullet> - or an abbreviation of it</bullet>
     <bullet> - or by a number of things that might refer to them</bullet>
     <bullet>Commits are totally unchangeable</bullet>
+    <pause/>
+    <bullet>Commits are TOTALLY unchangeable</bullet>
+    <pause/>
+    <bullet>Commits are TOTALLY UNCHANGEABLE</bullet>
   </slide>
 
   <slide>
@@ -574,6 +579,36 @@ Conflicts:
   <slide>
     <title>Merging - How does it look?</title>
     <bullet>Looking at the trees in gitk helps you understand stuff.</bullet>
+    <code>
+gitk
+    </code>
+  </slide>
+
+  <slide>
+    <title>Sharing your changes with others</title>
+    <screenshot>local-remote.png</screenshot>
+  </slide>
+
+  <slide>
+    <title>Ways to work with git (1)</title>
+    <bullet>Corporate Workflow</bullet>
+    <screenshot>workflow-a.png</screenshot>
+    <bullet>Catalyst uses this a lot</bullet>
+    <bullet>You will use this</bullet>
+  </slide>
+
+  <slide>
+    <title>Ways to work with git (2)</title>
+    <bullet>Integration Manager Workflow</bullet>
+    <screenshot>workflow-b.png</screenshot>
+    <bullet>A quick diversion: http://www.github.com</bullet>
+  </slide>
+
+  <slide>
+    <title>Ways to work with git (3)</title>
+    <bullet>Dictator Workflow</bullet>
+    <screenshot>workflow-c.png</screenshot>
+    <bullet>This is how the linux kernel is managed</bullet>
   </slide>
 
   <slide>
@@ -621,13 +656,20 @@ puck@dirk:/tmp$ git clone test test2
   </slide>
 
   <slide>
-    <title>Sharing your changes with others</title>
-    <bullet>git fetch</bullet>
-    <bullet>git merge</bullet>
-    <bullet>git rebase</bullet>
-    <bullet>git push</bullet>
-    <bullet>git pull</bullet>
-    <bullet>Discuss....</bullet>
+    <title>Some things to do</title>
+    <bullet>Import some of your work into git, push it to a server</bullet>
+    <code>
+puck@dirk:/tmp/test$ git init
+puck@dirk:/tmp/test$ git add .
+puck@dirk:/tmp/test$ git commit
+    </code>
+    <code>
+puck@dirk:/tmp/test$ ssh $SERVER git init --bare remote.git
+puck@dirk:/tmp/test$ git remote add origin ssh://$SERVER/remote.git
+puck@dirk:/tmp/test$ git push
+    </code>
+    <bullet>Demonstrate a conflicting <tt>git push</tt></bullet>
+    <bullet>Fork a project on github, discuss that workflow</bullet>
   </slide>
 
   <slide>
@@ -636,7 +678,11 @@ puck@dirk:/tmp$ git clone test test2
     <bullet>git cherrypick</bullet>
     <bullet>git tag</bullet>
     <bullet>git commit --amend</bullet>
+    <bullet>git rebase</bullet>
     <bullet>git rebase --interactive</bullet>
+    <bullet>git reset</bullet>
+    <bullet>Changes with gitk</bullet>
+    <bullet>git-gui</bullet>
   </slide>
 
   <slide>
@@ -645,6 +691,8 @@ puck@dirk:/tmp$ git clone test test2
     <pause/>
     <bullet>http://www.eecs.harvard.edu/~cduan/technical/git/</bullet>
     <bullet>http://www.alistapart.com/articles/get-started-with-git/</bullet>
+    <bullet>http://www.whygitisbetterthanx.com</bullet>
+    <bullet>http://www.github.com</bullet>
     <notes>
     </notes>
   </slide>
