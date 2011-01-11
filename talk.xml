@@ -656,23 +656,6 @@ puck@dirk:/tmp$ git clone test test2
   </slide>
 
   <slide>
-    <title>Some things to do</title>
-    <bullet>Import some of your work into git, push it to a server</bullet>
-    <code>
-puck@dirk:/tmp/test$ git init
-puck@dirk:/tmp/test$ git add .
-puck@dirk:/tmp/test$ git commit
-    </code>
-    <code>
-puck@dirk:/tmp/test$ ssh $SERVER git init --bare remote.git
-puck@dirk:/tmp/test$ git remote add origin ssh://$SERVER/remote.git
-puck@dirk:/tmp/test$ git push
-    </code>
-    <bullet>Demonstrate a conflicting <tt>git push</tt></bullet>
-    <bullet>Fork a project on github, discuss that workflow</bullet>
-  </slide>
-
-  <slide>
     <title>A preview of the intermediate course :)</title>
     <bullet>git revert</bullet>
     <bullet>git cherrypick</bullet>
