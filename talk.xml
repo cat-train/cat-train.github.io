@@ -407,7 +407,6 @@ puck@dirk:/tmp/test$
   <slide>
     <title>Some more concepts - commits</title>
     <bullet>It is important to understand that git thinks in <tt>commits</tt></bullet>
-    <bullet>Each commit builds upon a previous commit</bullet>
     <bullet>Each commit refers to a previous commit (it's parent)</bullet>
     <bullet> - and a series of commits provide a complete history of the project</bullet>
     <bullet><tt>gitk</tt> lets you visualise the commit history, which helps a lot</bullet>
@@ -656,6 +655,19 @@ puck@dirk:/tmp$ git clone test test2
   </slide>
 
   <slide>
+    <title>Remote repositories - actually doing stuff</title>
+    <bullet>git push</bullet>
+    <bullet>git fetch</bullet>
+    <bullet>git pull</bullet>
+  </slide>
+
+  <slide>
+    <title>What else do you have to understand about sharing with others?</title>
+    <bullet>Git doesn't want to lose data!</bullet>
+    <bullet>- discuss</bullet>
+  </slide>
+
+  <slide>
     <title>A preview of the intermediate course :)</title>
     <bullet>git revert</bullet>
     <bullet>git cherrypick</bullet>
@@ -664,6 +676,7 @@ puck@dirk:/tmp$ git clone test test2
     <bullet>git rebase</bullet>
     <bullet>git rebase --interactive</bullet>
     <bullet>git reset</bullet>
+    <bullet>git stash</bullet>
     <bullet>Changes with gitk</bullet>
     <bullet>git-gui</bullet>
   </slide>
