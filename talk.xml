@@ -557,7 +557,16 @@ puck@dirk:/tmp/test$ vi silly-script.pl
 puck@dirk:/tmp/test$ cat silly-script.pl 
 New, different value for data
     </code>
-    <bullet>Now that we've fixed the code, tell git that it has been fixed and commit it</bullet>
+    <bullet>But git still won't allow us to continue...</bullet>
+    <code>
+puck@dirk:/tmp/test$ git commit
+U	silly-script.pl
+fatal: 'commit' is not possible because you have unmerged files.
+Please, fix them up in the work tree, and then use 'git add/rm &lt;file>' as
+appropriate to mark resolution and make a commit, or use 'git commit -a'.
+puck@dirk:/tmp/test$ 
+    </code>
+    <bullet>We need to tell git that it has been fixed before we commit</bullet>
     <code>
 puck@dirk:/tmp/test$ git add silly-script.pl 
 puck@dirk:/tmp/test$ git commit
