@@ -92,8 +92,8 @@ sudo aptitude search git
 
   <slide>
     <title>Configuring</title>
-    <bullet>Global data is stoed in <tt>$HOME/.git/config</tt></bullet>
-    <bullet>Project data is stoed in <tt>$PROJECT/.git/config</tt></bullet>
+    <bullet>Global data is stored in <tt>$HOME/.git/config</tt></bullet>
+    <bullet>Project data is stored in <tt>$PROJECT/.git/config</tt></bullet>
     <bullet>use <tt>git config</tt> to see and modify it</bullet>
     <bullet>..or <tt>vim</tt></bullet>
     <bullet>But you don't have to do this</bullet>
@@ -199,7 +199,7 @@ puck@dirk:/tmp/test$ git status
 #
     </code>
     <bullet>...so, git is saying that it knows you have changed the file since you added it</bullet>
-    <bullet>Ie.  The version in the checkout is different to the version in the index</bullet>
+    <bullet>I.e. The version in the checkout is different to the version in the index</bullet>
     <bullet>We need to tell git that you intend to commit the checked out version, with <tt>git add &lt;files></tt></bullet>
     <code>
 puck@dirk:/tmp/test$ git add super-script.pl 
@@ -221,7 +221,7 @@ puck@dirk:/tmp/test$ git status
   </slide>
 
   <slide>
-    <title>Commiting changes</title>
+    <title>Committing changes</title>
     <bullet>We have told git about our changes</bullet>
     <bullet>We haven't actually committed anything yet</bullet>
     <bullet>This is deliberate - so you can build up more complex commits</bullet>
@@ -241,7 +241,7 @@ puck@dirk:/tmp/test$
   </slide>
 
   <slide>
-    <title>Commiting changes - some useful options</title>
+    <title>Committing changes - some useful options</title>
     <bullet>You don't <tt>have</tt> to add all your changes manually</bullet>
     <code>
 puck@dirk:/tmp/test$ git commit &lt;file>
@@ -407,8 +407,8 @@ puck@dirk:/tmp/test$
   <slide>
     <title>Some more concepts - commits</title>
     <bullet>It is important to understand that git thinks in <tt>commits</tt></bullet>
-    <bullet>Each commit refers to a previous commit (it's parent)</bullet>
-    <bullet> - and a series of commits provide a complete history of the project</bullet>
+    <bullet>Each commit refers to a previous commit (its parent)</bullet>
+    <bullet> - and a series of commits provides a complete history of the project</bullet>
     <bullet><tt>gitk</tt> lets you visualise the commit history, which helps a lot</bullet>
     <bullet>Commits can be referenced by their SHA1 checksum</bullet>
     <bullet> - or an abbreviation of it</bullet>
@@ -498,7 +498,7 @@ puck@dirk:/tmp/test$
   <slide>
     <title>Branching - Why?</title>
     <bullet>Many (most) projects have a branch for each release</bullet>
-    <bullet>Branches are useful for experimntal features / refactoring</bullet>
+    <bullet>Branches are useful for experimental features / refactoring</bullet>
     <bullet>Branches happen (without even trying) when several people try to work on the same project - but I'll explain that soon ;)</bullet>
   </slide>
 
@@ -616,11 +616,11 @@ gitk
     <title>Ways to work with git (3)</title>
     <bullet>Dictator Workflow</bullet>
     <screenshot>workflow-c.png</screenshot>
-    <bullet>This is how the linux kernel is managed</bullet>
+    <bullet>This is how the Linux kernel is managed</bullet>
   </slide>
 
   <slide>
-    <title>Creating Repositories - Revisted</title>
+    <title>Creating Repositories - Revisited</title>
     <bullet>There are many different ways to get repositories, some are:</bullet>
     <bullet>Create a new one (we've already covered this)</bullet>
     <code>
@@ -630,7 +630,7 @@ puck@dirk:/tmp/test$
     </code>
     <bullet>In practise, you're more likely to use <tt>git clone &lt;URL> &lt;local dir></tt></bullet>
     <bullet>&lt;local dir> is optional</bullet>
-    <bullet>To check out the source code a random Catalyst project</bullet>
+    <bullet>To check out the source code of a random Catalyst project</bullet>
     <code>
 puck@dirk:/tmp$ git clone http://git.catalyst.net.nz/BucketVoting.git
 Cloning into BucketVoting...
@@ -643,7 +643,7 @@ puck@dirk:/tmp$
     </code>
     <code>
 puck@dirk:/tmp$ cd BucketVoting
-puck@dirk:/tmp/git-training$ ls 
+puck@dirk:/tmp/BucketVoting$ ls 
     </code>
   </slide>
 
