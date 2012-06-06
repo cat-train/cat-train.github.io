@@ -550,6 +550,10 @@ different value for data
 >>>>>>> new-branch:silly-script.pl
 train@train:/tmp/test$ 
     </code>
+  </slide>
+
+  <slide>
+    <title>Merging - Fixing conflicts</title>
     <bullet>Lots of tools to help fix things up.  Hand edit, xxdiff, smartmerge, etc</bullet>
     <bullet>We'll fix it by editing the file</bullet>
     <code>
