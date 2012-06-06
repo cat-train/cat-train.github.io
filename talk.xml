@@ -630,10 +630,10 @@ train@train:/tmp/test$
     </code>
     <bullet>In practise, you're more likely to use <tt>git clone &lt;URL> &lt;local dir></tt></bullet>
     <bullet>&lt;local dir> is optional</bullet>
-    <bullet>To check out the source code of a random Catalyst project</bullet>
+    <bullet>To check out the source code of a random project</bullet>
     <code>
-train@train:/tmp$ git clone http://git.catalyst.net.nz/BucketVoting.git
-Cloning into BucketVoting...
+train@train:/tmp$ git clone http://git.catalyst.net.nz/git.git
+Cloning into git...
 remote: Counting objects: 90, done.
 remote: Compressing objects: 100% (43/43), done.
 remote: Total 90 (delta 44), reused 90 (delta 44)
@@ -642,8 +642,9 @@ Resolving deltas: 100% (44/44), done.
 train@train:/tmp$ 
     </code>
     <code>
-train@train:/tmp$ cd BucketVoting
-train@train:/tmp/BucketVoting$ ls 
+train@train:/tmp$ cd git
+train@train:/tmp/git$ ls 
+train@train:/tmp/git$ gitk 
     </code>
   </slide>
 
