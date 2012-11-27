@@ -60,14 +60,14 @@
 
   <slide>
     <title>Why should you use git?</title>
-    <bullet>The cool kids use it</bullet>
     <bullet>It is fast</bullet>
     <bullet>Branching is trivial</bullet>
     <bullet>Merging of branches actually makes sense</bullet>
     <bullet>You can be disconnected from the network, yet still continue working</bullet>
     <bullet>It does not dictate your workflow</bullet>
+    <bullet>Data Assurance <link>http://git-scm.com/about/info-assurance</link></bullet>
     <bullet>Once you master the concepts, you can do some really creative (and useful!) stuff</bullet>
-    <bullet>http://www.whygitisbetterthanx.com</bullet>
+    <bullet>The cool kids use it</bullet>
   </slide>
 
   <slide>
@@ -102,8 +102,9 @@ sudo aptitude search git
   <slide>
     <title>Some concepts to begin with</title>
     <bullet><tt>git</tt> is just a bit different from other revision control systems</bullet>
-    <bullet>You get a <tt>checkout</tt> - so you can work with your project</bullet>
-    <bullet>You get an <tt>index</tt>, which can be used to prepare commits</bullet>
+    <screenshot>local-remote.png</screenshot>
+    <bullet>You get a <tt>working directory</tt> - so you can work with your project</bullet>
+    <bullet>You get an <tt>staging area</tt>, which can be used to prepare commits</bullet>
     <bullet>You get a <tt>local repository</tt>,  which will hold all your commits</bullet>
     <bullet>The local repository can be aware of multiple branches</bullet>
     <bullet>Some branches are <tt>remote</tt></bullet>
@@ -396,9 +397,7 @@ train@train:/tmp/test$
   <slide>
     <title>Change Logs - GUI</title>
     <bullet>Not strictly change logs, but...</bullet>
-    <bullet>gitk</bullet>
-    <bullet>git gui</bullet>
-    <bullet>Many more</bullet>
+    <bullet>gitk / qgit / etc</bullet>
     <bullet> ( Demo )</bullet>
   </slide>
 
@@ -432,7 +431,8 @@ train@train:/tmp/test$
 
   <slide>
     <title>Branching - Create</title>
-    <bullet>Use <tt>git checkout -b &lt;new-name></tt></bullet>
+    <bullet>Use <tt>git branch &lt;new-name></tt></bullet>
+    <bullet>or <tt>git checkout -b &lt;new-name></tt></bullet>
 <code>
 train@train:/tmp/test$ git checkout -b new-branch
 Switched to a new branch "new-branch"
@@ -457,7 +457,7 @@ train@train:/tmp/test$
 
   <slide>
     <title>Branching - Change Branch</title>
-    <bullet>Just use <tt>git checkout</tt> without the <tt>-b</tt></bullet>
+    <bullet>Use <tt>git checkout</tt></bullet>
 <code>
 train@train:/tmp/test$ git checkout new-branch
 Switched to branch "new-branch"
@@ -518,8 +518,8 @@ Fast forward
  1 files changed, 1 insertions(+), 0 deletions(-)
 train@train:/tmp/test$ 
     </code>
-    <bullet>If there are no conflicts, this will make a new commit object</bullet>
-    <bullet>In this case the commit is just a copy of the commit from new-branch</bullet>
+    <bullet>In this case, we have done a <tt>fast forward</tt> commit</bullet>
+    <bullet>If there are no conflicts, this may make a new commit object</bullet>
     <bullet>use <tt>gitk</tt> to see what happened</bullet>
   </slide>
 
@@ -630,8 +630,7 @@ train@train:/tmp/test$ git init
 Initialized empty Git repository in .git/
 train@train:/tmp/test$ 
     </code>
-    <bullet>In practise, you're more likely to use <tt>git clone &lt;URL> &lt;local dir></tt></bullet>
-    <bullet>&lt;local dir> is optional</bullet>
+    <bullet>In practise, you're more likely to use <tt>git clone &lt;URL></tt></bullet>
     <bullet>To check out the source code of a random project</bullet>
     <code>
 train@train:/tmp$ git clone http://git.catalyst.net.nz/git.git
@@ -670,7 +669,7 @@ train@train:/tmp$ git clone test test2
     <title>Remote repositories - actually doing stuff</title>
     <bullet>git push</bullet>
     <bullet>git fetch</bullet>
-    <bullet>git pull</bullet>
+    <bullet><del>git pull</del> git fetch; git merge</bullet>
   </slide>
 
   <slide>
