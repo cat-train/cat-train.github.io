@@ -102,7 +102,7 @@ sudo aptitude search git
   <slide>
     <title>Some concepts to begin with</title>
     <bullet><tt>git</tt> is just a bit different from other revision control systems</bullet>
-    <screenshot>local-remote.png</screenshot>
+    <screenshot>local-remote-small.png</screenshot>
     <bullet>You get a <tt>working directory</tt> - so you can work with your project</bullet>
     <bullet>You get an <tt>staging area</tt>, which can be used to prepare commits</bullet>
     <bullet>You get a <tt>local repository</tt>,  which will hold all your commits</bullet>
@@ -397,7 +397,7 @@ train@train:/tmp/test$
   <slide>
     <title>Change Logs - GUI</title>
     <bullet>Not strictly change logs, but...</bullet>
-    <bullet>gitk / qgit / etc</bullet>
+    <bullet>gitk / qgit / gitg / etc</bullet>
     <bullet> ( Demo )</bullet>
   </slide>
 
@@ -595,11 +595,6 @@ gitk
   </slide>
 
   <slide>
-    <title>Sharing your changes with others</title>
-    <screenshot>local-remote.png</screenshot>
-  </slide>
-
-  <slide>
     <title>Ways to work with git (1)</title>
     <bullet>Corporate Workflow</bullet>
     <screenshot>workflow-a.png</screenshot>
@@ -622,6 +617,17 @@ gitk
   </slide>
 
   <slide>
+    <title>Ways to work with git (4)</title>
+    <bullet>Peer to peer Workflow</bullet>
+    <screenshot>workflow-d.png</screenshot>
+  </slide>
+
+  <slide>
+    <title>Sharing your changes with others</title>
+    <screenshot>local-remote.png</screenshot>
+  </slide>
+
+  <slide>
     <title>Creating Repositories - Revisited</title>
     <bullet>There are many different ways to get repositories, some are:</bullet>
     <bullet>Create a new one (we've already covered this)</bullet>
@@ -633,6 +639,7 @@ train@train:/tmp/test$
     <bullet>In practise, you're more likely to use <tt>git clone &lt;URL></tt></bullet>
     <bullet>To check out the source code of a random project</bullet>
     <code>
+cd /tmp
 train@train:/tmp$ git clone http://git.catalyst.net.nz/git.git
 Cloning into git...
 remote: Counting objects: 90, done.
