@@ -8,3 +8,6 @@ html/index.html: talk.xml mkpres.pl _slide.html _toc.html _notes.html _index.htm
 clean:
 	rm -f html/*.html
 	rm -f html/*.txt
+
+deploy: all
+	scp -r html/* boole.wgtn.cat-it.co.nz:/general/catalyst/Resources/Slides/git/

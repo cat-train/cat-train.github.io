@@ -91,11 +91,24 @@ sudo aptitude search git
 
   <slide>
     <title>Configuring</title>
-    <bullet>Global data is stored in <tt>$HOME/.git/config</tt></bullet>
+    <bullet>Global data is stored in <tt>$HOME/.gitconfig</tt></bullet>
     <bullet>Project data is stored in <tt>$PROJECT/.git/config</tt></bullet>
     <bullet>use <tt>git config</tt> to see and modify it</bullet>
     <bullet>..or <tt>vim</tt></bullet>
     <bullet>But you don't have to do this</bullet>
+    <notes>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>Configuring - For convenience</title>
+    <code>
+train@train:~$ git config --global user.name "Your Name"
+train@train:~$ git config --global user.email "null@catalyst.net.nz"
+    </code>
+    <code>
+train@train:~$ git config --global core.editor nano
+    </code>
     <notes>
     </notes>
   </slide>
@@ -311,7 +324,7 @@ train@train:/tmp/test$
     <code>
 # This won't actually work, because we haven't created "another-script.pl"
 # ... but you can try it, if you like....
-train@train:/tmp/test$ git rm another-script.pl 
+train@train:/tmp/test$ git rm -f another-script.pl 
     </code>
     <code>
 train@train:/tmp/test$ git status
