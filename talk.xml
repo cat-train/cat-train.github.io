@@ -642,6 +642,13 @@ gitk
   </slide>
 
   <slide>
+    <title>A gentle recommendation...</title>
+    <bullet>git push</bullet>
+    <bullet>git fetch</bullet>
+    <bullet><del>git pull</del> git fetch; git merge</bullet>
+  </slide>
+
+  <slide>
     <title>Creating Repositories - Revisited</title>
     <bullet>There are many different ways to get repositories, some are:</bullet>
     <bullet>Create a new one (we've already covered this)</bullet>
@@ -687,13 +694,6 @@ train@train:/tmp$ git clone test test2
   </slide>
 
   <slide>
-    <title>Remote repositories - actually doing stuff</title>
-    <bullet>git push</bullet>
-    <bullet>git fetch</bullet>
-    <bullet><del>git pull</del> git fetch; git merge</bullet>
-  </slide>
-
-  <slide>
     <title>What else do you have to understand about sharing with others?</title>
     <bullet>Git doesn't want to lose data!</bullet>
     <bullet>- discuss</bullet>
@@ -717,10 +717,9 @@ train@train:/tmp$ git clone test test2
     <title>The End</title>
     <bullet>Questions?</bullet>
     <pause/>
-    <bullet>http://www.eecs.harvard.edu/~cduan/technical/git/</bullet>
-    <bullet>http://www.alistapart.com/articles/get-started-with-git/</bullet>
-    <bullet>http://www.whygitisbetterthanx.com</bullet>
     <bullet>http://www.github.com</bullet>
+    <bullet>http://git-scm.com/about</bullet>
+    <bullet>Data Assurance <link>http://git-scm.com/about/info-assurance</link></bullet>
     <notes>
     </notes>
   </slide>
