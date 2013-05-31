@@ -410,9 +410,8 @@ train@train:/tmp/test$
 
   <slide>
     <title>Change Logs - GUI</title>
-    <bullet>Not strictly change logs, but...</bullet>
-    <bullet>gitk / qgit / gitg / etc</bullet>
-    <bullet> ( Demo )</bullet>
+    <bullet>Not strictly change logs, but...  gitk / qgit / gitg / etc</bullet>
+    <screenshot>gitk.png</screenshot>
   </slide>
 
   <slide>
