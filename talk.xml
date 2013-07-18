@@ -694,8 +694,20 @@ train@train:/tmp$ git clone test test2
 
   <slide>
     <title>What else do you have to understand about sharing with others?</title>
-    <bullet>Git doesn't want to lose data!</bullet>
-    <bullet>- discuss</bullet>
+    <bullet>Once upon a time.... Alice and Bob wanted to do some work</bullet>
+    <screenshot>lastthing1.png</screenshot>
+  </slide>
+
+  <slide>
+    <title>What else do you have to understand about sharing with others?</title>
+    <bullet>So they both made some changes....</bullet>
+    <screenshot>lastthing2.png</screenshot>
+  </slide>
+
+  <slide>
+    <title>What else do you have to understand about sharing with others?</title>
+    <bullet>Alice pushed her changes...</bullet>
+    <screenshot>lastthing3.png</screenshot>
   </slide>
 
   <slide>

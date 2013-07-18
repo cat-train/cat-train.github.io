@@ -11,4 +11,6 @@ mkdir /tmp/test.git
 cd /tmp/
 git clone --bare /tmp/test
 
+echo "Command: git clone IP:/tmp/test.git"
+
 ip addr list
