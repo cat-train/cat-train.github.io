@@ -75,15 +75,15 @@
     <title>Installing</title>
     <code>
 # Required
-sudo aptitude install git-core
+$ sudo aptitude install git-core
     </code>
     <code>
 # Recommended
-sudo aptitude install gitk
+$ sudo aptitude install gitk
     </code>
     <code>
 # See also...
-sudo aptitude search git
+$ sudo aptitude search git
     </code>
     <notes>
     </notes>
@@ -102,12 +102,14 @@ sudo aptitude search git
 
   <slide>
     <title>Configuring - For convenience</title>
+    <bullet>This will stop git nagging you later</bullet>
     <code>
-train@train:~$ git config --global user.name "Your Name"
-train@train:~$ git config --global user.email "null@catalyst.net.nz"
+$ git config --global user.name "Your Name"
+$ git config --global user.email "null@catalyst.net.nz"
     </code>
+    <bullet>If (like me) you don't like nano, you can choose vim, or gedit</bullet>
     <code>
-train@train:~$ git config --global core.editor nano
+$ git config --global core.editor nano
     </code>
     <notes>
     </notes>
@@ -128,21 +130,19 @@ train@train:~$ git config --global core.editor nano
     <title>Create a new repository</title>
     <bullet>Use <tt>git init</tt></bullet>
     <code>
-train@train:~$ mkdir /tmp/test
-train@train:~$ cd /tmp/test
-train@train:/tmp/test$ git init
+$ mkdir /tmp/test
+$ cd /tmp/test
+/tmp/test$ git init
 Initialized empty Git repository in .git/
-train@train:/tmp/test$ 
     </code>
     <bullet>Check the status with <tt>git status</tt></bullet>
     <code>
-train@train:/tmp/test$ git status
+$ git status
 # On branch master
 #
 # Initial commit
 #
 nothing to commit (create/copy files and use "git add" to track)
-train@train:/tmp/test$ 
     </code>
     <notes>
     </notes>
@@ -152,10 +152,10 @@ train@train:/tmp/test$
     <title>Managing Files - Add</title>
     <bullet>Make some changes...</bullet>
     <code>
-train@train:/tmp/test$ touch super-script.pl
+$ touch super-script.pl
     </code>
     <code>
-train@train:/tmp/test$ git status
+$ git status
 # On branch master
 #
 # Initial commit
@@ -168,10 +168,10 @@ nothing added to commit but untracked files present (use "git add" to track)
     </code>
     <bullet>Tell git about files with <tt>git add &lt;files></tt></bullet>
     <code>
-train@train:/tmp/test$ git add super-script.pl 
+$ git add super-script.pl 
     </code>
     <code>
-train@train:/tmp/test$ git status
+$ git status
 # On branch master
 #
 # Initial commit
@@ -181,7 +181,6 @@ train@train:/tmp/test$ git status
 #
 #       new file: super-script.pl
 #
-train@train:/tmp/test$ 
     </code>
     <notes>
     </notes>
@@ -191,10 +190,10 @@ train@train:/tmp/test$
     <title>Managing Files - Change an existing file</title>
     <bullet>Make some changes...</bullet>
     <code>
-train@train:/tmp/test$ echo DATA > super-script.pl
+$ echo DATA > super-script.pl
     </code>
     <code>
-train@train:/tmp/test$ git status
+$ git status
 # On branch master
 #
 # Initial commit
@@ -215,10 +214,10 @@ train@train:/tmp/test$ git status
     <bullet>I.e. The version in the checkout is different to the version in the index</bullet>
     <bullet>We need to tell git that you intend to commit the checked out version, with <tt>git add &lt;files></tt></bullet>
     <code>
-train@train:/tmp/test$ git add super-script.pl 
+$ git add super-script.pl 
     </code>
     <code>
-train@train:/tmp/test$ git status
+$ git status
 # On branch master
 #
 # Initial commit
@@ -243,11 +242,10 @@ train@train:/tmp/test$ git status
     <bullet>You will be stuck in an editor so you can input a commit message </bullet>
     <bullet>NORMALLY, you will make your commit message meaningful</bullet>
     <code>
-train@train:/tmp/test$ git commit super-script.pl 
+$ git commit super-script.pl 
 Created commit ae54011: Add a message.
  1 files changed, 3 insertions(+), 0 deletions(-)
  create mode 100644 super-script.pl
-train@train:/tmp/test$ 
     </code>
     <notes>
     </notes>
@@ -257,18 +255,18 @@ train@train:/tmp/test$
     <title>Committing changes - some useful options</title>
     <bullet>You don't <tt>have</tt> to add all your changes manually</bullet>
     <code>
-train@train:/tmp/test$ git commit &lt;file>
+$ git commit &lt;file>
     </code>
     <code>
-train@train:/tmp/test$ git commit -a
+$ git commit -a
     </code>
     <bullet>You can have an easier editor...</bullet>
     <code>
-train@train:/tmp/test$ EDITOR=gedit git commit -a
+$ EDITOR=gedit git commit -a
     </code>
     <bullet>You don't have to use an editor at all...</bullet>
     <code>
-train@train:/tmp/test$ git commit -m 'commit message goes here'
+$ git commit -m 'commit message goes here'
     </code>
     <notes>
     </notes>
@@ -278,12 +276,11 @@ train@train:/tmp/test$ git commit -m 'commit message goes here'
     <title>Managing Files - Permissions</title>
     <bullet>Oops, that file isn't executable</bullet>
     <code>
-train@train:/tmp/test$ chmod 755 super-script.pl 
-train@train:/tmp/test$ git commit super-script.pl 
+$ chmod 755 super-script.pl 
+$ git commit super-script.pl 
 Created commit 378af93: Make it executable.
  0 files changed, 0 insertions(+), 0 deletions(-)
  mode change 100644 => 100755 super-script.pl
-train@train:/tmp/test$ 
     </code>
     <notes>
     </notes>
@@ -294,25 +291,23 @@ train@train:/tmp/test$
     <title>Managing Files - Move</title>
     <bullet>To rename a file use <tt>git mv &lt;source> &lt;dest></tt></bullet>
     <code>
-train@train:/tmp/test$ git mv super-script.pl silly-script.pl
+$ git mv super-script.pl silly-script.pl
     </code>
     <code>
-train@train:/tmp/test$ git status
+$ git status
 # On branch master
 # Changes to be committed:
 #   (use "git reset HEAD &lt;file>..." to unstage)
 #
 #       renamed:    super-script.pl -> silly-script.pl
 #
-train@train:/tmp/test$ 
     </code>
     <bullet>This has changed our checkout, and the index, so we are ready to commit the change</bullet>
     <code>
-train@train:/tmp/test$ git commit
+$ git commit
 Created commit fabd446: Rename the file.
  1 files changed, 0 insertions(+), 0 deletions(-)
  rename super-script.pl => silly-script.pl (100%)
-train@train:/tmp/test$ 
     </code>
     <notes>
     </notes>
@@ -324,25 +319,23 @@ train@train:/tmp/test$
     <code>
 # This won't actually work, because we haven't created "another-script.pl"
 # ... but you can try it, if you like....
-train@train:/tmp/test$ git rm -f another-script.pl 
+$ git rm -f another-script.pl 
     </code>
     <code>
-train@train:/tmp/test$ git status
+$ git status
 # On branch master
 # Changes to be committed:
 #   (use "git reset HEAD &lt;file>..." to unstage)
 #
 #       deleted:    another-script.pl
 #
-train@train:/tmp/test$ 
     </code>
     <bullet>And commit the change</bullet>
     <code>
-train@train:/tmp/test$ git commit
+$ git commit
 Created commit bd10c5f: Remove another-script.pl
  0 files changed, 0 insertions(+), 0 deletions(-)
  delete mode 100644 another-script.pl
-train@train:/tmp/test$ 
     </code>
     <notes>
     </notes>
@@ -353,9 +346,7 @@ train@train:/tmp/test$
     <bullet>See what is going on</bullet>
     <bullet>Use <tt>git log</tt></bullet>
     <bullet>By default the output is piped into $PAGER</bullet>
-    <code>
-    <![CDATA[
-train@train:/tmp/test$ git log
+    <code><![CDATA[$ git log
 commit 09f90bc2a74f7ca2f825c4a386e168649b9fec97
 Author: Evan Giles <evan@catalyst.net.nz>
 Date:   Thu Dec 16 11:53:48 2010 +1300
@@ -373,7 +364,6 @@ Author: Evan Giles <evan@catalyst.net.nz>
 Date:   Thu Dec 16 11:52:51 2010 +1300
 
     Add a message.
-train@train:/tmp/test$ 
     ]]>
     </code>
     <notes>
@@ -383,9 +373,9 @@ train@train:/tmp/test$
   <slide>
     <title>Change Logs</title>
     <bullet>Can specify a file or directory</bullet>
-<code>
-train@train:/tmp/test$ git log silly-script.pl 
-</code>
+    <code>
+$ git log silly-script.pl 
+    </code>
     <notes>
     </notes>
   </slide>
@@ -394,15 +384,13 @@ train@train:/tmp/test$ git log silly-script.pl
     <title>Change Logs - Annotate</title>
     <bullet>Show who made changes to what line</bullet>
     <bullet>Also known as the blame log</bullet>
-<code>
-train@train:/tmp/test$ git blame silly-script.pl
-train@train:/tmp/test$ git blame silly-script.pl  | cat
+    <code>
+$ git blame silly-script.pl
 ^ae54011 super-script.pl (Andrew Ruthven 2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
 ^ae54011 super-script.pl (Andrew Ruthven 2008-05-09 17:01:41 +1200 2) 
 ^ae54011 super-script.pl (Andrew Ruthven 2008-05-09 17:01:41 +1200 3) print "silly script\n";
 2c08faf4 silly-script.pl (Bad Coder      2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
-train@train:/tmp/test$ 
-</code>
+    </code>
     <bullet>Who is this Bad Coder fella?</bullet>
     <notes>
     </notes>
@@ -433,11 +421,10 @@ train@train:/tmp/test$
   <slide>
     <title>Branching - List</title>
     <bullet>To show branches use <tt>git branch</tt></bullet>
-<code>
-train@train:/tmp/test$ git branch
+    <code>
+$ git branch
 * master
-train@train:/tmp/test$ 
-</code>
+    </code>
     <bullet>Only one branch, called <tt>master</tt></bullet>
     <bullet>The '*' indicates that it is your current branch</bullet>
   </slide>
@@ -446,63 +433,72 @@ train@train:/tmp/test$
     <title>Branching - Create</title>
     <bullet>Use <tt>git branch &lt;new-name></tt></bullet>
     <bullet>or <tt>git checkout -b &lt;new-name></tt></bullet>
-<code>
-train@train:/tmp/test$ git checkout -b new-branch
+    <code>
+$ git checkout -b new-branch
 Switched to a new branch "new-branch"
-train@train:/tmp/test$ git branch
+    </code>
+    <bullet>Will create "new-branch", and check it out for you </bullet>
+    <code>
+$ git branch
   master
 * new-branch
-train@train:/tmp/test$ 
-</code>
-    <bullet>Will create "new-branch", and check it out for you </bullet>
-    <bullet>new-branch will be created at the commit you previously had checked out</bullet>
-    <bullet>Can also create a new branch at another location</bullet>
-<code>
-train@train:/tmp/test$ git checkout -b another-branch master
+    </code>
+  </slide>
+
+  <slide>
+    <title>Branching - Create at another location</title>
+    <bullet>Normally a new branch will be created at the commit you previously had checked out</bullet>
+    <bullet>You can also create a new branch at another location</bullet>
+    <code>
+$ git checkout -b another-branch master
 Switched to a new branch "another-branch"
-train@train:/tmp/test$ git branch
+    </code>
+    <code>
+$ git branch
 * another-branch
   master
   new-branch
-train@train:/tmp/test$ 
-</code>
+    </code>
   </slide>
 
   <slide>
     <title>Branching - Change Branch</title>
     <bullet>Use <tt>git checkout</tt></bullet>
-<code>
-train@train:/tmp/test$ git checkout new-branch
+    <code>
+$ git checkout new-branch
 Switched to branch "new-branch"
-train@train:/tmp/test$ git branch
+    </code>
+    <code>
+$ git branch
   another-branch
   master
 * new-branch
-train@train:/tmp/test$ 
-</code>
+    </code>
     <bullet>Don't forget to see how this is shown in <tt>gitk</tt></bullet>
   </slide>
 
   <slide>
     <title>Branching - What's the deal?</title>
     <bullet>You can make commits on a branch without polluting other branches</bullet>
-<code>
-train@train:/tmp/test$ echo "# From new-branch" >> silly-script.pl 
-train@train:/tmp/test$ git commit silly-script.pl 
+    <code>
+$ echo "# From new-branch" >> silly-script.pl 
+$ git commit silly-script.pl 
 Created commit a6ed2cf: From new-branch
  1 files changed, 1 insertions(+), 0 deletions(-)
-train@train:/tmp/test$ 
-</code>
+    </code>
     <bullet>Check the file, then jump to another branch, the text we added ain't there</bullet>
     <code>
-train@train:/tmp/test$ cat silly-script.pl 
+$ cat silly-script.pl 
 DATA
 # From new-branch
-train@train:/tmp/test$ git checkout master
+    </code>
+    <code>
+$ git checkout master
 Switched to branch "master"
-train@train:/tmp/test$ cat silly-script.pl 
+    </code>
+    <code>
+$ cat silly-script.pl 
 DATA
-train@train:/tmp/test$ 
     </code>
   </slide>
 
@@ -517,21 +513,19 @@ train@train:/tmp/test$
     <title>Merging - Simple Case</title>
     <bullet>You should now be on the master branch</bullet>
     <code>
-train@train:/tmp/test$ git status
+$ git status
 # On branch master
 nothing to commit (working directory clean)
-train@train:/tmp/test$ 
     </code>
     <bullet>Just say <tt>git merge &lt;other branch></tt></bullet>
     <code>
-train@train:/tmp/test$ git merge new-branch
+$ git merge new-branch
 Updating e766bfb..a6ed2cf
 Fast forward
  silly-script.pl |    1 +
  1 files changed, 1 insertions(+), 0 deletions(-)
-train@train:/tmp/test$ 
     </code>
-    <bullet>In this case, we have done a <tt>fast forward</tt> commit</bullet>
+    <bullet>In this case, we have done a <tt>fast forward</tt> merge</bullet>
     <bullet>If there are no conflicts, this may make a new commit object</bullet>
     <bullet>use <tt>gitk</tt> to see what happened</bullet>
   </slide>
@@ -540,26 +534,27 @@ train@train:/tmp/test$
     <title>Merging - With conflicts</title>
     <bullet>Conflicts are more difficult (lets create one)</bullet>
     <code>
-train@train:/tmp/test$ echo "New value for data" > silly-script.pl
-train@train:/tmp/test$ git commit -a -m 'update script with a new value'
-train@train:/tmp/test$ git checkout new-branch
-train@train:/tmp/test$ echo "different value for data" > silly-script.pl
-train@train:/tmp/test$ git commit -a -m 'update script with a different value'
-train@train:/tmp/test$ git checkout master
+$ echo "New value for data" > silly-script.pl
+$ git commit -a -m 'update script with a new value'
+$ git checkout new-branch
+$ echo "different value for data" > silly-script.pl
+$ git commit -a -m 'update script with a different value'
+$ git checkout master
     </code>
     <bullet>If there are conflicts then git will stop and make you fix it.</bullet>
     <code>
-train@train:/tmp/test$ git merge new-branch
+$ git merge new-branch
 Auto-merged silly-script.pl
 CONFLICT (content): Merge conflict in silly-script.pl
 Automatic merge failed; fix conflicts and then commit the result.
-train@train:/tmp/test$ cat silly-script.pl 
+    </code>
+    <code>
+$ cat silly-script.pl 
 &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:silly-script.pl
 New value for data
 =======
 different value for data
 >>>>>>> new-branch:silly-script.pl
-train@train:/tmp/test$ 
     </code>
   </slide>
 
@@ -568,25 +563,23 @@ train@train:/tmp/test$
     <bullet>Lots of tools to help fix things up.  Hand edit, xxdiff, smartmerge, etc</bullet>
     <bullet>We'll fix it by editing the file</bullet>
     <code>
-train@train:/tmp/test$ vi silly-script.pl 
-train@train:/tmp/test$ cat silly-script.pl 
+$ vi silly-script.pl 
+$ cat silly-script.pl 
 New, different value for data
     </code>
     <bullet>But git still won't allow us to continue...</bullet>
     <code>
-train@train:/tmp/test$ git commit
+$ git commit
 U	silly-script.pl
 fatal: 'commit' is not possible because you have unmerged files.
 Please, fix them up in the work tree, and then use 'git add/rm &lt;file>' as
 appropriate to mark resolution and make a commit, or use 'git commit -a'.
-train@train:/tmp/test$ 
     </code>
     <bullet>We need to tell git that it has been fixed before we commit</bullet>
     <code>
-train@train:/tmp/test$ git add silly-script.pl 
-train@train:/tmp/test$ git commit
+$ git add silly-script.pl 
+$ git commit
 Created commit a411f2a: Merge branch 'new-branch'
-train@train:/tmp/test$ 
     </code>
     <bullet>In this case the commit message is automatically created, but you can edit it</bullet>
     <code>
@@ -636,6 +629,11 @@ gitk
   </slide>
 
   <slide>
+    <title>A quick recap</title>
+    <screenshot>local.png</screenshot>
+  </slide>
+
+  <slide>
     <title>Sharing your changes with others</title>
     <screenshot>local-remote.png</screenshot>
   </slide>
@@ -652,62 +650,73 @@ gitk
     <bullet>There are many different ways to get repositories, some are:</bullet>
     <bullet>Create a new one (we've already covered this)</bullet>
     <code>
-train@train:/tmp/test$ git init
+$ git init
 Initialized empty Git repository in .git/
-train@train:/tmp/test$ 
     </code>
     <bullet>In practise, you're more likely to use <tt>git clone &lt;URL></tt></bullet>
     <bullet>To check out the source code of a random project</bullet>
     <code>
-cd /tmp
-train@train:/tmp$ git clone http://git.catalyst.net.nz/git.git
+$ cd /tmp
+/tmp$ git clone http://git.catalyst.net.nz/git.git
 Cloning into git...
 remote: Counting objects: 90, done.
 remote: Compressing objects: 100% (43/43), done.
 remote: Total 90 (delta 44), reused 90 (delta 44)
 Receiving objects: 100% (90/90), 31.62 KiB, done.
 Resolving deltas: 100% (44/44), done.
-train@train:/tmp$ 
     </code>
     <code>
-train@train:/tmp$ cd git
-train@train:/tmp/git$ ls 
-train@train:/tmp/git$ gitk 
+/tmp$ cd git
+/tmp/git$ ls 
+/tmp/git$ gitk 
     </code>
   </slide>
 
   <slide>
     <title>Remote repositories - URLs </title>
     <bullet>Clone an existing repository via HTTP</bullet>
-<code>
-train@train:/tmp$ git clone http://gitprivate.catalyst.net.nz/git-training-example.git
-</code>
+    <code>
+$ git clone http://gitprivate.catalyst.net.nz/git-training-example.git
+    </code>
     <bullet>Clone an existing repository via SSH</bullet>
-<code>
-train@train:/tmp$ git clone git+ssh://git.catalyst.net.nz/git/private/git-training-example.git
-</code>
+    <code>
+$ git clone git+ssh://git.catalyst.net.nz/git/private/git-training-example.git
+    </code>
     <bullet>Clone an existing repository Local repository (this is just a bit mad)</bullet>
-<code>
-train@train:/tmp$ git clone test test2
-</code>
+    <code>
+$ git clone test test2
+    </code>
   </slide>
 
   <slide>
-    <title>What else do you have to understand about sharing with others?</title>
-    <bullet>Once upon a time.... Alice and Bob wanted to do some work</bullet>
+    <title>Once upon a time....</title>
+    <bullet>.. Alice and Bob wanted to do some work</bullet>
     <screenshot>lastthing1.png</screenshot>
   </slide>
 
   <slide>
-    <title>What else do you have to understand about sharing with others?</title>
-    <bullet>So they both made some changes....</bullet>
+    <title>So they both made some changes....</title>
     <screenshot>lastthing2.png</screenshot>
   </slide>
 
   <slide>
-    <title>What else do you have to understand about sharing with others?</title>
-    <bullet>Alice pushed her changes...</bullet>
+    <title>Alice pushed her changes...</title>
     <screenshot>lastthing3.png</screenshot>
+  </slide>
+
+  <slide>
+    <title>Now Bob needs to fetch the changes from Alice</title>
+    <screenshot>lastthing4.png</screenshot>
+  </slide>
+
+  <slide>
+    <title>and merge them with his work</title>
+    <screenshot>lastthing5.png</screenshot>
+  </slide>
+
+  <slide>
+    <title>They all lived happily ever after...</title>
+    <screenshot>lastthing6.png</screenshot>
   </slide>
 
   <slide>
