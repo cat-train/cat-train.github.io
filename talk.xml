@@ -20,14 +20,25 @@
 
   <slide>
     <title>Overview</title>
+    <bullet>Introduction</bullet>
     <bullet>Why use revision control?</bullet>
     <bullet>Why use git?</bullet>
     <bullet>Managing your files</bullet>
     <bullet>Branching</bullet>
     <bullet>Merging</bullet>
     <bullet>Remote repositories</bullet>
+    <bullet>More advanced commands</bullet>
     <notes>
     </notes>
+  </slide>
+
+  <slide>
+    <title>Introduction</title>
+    <bullet>The format of this course is mostly a tutorial (with some lecturing thrown in)</bullet>
+    <bullet>The tutorial uses a linux command line, but git is available on other platforms</bullet>
+    <bullet>The tutorial is designed to uncover the concepts</bullet>
+    <bullet> - not necessarily to provide all the command syntax</bullet>
+    <bullet>My hope is that if you are armed with the concepts, the internet will help you find the specifics you need</bullet>
   </slide>
 
   <slide>

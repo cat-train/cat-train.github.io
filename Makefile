@@ -11,3 +11,6 @@ clean:
 
 deploy: all
 	scp -r html/* boole.wgtn.cat-it.co.nz:/general/catalyst/Resources/Slides/git/
+
+ext: all
+	scp -r html/* socrates.catalyst.net.nz:public_html/
