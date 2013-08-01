@@ -9,8 +9,10 @@ clean:
 	rm -f html/*.html
 	rm -f html/*.txt
 
-deploy: all
+deploy: external internal
+
+internal: all
 	scp -r html/* boole.wgtn.cat-it.co.nz:/general/catalyst/Resources/Slides/git/
 
-ext: all
+external: all
 	scp -r html/* socrates.catalyst.net.nz:public_html/
