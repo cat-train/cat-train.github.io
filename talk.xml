@@ -142,7 +142,11 @@ $ git config --global core.editor nano
     <bullet>Use <tt>git init</tt></bullet>
     <code>
 $ mkdir /tmp/test
+    </code>
+    <code>
 $ cd /tmp/test
+    </code>
+    <code>
 /tmp/test$ git init
 Initialized empty Git repository in .git/
     </code>
@@ -288,6 +292,8 @@ $ git commit -m 'commit message goes here'
     <bullet>Oops, that file isn't executable</bullet>
     <code>
 $ chmod 755 super-script.pl 
+    </code>
+    <code>
 $ git commit super-script.pl 
 Created commit 378af93: Make it executable.
  0 files changed, 0 insertions(+), 0 deletions(-)
@@ -493,6 +499,8 @@ $ git branch
     <bullet>You can make commits on a branch without polluting other branches</bullet>
     <code>
 $ echo "# From new-branch" >> silly-script.pl 
+    </code>
+    <code>
 $ git commit silly-script.pl 
 Created commit a6ed2cf: From new-branch
  1 files changed, 1 insertions(+), 0 deletions(-)
@@ -542,7 +550,7 @@ Fast forward
   </slide>
 
   <slide>
-    <title>Merging - With conflicts</title>
+    <title>Merging - get ready for a conflict</title>
     <bullet>Conflicts are more difficult (lets create one)</bullet>
     <code>
 $ echo "New value for data" > silly-script.pl
@@ -552,6 +560,10 @@ $ echo "different value for data" > silly-script.pl
 $ git commit -a -m 'update script with a different value'
 $ git checkout master
     </code>
+  </slide>
+
+  <slide>
+    <title>Merging - you can't do that</title>
     <bullet>If there are conflicts then git will stop and make you fix it.</bullet>
     <code>
 $ git merge new-branch
@@ -586,6 +598,10 @@ fatal: 'commit' is not possible because you have unmerged files.
 Please, fix them up in the work tree, and then use 'git add/rm &lt;file>' as
 appropriate to mark resolution and make a commit, or use 'git commit -a'.
     </code>
+  </slide>
+
+  <slide>
+    <title>Merging - Success at last</title>
     <bullet>We need to tell git that it has been fixed before we commit</bullet>
     <code>
 $ git add silly-script.pl 
@@ -668,6 +684,8 @@ Initialized empty Git repository in .git/
     <bullet>To check out the source code of a random project</bullet>
     <code>
 $ cd /tmp
+    </code>
+    <code>
 /tmp$ git clone http://git.catalyst.net.nz/git.git
 Cloning into git...
 remote: Counting objects: 90, done.
@@ -678,7 +696,11 @@ Resolving deltas: 100% (44/44), done.
     </code>
     <code>
 /tmp$ cd git
+    </code>
+    <code>
 /tmp/git$ ls 
+    </code>
+    <code>
 /tmp/git$ gitk 
     </code>
   </slide>
