@@ -498,7 +498,7 @@ $ git branch
     <title>Branching - What's the deal?</title>
     <bullet>You can make commits on a branch without polluting other branches</bullet>
     <code>
-$ echo "# From new-branch" >> silly-script.pl 
+$ echo "... From new-branch" >> silly-script.pl 
     </code>
     <code>
 $ git commit silly-script.pl 
@@ -509,7 +509,7 @@ Created commit a6ed2cf: From new-branch
     <code>
 $ cat silly-script.pl 
 DATA
-# From new-branch
+... From new-branch
     </code>
     <code>
 $ git checkout master
@@ -570,6 +570,16 @@ $ git merge new-branch
 Auto-merged silly-script.pl
 CONFLICT (content): Merge conflict in silly-script.pl
 Automatic merge failed; fix conflicts and then commit the result.
+    </code>
+    <code>
+$ git status
+# On branch master
+# Unmerged paths:
+#   (use "git add/rm &lt;file>..." as appropriate to mark resolution)
+#
+#       both modified:      silly-script.pl
+#
+no changes added to commit (use "git add" and/or "git commit -a")
     </code>
     <code>
 $ cat silly-script.pl 
@@ -750,6 +760,16 @@ $ git clone test test2
   <slide>
     <title>They all lived happily ever after...</title>
     <screenshot>lastthing6.png</screenshot>
+  </slide>
+
+  <slide>
+    <title>Now we can try it (but look out for this syntax)</title>
+    <bullet>vi FILENAME.txtr</bullet>
+    <bullet>git add FILENAME.txtr</bullet>
+    <bullet>git commit</bullet>
+    <bullet>git push origin master</bullet>
+    <bullet>git fetch</bullet>
+    <bullet>git merge origin/master</bullet>
   </slide>
 
   <slide>
