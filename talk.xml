@@ -42,7 +42,21 @@
   </slide>
 
   <slide>
-    <title>Why use revision control?</title>
+      <title>You (should) want source control if</title>
+      <bullet>You are sick of keeping *.bak files</bullet>
+      <bullet>You might ever want to look at how something used to be</bullet>
+      <bullet>You might ever want to know why something changed</bullet>
+      <bullet>You might like to review what you have just changed</bullet>
+  </slide>
+  <slide>
+      <title>You need source control if</title>
+      <bullet>You are working with other people who use it</bullet>
+      <bullet>You want to maintain multiple versions of the same thing</bullet>
+      <bullet>You want to work on separate changes at the "same time"</bullet>
+      <bullet>You need to make a single change which covers several files - and keep things in sync</bullet>
+  </slide>
+  <slide>
+    <title>What does revision control provide?</title>
     <bullet>Track changes (to almost anything)</bullet>
     <bullet>View history</bullet>
     <bullet>Look back to find when bugs were created</bullet>
@@ -50,9 +64,6 @@
     <bullet>Roll back changes</bullet>
     <bullet>Apply kudos for effort</bullet>
     <bullet>Backups of your important stuff</bullet>
-    <notes>
-    Without revision control you end up with countless copies of files with no idea what is what.  Anecdote - files called readme.tt, readme.ttt, readme.tttt
-    </notes>
   </slide>
 
   <slide>
