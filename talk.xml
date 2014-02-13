@@ -754,8 +754,13 @@ $ git clone test test2
   </slide>
 
   <slide>
-    <title>Alice pushed her changes...</title>
+    <title>Alice pushes her changes...</title>
     <screenshot>lastthing3.png</screenshot>
+  </slide>
+
+  <slide>
+    <title>But Bob has a problem...</title>
+    <screenshot>lastthing3a.png</screenshot>
   </slide>
 
   <slide>
