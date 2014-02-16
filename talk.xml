@@ -97,16 +97,25 @@
     <title>Installing</title>
     <code>
 # Required
-$ sudo aptitude install git-core
+$ sudo aptitude install git
     </code>
     <code>
 # Recommended
-$ sudo aptitude install gitk
+$ sudo aptitude install gitk git-gui
     </code>
     <code>
 # See also...
 $ sudo aptitude search git
     </code>
+    <notes>
+    </notes>
+  </slide>
+  <slide>
+    <title>Installing (alternative OS)</title>
+    <bullet> http://git-scm.org </bullet>
+    <bullet> http://git-scm.com/book/en/Getting-Started-Installing-Git </bullet>
+    <bullet> http://msysgit.github.io/ </bullet>
+    <bullet> You are looking for "Git BASH" </bullet>
     <notes>
     </notes>
   </slide>
