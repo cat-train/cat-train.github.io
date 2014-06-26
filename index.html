@@ -145,10 +145,10 @@ $ sudo aptitude search git
                     <section>
                         <h2>Installing (alternative OS)</h2>
                         <ul>
-                        <li> http://git-scm.org </li>
-                        <li> http://git-scm.com/book/en/Getting-Started-Installing-Git </li>
-                        <li> http://msysgit.github.io/ </li>
-                        <li> You are looking for "Git BASH" </li>
+                            <li><a href="http://git-scm.org"> git-scm.org </a> </li>
+                            <li><a href="http://git-scm.com/book/en/Getting-Started-Installing-Git"> Find the install instructions </a> </li>
+                            <li><a href="http://msysgit.github.io/"> Which will point you to the windows Git package </a> </li>
+                            <li>Once you have it installed, you are looking for "Git BASH"</li>
                         </ul>
                     </section>
 				</section>
@@ -156,13 +156,9 @@ $ sudo aptitude search git
                 <section> <!-- Concepts 1 -->
                     <h2>Some concepts to begin with</h2>
                     <ul>
-                    <li><tt>git</tt> is just a bit different from other revision control systems</li>
-                    <img src="images/local-remote-small.png" alt="local">
-                    <li>You get a <tt>working directory</tt> - so you can work with your project</li>
-                    <li>You get an <tt>staging area</tt>, which can be used to prepare commits</li>
-                    <li>You get a <tt>local repository</tt>,  which will hold all your commits</li>
-                    <li>The local repository can be aware of multiple branches</li>
-                    <li>Some branches are <tt>remote</tt></li>
+                        <li>Git is just a bit different from other revision control systems</li>
+                        <img src="images/local-remote-small.png" alt="overview">
+                        <li>The 'staging area' is often called the 'index' - they are the same thing</li>
                     </ul>
                 </section>
 
@@ -170,11 +166,11 @@ $ sudo aptitude search git
                     <section>
                         <h2>Configuring</h2>
                         <ul>
-                        <li>Global data is stored in <tt>$HOME/.gitconfig</tt></li>
-                        <li>Project data is stored in <tt>$PROJECT/.git/config</tt></li>
-                        <li>use <tt>git config</tt> to see and modify it</li>
-                        <li>..or <tt>vim</tt></li>
-                        <li>But you don't have to do this</li>
+                            <li>Global data is stored in <code>$HOME/.gitconfig</code></li>
+                            <li>Project data is stored in <code>$PROJECT/.git/config</code></li>
+                            <li>use <code>git config</code> to see and modify it</li>
+                            <li>..or <code>vim</code></li>
+                            <li>But you don't have to do this</li>
                         </ul>
                     </section>
                     <section>
@@ -198,26 +194,26 @@ $ git config --global core.editor nano
                     <section>
                         <h2>Create a new repository</h2>
                         <ul>
-                        <li>Use <tt>git init</tt></li>
-                        <pre><code>
+                            <li>Use <code>git init</code></li>
+                            <pre><code>
 $ mkdir /tmp/test
-                        </pre></code>
-                        <pre><code>
+                            </pre></code>
+                            <pre><code>
 $ cd /tmp/test
-                        </code></pre>
-                        <pre><code>
+                            </code></pre>
+                            <pre><code>
 /tmp/test$ git init
 Initialized empty Git repository in .git/
-                        </code></pre>
-                        <li>Check the status with <tt>git status</tt></li>
-                        <pre><code>
+                            </code></pre>
+                            <li>Check the status with <code>git status</code></li>
+                            <pre><code>
 $ git status
 # On branch master
 #
 # Initial commit
 #
 nothing to commit (create/copy files and use "git add" to track)
-                        </code></pre>
+                            </code></pre>
                         </ul>
                     </section>
                     <section>
@@ -239,7 +235,12 @@ $ git status
 #	super-script.pl
 nothing added to commit but untracked files present (use "git add" to track)
                         </code></pre>
-                        <li>Tell git about files with <tt>git add &lt;files></tt></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Tell Git to track those files</h2>
+                        <ul>
+                            <li>Use <code>git add &lt;files></code></li>
                         <pre><code>
 $ git add super-script.pl 
                         </code></pre>
@@ -257,16 +258,15 @@ $ git status
                         </code></pre>
                         </ul>
                     </section>
-
                     <section>
-                        <h2>Managing Files - Change an existing file</h2>
+                        <h2>Change an existing file</h2>
                         <ul>
                         <li>Make some changes...</li>
                         <pre><code>
-                    $ echo DATA > super-script.pl
+$ echo DATA > super-script.pl
                         </code></pre>
                         <pre><code>
-                    $ git status
+$ git status
 # On branch master
 #
 # Initial commit
@@ -283,14 +283,17 @@ $ git status
 #	modified:   super-script.pl
 #
                         </code></pre>
-                        <li>...so, git is saying that it knows you have changed the file since you added it</li>
-                        <li>I.e. The version in the checkout is different to the version in the index</li>
-                        <li>We need to tell git that you intend to commit the checked out version, with <tt>git add &lt;files></tt></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Change an existing file</h2>
+                        <ul>
+                        <li>We need to tell git that you intend to commit the checked out version, with <code>git add &lt;files></code></li>
                         <pre><code>
-                    $ git add super-script.pl 
+$ git add super-script.pl 
                         </code></pre>
                         <pre><code>
-                    $ git status
+$ git status
 # On branch master
 #
 # Initial commit
@@ -310,21 +313,21 @@ $ git status
                         <li>We haven't actually committed anything yet</li>
                         <li>This is deliberate - so you can build up more complex commits</li>
                         <li>Every change needs to be committed</li>
-                        <li>Commit with <tt>git commit &lt;files></tt></li>
-                        <li>You will be stuck in an editor so you can input a commit message </li>
-                        <li>NORMALLY, you will make your commit message meaningful</li>
+                        <li>Commit with <code>git commit &lt;files></code></li>
                         <pre><code>
 $ git commit super-script.pl 
 Created commit ae54011: Add a message.
 1 files changed, 3 insertions(+), 0 deletions(-)
 create mode 100644 super-script.pl
                         </code></pre>
+                        <li>You will be stuck in an editor so you can input a commit message </li>
+                        <li>Normally, you WILL make your commit message meaningful</li>
                         </ul>
                     </section>
                     <section>
                         <h2>Committing changes - some useful options</h2>
                         <ul>
-                        <li>You don't <tt>have</tt> to add all your changes manually</li>
+                        <li>You don't have to add all your changes manually</li>
                         <pre><code>
 $ git commit &lt;file>
                         </code></pre>
@@ -359,7 +362,7 @@ mode change 100644 => 100755 super-script.pl
                     <section>
                         <h2>Managing Files - Move</h2>
                         <ul>
-                        <li>To rename a file use <tt>git mv &lt;source> &lt;dest></tt></li>
+                        <li>To rename a file use <code>git mv &lt;source> &lt;dest></code></li>
                         <pre><code>
 $ git mv super-script.pl silly-script.pl
                         </code></pre>
@@ -384,14 +387,14 @@ rename super-script.pl => silly-script.pl (100%)
                     <section>
                         <h2>Managing Files - Delete</h2>
                         <ul>
-                        <li>To delete a file use <tt>git rm &lt;files></tt></li>
+                        <li>To delete a file use <code>git rm &lt;files></code></li>
                         <pre><code>
 # This won't actually work, because we haven't created "another-script.pl"
 # ... but you can try it, if you like....
 $ git rm -f another-script.pl 
                         </code></pre>
                         <pre><code>
-                    $ git status
+$ git status
 # On branch master
 # Changes to be committed:
 #   (use "git reset HEAD &lt;file>..." to unstage)
@@ -411,8 +414,7 @@ delete mode 100644 another-script.pl
                     <section>
                         <h2>Change Logs</h2>
                         <ul>
-                        <li>See what is going on</li>
-                        <li>Use <tt>git log</tt></li>
+                        <li>Use <code>git log</code></li>
                         <li>By default the output is piped into $PAGER</li>
                         <pre><code>
 $ git log
@@ -454,10 +456,10 @@ $ git log silly-script.pl
                         <li>Also known as the blame log</li>
                         <pre><code>
 $ git blame silly-script.pl
-^ae54011 super-script.pl (Andrew Ruthven 2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
-^ae54011 super-script.pl (Andrew Ruthven 2008-05-09 17:01:41 +1200 2) 
-^ae54011 super-script.pl (Andrew Ruthven 2008-05-09 17:01:41 +1200 3) print "silly script\n";
-^c08faf4 silly-script.pl (Bad Coder      2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
+b61863c8 (Andrew Ruthven 2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
+b61863c8 (Andrew Ruthven 2008-05-09 17:01:41 +1200 2) 
+b61863c8 (Andrew Ruthven 2008-05-09 17:01:41 +1200 3) print "silly script\n";
+9c08faf4 (Bad Coder      2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
                         </code></pre>
                         <li>Who is this Bad Coder fella?</li>
                         </ul>
@@ -466,8 +468,8 @@ $ git blame silly-script.pl
                     <section>
                         <h2>Change Logs - GUI</h2>
                         <ul>
-                        <li>Not strictly change logs, but...  gitk / qgit / gitg / etc</li>
-                        <img src="images/gitk.png" alt="gitk">
+                            <li>Not strictly change logs, but...  gitk / qgit / gitg / etc</li>
+                            <img src="images/gitk.png" alt="gitk">
                         </ul>
                     </section>
 				</section>
@@ -476,18 +478,15 @@ $ git blame silly-script.pl
                     <section>
                         <h2>Some more concepts - commits</h2>
                         <ul>
-                        <li>It is important to understand that git thinks in <tt>commits</tt></li>
-                        <li>Each commit refers to a previous commit (its parent)</li>
-                        <li> - and a series of commits provides a complete history of the project</li>
-                        <li><tt>gitk</tt> lets you visualise the commit history, which helps a lot</li>
-                        <li>Commits can be referenced by their SHA1 checksum</li>
-                        <li> - or an abbreviation of it</li>
-                        <li> - or by a number of things that might refer to them</li>
-                        <li>Commits are totally unchangeable</li>
-                        <pause/>
-                        <li>Commits are TOTALLY unchangeable</li>
-                        <pause/>
-                        <li>Commits are TOTALLY UNCHANGEABLE</li>
+                            <li>It is important to understand that git thinks in <code>commits</code></li>
+                            <li>Each commit refers to a previous commit (its parent)</li>
+                            <li><code>gitk</code> lets you visualise the commit history, which helps a lot</li>
+                            <li>Commits can be referenced by their SHA1 checksum</li>
+                            <ul>
+                                <li> or an abbreviation of it</li>
+                                <li> or by a number of things that might refer to them</li>
+                            </ul>
+                            <li>Commits are: <marquee style="width:650" scrollamount="650" scrolldelay="500">Totally unchangeable</marquee></li>
                     </ul>
                     </section>
 				</section>
@@ -496,12 +495,12 @@ $ git blame silly-script.pl
                     <section>
                         <h2>Branching - List</h2>
                         <ul>
-                        <li>To show branches use <tt>git branch</tt></li>
+                        <li>To show branches use <code>git branch</code></li>
                         <pre><code>
 $ git branch
 * master
                         </code></pre>
-                        <li>Only one branch, called <tt>master</tt></li>
+                        <li>Only one branch, called <code>master</code></li>
                         <li>The '*' indicates that it is your current branch</li>
                     </ul>
                     </section>
@@ -509,8 +508,8 @@ $ git branch
                     <section>
                         <h2>Branching - Create</h2>
                         <ul>
-                        <li>Use <tt>git branch &lt;new-name></tt></li>
-                        <li>or <tt>git checkout -b &lt;new-name></tt></li>
+                        <li>Use <code>git branch &lt;new-name></code></li>
+                        <li>or <code>git checkout -b &lt;new-name></code></li>
                         <pre><code>
 $ git checkout -b new-branch
 Switched to a new branch "new-branch"
@@ -525,10 +524,10 @@ master
                     </section>
 
                     <section>
-                        <h2>Branching - Create at another location</h2>
+                        <h2>Branching - Create somewhere else</h2>
                         <ul>
                         <li>Normally a new branch will be created at the commit you previously had checked out</li>
-                        <li>You can also create a new branch at another location</li>
+                        <li>You can also create a new branch at another commit</li>
                         <pre><code>
 $ git checkout -b another-branch master
 Switched to a new branch "another-branch"
@@ -545,7 +544,7 @@ new-branch
                     <section>
                         <h2>Branching - Change Branch</h2>
                         <ul>
-                        <li>Use <tt>git checkout</tt></li>
+                        <li>Use <code>git checkout</code></li>
                         <pre><code>
 $ git checkout new-branch
 Switched to branch "new-branch"
@@ -556,7 +555,7 @@ another-branch
 master
 * new-branch
                         </code></pre>
-                        <li>Don't forget to see how this is shown in <tt>gitk</tt></li>
+                        <li>Don't forget to see how this is shown in <code>gitk</code></li>
                     </ul>
                     </section>
 
@@ -572,17 +571,19 @@ $ git commit silly-script.pl
 Created commit a6ed2cf: From new-branch
 1 files changed, 1 insertions(+), 0 deletions(-)
                         </code></pre>
-                        <li>Check the file, then jump to another branch, the text we added ain't there</li>
                         <pre><code>
+# Check the file..
 $ cat silly-script.pl 
 DATA
 ... From new-branch
                         </code></pre>
                         <pre><code>
+# Jump to another branch
 $ git checkout master
 Switched to branch "master"
                         </code></pre>
                         <pre><code>
+# The text we added ain't there
 $ cat silly-script.pl 
 DATA
                         </code></pre>
@@ -607,7 +608,7 @@ $ git status
 # On branch master
 nothing to commit (working directory clean)
                         </code></pre>
-                        <li>Just say <tt>git merge &lt;other branch></tt></li>
+                        <li>Just say <code>git merge &lt;other branch></code></li>
                         <pre><code>
 $ git merge new-branch
 Updating e766bfb..a6ed2cf
@@ -615,9 +616,9 @@ Fast forward
 silly-script.pl |    1 +
 1 files changed, 1 insertions(+), 0 deletions(-)
                         </code></pre>
-                        <li>In this case, we have done a <tt>fast forward</tt> merge</li>
+                        <li>In this case, we have done a <code>fast forward</code> merge</li>
                         <li>If there are no conflicts, this may make a new commit object</li>
-                        <li>use <tt>gitk</tt> to see what happened</li>
+                        <li>use <code>gitk</code> to see what happened</li>
                     </ul>
                     </section>
 
@@ -791,7 +792,12 @@ gitk
 $ git init
 Initialized empty Git repository in .git/
                         </code></pre>
-                        <li>In practise, you're more likely to use <tt>git clone &lt;URL></tt></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Clone an existing repository</h2>
+                        <ul>
+                        <li>In practise, you're more likely to use <code>git clone &lt;URL></code></li>
                         <li>To check out the source code of a random project</li>
                         <pre><code>
 $ cd /tmp
@@ -873,7 +879,8 @@ $ git clone test test2
                     </section>
 
                     <section>
-                        <h2>Now we can try it (but look out for this syntax)</h2>
+                    <h2>Now we can try it</h2>
+                    <h3>.. but look out for the syntax</h3>
                         <ul>
                         <li>vi FILENAME.txt</li>
                         <li>git add FILENAME.txt</li>
