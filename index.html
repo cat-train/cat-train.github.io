@@ -46,7 +46,7 @@
                 <section> <!-- Introduction -->
 				    <section>
                         <h2>Git</h2>
-                        <h3>Revision control for humans</h3>
+                        <p>Revision control for humans</p>
                         <p>
                             <small>The presentation content is licensed under a Creative Commons Attribution 3.0 License. (http://creativecommons.org/licenses/by/3.0)</small>
                             <small>The presentation display is licensed seperately by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
@@ -69,7 +69,7 @@
                 <section> <!-- Why -->
 				    <section>
                         <h2>Why use revision control software?</h2>
-                        <h3>You (should) want it if...</h3>
+                        <p>You (should) want it if...</p>
                         <ul>
                         <li>You are sick of keeping *.bak files</li>
                         <li>You might ever want to look at how something used to be</li>
@@ -79,7 +79,7 @@
 				    </section>
 				    <section>
                         <h2>Why use revision control software?</h2>
-                        <h3>You need it if...</h3>
+                        <p>You need it if...</p>
                         <ul>
                         <li>You are working with other people who use it</li>
                         <li>You want to maintain multiple versions of the same thing</li>
@@ -721,44 +721,6 @@ gitk
                     </section>
 				</section>
 
-                <section> <!-- Ways to work -->
-                    <section>
-                        <h2>Ways to work with git (1)</h2>
-                        <ul>
-                        <li>Corporate Workflow</li>
-                        <img src="images/workflow-a.png" alt="corporate">
-                        <li>Catalyst uses this a lot</li>
-                        <li>You will use this</li>
-                    </ul>
-                    </section>
-
-                    <section>
-                        <h2>Ways to work with git (2)</h2>
-                        <ul>
-                        <li>Integration Manager Workflow</li>
-                        <img src="images/workflow-b.png" alt="github">
-                        <li>A quick diversion: http://www.github.com</li>
-                    </ul>
-                    </section>
-
-                    <section>
-                        <h2>Ways to work with git (3)</h2>
-                        <ul>
-                        <li>Dictator Workflow</li>
-                        <img src="images/workflow-c.png" alt="linux">
-                        <li>This is how the Linux kernel is managed</li>
-                    </ul>
-                    </section>
-
-                    <section>
-                        <h2>Ways to work with git (4)</h2>
-                        <ul>
-                        <li>Peer to peer Workflow</li>
-                        <img src="images/workflow-d.png" alt="p2p">
-                    </ul>
-                    </section>
-				</section>
-
 				<section>
                     <section>
                         <h2>A quick recap</h2>
@@ -779,6 +741,41 @@ gitk
                         <li>git fetch</li>
                         <li><del>git pull</del> git fetch; git merge</li>
                         </ul>
+                    </section>
+				</section>
+
+                <section> <!-- Ways to work -->
+                    <section>
+                        <h2>Ways to work with git (1)</h2>
+                        <ul>
+                        <li>Corporate Workflow</li>
+                        <img src="images/workflow-a.png" alt="corporate">
+                        <li>Catalyst uses this a lot</li>
+                        <li>You will use this</li>
+                    </ul>
+                    </section>
+                    <section>
+                        <h2>Ways to work with git (2)</h2>
+                        <ul>
+                        <li>Integration Manager Workflow</li>
+                        <img src="images/workflow-b.png" alt="github">
+                        <li>A quick diversion: http://www.github.com</li>
+                    </ul>
+                    </section>
+                    <section>
+                        <h2>Ways to work with git (3)</h2>
+                        <ul>
+                        <li>Dictator Workflow</li>
+                        <img src="images/workflow-c.png" alt="linux">
+                        <li>This is how the Linux kernel is managed</li>
+                    </ul>
+                    </section>
+                    <section>
+                        <h2>Ways to work with git (4)</h2>
+                        <ul>
+                        <li>Peer to peer Workflow</li>
+                        <img src="images/workflow-d.png" alt="p2p">
+                    </ul>
                     </section>
 				</section>
 
@@ -844,7 +841,7 @@ $ git clone test test2
                 <section> <!-- Alice and Bob -->
                     <section>
                         <h2>Once upon a time....</h2>
-                        <h3>.. Alice and Bob wanted to do some work</h3>
+                        <p>.. Alice and Bob wanted to do some work</p>
                         <img src="images/lastthing1.png" alt="">
                     </section>
 
@@ -879,16 +876,32 @@ $ git clone test test2
                     </section>
 
                     <section>
-                    <h2>Now we can try it</h2>
-                    <h3>.. but look out for the syntax</h3>
-                        <ul>
-                        <li>vi FILENAME.txt</li>
-                        <li>git add FILENAME.txt</li>
-                        <li>git commit</li>
-                        <li>git push origin master</li>
-                        <li>git fetch</li>
-                        <li>git merge origin/master</li>
-                        </ul>
+                        <h2>Now we can try it</h2>
+                        <p>.. but look out for the syntax</p>
+                        <pre><code>cd /tmp</code></pre>
+                        <pre><code>git clone $IP:/tmp/test2.git</code></pre>
+                        <pre><code>cd /tmp/test2</code></pre>
+                        <pre><code>vi FILENAME.txt</code></pre>
+                        <pre><code>git add FILENAME.txt</code></pre>
+                        <pre><code>git commit</code></pre>
+                        <pre><code>git push origin master</code></pre>
+                        <pre><code>git fetch</code></pre>
+                        <pre><code>git merge origin/master</code></pre>
+                        <aside class="notes">
+                            # Make sure the server has a working SSH daemon running
+                            <br>
+                            <br># Set up shared git repo
+                            <br>mkdir /tmp/test2.git
+                            <br>cd /tmp/test2.git
+                            <br>git init --bare
+                            <br>cd /tmp
+                            <br>git clone /tmp/test2.git /tmp/work
+                            <br>cd /tmp/work
+                            <br>echo 'evanwashere' > evan.txt
+                            <br>git add  evan.txt
+                            <br>git commit -m 'initial commit - one file'
+                            <br>git push origin master
+                        </aside>
                     </section>
 				</section>
 
@@ -911,7 +924,7 @@ $ git clone test test2
 
                     <section>
                         <h2>The End</h2>
-                        <h3>Questions?</h3>
+                        <p>Questions?</p>
                         <ul>
                         <li>http://www.github.com</li>
                         <li>http://git-scm.com/about</li>
@@ -921,7 +934,6 @@ $ git clone test test2
 				</section>
 
 			</div>
-
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
