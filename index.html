@@ -184,7 +184,7 @@ $ git config --global user.email "null@catalyst.net.nz"
                         </code></pre>
                         <li>If (like me) you don't like nano, you can choose vim, or gedit</li>
                         <pre><code>
-$ git config --global core.editor nano
+$ git config --global core.editor gedit
                         </code></pre>
                         </ul>
                     </section>
@@ -202,7 +202,7 @@ $ mkdir /tmp/test
 $ cd /tmp/test
                             </code></pre>
                             <pre><code>
-/tmp/test$ git init
+$ git init
 Initialized empty Git repository in .git/
                             </code></pre>
                             <li>Check the status with <code>git status</code></li>
@@ -562,7 +562,6 @@ master
                     <section>
                         <h2>Branching - What's the deal?</h2>
                         <ul>
-                        <li>You can make commits on a branch without polluting other branches</li>
                         <pre><code>
 $ echo "... From new-branch" >> silly-script.pl 
                         </code></pre>
@@ -881,8 +880,8 @@ $ git clone test test2
                         <pre><code>cd /tmp</code></pre>
                         <pre><code>git clone $IP:/tmp/test2.git</code></pre>
                         <pre><code>cd /tmp/test2</code></pre>
-                        <pre><code>vi FILENAME.txt</code></pre>
-                        <pre><code>git add FILENAME.txt</code></pre>
+                        <pre><code>vi $YOURNAME.txt</code></pre>
+                        <pre><code>git add $YOURNAME.txt</code></pre>
                         <pre><code>git commit</code></pre>
                         <pre><code>git push origin master</code></pre>
                         <pre><code>git fetch</code></pre>
@@ -928,6 +927,7 @@ $ git clone test test2
                         <ul>
                         <li>http://www.github.com</li>
                         <li>http://git-scm.com/about</li>
+                        <li>Cheat sheet <link>http://web.archive.org/web/20090419122050/swxruby.org/git-cheat-sheet.pdf</link></li>
                         <li>Data Assurance <link>http://git-scm.com/about/info-assurance</link></li>
                         </ul>
                     </section>
