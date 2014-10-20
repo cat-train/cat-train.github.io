@@ -48,12 +48,18 @@
 			<div class="slides">
 				<section> <!-- Introduction -->
 					<section>
-						<h2>Git</h2>
-						<p>Revision control for humans</p>
-						<p>
+						<h1>Git</h1>
+						<h2>Revision control for humans</h2>
+
 						<small>The presentation content is licensed under a Creative Commons Attribution 3.0 License. (http://creativecommons.org/licenses/by/3.0)</small>
 						<small>The presentation display is licensed seperately by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-						</p>
+
+						<hr>
+						<small>
+						<!-- Well lit room? Light theme -->
+						Theme: <a href="?theme=moon">Dark</a>
+							/ <a href="?theme=solarized">Light</a>
+						</small>
 					</section>
 					<section>
 					<div data-markdown>
@@ -160,10 +166,13 @@
 				</section>
 
 				<section> <!-- Concepts 1 -->
-					<h2>Some concepts to begin with</h2>
+					<div data-markdown>
+					## Some concepts to begin with
 					Git is just a bit different from other revision control systems
-					<img src="images/local-remote-small.png" alt="overview">
-					<p>The 'staging area' is often called the 'index'
+					![overview](images/local-remote-small.png "overview")
+
+					The 'staging area' is often called the 'index'
+					</div>
 				</section>
 
 				<section> <!-- Configuring -->
@@ -474,26 +483,29 @@
 					</section>
 
 					<section>
-						<h2>Change Logs - GUI</h2>
+					<div data-markdown>
+						## Change logs - GUI
 						Not strictly change logs, but...  gitk / qgit / gitg / etc
-						<img src="images/gitk.png" alt="gitk">
+						![image](images/gitk.png "gitk")
+					</div>
 					</section>
 				</section>
 
 				<section> <!-- Concepts 2 ... -->
 					<section>
-						<h2>Some more concepts - commits</h2>
-						<ul>
-							<li>It is important to understand that git thinks in <code>commits</code></li>
-							<li>Each commit refers to a previous commit (its parent)</li>
-							<li><code>gitk</code> lets you visualise the commit history, which helps a lot</li>
-							<li>Commits can be referenced by their SHA1 checksum</li>
-							<ul>
-								<li> or an abbreviation of it</li>
-								<li> or by a number of things that might refer to them</li>
-							</ul>
-							<li>Commits are: <marquee style="width:650" scrollamount="650" scrolldelay="500">Totally unchangeable</marquee></li>
-					</ul>
+					<div data-markdown>
+						## Some more concepts - commits
+						* It is important to understand that git thinks in ```commits```
+						* Each commit refers to a previous commit (its parent)
+						* Commits can be referenced by their SHA1 checksum
+							* or an abbreviation of it
+							* or by a number of things that might refer to them
+						* ```gitk``` lets you visualise the commit history, which
+							helps a lot
+					</section>
+					<section> 
+						<h2>Commits are....</h2>
+						<marquee style="width:650" scrollamount="650" scrolldelay="500">Totally unchangeable</marquee>
 					</section>
 				</section>
 
