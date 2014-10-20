@@ -51,8 +51,8 @@
 						<h2>Git</h2>
 						<p>Revision control for humans</p>
 						<p>
-							<small>The presentation content is licensed under a Creative Commons Attribution 3.0 License. (http://creativecommons.org/licenses/by/3.0)</small>
-							<small>The presentation display is licensed seperately by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						<small>The presentation content is licensed under a Creative Commons Attribution 3.0 License. (http://creativecommons.org/licenses/by/3.0)</small>
+						<small>The presentation display is licensed seperately by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
 						</p>
 					</section>
 					<section>
@@ -72,61 +72,61 @@
 
 				<section> <!-- Why -->
 					<section>
-						<h2>Why use revision control software?</h2>
-						<p>You (should) want it if...</p>
-						<ul>
-						<li>You are sick of keeping *.bak files</li>
-						<li>You might ever want to look at how something used to be</li>
-						<li>You might ever want to know why something changed</li>
-						<li>You might like to review what you have just changed</li>
-						</ul>
+					<div data-markdown>
+						## Why use revision control software?
+						#### You (should) want it if...
+						* You are sick of keeping *.bak files
+						* You might ever want to look at how something used to be
+						* You might ever want to know why something changed
+						* You might like to review what you have just changed
+					</div>
 					</section>
 					<section>
-						<h2>Why use revision control software?</h2>
-						<p>You need it if...</p>
-						<ul>
-						<li>You are working with other people who use it</li>
-						<li>You want to maintain multiple versions of the same thing</li>
-						<li>You want to work on separate changes at the "same time"</li>
-						<li>You need to make a single change which covers several files - and keep things in sync</li>
-						</ul>
+					<div data-markdown>
+						## Why use revision control software?
+						#### You need it if...
+						* You are working with other people who use it
+						* You want to maintain multiple versions of the same thing
+						* You want to work on separate changes at the "same time"
+						* You need to make a single change which covers several files - and keep things in sync
+					</div>
 					</section>
 					<section>
-						<h2>What does revision control provide?</h2>
-						<ul>
-						<li>Track changes (to almost anything)</li>
-						<li>View history</li>
-						<li>Look back to find when bugs were created</li>
-						<li>Find the reasoning behind why something is how it is</li>
-						<li>Roll back changes</li>
-						<li>Apply kudos for effort</li>
-						<li>Backups of your important stuff</li>
-						</ul>
+					<div data-markdown>
+						## What does revision control provide?
+						* Track changes (to almost anything)
+						* View history
+						* Look back to find when bugs were created
+						* Find the reasoning behind why something is how it is
+						* Roll back changes
+						* Apply kudos for effort
+						* Backups of your important stuff
+					</div>
 					</section>
 					<section>
-						<h2>What options are there?</h2>
-						<ul>
-						<li>RCS</li>
-						<li>CVS</li>
-						<li>Subversion</li>
-						<li>Darcs</li>
-						<li>Perforce</li>
-						<li>Bzr</li>
-						<li>...</li>
-						</ul>
+					<div data-markdown>
+						## What options are there?
+						* RCS
+						* CVS
+						* Subversion
+						* Darcs
+						* Perforce
+						* Bzr
+						* ...
+					</div>
 					</section>
 					<section>
-						<h2>Why should you use git?</h2>
-						<ul>
-						<li>It is fast</li>
-						<li>Branching is trivial</li>
-						<li>Merging of branches actually makes sense</li>
-						<li>You can be disconnected from the network, yet still continue working</li>
-						<li>It does not dictate your workflow</li>
-						<li>Data Assurance <link>http://git-scm.com/about/info-assurance</link></li>
-						<li>Once you master the concepts, you can do some really creative (and useful!) stuff</li>
-						<li>The cool kids use it</li>
-						</ul>
+					<div data-markdown>
+						## Why should you use Git?
+						* It is fast
+						* Branching is trivial
+						* Merging of branches actually makes sense
+						* You can be disconnected from the network, yet still continue working
+						* It does not dictate your workflow
+						* http://git-scm.com/about/info-assurance
+						* Once you master the concepts, you can do some really creative (and useful!) stuff
+						* The cool kids use it
+					</div>
 					</section>
 				</section>
 
@@ -161,322 +161,322 @@
 
 				<section> <!-- Concepts 1 -->
 					<h2>Some concepts to begin with</h2>
-					<ul>
-						<li>Git is just a bit different from other revision control systems</li>
-						<img src="images/local-remote-small.png" alt="overview">
-						<li>The 'staging area' is often called the 'index' - they are the same thing</li>
-					</ul>
+					Git is just a bit different from other revision control systems
+					<img src="images/local-remote-small.png" alt="overview">
+					<p>The 'staging area' is often called the 'index'
 				</section>
 
 				<section> <!-- Configuring -->
 					<section>
-						<h2>Configuring</h2>
-						<ul>
-							<li>Global data is stored in <code>$HOME/.gitconfig</code></li>
-							<li>Project data is stored in <code>$PROJECT/.git/config</code></li>
-							<li>use <code>git config</code> to see and modify it</li>
-							<li>..or <code>vim</code></li>
-							<li>But you don't have to do this</li>
-						</ul>
+					<div data-markdown>
+						## Configuring
+						* Global data is stored in ```$HOME/.gitconfig```
+						* Project data is stored in ```$PROJECT/.git/config```
+						* use ```git config``` to see and modify it
+						* ..or ```vim```
+						* But you don't have to do this
+					</div>
 					</section>
 					<section>
-						<h2>Configuring - For convenience</h2>
-						<ul>
-						<li>This will stop git nagging you later</li>
-
-						<pre><code>
-$ git config --global user.name "Your Name"
-$ git config --global user.email "null@catalyst.net.nz"
-						</code></pre>
-						<li>If (like me) you don't like nano, you can choose vim, or gedit</li>
-						<pre><code>
-$ git config --global core.editor gedit
-						</code></pre>
-						</ul>
+					<div data-markdown>
+						## Configuring - For convenience
+						This will stop git nagging you later
+						```bash
+						$ git config --global user.name "Your Name"
+						$ git config --global user.email "null@catalyst.net.nz"
+						```
+						If (like me) you don't like nano, you can choose vim, or gedit
+						```bash
+						$ git config --global core.editor gedit
+						```
+					</div>
 					</section>
 				</section>
 
 				<section> <!-- Basic use ... -->
 					<section>
-						<h2>Create a new repository</h2>
-						<ul>
-							<li>Use <code>git init</code></li>
-							<pre><code>
-$ mkdir /tmp/test
-							</pre></code>
-							<pre><code>
-$ cd /tmp/test
-							</code></pre>
-							<pre><code>
-$ git init
-Initialized empty Git repository in .git/
-							</code></pre>
-							<li>Check the status with <code>git status</code></li>
-							<pre><code>
-$ git status
-# On branch master
-#
-# Initial commit
-#
-nothing to commit (create/copy files and use "git add" to track)
-							</code></pre>
-						</ul>
+					<div data-markdown>
+						## Create a new repository
+						Use <code>git init</code>
+						```bash
+						$ mkdir /tmp/test
+						```
+						```bash
+						$ cd /tmp/test
+						```
+						```bash
+						$ git init
+						Initialized empty Git repository in .git/
+						```
+						Check the status with ```git status```
+						```bash
+						$ git status
+						# On branch master
+						#
+						# Initial commit
+						#
+						nothing to commit (create/copy files and use "git add" to track)
+						```
+					</div>
 					</section>
 					<section>
-						<h2>Managing Files - Add</h2>
-						<ul>
-						<li>Make some changes...</li>
-						<pre><code>
-$ touch super-script.pl
-						</code></pre>
-						<pre><code>
-$ git status
-# On branch master
-#
-# Initial commit
-#
-# Untracked files:
-#   (use "git add &lt;file>..." to include in what will be committed)
-#
-#	super-script.pl
-nothing added to commit but untracked files present (use "git add" to track)
-						</code></pre>
-						</ul>
+					<div data-markdown>
+						## Managing Files - Add
+						Make some changes...
+						```bash
+						$ touch super-script.pl
+						```
+						```bash
+						$ git status
+						# On branch master
+						#
+						# Initial commit
+						#
+						# Untracked files:
+						#   (use "git add &lt;file>..." to include in what will be committed)
+						#
+						#	super-script.pl
+						nothing added to commit but untracked files present (use "git add" to track)
+						```
+					</div>
 					</section>
 					<section>
-						<h2>Tell Git to track those files</h2>
-						<ul>
-							<li>Use <code>git add &lt;files></code></li>
-						<pre><code>
-$ git add super-script.pl 
-						</code></pre>
-						<pre><code>
-$ git status
-# On branch master
-#
-# Initial commit
-#
-# Changes to be committed:
-#   (use "git rm --cached &lt;file>..." to unstage)
-#
-#	   new file: super-script.pl
-#
-						</code></pre>
-						</ul>
+					<div data-markdown>
+						## Tell Git to track those files
+						Use ```git add &lt;files>```
+						```bash
+						$ git add super-script.pl 
+						```
+						```bash
+						$ git status
+						# On branch master
+						#
+						# Initial commit
+						#
+						# Changes to be committed:
+						#   (use "git rm --cached &lt;file>..." to unstage)
+						#
+						#	   new file: super-script.pl
+						#
+						```
+					</div>
 					</section>
 					<section>
-						<h2>Change an existing file</h2>
-						<ul>
-						<li>Make some changes...</li>
-						<pre><code>
-$ echo DATA > super-script.pl
-						</code></pre>
-						<pre><code>
-$ git status
-# On branch master
-#
-# Initial commit
-#
-# Changes to be committed:
-#   (use "git rm --cached &lt;file>..." to unstage)
-#
-#	new file:   super-script.pl
-#
-# Changed but not updated:
-#   (use "git add &lt;file>..." to update what will be committed)
-#   (use "git checkout -- &lt;file>..." to discard changes in working directory)
-#
-#	modified:   super-script.pl
-#
-						</code></pre>
-						</ul>
+					<div data-markdown>
+						## Change an existing file
+						Make some changes...
+						```bash
+						$ echo DATA > super-script.pl
+						```
+						```bash
+						$ git status
+						# On branch master
+						#
+						# Initial commit
+						#
+						# Changes to be committed:
+						#   (use "git rm --cached &lt;file>..." to unstage)
+						#
+						#	new file:   super-script.pl
+						#
+						# Changed but not updated:
+						#   (use "git add &lt;file>..." to update what will be committed)
+						#   (use "git checkout -- &lt;file>..." to discard changes in working directory)
+						#
+						#	modified:   super-script.pl
+						#
+						```
+					</div>
 					</section>
 					<section>
-						<h2>Change an existing file</h2>
-						<ul>
-						<li>We need to tell git that you intend to commit the checked out version, with <code>git add &lt;files></code></li>
-						<pre><code>
-$ git add super-script.pl 
-						</code></pre>
-						<pre><code>
-$ git status
-# On branch master
-#
-# Initial commit
-#
-# Changes to be committed:
-#   (use "git rm --cached &lt;file>..." to unstage)
-#
-#	new file:   super-script.pl
-#
-						</code></pre>
-						</ul>
+					<div data-markdown>
+						## Change an existing file
+						We need to tell git that you intend to commit the checked out
+						version, with ```git add &lt;files>```
+						```bash
+						$ git add super-script.pl 
+						```
+						```bash
+						$ git status
+						# On branch master
+						#
+						# Initial commit
+						#
+						# Changes to be committed:
+						#   (use "git rm --cached &lt;file>..." to unstage)
+						#
+						#	new file:   super-script.pl
+						#
+						```
+					</div>
 					</section>
 					<section>
-						<h2>Committing changes</h2>
-						<ul>
-						<li>We have told git about our changes</li>
-						<li>We haven't actually committed anything yet</li>
-						<li>This is deliberate - so you can build up more complex commits</li>
-						<li>Every change needs to be committed</li>
-						<li>Commit with <code>git commit &lt;files></code></li>
-						<pre><code>
-$ git commit super-script.pl 
-Created commit ae54011: Add a message.
-1 files changed, 3 insertions(+), 0 deletions(-)
-create mode 100644 super-script.pl
-						</code></pre>
-						<li>You will be stuck in an editor so you can input a commit message </li>
-						<li>Normally, you WILL make your commit message meaningful</li>
-						</ul>
+					<div data-markdown>
+						## Committing changes
+						We have told git about our changes, but
+						we haven't actually committed anything yet.
+
+						This is deliberate - so you can build up more complex commits.
+						Every change needs to be committed
+
+						Commit with ```git commit &lt;files>```
+						```bash
+						$ git commit super-script.pl 
+						Created commit ae54011: Add a message.
+						1 files changed, 3 insertions(+), 0 deletions(-)
+						create mode 100644 super-script.pl
+						```
+						You will be stuck in an editor so you can input a commit message
+						Normally, you WILL make your commit message meaningful
+					</div>
 					</section>
 					<section>
-						<h2>Committing changes - some useful options</h2>
-						<ul>
-						<li>You don't have to add all your changes manually</li>
-						<pre><code>
-$ git commit &lt;file>
-						</code></pre>
-						<pre><code>
-$ git commit -a
-						</code></pre>
-						<li>You can have an easier editor...</li>
-						<pre><code>
-$ EDITOR=gedit git commit -a
-						</code></pre>
-						<li>You don't have to use an editor at all...</li>
-						<pre><code>
-$ git commit -m 'commit message goes here'
-						</code></pre>
-						</ul>
+					<div data-markdown>
+						## Committing changes - some useful options
+						You don't have to add all your changes manually
+						```bash
+						$ git commit &lt;file>
+						```
+						```bash
+						$ git commit -a
+						```
+						You can have an easier editor...
+						```bash
+						$ EDITOR=gedit git commit -a
+						```
+						You don't have to use an editor at all...
+						```bash
+						$ git commit -m 'commit message goes here'
+						```
+					</div>
 					</section>
 					<section>
-						<h2>Managing Files - Permissions</h2>
-						<ul>
-						<li>Oops, that file isn't executable</li>
-						<pre><code>
-$ chmod 755 super-script.pl 
-						</code></pre>
-						<pre><code>
-$ git commit super-script.pl 
-Created commit 378af93: Make it executable.
-0 files changed, 0 insertions(+), 0 deletions(-)
-mode change 100644 => 100755 super-script.pl
-						</code></pre>
-						</ul>
+					<div data-markdown>
+						## Managing Files - Permissions
+						Oops, that file isn't executable
+						```bash
+						$ chmod 755 super-script.pl 
+						```
+						```bash
+						$ git commit super-script.pl 
+						Created commit 378af93: Make it executable.
+						0 files changed, 0 insertions(+), 0 deletions(-)
+						mode change 100644 => 100755 super-script.pl
+						```
+					</div>
 					</section>
 					<section>
-						<h2>Managing Files - Move</h2>
-						<ul>
-						<li>To rename a file use <code>git mv &lt;source> &lt;dest></code></li>
-						<pre><code>
-$ git mv super-script.pl silly-script.pl
-						</code></pre>
-						<pre><code>
-$ git status
-# On branch master
-# Changes to be committed:
-#   (use "git reset HEAD &lt;file>..." to unstage)
-#
-#	   renamed:	super-script.pl -> silly-script.pl
-#
-						</code></pre>
-						<li>This has changed our checkout, and the index, so we are ready to commit the change</li>
-						<pre><code>
-$ git commit
-Created commit fabd446: Rename the file.
-1 files changed, 0 insertions(+), 0 deletions(-)
-rename super-script.pl => silly-script.pl (100%)
-						</code></pre>
-						</ul>
+					<div data-markdown>
+						## Managing Files - Move
+						To rename a file use <code>git mv &lt;source> &lt;dest></code>
+						```bash
+						$ git mv super-script.pl silly-script.pl
+						```
+						```bash
+						$ git status
+						# On branch master
+						# Changes to be committed:
+						#   (use "git reset HEAD &lt;file>..." to unstage)
+						#
+						#	   renamed:	super-script.pl -> silly-script.pl
+						#
+						```
+						This has changed our checkout, and the index, so we are ready to
+						commit the change
+						```bash
+						$ git commit
+						Created commit fabd446: Rename the file.
+						1 files changed, 0 insertions(+), 0 deletions(-)
+						rename super-script.pl => silly-script.pl (100%)
+						```
+					</div>
 					</section>
 					<section>
-						<h2>Managing Files - Delete</h2>
-						<ul>
-						<li>To delete a file use <code>git rm &lt;files></code></li>
-						<pre><code>
-# This won't actually work, because we haven't created "another-script.pl"
-# ... but you can try it, if you like....
-$ git rm -f another-script.pl 
-						</code></pre>
-						<pre><code>
-$ git status
-# On branch master
-# Changes to be committed:
-#   (use "git reset HEAD &lt;file>..." to unstage)
-#
-#	   deleted:	another-script.pl
-#
-						</code></pre>
+					<div data-markdown>
+						## Managing Files - Delete
+						To delete a file use <code>git rm &lt;files></code>
+						```bash
+						# This won't actually work, because we haven't
+						# created "another-script.pl"
+						# ... but you can try it, if you like....
+						$ git rm -f another-script.pl 
+						```
+						```bash
+						$ git status
+						# On branch master
+						# Changes to be committed:
+						#   (use "git reset HEAD &lt;file>..." to unstage)
+						#
+						#	   deleted:	another-script.pl
+						#
+						```
 						<li>And commit the change</li>
-						<pre><code>
-$ git commit
-Created commit bd10c5f: Remove another-script.pl
-0 files changed, 0 insertions(+), 0 deletions(-)
-delete mode 100644 another-script.pl
-						</code></pre>
-						</ul>
+						```bash
+						$ git commit
+						Created commit bd10c5f: Remove another-script.pl
+						0 files changed, 0 insertions(+), 0 deletions(-)
+						delete mode 100644 another-script.pl
+						```
+					</div>
 					</section>
 					<section>
-						<h2>Change Logs</h2>
-						<ul>
-						<li>Use <code>git log</code></li>
-						<li>By default the output is piped into $PAGER</li>
-						<pre><code>
-$ git log
-commit 09f90bc2a74f7ca2f825c4a386e168649b9fec97
-Author: Evan Giles <evan@catalyst.net.nz>
-Date:   Thu Dec 16 11:53:48 2010 +1300
+					<div data-markdown>
+						## Change Logs
+						Use ```git log```
+						By default the output is piped into $PAGER
+						```bash
+						$ git log
+						commit 09f90bc2a74f7ca2f825c4a386e168649b9fec97
+						Author: Evan Giles <evan@catalyst.net.nz>
+						Date:   Thu Dec 16 11:53:48 2010 +1300
 
-	Rename the file.
+							Rename the file.
 
-commit f7123c5ffdccbed11b50b0b74a181186e1a13028
-Author: Evan Giles <evan@catalyst.net.nz>
-Date:   Thu Dec 16 11:53:25 2010 +1300
+						commit f7123c5ffdccbed11b50b0b74a181186e1a13028
+						Author: Evan Giles <evan@catalyst.net.nz>
+						Date:   Thu Dec 16 11:53:25 2010 +1300
 
-	Make it executable
+							Make it executable
 
-commit 8657bea3230587abdcbe39e6bf699c9ee8f505a6
-Author: Evan Giles <evan@catalyst.net.nz>
-Date:   Thu Dec 16 11:52:51 2010 +1300
+						commit 8657bea3230587abdcbe39e6bf699c9ee8f505a6
+						Author: Evan Giles <evan@catalyst.net.nz>
+						Date:   Thu Dec 16 11:52:51 2010 +1300
 
-	Add a message.
-						</code></pre>
-						</ul>
+							Add a message.
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Change Logs
+						You can also specify a file or directory
+						```bash
+						$ git log silly-script.pl 
+						```
+					</div>
 					</section>
 
 					<section>
-						<h2>Change Logs</h2>
-						<ul>
-						<li>Can specify a file or directory</li>
-						<pre><code>
-$ git log silly-script.pl 
-						</code></pre>
-						</ul>
-					</section>
+					<div data-markdown>
+						## Change Logs - Annotate
+						Show who made changes to what line
 
-					<section>
-						<h2>Change Logs - Annotate</h2>
-						<ul>
-						<li>Show who made changes to what line</li>
-						<li>Also known as the blame log</li>
-						<pre><code>
-$ git blame silly-script.pl
-b61863c8 (Andrew Ruthven 2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
-b61863c8 (Andrew Ruthven 2008-05-09 17:01:41 +1200 2) 
-b61863c8 (Andrew Ruthven 2008-05-09 17:01:41 +1200 3) print "silly script\n";
-9c08faf4 (Bad Coder	  2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
-						</code></pre>
-						<li>Who is this Bad Coder fella?</li>
-						</ul>
+						Also known as the blame log
+						```bash
+						$ git blame silly-script.pl
+						b61863c8 (Andrew Ruthven 2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
+						b61863c8 (Andrew Ruthven 2008-05-09 17:01:41 +1200 2) 
+						b61863c8 (Andrew Ruthven 2008-05-09 17:01:41 +1200 3) print "silly script\n";
+						9c08faf4 (Bad Coder	  2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
+						```
+						Who is this Bad Coder fella?
+					</div>
 					</section>
 
 					<section>
 						<h2>Change Logs - GUI</h2>
-						<ul>
-							<li>Not strictly change logs, but...  gitk / qgit / gitg / etc</li>
-							<img src="images/gitk.png" alt="gitk">
-						</ul>
+						Not strictly change logs, but...  gitk / qgit / gitg / etc
+						<img src="images/gitk.png" alt="gitk">
 					</section>
 				</section>
 
@@ -931,10 +931,10 @@ $ git clone test test2
 						<h2>The End</h2>
 						<p>Questions?</p>
 						<ul>
-						<li>http://www.github.com</li>
-						<li>http://git-scm.com/about</li>
-						<li>Cheat sheet <link>http://web.archive.org/web/20090419122050/swxruby.org/git-cheat-sheet.pdf</link></li>
-						<li>Data Assurance <link>http://git-scm.com/about/info-assurance</link></li>
+						<li><a href="http://git-scm.com/about">The official Git site</a></li>
+						<li><a href="http://git-scm.com/about/info-assurance">Data Assurance</a></li>
+						<li><a href="http://web.archive.org/web/20090419122050/swxruby.org/git-cheat-sheet.pdf">Cheat sheet</a></li>
+						<li><a href="http://www.github.com">Github</a></li>
 						</ul>
 					</section>
 				</section>
