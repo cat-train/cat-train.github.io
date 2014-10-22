@@ -60,6 +60,21 @@
 						Theme: <a href="?theme=moon">Dark</a>
 							/ <a href="?theme=solarized">Light</a>
 						</small>
+						<aside class="notes">
+							# Make sure the server has a working SSH daemon running
+							<br>
+							<br># Set up shared git repo
+							<br>mkdir /tmp/test2.git
+							<br>cd /tmp/test2.git
+							<br>git init --bare
+							<br>cd /tmp
+							<br>git clone /tmp/test2.git /tmp/work
+							<br>cd /tmp/work
+							<br>echo 'evanwashere' > evan.txt
+							<br>git add  evan.txt
+							<br>git commit -m 'initial commit - one file'
+							<br>git push origin master
+						</aside>
 					</section>
 					<section>
 					<div data-markdown>
@@ -129,7 +144,7 @@
 						* Merging of branches actually makes sense
 						* You can be disconnected from the network, yet still continue working
 						* It does not dictate your workflow
-						* http://git-scm.com/about/info-assurance
+						* [It protects your data](http://git-scm.com/about/info-assurance)
 						* Once you master the concepts, you can do some really creative (and useful!) stuff
 						* The cool kids use it
 					</div>
@@ -149,10 +164,14 @@
 						$ sudo aptitude install gitk git-gui
 						```
 						```bash
-						# Recommended
+						# FYI...
 						$ sudo aptitude search git
 						```
 					</div>
+						<aside class="notes">
+							Pause here to explain the way we are showing commands
+							- talk about '$' as the prompt, etc
+						</aside>
 					</section>
 					<section>
 					<div data-markdown>
@@ -165,48 +184,11 @@
 					</section>
 				</section>
 
-				<section> <!-- Concepts 1 -->
-					<div data-markdown>
-					## Some concepts to begin with
-					Git is just a bit different from other revision control systems
-					![overview](images/local-remote-small.png "overview")
-
-					The 'staging area' is often called the 'index'
-					</div>
-				</section>
-
-				<section> <!-- Configuring -->
-					<section>
-					<div data-markdown>
-						## Configuring
-						* Global data is stored in ```$HOME/.gitconfig```
-						* Project data is stored in ```$PROJECT/.git/config```
-						* use ```git config``` to see and modify it
-						* ..or ```vim```
-						* But you don't have to do this
-					</div>
-					</section>
-					<section>
-					<div data-markdown>
-						## Configuring - For convenience
-						This will stop git nagging you later
-						```bash
-						$ git config --global user.name "Your Name"
-						$ git config --global user.email "null@catalyst.net.nz"
-						```
-						If (like me) you don't like nano, you can choose vim, or gedit
-						```bash
-						$ git config --global core.editor gedit
-						```
-					</div>
-					</section>
-				</section>
-
-				<section> <!-- Basic use ... -->
+				<section> <!-- Init -->
 					<section>
 					<div data-markdown>
 						## Create a new repository
-						Use <code>git init</code>
+						Use ```git init```
 						```bash
 						$ mkdir /tmp/test
 						```
@@ -228,6 +210,69 @@
 						```
 					</div>
 					</section>
+				</section>
+
+				<section> <!-- Configuring -->
+					<section>
+					<div data-markdown>
+						## Global configuration settings
+						This will stop Git nagging you later
+						```bash
+						$ git config --global user.name "Your Name"
+						$ git config --global user.email "null@catalyst.net.nz"
+						```
+						If you think ```nano``` is crap, you can choose vim, or gedit
+						```bash
+						$ git config --global core.editor gedit
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Project configuration settings
+						This will tell Git you like to see pretty colours on the screen
+						```bash
+						$ git config color.ui always
+						```
+					</div>
+					<aside class="notes">
+						These settings will override the global settings
+
+						- but only within the current repository (which is /tmp/test)
+					</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Accessing the configuration settings
+						Global data is stored in ```$HOME/.gitconfig```
+
+						Project data is stored in ```$PROJECT/.git/config```
+
+						Use ```git config``` to see it
+						```bash
+						$ git config -l
+						```
+						..or ```vim```
+						```bash
+						$ vim ~/.gitconfig /tmp/test/.git/config
+						```
+					</div>
+					</section>
+				</section>
+
+				<section> <!-- Concepts 1 -->
+					<div data-markdown>
+					## Some concepts to begin with
+					Git is just a bit different from other revision control systems
+					![overview](images/local-remote-small.png "overview")
+
+					</div>
+					<aside class="notes">
+						The 'staging area' is often called the 'index'
+					</aside>
+				</section>
+
+				<section> <!-- Basic use ... -->
 					<section>
 					<div data-markdown>
 						## Managing Files - Add
@@ -252,7 +297,7 @@
 					<section>
 					<div data-markdown>
 						## Tell Git to track those files
-						Use ```git add &lt;files>```
+						Use ```git add```
 						```bash
 						$ git add super-script.pl 
 						```
@@ -300,8 +345,8 @@
 					<section>
 					<div data-markdown>
 						## Change an existing file
-						We need to tell git that you intend to commit the checked out
-						version, with ```git add &lt;files>```
+						We need to tell Git that you intend to commit the checked out
+						version, with ```git add```
 						```bash
 						$ git add super-script.pl 
 						```
@@ -328,7 +373,7 @@
 						This is deliberate - so you can build up more complex commits.
 						Every change needs to be committed
 
-						Commit with ```git commit &lt;files>```
+						Commit with ```git commit```
 						```bash
 						$ git commit super-script.pl 
 						Created commit ae54011: Add a message.
@@ -342,7 +387,7 @@
 					<section>
 					<div data-markdown>
 						## Committing changes - some useful options
-						You don't have to add all your changes manually
+						You don't have to ```git add``` all your changes manually
 						```bash
 						$ git commit &lt;file>
 						```
@@ -377,7 +422,7 @@
 					<section>
 					<div data-markdown>
 						## Managing Files - Move
-						To rename a file use <code>git mv &lt;source> &lt;dest></code>
+						To rename a file use ```git mv```
 						```bash
 						$ git mv super-script.pl silly-script.pl
 						```
@@ -403,7 +448,7 @@
 					<section>
 					<div data-markdown>
 						## Managing Files - Delete
-						To delete a file use <code>git rm &lt;files></code>
+						To delete a file use ```git rm```
 						```bash
 						# This won't actually work, because we haven't
 						# created "another-script.pl"
@@ -432,7 +477,6 @@
 					<div data-markdown>
 						## Change Logs
 						Use ```git log```
-						By default the output is piped into $PAGER
 						```bash
 						$ git log
 						commit 09f90bc2a74f7ca2f825c4a386e168649b9fec97
@@ -453,6 +497,7 @@
 
 							Add a message.
 						```
+						By default the output is piped into $PAGER
 					</div>
 					</section>
 					<section>
@@ -502,6 +547,7 @@
 							* or by a number of things that might refer to them
 						* ```gitk``` lets you visualise the commit history, which
 							helps a lot
+					</div>
 					</section>
 					<section> 
 						<h2>Commits are....</h2>
@@ -511,245 +557,280 @@
 
 				<section> <!-- branching and merging -->
 					<section>
-						<h2>Branching - List</h2>
-						<ul>
-						<li>To show branches use <code>git branch</code></li>
-						<pre><code>
-$ git branch
-* master
-						</code></pre>
-						<li>Only one branch, called <code>master</code></li>
-						<li>The '*' indicates that it is your current branch</li>
-					</ul>
+					<div data-markdown>
+						## Branching - List
+						To show branches use ```git branch```
+						```bash
+						$ git branch
+						* master
+						```
+						Only one branch, called ```master```
+
+						The '*' indicates that it is your current branch
+					</div>
+						<aside class="notes">
+							You can also use 'git status'
+						</aside>
 					</section>
 
 					<section>
-						<h2>Branching - Create</h2>
-						<ul>
-						<li>Use <code>git branch &lt;new-name></code></li>
-						<li>or <code>git checkout -b &lt;new-name></code></li>
-						<pre><code>
-$ git checkout -b new-branch
-Switched to a new branch "new-branch"
-						</code></pre>
-						<li>Will create "new-branch", and check it out for you </li>
-						<pre><code>
-$ git branch
-master
-* new-branch
-						</code></pre>
-					</ul>
+					<div data-markdown>
+						 ## Branching - Create
+						Use ```git branch``` (or ```git checkout -b```)
+						```bash
+						$ git checkout -b new-branch
+						Switched to a new branch "new-branch"
+						```
+						Will create "new-branch", and check it out for you
+						```bash
+						$ git branch
+						  master
+						* new-branch
+						```
+					</div>
+						<aside class="notes">
+						mention that 'git checkout' is a convenience interface
+						...it does several things in one step
+						</aside>
 					</section>
 
 					<section>
-						<h2>Branching - Create somewhere else</h2>
-						<ul>
-						<li>Normally a new branch will be created at the commit you previously had checked out</li>
-						<li>You can also create a new branch at another commit</li>
-						<pre><code>
-$ git checkout -b another-branch master
-Switched to a new branch "another-branch"
-						</code></pre>
-						<pre><code>
-$ git branch
-* another-branch
-master
-new-branch
-						</code></pre>
-					</ul>
+					<div data-markdown>
+						## Branching - Create somewhere else
+						By default a new branch will be created at the commit you
+						already have checked out
+
+						You can also create a new branch at another commit
+						```bash
+						$ git checkout -b another-branch master
+						Switched to a new branch "another-branch"
+						```
+						```bash
+						$ git branch
+						* another-branch
+						  master
+						  new-branch
+						```
+					</div>
+						<aside class="notes">
+						Here, the checkout command is actually doing 3 things<br>
+						- go the the master branch<br>
+						- make a branch there (callled 'another-branch')<br>
+						- checkout the 'another-branch' branch
+						</aside>
 					</section>
 
 					<section>
-						<h2>Branching - Change Branch</h2>
-						<ul>
-						<li>Use <code>git checkout</code></li>
-						<pre><code>
-$ git checkout new-branch
-Switched to branch "new-branch"
-						</code></pre>
-						<pre><code>
-$ git branch
-another-branch
-master
-* new-branch
-						</code></pre>
-						<li>Don't forget to see how this is shown in <code>gitk</code></li>
-					</ul>
+					<div data-markdown>
+						## Branching - Change Branch
+						Use ```git checkout```
+						```bash
+						$ git checkout new-branch
+						Switched to branch "new-branch"
+						```
+						```bash
+						$ git branch
+						  another-branch
+						  master
+						* new-branch
+						```
+						Don't forget to see how this is shown in ```gitk```
+					</div>
 					</section>
 
 					<section>
-						<h2>Branching - What's the deal?</h2>
-						<ul>
-						<pre><code>
-$ echo "... From new-branch" >> silly-script.pl 
-						</code></pre>
-						<pre><code>
-$ git commit silly-script.pl 
-Created commit a6ed2cf: From new-branch
-1 files changed, 1 insertions(+), 0 deletions(-)
-						</code></pre>
-						<pre><code>
-# Check the file..
-$ cat silly-script.pl 
-DATA
-... From new-branch
-						</code></pre>
-						<pre><code>
-# Jump to another branch
-$ git checkout master
-Switched to branch "master"
-						</code></pre>
-						<pre><code>
-# The text we added ain't there
-$ cat silly-script.pl 
-DATA
-						</code></pre>
-					</ul>
+					<div data-markdown>
+						## Branching - What's the deal?
+						```bash
+						# Make a change to a file (and commit that change)
+						$ echo "... From new-branch" >> silly-script.pl 
+						$ git commit silly-script.pl 
+						Created commit a6ed2cf: From new-branch
+						1 files changed, 1 insertions(+), 0 deletions(-)
+						```
+						```bash
+						# Check the file..
+						$ cat silly-script.pl 
+						DATA
+						... From new-branch
+						```
+						```bash
+						# Jump to another branch
+						$ git checkout master
+						Switched to branch "master"
+						```
+						```bash
+						# The text we added ain't there
+						$ cat silly-script.pl 
+						DATA
+						```
+					</div>
 					</section>
 
 					<section>
-						<h2>Branching - Why?</h2>
-						<ul>
-						<li>Many (most) projects have a branch for each release</li>
-						<li>Branches are useful for experimental features / refactoring</li>
-						<li>Branches happen (without even trying) when several people try to work on the same project - but I'll explain that soon ;)</li>
-					</ul>
+					<div data-markdown>
+						## Branching - Why?
+						* Many (most) projects have a branch for each release
+						* Branches are useful for experimental features / refactoring
+						* Branches happen (without even trying) when several people try
+						  to work on the same project - but I'll explain that soon ;)
+					</div>
+						<aside class="notes">
+							It is useful to think of branches as an 'alternative reality'
+						</aside>
 					</section>
 
 					<section>
-						<h2>Merging - Simple Case</h2>
-						<ul>
-						<li>You should now be on the master branch</li>
-						<pre><code>
-$ git status
-# On branch master
-nothing to commit (working directory clean)
-						</code></pre>
-						<li>Just say <code>git merge &lt;other branch></code></li>
-						<pre><code>
-$ git merge new-branch
-Updating e766bfb..a6ed2cf
-Fast forward
-silly-script.pl |	1 +
-1 files changed, 1 insertions(+), 0 deletions(-)
-						</code></pre>
-						<li>In this case, we have done a <code>fast forward</code> merge</li>
-						<li>If there are no conflicts, this may make a new commit object</li>
-						<li>use <code>gitk</code> to see what happened</li>
-					</ul>
+					<div data-markdown>
+						## Merging - Simple Case
+						You should now be on the master branch
+						```bash
+						$ git status
+						# On branch master
+						nothing to commit (working directory clean)
+						```
+						Use ```git merge```
+						```bash
+						$ git merge new-branch
+						Updating e766bfb..a6ed2cf
+						Fast forward
+						silly-script.pl |	1 +
+						1 files changed, 1 insertions(+), 0 deletions(-)
+						```
+						In this case, we have done a ```fast forward``` merge
+
+						If there are no conflicts, this may make a new commit object
+
+						use ```gitk``` to see what happened
+					</div>
+						<aside class="notes">
+						Here, we are merging changes *IN*, from somewhere else<br>
+						Also, explain the fast forward bit
+						</aside>
 					</section>
 
 					<section>
-						<h2>Merging - get ready for a conflict</h2>
-						<ul>
-						<li>Conflicts are more difficult (lets create one)</li>
-						<pre><code>
-# Sorry about this wall of text - it's the only one I'll give you!
-$ echo "New value for data" > silly-script.pl
-$ git commit -a -m 'update script with a new value'
-$ git checkout new-branch
-$ echo "different value for data" > silly-script.pl
-$ git commit -a -m 'update script with a different value'
-$ git checkout master
-						</code></pre>
-					</ul>
+					<div data-markdown>
+						## Merging - get ready for a conflict
+						Conflicts are more difficult (lets create one)
+						```bash
+						# Make a change to a file, commit that change to 'master'
+						$ echo "New value for data" > silly-script.pl
+						$ git commit -a -m 'update script with a new value'
+
+						# Change branches, make a change, and commit
+						$ git checkout new-branch
+						$ echo "different value for data" > silly-script.pl
+						$ git commit -a -m 'update script with a different value'
+
+						# Go back to the master branch, if we try to merge - there
+						# will be a problem!
+						$ git checkout master
+						```
+					</div>
+						<aside class="notes">
+							Sorry about the wall of text!
+						Also, explain the fast forward bit
+						</aside>
 					</section>
 
 					<section>
-						<h2>Merging - you can't do that</h2>
-						<ul>
-						<li>If there are conflicts then git will stop and make you fix it.</li>
-						<pre><code>
-$ git merge new-branch
-Auto-merged silly-script.pl
-CONFLICT (content): Merge conflict in silly-script.pl
-Automatic merge failed; fix conflicts and then commit the result.
-						</code></pre>
-						<pre><code>
-$ git status
-# On branch master
-# Unmerged paths:
-#   (use "git add/rm &lt;file>..." as appropriate to mark resolution)
-#
-#	   both modified:	  silly-script.pl
-#
-no changes added to commit (use "git add" and/or "git commit -a")
-						</code></pre>
-						<pre><code>
-$ cat silly-script.pl 
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:silly-script.pl
-New value for data
-=======
-different value for data
->>>>>>> new-branch:silly-script.pl
-						</code></pre>
-					</ul>
+					<div data-markdown>
+						## Merging - you can't do that
+						If there are conflicts then git will stop and make you fix it.
+						```bash
+						$ git merge new-branch
+						Auto-merged silly-script.pl
+						CONFLICT (content): Merge conflict in silly-script.pl
+						Automatic merge failed; fix conflicts and then commit the result.
+						```
+						```bash
+						$ git status
+						# On branch master
+						# Unmerged paths:
+						#   (use "git add/rm &lt;file>..." as appropriate to mark resolution)
+						#
+						#	   both modified:	  silly-script.pl
+						#
+						no changes added to commit (use "git add" and/or "git commit -a")
+						```
+						```bash
+						$ cat silly-script.pl 
+						&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:silly-script.pl
+						New value for data
+						=======
+						different value for data
+						>>>>>>> new-branch:silly-script.pl
+						```
+					</div>
 					</section>
 
 					<section>
-						<h2>Merging - Fixing conflicts</h2>
-						<ul>
-						<li>Lots of tools to help fix things up.  Hand edit, xxdiff, smartmerge, etc</li>
-						<li>We'll fix it by editing the file</li>
-						<pre><code>
-$ vi silly-script.pl 
-$ cat silly-script.pl 
-New, different value for data
-						</code></pre>
-						<li>But git still won't allow us to continue...</li>
-						<pre><code>
-$ git commit
-U	silly-script.pl
-fatal: 'commit' is not possible because you have unmerged files.
-Please, fix them up in the work tree, and then use 'git add/rm &lt;file>' as
-appropriate to mark resolution and make a commit, or use 'git commit -a'.
-						</code></pre>
-					</ul>
+					<div data-markdown>
+						## Merging - Fixing conflicts
+						Lots of tools to help fix things up.  Hand edit, xxdiff,
+						smartmerge, etc
+
+						We'll just fix it by editing the file
+						```bash
+						$ vi silly-script.pl 
+						$ cat silly-script.pl 
+						New, different value for data
+						```
+						But Git still won't allow us to continue...
+						```bash
+						$ git commit
+						U	silly-script.pl
+						fatal: 'commit' is not possible because you have unmerged files.
+						Please, fix them up in the work tree, and then use 'git add/rm &lt;file>' as
+						appropriate to mark resolution and make a commit, or use 'git commit -a'.
+						```
+					</div>
 					</section>
 
 					<section>
-						<h2>Merging - Success at last</h2>
-						<ul>
-						<li>We need to tell git that it has been fixed before we commit</li>
-						<pre><code>
-$ git add silly-script.pl 
-$ git commit
-Created commit a411f2a: Merge branch 'new-branch'
-						</code></pre>
-						<li>In this case the commit message is automatically created, but you can edit it</li>
-						<pre><code>
-Merge branch 'new-branch'
+					<div data-markdown>
+						## Merging - Success at last
+						We need to tell Git that it has been fixed before we commit
+						```bash
+						$ git add silly-script.pl 
+						$ git commit
+						Created commit a411f2a: Merge branch 'new-branch'
+						```
+						In this case the commit message is automatically created, but
+						you can edit it if you want.
+						```bash
+						Merge branch 'new-branch'
 
-Conflicts:
+						Conflicts:
 
-	silly-script.pl
-						</code></pre>
-					</ul>
+							silly-script.pl
+						```
+					</div>
 					</section>
 
 					<section>
-						<h2>Merging - How does it look?</h2>
-						<ul>
-						<li>Looking at the trees in gitk helps you understand stuff.</li>
-						<pre><code>
-gitk
-						</code></pre>
-					</ul>
+					<div data-markdown>
+						## Merging - How does it look?
+						Looking at the trees in gitk helps you understand stuff.
+						```bash
+						gitk
+						```
+					</div>
 					</section>
 				</section>
 
-				<section>
+				<section> <!-- Where are we? Where are we going? -->
 					<section>
 						<h2>A quick recap</h2>
-						<ul>
-							<img src="images/local.png" alt="">
-						</ul>
+						<img src="images/local.png" alt="">
 					</section>
 					<section>
 						<h2>Sharing your changes with others</h2>
-						<ul>
-							<img src="images/local-remote.png" alt="">
-						</ul>
+						<img src="images/local-remote.png" alt="">
+						<aside class="notes">
+							Finish with: What is the opposite of push?
+						</aside>
 					</section>
 					<section>
 						<h2>A gentle recommendation...</h2>
@@ -798,60 +879,61 @@ gitk
 
 				<section>
 					<section>
-						<h2>Creating Repositories - Revisited</h2>
-						<ul>
-						<li>There are many different ways to get repositories, some are:</li>
-						<li>Create a new one (we've already covered this)</li>
-						<pre><code>
-$ git init
-Initialized empty Git repository in .git/
-						</code></pre>
-						</ul>
+					<div data-markdown>
+						## Creating Repositories - Revisited
+						We already know how to create a new repositry
+						```bash
+						$ git init
+						Initialized empty Git repository in .git/
+						```
+						...but normally, you want to join in with an existing project
+					</div>
 					</section>
 					<section>
-						<h2>Clone an existing repository</h2>
-						<ul>
-						<li>In practise, you're more likely to use <code>git clone &lt;URL></code></li>
-						<li>To check out the source code of a random project</li>
-						<pre><code>
-$ cd /tmp
-						</code></pre>
-						<pre><code>
-/tmp$ git clone http://git.catalyst.net.nz/git.git
-Cloning into git...
-remote: Counting objects: 90, done.
-remote: Compressing objects: 100% (43/43), done.
-remote: Total 90 (delta 44), reused 90 (delta 44)
-Receiving objects: 100% (90/90), 31.62 KiB, done.
-Resolving deltas: 100% (44/44), done.
-						</code></pre>
-						<pre><code>
-/tmp$ cd git
-						</code></pre>
-						<pre><code>
-/tmp/git$ ls 
-						</code></pre>
-						<pre><code>
-/tmp/git$ gitk 
-						</code></pre>
-						</ul>
+					<div data-markdown>
+						## Clone an existing repository
+						In practise, you're more likely to use ```git clone```
+
+						To check out the source code of a random project
+						```bash
+						$ cd /tmp
+						```
+						```bash
+						$ git clone http://git.catalyst.net.nz/git.git
+						Cloning into git...
+						remote: Counting objects: 90, done.
+						remote: Compressing objects: 100% (43/43), done.
+						remote: Total 90 (delta 44), reused 90 (delta 44)
+						Receiving objects: 100% (90/90), 31.62 KiB, done.
+						Resolving deltas: 100% (44/44), done.
+						```
+						```bash
+						$ cd git
+						```
+						```bash
+						$ ls 
+						```
+						```bash
+						$ gitk 
+						```
+					</div>
 					</section>
 					<section>
-						<h2>Remote repositories - URLs </h2>
-						<ul>
-						<li>Clone an existing repository via HTTP</li>
-						<pre><code>
-$ git clone http://gitprivate.catalyst.net.nz/git-training-example.git
-						</code></pre>
-						<li>Clone an existing repository via SSH</li>
-						<pre><code>
-$ git clone git+ssh://git.catalyst.net.nz/git/private/git-training-example.git
-						</code></pre>
-						<li>Clone an existing repository Local repository (this is just a bit mad)</li>
-						<pre><code>
-$ git clone test test2
-						</code></pre>
-						</ul>
+					<div data-markdown>
+						## Remote repositories - URLs
+						Clone an existing repository via HTTP
+						```bash
+						$ git clone http://git.catalyst.net.nz/git.git
+						```
+						Clone an existing repository via SSH
+						```bash
+						$ git clone ssh://git.catalyst.net.nz/git/public/git.git
+						```
+						Clone an existing local repository (this is just a bit mad)
+						```bash
+						$ git clone test test2
+						```
+						</div>
 					</section>
 				</section>
 
@@ -893,50 +975,58 @@ $ git clone test test2
 					</section>
 
 					<section>
-						<h2>Now we can try it</h2>
-						<p>.. but look out for the syntax</p>
-						<pre><code>cd /tmp</code></pre>
-						<pre><code>git clone $IP:/tmp/test2.git</code></pre>
-						<pre><code>cd /tmp/test2</code></pre>
-						<pre><code>vi $YOURNAME.txt</code></pre>
-						<pre><code>git add $YOURNAME.txt</code></pre>
-						<pre><code>git commit</code></pre>
-						<pre><code>git push origin master</code></pre>
-						<pre><code>git fetch</code></pre>
-						<pre><code>git merge origin/master</code></pre>
+					<div data-markdown>
+						## Now we can try it
+						```bash
+						# Clone a new repository
+						$ cd /tmp
+						$ git clone $IP:/tmp/test2.git
+						$ cd /tmp/test2
+						```
+						```bash
+						# Create a new file (and commit)
+						$ vi $YOURNAME.txt
+						$ git add $YOURNAME.txt
+						$ git commit
+						```
+						```bash
+						# Push your changes to the shared repository
+						$ git push origin master
+						```
+						```bash
+						# You are now Bob!
+						$ git fetch
+						$ git merge origin/master
+						```
+					</div>
 						<aside class="notes">
-							# Make sure the server has a working SSH daemon running
-							<br>
-							<br># Set up shared git repo
-							<br>mkdir /tmp/test2.git
-							<br>cd /tmp/test2.git
-							<br>git init --bare
-							<br>cd /tmp
-							<br>git clone /tmp/test2.git /tmp/work
-							<br>cd /tmp/work
-							<br>echo 'evanwashere' > evan.txt
-							<br>git add  evan.txt
-							<br>git commit -m 'initial commit - one file'
-							<br>git push origin master
+						Explain What is going on with "origin" and "master" here:<br>
+						- git push origin master<br>
+						- git merge origin/master
 						</aside>
 					</section>
 				</section>
 
 				<section> <!-- Wrap up -->
 					<section>
-						<h2>A preview of the intermediate course ;)</h2>
-						<ul>
-						<li>git tag</li>
-						<li>git cherrypick</li>
-						<li>git revert</li>
-						<li>git commit --amend</li>
-						<li>git rebase</li>
-						<li>git rebase --interactive</li>
-						<li>git reset</li>
-						<li>git stash</li>
-						<li>Changes with gitk</li>
-						<li>git-gui</li>
-						</ul>
+					<div data-markdown>
+						## A preview of the intermediate course ;)
+						* git tag
+						* git cherrypick
+						* git revert
+						* git reset
+						* git stash
+						* git grep
+						* git commit --amend
+						* git rebase
+						* git rebase --interactive
+						* Changes with gitk
+						* git gui
+					</div>
+						<aside class="notes">
+						Explain:<br>
+						- that you shouldn't change commits that have been shared<br>
+						</aside>
 					</section>
 
 					<section>
