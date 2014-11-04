@@ -252,9 +252,9 @@
 						```bash
 						$ git config -l
 						```
-						..or ```vim```
+						..or just edit the files
 						```bash
-						$ vim ~/.gitconfig /tmp/test/.git/config
+						$ gedit ~/.gitconfig /tmp/test/.git/config
 						```
 					</div>
 					</section>
@@ -739,7 +739,7 @@
 					<section>
 					<div data-markdown>
 						## Merging - you can't do that
-						If there are conflicts then git will stop and make you fix it.
+						If there is a conflict then git will stop and make you fix it.
 						```bash
 						$ git merge new-branch
 						Auto-merged silly-script.pl
@@ -775,7 +775,7 @@
 
 						We'll just fix it by editing the file
 						```bash
-						$ vi silly-script.pl 
+						$ gedit silly-script.pl 
 						$ cat silly-script.pl 
 						New, different value for data
 						```
@@ -987,7 +987,7 @@
 						```
 						```bash
 						# Create a new file (and commit)
-						$ vi $YOURNAME.txt
+						$ gedit $YOURNAME.txt
 						$ git add $YOURNAME.txt
 						$ git commit
 						```
