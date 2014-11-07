@@ -2,6 +2,32 @@
 
 <!-- vim: noexpandtab:
 -->
+<!-- TODO
+	* make slides for git alias
+	* make slides for git grep
+	* Convert course into a full day
+		* make slides for .gitignore
+		* make slides for rebase
+		* rebase vs merge 
+			* http://git-scm.com/book/en/v2/Git-Branching-Rebasing#Rebase-vs.-Merge
+			Do not rebase commits that exist outside your repository.
+
+			If you follow that guideline, you'll be fine. If you don't, people
+			will hate you, and you'll be scorned by friends and family.
+		* Demonstrate interactive rebase
+		* Demonstrate some workflows
+			* http://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows
+		* Expand the syntax for 'preview' page (provide more syntax)
+		* Demonstrate gitk & git gui working together
+		* ..working multiple remotes
+		* HOWTO: delete from remote
+		* bare repositories
+		* problem solving excercises
+			* Go back to the first commit, commit something and push as a new branch
+			* Join two repositoies?
+			* interactive rebase
+		* github
+-->
 <html lang="en">
 
 	<head>
@@ -475,6 +501,9 @@
 						```
 					</div>
 					</section>
+				</section>
+
+				<section> <!-- Viewing changes ... -->
 					<section>
 					<div data-markdown>
 						## Change Logs
@@ -706,8 +735,9 @@
 						use ```gitk``` to see what happened
 					</div>
 						<aside class="notes">
-						Here, we are merging changes *IN*, from somewhere else<br>
-						Also, explain the fast forward bit
+						* We are merging changes *IN*, from somewhere else<br>
+						* explain the fast forward bit<br>
+						* talk about merges being line by line, so not for binary data
 						</aside>
 					</section>
 
@@ -901,8 +931,8 @@
 						$ cd /tmp
 						```
 						```bash
-						$ git clone http://git.catalyst.net.nz/git.git
-						Cloning into git...
+						$ git clone https://github.com/libgit2/libgit2
+						Cloning into libget2...
 						remote: Counting objects: 90, done.
 						remote: Compressing objects: 100% (43/43), done.
 						remote: Total 90 (delta 44), reused 90 (delta 44)
@@ -910,7 +940,7 @@
 						Resolving deltas: 100% (44/44), done.
 						```
 						```bash
-						$ cd git
+						$ cd libget2
 						```
 						```bash
 						$ ls 
@@ -919,6 +949,10 @@
 						$ gitk 
 						```
 					</div>
+						<aside class="notes">
+						git remote<br>
+						git remote -v<br>
+						</aside>
 					</section>
 					<section>
 					<div data-markdown>
@@ -936,6 +970,37 @@
 						$ git clone test test2
 						```
 						</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Remote branches
+						Remote branches are references (pointers) to the state of
+						branches in your remote repositories.
+						
+						They're local branches
+						that you can't move; they're moved automatically for you
+						whenever you do any network communication.
+						
+						Remote branches act
+						as bookmarks to remind you where the branches on your remote
+						repositories were the last time you connected to them.
+						</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Origin
+						You can see all branches (including the remote ones) with the
+						```git branch``` command
+						```bash
+						$ git branch -a
+						* master
+						  remotes/origin/master
+						```
+						</div>
+						<aside class="notes">
+						origin is not special<br>
+						you don't need to type 'remotes' to refer to these branches
+						</aside>
 					</section>
 				</section>
 
@@ -1009,16 +1074,57 @@
 					</section>
 				</section>
 
+				<section> <!-- Stuff we have missed ... -->
+					<section>
+					<div data-markdown>
+						## Tags
+						Tags work pretty much like you would expect.
+						They allow you to tag specific points in
+						history as being important.
+						
+						Often people use this functionality to mark release points.
+						```bash
+						$ git tag v1.0
+						$ git tag v1.0-production -m 'this might be important later!'
+						```
+						```bash
+						$ git tag
+						$ git show v1.0
+						$ git show v1.0-production
+						```
+					</div>
+						<aside class="notes">
+						2 types of tags: lightweight and annotated<br>
+						Tags don't get shared, by default.<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Changing your commits
+						You can 'change' the most recent commit using ```git commit```
+						```bash
+						$ git commit --amend
+						```
+					</div>
+						<aside class="notes">
+						Will someone please pull me up on this?!<br>
+						Explain how this works<br>
+						- That you are not changing anything here<br>
+						- just making a new commit which is quite like the old one<br>
+						- and then moving the labels around<br>
+						</aside>
+					</section>
+				</section>
+
 				<section> <!-- Wrap up -->
 					<section>
 					<div data-markdown>
 						## A preview of the intermediate course ;)
-						* git tag
 						* git cherrypick
 						* git revert
 						* git reset
 						* git stash
-						* git grep
+						* git clean
 						* git commit --amend
 						* git rebase
 						* git rebase --interactive
