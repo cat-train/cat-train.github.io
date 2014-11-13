@@ -3,17 +3,13 @@
 <!-- vim: noexpandtab:
 -->
 <!-- TODO
+	* How to find documentation
 	* make slides for git alias
 	* make slides for git grep
 	* Convert course into a full day
+		* talk about github / maybe setup github accounts & use them in some excercises
 		* make slides for .gitignore
 		* make slides for rebase
-		* rebase vs merge 
-			* http://git-scm.com/book/en/v2/Git-Branching-Rebasing#Rebase-vs.-Merge
-			Do not rebase commits that exist outside your repository.
-
-			If you follow that guideline, you'll be fine. If you don't, people
-			will hate you, and you'll be scorned by friends and family.
 		* Demonstrate interactive rebase
 		* Demonstrate some workflows
 			* http://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows
@@ -21,12 +17,16 @@
 		* Demonstrate gitk & git gui working together
 		* ..working multiple remotes
 		* HOWTO: delete from remote
-		* bare repositories
+		* HOWTO: abort a merge / rebase
+		* bare repositories (what are they, how to do it)
 		* problem solving excercises
-			* Go back to the first commit, commit something and push as a new branch
-			* Join two repositoies?
-			* interactive rebase
-		* github
+			* Go back to a point in time, commit something and push as a new branch
+			* Join two repositoies
+			* interactive rebases
+				* Go back to a point in time, remove a commit
+				* Go back to a point in time, amend a commit
+				* reorder some commits
+				* decide the rebase is to hard, abort
 -->
 <html lang="en">
 
@@ -1079,7 +1079,7 @@
 					<div data-markdown>
 						## Tags
 						Tags work pretty much like you would expect.
-						They allow you to tag specific points in
+						They allow you to mark specific points in
 						history as being important.
 						
 						Often people use this functionality to mark release points.
@@ -1103,8 +1103,10 @@
 						## Changing your commits
 						You can 'change' the most recent commit using ```git commit```
 						```bash
+						$ git add something.txt
 						$ git commit --amend
 						```
+						This is quite a big deal...
 					</div>
 						<aside class="notes">
 						Will someone please pull me up on this?!<br>
@@ -1112,29 +1114,135 @@
 						- That you are not changing anything here<br>
 						- just making a new commit which is quite like the old one<br>
 						- and then moving the labels around<br>
+						Warning:<br>
+						- Do not change commits that exist outside your repository.<br>
+						- If you do, people will hate you, and you'll be scorned
+						  by friends and family.<br>
 						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Copy a commit
+						You can copy a commit from one branch to another
+
+						You might want to do this if, for example, a bug is discovered
+						on your development branch that also needs to be applied to you 
+						production branch.
+						```bash
+						$ git cherry-pick e43a6fd3e94888d76779ad79fb568ed180e5fcdf
+						```
+					</div>
+						<aside class="notes">
+						Note that the commit created will look the same, but have a
+						different commit id<br>
+						Note that the cherry-pick can fail, if there are conflicts<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Undo a commit
+						You can undo a previous commit with ```git revert```.
+
+						This makes a new commit, that is the exact opposite of a
+						previous commit in your repository.
+
+						The previous commit remains intact.
+						```bash
+						$ git revert e43a6fd3e94888d76779ad79fb568ed180e5fcdf
+						```
+						```bash
+						$ git log --pretty=oneline
+						830d77273fc24c0708403102a05a5a5ffecfce93 Revert "Introduce bug"
+						d7a1ee454168081227ee82c5f11bb08f77e2643d Unrelated change
+						e43a6fd3e94888d76779ad79fb568ed180e5fcdf Introduce bug
+						```
+					</div>
+						<aside class="notes">
+						When you revert the commit, you get dropped into an editor
+						in case you want to can edit the commit message..<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Getting serious with copying commits
+						As an alternative to merging, you can use ```git rebase```.
+
+						Instead of making a new commit which joins two branches together,
+						it copies your changes on top of the other branch...
+
+						You use it just like a merge.
+						```bash
+						$ git rebase origin/master
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Rebase vs. Merge
+
+						One point of view on this is that your repository's commit
+						history is a record of what actually happened. It's a historical
+					    document, valuable in its own right, and shouldn't be tampered
+						with. From this angle, changing the commit history is almost
+						blasphemous; you're lying about what actually transpired. So 
+						what if there was a messy series of merge commits? That's how 
+						it happened, and the repository should preserve that for
+						posterity.
+
+						The opposing point of view is that the commit history is the
+						story of how your project was made. You wouldn't publish the
+						first draft of a book, and the manual for how to maintain your
+						software deserves careful editing. This is the camp that uses
+						tools like rebase and filter-branch to tell the story in the
+						way that's best for future readers.
+					</div>
+						<aside class="notes">
+						Repeat:<br>
+						You should not change commits that have been shared with others
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## A more advanced rebase
+						```bash
+						$ git rebase --interactive origin/master
+						```
+						```bash
+						pick a3895fe Try a bit harder to return a useful value from all methods
+						pick 180e665 Release engineering (0.8)
+						pick 2a6d832 Update Build.PL for newer build tools
+						pick e1fac16 Use semantic versioning (http://semver.org/)
+
+						# Rebase aa8a695..e1fac16 onto aa8a695
+						#
+						# Commands:
+						#  p, pick = use commit
+						#  r, reword = use commit, but edit the commit message
+						#  e, edit = use commit, but stop for amending
+						#  s, squash = use commit, but meld into previous commit
+						#  f, fixup = like "squash", but discard this commit's log message
+						#  x, exec = run command (the rest of the line) using shell
+						#
+						# These lines can be re-ordered; they are executed from top to bottom.
+						#
+						# If you remove a line here THAT COMMIT WILL BE LOST.
+						# However, if you remove everything, the rebase will be aborted.
+						#
+						```
+					</div>
 					</section>
 				</section>
 
 				<section> <!-- Wrap up -->
 					<section>
 					<div data-markdown>
-						## A preview of the intermediate course ;)
-						* git cherrypick
-						* git revert
+						## Loose ends...
 						* git reset
 						* git stash
 						* git clean
-						* git commit --amend
-						* git rebase
-						* git rebase --interactive
 						* Changes with gitk
 						* git gui
 					</div>
-						<aside class="notes">
-						Explain:<br>
-						- that you shouldn't change commits that have been shared<br>
-						</aside>
 					</section>
 
 					<section>
