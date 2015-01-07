@@ -7,12 +7,12 @@
 	* make slides for git grep
 	* Convert course into a full day
 		* talk about github / maybe setup github accounts & use them in some excercises
-		* make slides for .gitignore
 		* Demonstrate some workflows
 			* http://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows
 		* ..working wth multiple remotes
 		* HOWTO: delete from remote
 		* HOWTO: abort a merge / rebase
+		* HOWTO: force push
 		* Problem solving excercises
 			* Create a bare repository, use it
 			* Find a old tag, make a new branch, add a commit, push your new branch
@@ -349,7 +349,7 @@
 						# Changes to be committed:
 						#   (use "git rm --cached &lt;file>..." to unstage)
 						#
-						#	   new file: super-script.pl
+						#	new file: super-script.pl
 						#
 						```
 					</div>
@@ -473,7 +473,7 @@
 						# Changes to be committed:
 						#   (use "git reset HEAD &lt;file>..." to unstage)
 						#
-						#	   renamed:	super-script.pl -> silly-script.pl
+						#	renamed: super-script.pl -> silly-script.pl
 						#
 						```
 						This has changed our checkout, and the index, so we are ready to
@@ -502,7 +502,7 @@
 						# Changes to be committed:
 						#   (use "git reset HEAD &lt;file>..." to unstage)
 						#
-						#	   deleted:	another-script.pl
+						#	deleted: another-script.pl
 						#
 						```
 						<li>And commit the change</li>
@@ -513,6 +513,49 @@
 						delete mode 100644 another-script.pl
 						```
 					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Managing Files - ignore them
+						```bash
+						# Let's imagine your editor keeps creating '.swp' files
+						$ touch silly-script.pl.bak
+						```
+						```bash
+						$ git status
+						# On branch master
+						# Untracked files:
+						#   (use "git add <file>..." to include in what will be committed)
+						#
+						#       silly-script.pl.bak
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Managing Files - ignore them
+						```bash
+						# Add a line that conatins '*.swp'
+						$ gedit .gitignore
+						```
+						```bash
+						$ git status
+						# On branch master
+						# Untracked files:
+						#   (use "git add <file>..." to include in what will be committed)
+						#
+						#       .gitignore
+						```
+						```bash
+						# We can then commit the .gitignore file
+						$ git add .gitignore
+						$ git commit -m 'Created a .gitignore file'
+						```
+					</div>
+						<aside class="notes">
+						You can put a different .gitignore file in each directory<br>
+						...or stick to one in the root of your project<br>
+						</aside>
 					</section>
 				</section>
 
@@ -558,16 +601,24 @@
 					<div data-markdown>
 						## Change Logs - Annotate
 						Show who made changes to what line
-
-						Also known as the blame log
+						```bash
+						$ git annotate silly-script.pl
+						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
+						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 2) 
+						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 3) print "silly script\n";
+						9c08faf4  (Bad Coder 2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
+						```
+					</div>
+						<span class="fragment">Who is this Bad Coder fella?</span>
+						<div class="fragment" data-markdown>
+						Better remembered as ```git blame```
 						```bash
 						$ git blame silly-script.pl
-						b61863c8 (Andrew Ruthven 2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
-						b61863c8 (Andrew Ruthven 2008-05-09 17:01:41 +1200 2) 
-						b61863c8 (Andrew Ruthven 2008-05-09 17:01:41 +1200 3) print "silly script\n";
-						9c08faf4 (Bad Coder	  2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
+						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
+						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 2) 
+						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 3) print "silly script\n";
+						9c08faf4 (Bad Coder   2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
 						```
-						Who is this Bad Coder fella?
 					</div>
 					</section>
 
