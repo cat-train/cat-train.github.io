@@ -8,9 +8,7 @@
 	* make slides for git grep
 	* Convert course into a full day
 		* talk about github / maybe setup github accounts & use them in some excercises
-		* make slides for getting help
 		* make slides for .gitignore
-		* Demonstrate interactive rebase
 		* Demonstrate some workflows
 			* http://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows
 		* ..working wth multiple remotes
@@ -25,10 +23,13 @@
 				* Go back to a point in time, amend a commit
 				* reorder some commits, and squash some together
 				* decide a rebase is to hard, abort
-		* Make an ambigous (tag and a branch), use that to explain some terminology
+			* Make ambigous objects (a tag & a branch with the same name)
+				* use that to explain some terminology
+		* discuss 'detached head state'
 		* Some more useful commands
 			* git reflog
 			* git bisect
+			* tig
 
 -->
 <html lang="en">
@@ -206,9 +207,9 @@
 					<div data-markdown>
 						## Installing (alternative OS)
 						* Go to [git-scm.org](http://git-scm.org "The home of git") 
-						* Find the [Install instructions](http://git-scm.com/book/en/Getting-Started-Installing-Git "Find the install instructions")
-						* Which will lead you to [the windows package](http://msysgit.github.io/)
-						* Once you have it installed, you are looking for "Git BASH"
+						* Find the [Download link](http://git-scm.com/downloads "install instructions")
+						* Follow the intrsuctions for your OS
+						* For MS Win, you are looking for "Git BASH"
 					</div>
 					</section>
 				</section>
@@ -239,7 +240,35 @@
 						```
 					</div>
 					</section>
+					<section>
+						<div data-markdown>
+						## What did that do?
+						Git is just a bit different from other revision control systems
+						![overview](images/local-remote-small.png "overview")
+
+						</div>
+						<aside class="notes">
+							The 'staging area' is often called the 'index'
+						</aside>
+					</section>
+					<section>
+						<div data-markdown>
+						## Getting help
+						```bash
+						# git help COMMAND
+						git help status
+
+						# man git-COMMAND
+						man git-status
+						```
+						</div>
+						<aside class="notes">
+							The COMMANDs we have used so far are 'init' and 'status', so....
+						</aside>
+					</section>
 				</section>
+
+
 
 				<section> <!-- Configuring -->
 					<section>
@@ -261,7 +290,7 @@
 						## Project configuration settings
 						This will tell Git you like to see pretty colours on the screen
 						```bash
-						$ git config color.ui always
+						$ git config color.ui auto
 						```
 					</div>
 					<aside class="notes">
@@ -287,18 +316,6 @@
 						```
 					</div>
 					</section>
-				</section>
-
-				<section> <!-- Concepts 1 -->
-					<div data-markdown>
-					## Some concepts to begin with
-					Git is just a bit different from other revision control systems
-					![overview](images/local-remote-small.png "overview")
-
-					</div>
-					<aside class="notes">
-						The 'staging area' is often called the 'index'
-					</aside>
 				</section>
 
 				<section> <!-- Basic use ... -->
