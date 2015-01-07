@@ -3,7 +3,6 @@
 <!-- vim: noexpandtab:
 -->
 <!-- TODO
-	* How to find documentation
 	* make slides for git alias
 	* make slides for git grep
 	* Convert course into a full day
@@ -17,12 +16,6 @@
 		* Problem solving excercises
 			* Create a bare repository, use it
 			* Find a old tag, make a new branch, add a commit, push your new branch
-			* Join two repositoies together
-			* Interactive rebases:
-				* Go back to a point in time, remove a commit
-				* Go back to a point in time, amend a commit
-				* reorder some commits, and squash some together
-				* decide a rebase is to hard, abort
 			* Make ambigous objects (a tag & a branch with the same name)
 				* use that to explain some terminology
 		* discuss 'detached head state'
@@ -1279,6 +1272,164 @@
 						<li><a href="http://web.archive.org/web/20090419122050/swxruby.org/git-cheat-sheet.pdf">Cheat sheet</a></li>
 						<li><a href="http://www.github.com">Github</a></li>
 						</ul>
+					</section>
+				</section>
+
+				<section> <!-- Examples -->
+					<section>
+					<div data-markdown>
+						## Problem 1: Fix a production bug
+						We have just discovered that there is a program in production that
+						is not executable - the site is down!
+
+						But we can't deploy the latest code because it's not ready...
+
+						Please find the release tag 'release-1-0' in the repository
+						'https://github.com/catalyst-training/example1.git', and fix the bug!
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 1: Solution
+						```bash
+						# Clone the repository
+						$ cd /tmp
+						$ git clone https://github.com/catalyst-training/example1.git
+						$ cd /tmp/example1
+
+						# Make a new branch (at the point we want to change)
+						$ git checkout -b release-1 release-1-0
+
+						# Fix the problem
+						$ chmod +x program
+						$ git commit -a -m 'make the program executable'
+						$ # git push origin release-1
+						```
+					</div>
+						<aside class="notes">
+						Discuss<br>
+						- The fact that we can't push to that URL<br>
+						- And even if we could, we can't push to the master branch<br>
+						- What would we normally do next (cherry-pick / merge), probably not
+						  rebase<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 2: Join 2 repositories together
+						We have been working as two teams for a while now, and we have realised
+						that the two teams are so interlinked that we should be all working from
+						the same repository,
+
+						Please join https://github.com/catalyst-training/example1.git and
+						https://github.com/catalyst-training/example2.git together!
+
+						Of course, I would like to keep all files and history from both teams intact.
+					</div>
+						<aside class="notes">
+						This is a true story
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 2: Solution
+						```bash
+						# Clone the repository
+						$ git clone https://github.com/catalyst-training/example2.git
+
+						# Add another remote!
+						$ git remote add ex1 https://github.com/catalyst-training/example2.git
+
+						# Fetch the commits from example1 into this repo
+						$ git fetch ex1
+
+						# Merge ex1/master into origin/master
+						$ git merge ex1/master
+						$ # git push origin master
+						```
+					</div>
+						<aside class="notes">
+						Discuss<br>
+						- If there were conflicts, we could resolve them, or put the projects
+						  into subdirs first<br>
+						- We could have used the directory /tmp/example1/.git as the URL
+						  for ex1 - that would have allowed us to include our bugfix into the
+						  merge<br>
+						- We still could!, and we could then cherry-pick our bugfix in!<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 3: Change the past
+						I have just noticed that the example2 project has a dodgey commit.
+
+						The commit message is 'Oooh, this smells a bit funny...'.
+
+						Please make it go away, and while you are at it, can you please reorder the
+						the commits so that 'Remove the README file' happened before we added the
+						list of snakes.
+					</div>
+						<aside class="notes">
+						Once again, you won't be able to push your changes - but that's ok.
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 3: Solution
+						```bash
+						$ cd /tmp/example2
+						$ git log --oneline
+						$ git rebase --interactive 6a624b3
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 3b: Change the past, more!
+						Wow, now that I see what you can do to tidy up the past, I realise I want more
+
+						Please change the commit message that currently says 'Another list - snakes'
+						so that it reads 'Add a list of snakes'.
+
+						And... please add your favourite movie to the list of movies - but make it
+						look like it was added as part of the same commit!
+					</div>
+						<aside class="notes">
+						Once again, you won't be able to push your changes - but that's ok.
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 3b: Solution
+						```bash
+						$ git log --oneline
+
+						# This will be more complex, from within this command you'll need to:
+						#   $ git add lists/movies.txt
+						#   $ git commit --amend
+						#   $ git rebase --continue
+						$ git rebase --interactive 6a624b3
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 4: Github
+						Please create a github account, then fork the repository
+						'https://github.com/catalyst-training/example3' (or clone it if
+						you want - and you are really comfortable with the command line).
+
+						Then make a change, and create a pull request so I can accept your work.
+					</div>
+						<aside class="notes">
+						This will take a bit more time, help with<br>
+						- Github account<br>
+						- SSH keys<br>
+						- fork vs clone<br>
+						- editing inside the browser<br>
+						- pull requests<br>
+						- etc...<br>
+						</aside>
 					</section>
 				</section>
 
