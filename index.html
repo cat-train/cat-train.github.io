@@ -1055,8 +1055,33 @@
 						```
 						</div>
 						<aside class="notes">
-						origin is not special<br>
 						you don't need to type 'remotes' to refer to these branches
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Other remotes
+						You can manipulate your view of other repositories with the ```git remote```
+						command
+						```bash
+						$ git remote add duplicate https://github.com/catalyst-training/git-basic-slides
+						$ git remote show
+						duplicate
+						origin
+
+						$ git fetch --all
+						Fetching origin
+						Fetching duplicate
+						From https://github.com/catalyst-training/git-basic-slides
+						 * [new branch]      gh-pages   -> duplicate/gh-pages
+						 * [new branch]      master     -> duplicate/master
+						```
+						</div>
+						<aside class="notes">
+						origin is not special, except that<br>
+						- it is created by default when you clone a repository<br>
+						- some commands (like fetch) assume you mean origin if you don't specify the remote<br>
+						- etc, etc<br>
 						</aside>
 					</section>
 				</section>
