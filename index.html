@@ -14,6 +14,7 @@
 		* HOWTO: delete from remote
 		* HOWTO: abort a merge / rebase
 		* HOWTO: force push
+		* HOWTO: Throw away your changes
 		* Problem solving excercises
 			* Create a bare repository, use it
 			* Find a old tag, make a new branch, add a commit, push your new branch
@@ -27,6 +28,8 @@
 				* use that to explain some terminology
 		* discuss 'detached head state'
 		* Some more useful commands
+			* git reset
+			* git add/commit -p
 			* git reflog
 			* git bisect
 			* tig
@@ -562,6 +565,29 @@
 						<aside class="notes">
 						You can put a different .gitignore file in each directory<br>
 						...or stick to one in the root of your project<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Tags
+						Tags work pretty much like you would expect.
+						They allow you to mark specific points in
+						history as being important.
+
+						Often people use this functionality to mark release points.
+						```bash
+						$ git tag v1.0
+						$ git tag v1.0-production -m 'this might be important later!'
+						```
+						```bash
+						$ git tag
+						$ git show v1.0
+						$ git show v1.0-production
+						```
+					</div>
+						<aside class="notes">
+						2 types of tags: lightweight and annotated<br>
+						Tags don't get shared, by default.<br>
 						</aside>
 					</section>
 				</section>
@@ -1148,29 +1174,6 @@
 				<section> <!-- Stuff we have missed ... -->
 					<section>
 					<div data-markdown>
-						## Tags
-						Tags work pretty much like you would expect.
-						They allow you to mark specific points in
-						history as being important.
-						
-						Often people use this functionality to mark release points.
-						```bash
-						$ git tag v1.0
-						$ git tag v1.0-production -m 'this might be important later!'
-						```
-						```bash
-						$ git tag
-						$ git show v1.0
-						$ git show v1.0-production
-						```
-					</div>
-						<aside class="notes">
-						2 types of tags: lightweight and annotated<br>
-						Tags don't get shared, by default.<br>
-						</aside>
-					</section>
-					<section>
-					<div data-markdown>
 						## Changing your commits
 						You can 'change' the most recent commit using ```git commit```
 						```bash
@@ -1319,6 +1322,17 @@
 						* Changes with gitk
 						* git gui
 					</div>
+						<aside class="notes">
+						Demonstrate how to:<br>
+						- gitk: change branches<br>
+						- gitk: reset<br>
+						- gitk: making a tag<br>
+						- gitk: integration with git-gui<br>
+						- git gui: making a commit<br>
+						- git gui: amend a commit<br>
+						- <br>
+						- <br>
+						</aside>
 					</section>
 
 					<section>
