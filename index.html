@@ -22,7 +22,6 @@
 		* discuss 'detached head state'
 		* Some more useful commands
 			* git show
-			* git diff
 			* git reset
 			* git add/commit -p
 			* git reflog
@@ -216,7 +215,7 @@
 					<section>
 					<div data-markdown>
 						## Create a new repository
-						Use ```git init```
+						```git init```
 						```bash
 						$ mkdir /tmp/test
 						```
@@ -319,7 +318,7 @@
 				<section> <!-- Basic use ... -->
 					<section>
 					<div data-markdown>
-						## Managing Files - Add
+						## Managing Files
 						Make some changes...
 						```bash
 						$ touch super-script.pl
@@ -341,7 +340,7 @@
 					<section>
 					<div data-markdown>
 						## Tell Git to track those files
-						Use ```git add```
+						```git add```
 						```bash
 						$ git add super-script.pl 
 						```
@@ -358,6 +357,9 @@
 						#
 						```
 					</div>
+						<aside class="notes">
+						This actually adds the file to the 'index'
+						</aside>
 					</section>
 					<section>
 					<div data-markdown>
@@ -383,6 +385,19 @@
 						#
 						#	modified:   super-script.pl
 						#
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## See what you have done
+						```git diff```
+						```bash
+						$ git diff
+						--- a/super-script.pl
+						+++ b/super-script.pl
+						@@ -0,0 +1 @@
+						+DATA
 						```
 					</div>
 					</section>
@@ -583,6 +598,8 @@
 						<aside class="notes">
 						2 types of tags: lightweight and annotated<br>
 						Tags don't get shared, by default.<br>
+						<br>
+						Also, explain that you can git show anything (tag, branch, sha1, etc).<br>
 						</aside>
 					</section>
 				</section>
