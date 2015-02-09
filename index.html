@@ -1609,8 +1609,10 @@
 					<div data-markdown>
 						## Problem 6
 						###	Abort a merge
-						Ok, I tried to merge in a branch, but I got horrified by the
-						number of conflicts...  Get me out of here!
+						Go to your 'example2' project, and try to merge in the 'kittens'
+						branch...
+
+						Oh, no, there are conflicts!  Get me out of here!
 					</div>
 						<aside class="notes">
 						or a rebase ...
@@ -1621,9 +1623,45 @@
 						## Problem 6
 						###	Solution
 						```bash
+						# Create a conflict
+						$ cd /tmp/example2
+						$ git merge origin/kittens
+						$ git status
+						```
+						```bash
+						# Too hard, I'll try again some other time
 						$ git merge --abort
 						```
 					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 6b
+						### Use tools to try to resolve a conflict
+						Go to your 'example2' project, and try to merge in the 'kittens'
+						branch...
+
+						There are conflicts, but I think you can handle them!
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 6b
+						###	Solution
+						```bash
+						# Create a conflict
+						$ cd /tmp/example2
+						$ git merge origin/kittens
+						$ git status
+						```
+						```bash
+						# Let's give it a go...
+						$ git mergetool
+						```
+					</div>
+						<aside class="notes">
+						   Also, we should try this again after installing 'meld'
+						</aside>
 					</section>
 				</section>
 			</div>
