@@ -5,14 +5,13 @@
 <!-- TODO
 	* make slides for git alias
 	* make slides for git grep
+	* make slides for git-gui
 	* Convert course into a full day
 		* talk about github / maybe setup github accounts & use them in some excercises
 		* Demonstrate some workflows
 			* http://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows
 		* ..working wth multiple remotes
-		* HOWTO: delete from remote
 		* HOWTO: abort a merge / rebase
-		* HOWTO: force push
 		* HOWTO: Throw away your changes
 		* Problem solving excercises
 			* Create a bare repository, use it
@@ -21,8 +20,8 @@
 				* use that to explain some terminology
 		* discuss 'detached head state'
 		* Some more useful commands
-			* git show
 			* git reset
+			* git add -p
 			* git add/commit -p
 			* git reflog
 			* git bisect
@@ -1454,10 +1453,12 @@
 						###	Solution
 						```bash
 						# Clone the repository
+						$ cd /tmp
 						$ git clone https://github.com/catalyst-training/example2.git
+						$ cd /tmp/example2
 
 						# Add another remote!
-						$ git remote add ex1 https://github.com/catalyst-training/example2.git
+						$ git remote add ex1 https://github.com/catalyst-training/example1.git
 
 						# Fetch the commits from example1 into this repo
 						$ git fetch ex1
@@ -1555,8 +1556,76 @@
 						- etc...<br>
 						</aside>
 					</section>
-				</section>
+					<section>
+					<div data-markdown>
+						## Problem 5
+						###	Mess with a remote branch
+						Using your github account, push a 'password' to github.
 
+						```bash
+						$ echo 'butter' > password.txt
+						$ git add password.txt
+						$ git commit -m "I may regret this...."
+						$ git push origin master
+						```
+						Now make it go away.
+
+						There are several ways to do this, but is it really gone?
+					</div>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 5
+						###	Solution
+						```bash
+						# Amend the commit and force push
+						$ echo '' > password.txt
+						$ git commit -am "Nothing to see here..."
+						$ git push -f origin master
+						```
+					</div>
+					<div data-markdown class="fragment">
+						```bash
+						# Rewind and force push
+						$ git reset --hard HEAD^
+						$ git push -f origin master
+						```
+					</div>
+					<div data-markdown class="fragment">
+						```bash
+						# Delete the remote branch and push a new one
+						$ git push origin :master
+						$ git reset --hard HEAD^
+						$ git push origin master
+						```
+					</div>
+						<aside class="notes">
+						  Note the odd syntax for deleting a branch!
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 6
+						###	Abort a merge
+						Ok, I tried to merge in a branch, but I got horrified by the
+						number of conflicts...  Get me out of here!
+					</div>
+						<aside class="notes">
+						or a rebase ...
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 6
+						###	Solution
+						```bash
+						$ git merge --abort
+						```
+					</div>
+					</section>
+				</section>
 			</div>
 		</div>
 
