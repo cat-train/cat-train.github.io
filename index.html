@@ -217,6 +217,57 @@
 					</section>
 				</section>
 
+
+        <section> <!-- Configuring -->
+          <section>
+          <div data-markdown>
+            ## Global configuration settings
+            This will stop Git nagging you later
+            ```bash
+            $ git config --global user.name "Your Name"
+            $ git config --global user.email "null@catalyst.net.nz"
+            ```
+            If you think ```nano``` is crap, you can choose vim, or gedit
+            ```bash
+            $ git config --global core.editor gedit
+            ```
+          </div>
+          </section>
+          <section>
+          <div data-markdown>
+            ## Project configuration settings
+            This will tell Git you like to see pretty colours on the screen
+            ```bash
+            $ git config color.ui auto
+            $ git config --global log.decorate full
+            ```
+          </div>
+          <aside class="notes">
+            These settings will override the global settings
+
+            - but only within the current repository (which is /tmp/test)
+          </aside>
+          </section>
+          <section>
+          <div data-markdown>
+            ## Accessing the configuration settings
+            Global data is stored in ```$HOME/.gitconfig```
+
+            Project data is stored in ```$PROJECT/.git/config```
+
+            Use ```git config``` to see it
+            ```bash
+            $ git config -l
+            ```
+            ..or just edit the files
+            ```bash
+            $ gedit ~/.gitconfig /tmp/test/.git/config
+            ```
+          </div>
+          </section>
+        </section>
+
+
 				<section> <!-- Init -->
 					<section>
 					<div data-markdown>
@@ -271,55 +322,6 @@
 					</section>
 				</section>
 
-
-
-				<section> <!-- Configuring -->
-					<section>
-					<div data-markdown>
-						## Global configuration settings
-						This will stop Git nagging you later
-						```bash
-						$ git config --global user.name "Your Name"
-						$ git config --global user.email "null@catalyst.net.nz"
-						```
-						If you think ```nano``` is crap, you can choose vim, or gedit
-						```bash
-						$ git config --global core.editor gedit
-						```
-					</div>
-					</section>
-					<section>
-					<div data-markdown>
-						## Project configuration settings
-						This will tell Git you like to see pretty colours on the screen
-						```bash
-						$ git config color.ui auto
-						```
-					</div>
-					<aside class="notes">
-						These settings will override the global settings
-
-						- but only within the current repository (which is /tmp/test)
-					</aside>
-					</section>
-					<section>
-					<div data-markdown>
-						## Accessing the configuration settings
-						Global data is stored in ```$HOME/.gitconfig```
-
-						Project data is stored in ```$PROJECT/.git/config```
-
-						Use ```git config``` to see it
-						```bash
-						$ git config -l
-						```
-						..or just edit the files
-						```bash
-						$ gedit ~/.gitconfig /tmp/test/.git/config
-						```
-					</div>
-					</section>
-				</section>
 
 				<section> <!-- Basic use ... -->
 					<section>
@@ -583,6 +585,17 @@
 						...or stick to one in the root of your project<br>
 						</aside>
 					</section>
+          <section>
+          <div data-markdown>
+            ## Ignoring files Locally vs. Globally
+            * Adding things to .gitignore will ignore them for all users!
+            * Instead you can ignore things locally using .git/info/exclude.
+          </div>
+            <aside class="notes">
+            You can put a different .gitignore file in each directory<br>
+            ...or stick to one in the root of your project<br>
+            </aside>
+          </section>
 					<section>
 					<div data-markdown>
 						## Tags
@@ -1011,8 +1024,8 @@
 						$ cd /tmp
 						```
 						```bash
-						$ git clone https://github.com/catalyst-training/git-basic-slides
-						Cloning into git-basic-slides...
+						$ git clone https://github.com/catalyst-training/git-basic
+						Cloning into git-basic...
 						remote: Counting objects: 90, done.
 						remote: Compressing objects: 100% (43/43), done.
 						remote: Total 90 (delta 44), reused 90 (delta 44)
@@ -1020,7 +1033,7 @@
 						Resolving deltas: 100% (44/44), done.
 						```
 						```bash
-						$ cd git-basic-slides
+						$ cd git-basic
 						```
 						```bash
 						$ ls 
@@ -1072,7 +1085,7 @@
 						You can see all branches (including the remote ones) with the
 						```git branch``` command
 						```bash
-						$ cd /tmp/git-basic-slides/
+						$ cd /tmp/git-basic/
 						$ git branch -a
 						* master
 						  remotes/origin/master
