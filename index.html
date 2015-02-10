@@ -11,8 +11,6 @@
 		* Demonstrate some workflows
 			* http://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows
 		* ..working wth multiple remotes
-		* HOWTO: abort a merge / rebase
-		* HOWTO: Throw away your changes
 		* Problem solving excercises
 			* Create a bare repository, use it
 			* Find a old tag, make a new branch, add a commit, push your new branch
@@ -1509,13 +1507,14 @@
 					<div data-markdown>
 						## Problem 3b
 						###	Change the past, more!
-						Wow, now that I see what you can do to tidy up the past, I realise I want more
+						Wow, now that I see what you can do to tidy up the past,
+						I realise I want more
 
-						Please change the commit message that currently says 'Another list - snakes'
-						so that it reads 'Add a list of snakes'.
+						Please change the commit message that currently says 'Another
+						list - snakes' so that it reads 'Add a list of snakes'.
 
-						And... please add your favourite movie to the list of movies - but make it
-						look like it was added as part of the same commit!
+						And... please add your favourite movie to the list of movies
+						- but make it look like it was added as part of the same commit!
 					</div>
 						<aside class="notes">
 						Once again, you won't be able to push your changes - but that's ok.
@@ -1527,7 +1526,8 @@
 						###	Solution
 						```bash
 						$ git log --oneline
-
+						```
+						```bash
 						# This will be more complex, from within this command you'll need to:
 						#   $ git add lists/movies.txt
 						#   $ git commit --amend
@@ -1541,10 +1541,11 @@
 						## Problem 4
 						###	Github
 						Please create a github account, then fork the repository
-						'https://github.com/catalyst-training/example3' (or clone it if
-						you want - and you are really comfortable with the command line).
+						'https://github.com/catalyst-training/example3'
 
 						Then make a change, and create a pull request so I can accept your work.
+
+						You can do the whole thing in your browser.
 					</div>
 						<aside class="notes">
 						This will take a bit more time, help with<br>
@@ -1554,6 +1555,40 @@
 						- editing inside the browser<br>
 						- pull requests<br>
 						- etc...<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 4b
+						### Git Gui
+						That was great, but now lets try again, using ```git-gui``` to
+						make and push your commit.
+
+						I'll get you started...
+						```bash
+						$ cd /tmp
+						$ git clone https://github.com/YOURNAME/example3.git
+						$ cd /tmp/example3
+						$ echo 'Sean Connery' > lists/stars.txt
+						$ git gui
+						```
+					</div>
+						<aside class="notes">
+						Did you notive that you couldn't push? We'll sort that out soon
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 4c
+						### SSH keys
+						Did you notice that you couldn't push your commit?
+
+						Lets get that sorted.
+					</div>
+						<aside class="notes">
+						We'll need to<br>
+						- create an SSH key, and upload it to github.<br>
+						- Add or change the remote so it has a git URL
 						</aside>
 					</section>
 					<section>
@@ -1611,7 +1646,12 @@
 						###	Abort a merge
 						Go to your 'example2' project, and try to merge in the 'kittens'
 						branch...
-
+						```bash
+						# Create a conflict
+						$ cd /tmp/example2
+						$ git merge origin/kittens
+						$ git status
+						```
 						Oh, no, there are conflicts!  Get me out of here!
 					</div>
 						<aside class="notes">
@@ -1622,12 +1662,6 @@
 					<div data-markdown>
 						## Problem 6
 						###	Solution
-						```bash
-						# Create a conflict
-						$ cd /tmp/example2
-						$ git merge origin/kittens
-						$ git status
-						```
 						```bash
 						# Too hard, I'll try again some other time
 						$ git merge --abort
@@ -1640,7 +1674,12 @@
 						### Use tools to try to resolve a conflict
 						Go to your 'example2' project, and try to merge in the 'kittens'
 						branch...
-
+						```bash
+						# Create a conflict
+						$ cd /tmp/example2
+						$ git merge origin/kittens
+						$ git status
+						```
 						There are conflicts, but I think you can handle them!
 					</div>
 					</section>
@@ -1649,18 +1688,37 @@
 						## Problem 6b
 						###	Solution
 						```bash
-						# Create a conflict
-						$ cd /tmp/example2
-						$ git merge origin/kittens
-						$ git status
-						```
-						```bash
 						# Let's give it a go...
 						$ git mergetool
 						```
 					</div>
 						<aside class="notes">
 						   Also, we should try this again after installing 'meld'
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 7
+						### Throw away your changes
+						What if you make some changes, and you want to get back to safety?
+						```bash
+						$ cd /tmp/example2
+						$ echo 'A dragon will fix it' > lists/links.txt
+						$ rm lists/movies.txt
+						$ git status
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 7
+						###	Solution
+						```bash
+						$ git reset --hard
+						```
+					</div>
+						<aside class="notes">
+						   Could we use git-reset? git-checkout? gitk? git-clean?
 						</aside>
 					</section>
 				</section>
