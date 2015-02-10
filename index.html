@@ -3,33 +3,23 @@
 <!-- vim: noexpandtab:
 -->
 <!-- TODO
-	* How to find documentation
 	* make slides for git alias
 	* make slides for git grep
+	* make slides for git-gui
 	* Convert course into a full day
 		* talk about github / maybe setup github accounts & use them in some excercises
 		* Demonstrate some workflows
 			* http://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows
 		* ..working wth multiple remotes
-		* HOWTO: delete from remote
-		* HOWTO: abort a merge / rebase
-		* HOWTO: force push
-		* HOWTO: Throw away your changes
 		* Problem solving excercises
 			* Create a bare repository, use it
 			* Find a old tag, make a new branch, add a commit, push your new branch
-			* Join two repositoies together
-			* Interactive rebases:
-				* Go back to a point in time, remove a commit
-				* Go back to a point in time, amend a commit
-				* reorder some commits, and squash some together
-				* decide a rebase is to hard, abort
 			* Make ambigous objects (a tag & a branch with the same name)
 				* use that to explain some terminology
 		* discuss 'detached head state'
 		* Some more useful commands
-			* git show
 			* git reset
+			* git add -p
 			* git add/commit -p
 			* git reflog
 			* git bisect
@@ -1013,9 +1003,9 @@
 					<section>
 					<div data-markdown>
 						## Clone an existing repository
-						In practise, you're more likely to use ```git clone```
+						In practise, you're more likely to use ```git clone```.
 
-						To check out the source code of a random project
+						To check out the source code of a random project:
 						```bash
 						$ cd /tmp
 						```
@@ -1046,16 +1036,16 @@
 					<section>
 					<div data-markdown>
 						## Remote repositories - URLs
-						Clone an existing repository via HTTP
 						```bash
+						# Clone an existing repository via HTTP
 						$ git clone http://git.catalyst.net.nz/git.git
 						```
-						Clone an existing repository via SSH
 						```bash
+						# Clone an existing repository via SSH
 						$ git clone ssh://git.catalyst.net.nz/git/public/git.git
 						```
-						Clone an existing local repository (this is just a bit mad)
 						```bash
+						# Clone an existing local repository (this is just a bit mad)
 						$ git clone test test2
 						```
 						</div>
