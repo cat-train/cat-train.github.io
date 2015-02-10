@@ -74,10 +74,6 @@
 					<section>
 						<h1>Git</h1>
 						<h2>Revision control for humans</h2>
-
-						<small>The presentation content is licensed under a Creative Commons Attribution 3.0 License. (http://creativecommons.org/licenses/by/3.0)</small>
-						<small>The presentation display is licensed seperately by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-
 						<hr>
 						<small>
 						<!-- Well lit room? Light theme -->
@@ -424,9 +420,7 @@
 					<section>
 					<div data-markdown>
 						## Committing changes
-						We need to commit our changes to make them permanent.
-
-						Commit with ```git commit```
+						Commit your work with ```git commit```
 						```bash
 						$ git commit super-script.pl 
 						Created commit ae54011: Add a message.
@@ -434,7 +428,7 @@
 						create mode 100644 super-script.pl
 						```
 						You will be stuck in an editor so you can input a commit message
-						Normally, you WILL make your commit message meaningful
+						Normally, you WILL make your commit message meaningful!
 					</div>
 						<aside class="notes">
 						We have told git about our changes, but
@@ -448,9 +442,11 @@
 						## Committing changes - some options
 						You don't have to ```git add``` all your changes manually
 						```bash
-						$ git commit &lt;file>
+						# Add <file>, and then commit
+						$ git commit <file>
 						```
 						```bash
+						# Add all your changes, and then commit
 						$ git commit -a
 						```
 						You can have an easier editor...
@@ -1007,9 +1003,9 @@
 					<section>
 					<div data-markdown>
 						## Clone an existing repository
-						In practise, you're more likely to use ```git clone```
+						In practise, you're more likely to use ```git clone```.
 
-						To check out the source code of a random project
+						To check out the source code of a random project:
 						```bash
 						$ cd /tmp
 						```
@@ -1040,16 +1036,16 @@
 					<section>
 					<div data-markdown>
 						## Remote repositories - URLs
-						Clone an existing repository via HTTP
 						```bash
+						# Clone an existing repository via HTTP
 						$ git clone http://git.catalyst.net.nz/git.git
 						```
-						Clone an existing repository via SSH
 						```bash
+						# Clone an existing repository via SSH
 						$ git clone ssh://git.catalyst.net.nz/git/public/git.git
 						```
-						Clone an existing local repository (this is just a bit mad)
 						```bash
+						# Clone an existing local repository (this is just a bit mad)
 						$ git clone test test2
 						```
 						</div>
@@ -1401,13 +1397,26 @@
 					</section>
 
 					<section>
-						<h2>The End</h2>
-						<p>Questions?</p>
-						<ul>
-						<li><a href="http://git-scm.com/about">The official Git site</a></li>
-						<li><a href="http://git-scm.com/about/info-assurance">Data Assurance</a></li>
-						<li><a href="http://web.archive.org/web/20090419122050/swxruby.org/git-cheat-sheet.pdf">Cheat sheet</a></li>
-						<li><a href="http://www.github.com">Github</a></li>
+						<div data-markdown>
+							##  The End
+							###  Questions?
+						</div>
+						<div class="fragment">
+						<div data-markdown>
+							The official Git site-> http://git-scm.com/about
+
+							Data Assurance-> http://git-scm.com/about/info-assurance
+
+							Cheat sheet-> http://web.archive.org/web/20090419122050/swxruby.org/git-cheat-sheet.pdf
+
+							Github-> http://github.com
+
+							---------------------
+						</div>
+						<small>The presentation content is licensed under a Creative Commons Attribution 3.0 License. (http://creativecommons.org/licenses/by/3.0)</small><br>
+
+						<small>The presentation display is licensed seperately by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						</div>
 						</ul>
 					</section>
 				</section>
