@@ -430,9 +430,7 @@
 					<section>
 					<div data-markdown>
 						## Committing changes
-						We need to commit our changes to make them permanent.
-
-						Commit with ```git commit```
+						Commit your work with ```git commit```
 						```bash
 						$ git commit super-script.pl 
 						Created commit ae54011: Add a message.
@@ -440,7 +438,7 @@
 						create mode 100644 super-script.pl
 						```
 						You will be stuck in an editor so you can input a commit message
-						Normally, you WILL make your commit message meaningful
+						Normally, you WILL make your commit message meaningful!
 					</div>
 						<aside class="notes">
 						We have told git about our changes, but
@@ -454,9 +452,11 @@
 						## Committing changes - some options
 						You don't have to ```git add``` all your changes manually
 						```bash
-						$ git commit &lt;file>
+						# Add <file>, and then commit
+						$ git commit <file>
 						```
 						```bash
+						# Add all your changes, and then commit
 						$ git commit -a
 						```
 						You can have an easier editor...
