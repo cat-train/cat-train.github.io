@@ -1087,15 +1087,16 @@
 						You can manipulate your view of other repositories with the ```git remote```
 						command
 						```bash
-						$ git remote add duplicate https://github.com/catalyst-training/git-basic-slides
+						$ git remote add duplicate https://github.com/catalyst-training/git-basic
 						$ git remote show
 						duplicate
 						origin
-
+						```
+						```bash
 						$ git fetch --all
 						Fetching origin
 						Fetching duplicate
-						From https://github.com/catalyst-training/git-basic-slides
+						From https://github.com/catalyst-training/git-basic
 						 * [new branch]      gh-pages   -> duplicate/gh-pages
 						 * [new branch]      master     -> duplicate/master
 						```
@@ -1261,7 +1262,7 @@
 						You can copy a commit from one branch to another
 
 						You might want to do this if, for example, a bug is discovered
-						on your development branch that also needs to be applied to you 
+						on your development branch that also needs to be applied to your
 						production branch.
 						```bash
 						$ git cherry-pick e43a6fd3e94888d76779ad79fb568ed180e5fcdf
