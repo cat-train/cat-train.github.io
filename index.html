@@ -296,10 +296,10 @@
 						## Getting help
 						```bash
 						# git help COMMAND
-						git help status
+						$ git help status
 
 						# man git-COMMAND
-						man git-status
+						$ man git-status
 						```
 						</div>
 						<aside class="notes">
@@ -960,7 +960,7 @@
 						## Merging - How does it look?
 						Looking at the trees in gitk helps you understand stuff.
 						```bash
-						gitk
+						$ gitk
 						```
 					</div>
 					</section>
@@ -975,16 +975,9 @@
 						<h2>Sharing your changes with others</h2>
 						<img src="images/local-remote.png" alt="">
 						<aside class="notes">
-							Finish with: What is the opposite of push?
+							What is the opposite of push? (it's not pull!)<br>
+							- Recommend "git fetch; git merge" in place of "git pull"<br>
 						</aside>
-					</section>
-					<section>
-						<h2>A gentle recommendation...</h2>
-						<ul>
-						<li>git push</li>
-						<li>git fetch</li>
-						<li><del>git pull</del> git fetch; git merge</li>
-						</ul>
 					</section>
 				</section>
 
@@ -1285,19 +1278,29 @@
 						$ git rebase origin/master
 						```
 					</div>
+						<aside class="notes">
+						Draw what this does, contrast it with a merge  <br>
+						</aside>
 					</section>
 					<section>
 					<div data-markdown>
 						## Rebase vs. Merge
+						### History is an audit trail
 
 						One point of view on this is that your repository's commit
 						history is a record of what actually happened. It's a historical
 					    document, valuable in its own right, and shouldn't be tampered
 						with. From this angle, changing the commit history is almost
-						blasphemous; you're lying about what actually transpired. So 
-						what if there was a messy series of merge commits? That's how 
+						blasphemous; you're lying about what actually transpired. So
+						what if there was a messy series of merge commits? That's how
 						it happened, and the repository should preserve that for
 						posterity.
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Rebase vs. Merge
+						### History is a story
 
 						The opposing point of view is that the commit history is the
 						story of how your project was made. You wouldn't publish the
