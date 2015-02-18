@@ -1565,6 +1565,75 @@
 					<section>
 					<div data-markdown>
 						## Problem 2
+						###	Change the past
+						I have just noticed that
+						https://github.com/catalyst-training/example2.git has a dodgey
+						commit.  The commit message is 'Oooh, this smells a bit
+						funny...'.
+
+						Please make it go away, and while you are at it, can you please reorder the
+						the commits so that 'Remove the README file' happened before we added the
+						list of snakes.
+					</div>
+						<aside class="notes">
+						Once again, you won't be able to push your changes - but that's
+						ok.
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 2
+						###	Solution
+						```bash
+						# Clone the repository
+						$ cd /tmp
+						$ git clone https://github.com/catalyst-training/example2.git
+						$ cd /tmp/example2
+
+						# Work out what we want to do
+						$ git log --oneline
+
+						# Rewrite the past
+						$ git rebase --interactive 6a624b3
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 2b
+						###	Change the past, more!
+						Wow, now that I see what you can do to tidy up the past,
+						I realise I want more
+
+						Please change the commit message that currently says 'Another
+						list - snakes' so that it reads 'Add a list of snakes'.
+
+						And... please add your favourite movie to the list of movies
+						- but make it look like it was added as part of the same commit!
+					</div>
+						<aside class="notes">
+						Once again, you won't be able to push your changes - but that's ok.
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 2b
+						###	Solution
+						```bash
+						$ git log --oneline
+						```
+						```bash
+						# This will be more complex, from within this command you'll need to:
+						#   $ git add lists/movies.txt
+						#   $ git commit --amend
+						#   $ git rebase --continue
+						$ git rebase --interactive 6a624b3
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 3
 						###	Join 2 repositories together
 						We have been working as two teams for a while now, and we have realised
 						that the two teams are so interlinked that we should be all working from
@@ -1581,12 +1650,9 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 2
+						## Problem 3
 						###	Solution
 						```bash
-						# Clone the repository
-						$ cd /tmp
-						$ git clone https://github.com/catalyst-training/example2.git
 						$ cd /tmp/example2
 
 						# Add another remote!
@@ -1609,66 +1675,6 @@
 						  merge<br>
 						- We still could!, and we could then cherry-pick our bugfix in!<br>
 						</aside>
-					</section>
-					<section>
-					<div data-markdown>
-						## Problem 3
-						###	Change the past
-						I have just noticed that the example2 project has a dodgey commit.
-
-						The commit message is 'Oooh, this smells a bit funny...'.
-
-						Please make it go away, and while you are at it, can you please reorder the
-						the commits so that 'Remove the README file' happened before we added the
-						list of snakes.
-					</div>
-						<aside class="notes">
-						Once again, you won't be able to push your changes - but that's ok.
-						</aside>
-					</section>
-					<section>
-					<div data-markdown>
-						## Problem 3
-						###	Solution
-						```bash
-						$ cd /tmp/example2
-						$ git log --oneline
-						$ git rebase --interactive 6a624b3
-						```
-					</div>
-					</section>
-					<section>
-					<div data-markdown>
-						## Problem 3b
-						###	Change the past, more!
-						Wow, now that I see what you can do to tidy up the past,
-						I realise I want more
-
-						Please change the commit message that currently says 'Another
-						list - snakes' so that it reads 'Add a list of snakes'.
-
-						And... please add your favourite movie to the list of movies
-						- but make it look like it was added as part of the same commit!
-					</div>
-						<aside class="notes">
-						Once again, you won't be able to push your changes - but that's ok.
-						</aside>
-					</section>
-					<section>
-					<div data-markdown>
-						## Problem 3b
-						###	Solution
-						```bash
-						$ git log --oneline
-						```
-						```bash
-						# This will be more complex, from within this command you'll need to:
-						#   $ git add lists/movies.txt
-						#   $ git commit --amend
-						#   $ git rebase --continue
-						$ git rebase --interactive 6a624b3
-						```
-					</div>
 					</section>
 					<section>
 					<div data-markdown>
