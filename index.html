@@ -18,8 +18,6 @@
 				* use that to explain some terminology
 		* discuss 'detached head state'
 		* Some more useful commands
-			* git reset
-			* git add -p
 			* git add/commit -p
 			* git reflog
 			* git bisect
@@ -296,10 +294,10 @@
 						## Getting help
 						```bash
 						# git help COMMAND
-						git help status
+						$ git help status
 
 						# man git-COMMAND
-						man git-status
+						$ man git-status
 						```
 						</div>
 						<aside class="notes">
@@ -960,7 +958,7 @@
 						## Merging - How does it look?
 						Looking at the trees in gitk helps you understand stuff.
 						```bash
-						gitk
+						$ gitk
 						```
 					</div>
 					</section>
@@ -975,16 +973,9 @@
 						<h2>Sharing your changes with others</h2>
 						<img src="images/local-remote.png" alt="">
 						<aside class="notes">
-							Finish with: What is the opposite of push?
+							What is the opposite of push? (it's not pull!)<br>
+							- Recommend "git fetch; git merge" in place of "git pull"<br>
 						</aside>
-					</section>
-					<section>
-						<h2>A gentle recommendation...</h2>
-						<ul>
-						<li>git push</li>
-						<li>git fetch</li>
-						<li><del>git pull</del> git fetch; git merge</li>
-						</ul>
 					</section>
 				</section>
 
@@ -1311,19 +1302,29 @@
 						$ git rebase origin/master
 						```
 					</div>
+						<aside class="notes">
+						Draw what this does, contrast it with a merge<br>
+						</aside>
 					</section>
 					<section>
 					<div data-markdown>
 						## Rebase vs. Merge
+						### History is an audit trail
 
 						One point of view on this is that your repository's commit
 						history is a record of what actually happened. It's a historical
 					    document, valuable in its own right, and shouldn't be tampered
 						with. From this angle, changing the commit history is almost
-						blasphemous; you're lying about what actually transpired. So 
-						what if there was a messy series of merge commits? That's how 
+						blasphemous; you're lying about what actually transpired. So
+						what if there was a messy series of merge commits? That's how
 						it happened, and the repository should preserve that for
 						posterity.
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Rebase vs. Merge
+						### History is a story
 
 						The opposing point of view is that the commit history is the
 						story of how your project was made. You wouldn't publish the
@@ -1373,14 +1374,106 @@
 					<section>
 					<div data-markdown>
 						## Loose ends...
-						* git reset
-						* git stash
-						* git clean
+						### git reset
+						In it's simplest form, it allows you to throw away changes
+						you have made locally.
+						```bash
+						$ git status
+						# On branch master
+						#
+						# Changes not staged for commit:
+						#   (use "git add <file>..." to update what will be committed)
+						#   (use "git checkout -- <file>..." to discard changes in working directory)
+						#
+						#       modified:   index.html
+						```
+						```bash
+						$ git reset --hard
+						HEAD is now at 5cc4a26 wr235825: small changes
+						$ git status
+						# On branch master
+						nothing to commit (working directory clean)
+						```
 					</div>
 					</section>
 					<section>
 					<div data-markdown>
-						## Graphical interfaces!
+						## Loose ends...
+						### git reset
+						```bash
+						# You can also change to a different commit before doing
+						# the reset
+						$ git reset --hard HEAD^^
+						HEAD is now at a51452d rewrite the 'begin' function
+						```
+					</div>
+					<div data-markdown class="fragment">
+						```bash
+						# This changes your commit, but leaves your files and index untouched
+						# - changes that you have 'added' are still ready to commit
+						# - changes to files are still ready to add
+						$ git reset --soft HEAD^^
+						```
+					</div>
+					<div data-markdown class="fragment">
+						```bash
+						# This changes your commit and the index, but leaves your filesuntouched
+						# - changes to files are now ready to add, even if you had already added them
+						$ git reset --mixed HEAD^^
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Loose ends...
+						### git stash (hide)
+						You can hide your changes away for later use
+						```bash
+						$ git status
+						# On branch master
+						#
+						#	modified:   super-script.pl
+
+						$ git stash
+						Saved working directory and index state WIP on master: 5cc4a26 added a file
+						```
+						```bash
+						$ git status
+						# On branch master
+						nothing to commit (working directory clean)
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Loose ends...
+						### git stash (restore)
+						Later on, you can restore your changes
+						```bash
+						$ git status
+						# On branch master
+						nothing to commit (working directory clean)
+
+						$ git stash pop
+						# On branch master
+						#
+						# Changes not staged for commit:
+						#   (use "git add <file>..." to update what will be committed)
+						#   (use "git checkout -- <file>..." to discard changes in working directory)
+						#
+						#       modified:   super-script.pl
+						no changes added to commit (use "git add" and/or "git commit -a")
+						Dropped refs/stash@{0} (1a69a03f554a61ea50b3a9e2eb1182608cb50c8e)
+						```
+					</div>
+						<aside class="notes">
+						You can manage multiple stashes if you want....but that gets confusing :(
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Graphical interfaces
+						### A live demo!
 						* Changes with gitk
 						* git gui
 					</div>
