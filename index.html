@@ -82,11 +82,11 @@
 							# Make sure the server has a working SSH daemon running
 							<br>
 							<br># Set up shared git repo
-							<br>mkdir /tmp/test2.git
-							<br>cd /tmp/test2.git
+							<br>mkdir /tmp/test3.git
+							<br>cd /tmp/test3.git
 							<br>git init --bare
 							<br>cd /tmp
-							<br>git clone /tmp/test2.git /tmp/work
+							<br>git clone /tmp/test3.git /tmp/work
 							<br>cd /tmp/work
 							<br>echo 'evanwashere' > evan.txt
 							<br>git add  evan.txt
@@ -264,7 +264,7 @@
             Before we start, we need to tell git who you are
             ```bash
             # But it's OK to lie....
-            $ git config --global user.name "Your Name"
+            $ git config --global user.name "Jed I. Night"
             $ git config --global user.email "null@catalyst.net.nz"
             ```
             ```bash
@@ -1029,14 +1029,14 @@
 						## Remote repositories - URLs
 						```bash
 						# Clone an existing repository via HTTP
-						$ git clone http://git.catalyst.net.nz/git.git
+						$ git clone https://github.com/catalyst-training/git-basic
 						```
 						```bash
 						# Clone an existing repository via SSH
 						$ git clone ssh://git.catalyst.net.nz/git/public/git.git
 						```
 						```bash
-						# Clone an existing local repository (this is just a bit mad)
+						# Clone an existing local repository (this is only slightly mad)
 						$ git clone test test2
 						```
 						</div>
@@ -1166,8 +1166,8 @@
 						```bash
 						# Clone a new repository
 						$ cd /tmp
-						$ git clone $IP:/tmp/test2.git
-						$ cd /tmp/test2
+						$ git clone $IP:/tmp/test3.git
+						$ cd /tmp/test3
 						```
 						```bash
 						# Create a new file (and commit)
