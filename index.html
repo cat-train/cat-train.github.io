@@ -1070,8 +1070,34 @@ noexpandtab: ts=2;
 						```
 						</div>
 						<aside class="notes">
-						origin is not special<br>
 						you don't need to type 'remotes' to refer to these branches
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Other remotes
+						You can manipulate your view of other repositories with the ```git remote```
+						command
+						```bash
+						$ git remote add duplicate https://github.com/catalyst-training/git-basic
+						$ git remote show
+						duplicate
+						origin
+						```
+						```bash
+						$ git fetch --all
+						Fetching origin
+						Fetching duplicate
+						From https://github.com/catalyst-training/git-basic
+						 * [new branch]      gh-pages   -> duplicate/gh-pages
+						 * [new branch]      master     -> duplicate/master
+						```
+						</div>
+						<aside class="notes">
+						origin is not special, except that<br>
+						- it is created by default when you clone a repository<br>
+						- some commands (like fetch) assume you mean origin if you don't specify the remote<br>
+						- etc, etc<br>
 						</aside>
 					</section>
 				</section>
@@ -1228,7 +1254,7 @@ noexpandtab: ts=2;
 						You can copy a commit from one branch to another
 
 						You might want to do this if, for example, a bug is discovered
-						on your development branch that also needs to be applied to you 
+						on your development branch that also needs to be applied to your
 						production branch.
 						```bash
 						$ git cherry-pick e43a6fd3e94888d76779ad79fb568ed180e5fcdf
@@ -1489,6 +1515,352 @@ noexpandtab: ts=2;
 					</section>
 				</section>
 
+				<section> <!-- Examples -->
+					<section>
+					<div data-markdown>
+						## Problem 1
+						### Fix a production bug
+						We have just discovered that there is a program in production that
+						is not executable - the site is down!
+
+						But we can't deploy the latest code because it's not ready...
+
+						Please find the release tag 'release-1-0' in the repository
+						'https://github.com/catalyst-training/example1.git', and fix the bug!
+					</div>
+						<aside class="notes">
+						Note that these problems are NOT a test - you haven't been given
+						enough information yet<br>
+						It is just some everyday problems that we can work through
+						together...
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 1
+						### Solution
+						```bash
+						# Clone the repository
+						$ cd /tmp
+						$ git clone https://github.com/catalyst-training/example1.git
+						$ cd /tmp/example1
+
+						# Make a new branch (at the point we want to change)
+						$ git checkout -b release-1 release-1-0
+
+						# Fix the problem
+						$ chmod +x program
+						$ git commit -a -m 'make the program executable'
+						$ # git push origin release-1
+						```
+					</div>
+						<aside class="notes">
+						Discuss<br>
+						- The fact that we can't push to that URL<br>
+						- And even if we could, we can't push to the master branch<br>
+						- What would we normally do next (cherry-pick / merge), probably not
+						  rebase<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 2
+						###	Change the past
+						I have just noticed that
+						https://github.com/catalyst-training/example2.git has a dodgey
+						commit.  The commit message is 'Oooh, this smells a bit
+						funny...'.
+
+						Please make it go away
+					</div>
+						<aside class="notes">
+						Once again, you won't be able to push your changes - but that's
+						ok.
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 2
+						###	Solution
+						```bash
+						# Clone the repository
+						$ cd /tmp
+						$ git clone https://github.com/catalyst-training/example2.git
+						$ cd /tmp/example2
+						```
+						```bash
+						# Work out what we want to do
+						$ git log --oneline
+						5c90449 Remove the README file
+						3bec061 Some more stuff
+						3114205 Oooh, this smells a bit funny...
+						510043a Another list - snakes
+						6a624b3 Add a list of lists
+						```
+						```bash
+						# Rewrite the past
+						$ git rebase --interactive 510043a
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 2b
+						###	Change the past, more!
+						Wow, now that I see what you can do to tidy up the past,
+						I realise I want more
+
+						Please add your favourite movie to the list of movies
+						- but make it look like it was added with all the other movies.
+					</div>
+						<aside class="notes">
+						Once again, you won't be able to push your changes - but that's ok.
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 2b
+						###	Solution
+						```bash
+						$ git log --oneline
+						```
+						```bash
+						# This will be more complex, from within this command you'll need to:
+						#   $ echo '* Highlander II' >> lists/movies.txt
+						#   $ git add lists/movies.txt
+						#   $ git commit --amend
+						#   $ git rebase --continue
+						$ git rebase --interactive b9fb9c8
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 3
+						###	Join 2 repositories together
+						We have been working as two teams for a while now, and we have realised
+						that the two teams are so interlinked that we should be all working from
+						the same repository,
+
+						Please join https://github.com/catalyst-training/example1.git and
+						https://github.com/catalyst-training/example2.git together!
+
+						Of course, I would like to keep all files and history from both teams intact.
+					</div>
+						<aside class="notes">
+						This is a true story
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 3
+						###	Solution
+						```bash
+						$ cd /tmp/example2
+
+						# Add another remote!
+						$ git remote add ex1 https://github.com/catalyst-training/example1.git
+
+						# Fetch the commits from example1 into this repo
+						$ git fetch ex1
+
+						# Merge ex1/master into origin/master
+						$ git merge ex1/master
+						$ # git push origin master
+						```
+					</div>
+						<aside class="notes">
+						Discuss<br>
+						- If there were conflicts, we could resolve them, or put the projects
+						  into subdirs first<br>
+						- We could have used the directory /tmp/example1/.git as the URL
+						  for ex1 - that would have allowed us to include our bugfix into the
+						  merge<br>
+						- We still could!, and we could then cherry-pick our bugfix in!<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 4
+						###	Github
+						Please create a github account, then 'fork' the repository
+						'https://github.com/catalyst-training/example3'
+
+						Then make a change, and create a pull request so I can accept your work.
+
+						You can do the whole thing in your browser!
+					</div>
+						<aside class="notes">
+						This will take a bit more time, help with<br>
+						- Github account<br>
+						- SSH keys<br>
+						- fork vs clone<br>
+						- editing inside the browser<br>
+						- pull requests<br>
+						- etc...<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 4b
+						### Git Gui
+						That was great, but now lets try again, using ```git-gui``` to
+						make and push your commit.
+
+						I'll get you started...
+						```bash
+						$ cd /tmp
+						$ git clone https://github.com/YOURNAME/example3.git
+						$ cd /tmp/example3
+						$ echo 'Sean Connery' > $YOURNAME.txt
+						$ git gui
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 5
+						###	Mess with a remote branch
+						Using your github account, push a 'password' to github.
+
+						```bash
+						$ echo 'butter' > password.txt
+						$ git add password.txt
+						$ git commit -m "I may regret this...."
+						$ git push origin master
+						```
+						Now make it go away.
+
+						There are several ways to do this, but is it really gone?
+					</div>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 5
+						###	Solution
+						```bash
+						# Amend the commit and force push
+						$ echo '' > password.txt
+						$ git commit -am "Nothing to see here..."
+						$ git push -f origin master
+						```
+					</div>
+					<div data-markdown class="fragment">
+						```bash
+						# Rewind and force push
+						$ git reset --hard HEAD^
+						$ git push -f origin master
+						```
+					</div>
+					<div data-markdown class="fragment">
+						```bash
+						# Delete the remote branch and push a new one
+						$ git push origin :master
+						$ git reset --hard HEAD^
+						$ git push origin master
+						```
+					</div>
+						<aside class="notes">
+						  Note the odd syntax for deleting a branch!
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 6
+						###	Abort a merge
+						Go to your 'example2' project, and try to merge in the 'kittens'
+						branch...
+						```bash
+						# Create a conflict
+						$ cd /tmp/example2
+						$ git merge origin/kittens
+						$ git status
+						```
+						Oh, no, there are conflicts!  Get me out of here!
+					</div>
+						<aside class="notes">
+						or a rebase ...
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 6
+						###	Solution
+						```bash
+						# Too hard, I'll try again some other time
+						$ git merge --abort
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 6b
+						### Use tools to try to resolve a conflict
+						Go to your 'example2' project, and try to merge in the 'kittens'
+						branch...
+						```bash
+						# Create a conflict
+						$ cd /tmp/example2
+						$ git merge origin/kittens
+						$ git status
+						```
+						There are conflicts, but I think you can handle them!
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 6b
+						###	Solution
+						```bash
+						# Let's give it a go...
+						$ git mergetool
+						```
+					</div>
+						<aside class="notes">
+						   Also, we should try this again after installing 'meld'
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 7
+						### Throw away your changes
+						What if you make some changes, and you want to get back to safety?
+						```bash
+						$ cd /tmp/example2
+						$ echo 'A dragon will fix it' > lists/links.txt
+						$ rm lists/movies.txt
+						$ git status
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 7
+						###	Solution
+						```bash
+						$ git reset --hard
+						```
+					</div>
+						<aside class="notes">
+						   Could we use git-reset? git-checkout? gitk? git-clean?
+						</aside>
+					</section>
+					<section>
+						<div data-markdown>
+							##  The End
+							###  No, really!
+						</div>
+						<aside class="notes">
+						Extra things to discuss, to fill in time:<br>
+                        - Setting up a bare repo<br>
+                        - git add/commit -p<br>
+                        - git bisect<br>
+                        - git reflog<br>
+						</aside>
+					</section>
+				</section>
 			</div>
 		</div>
 
