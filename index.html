@@ -1571,9 +1571,7 @@
 						commit.  The commit message is 'Oooh, this smells a bit
 						funny...'.
 
-						Please make it go away, and while you are at it, can you please reorder the
-						the commits so that 'Remove the README file' happened before we added the
-						list of snakes.
+						Please make it go away
 					</div>
 						<aside class="notes">
 						Once again, you won't be able to push your changes - but that's
@@ -1589,12 +1587,19 @@
 						$ cd /tmp
 						$ git clone https://github.com/catalyst-training/example2.git
 						$ cd /tmp/example2
-
+						```
+						```bash
 						# Work out what we want to do
 						$ git log --oneline
-
+						5c90449 Remove the README file
+						3bec061 Some more stuff
+						3114205 Oooh, this smells a bit funny...
+						510043a Another list - snakes
+						6a624b3 Add a list of lists
+						```
+						```bash
 						# Rewrite the past
-						$ git rebase --interactive 6a624b3
+						$ git rebase --interactive 510043a
 						```
 					</div>
 					</section>
@@ -1605,11 +1610,8 @@
 						Wow, now that I see what you can do to tidy up the past,
 						I realise I want more
 
-						Please change the commit message that currently says 'Another
-						list - snakes' so that it reads 'Add a list of snakes'.
-
-						And... please add your favourite movie to the list of movies
-						- but make it look like it was added as part of the same commit!
+						Please add your favourite movie to the list of movies
+						- but make it look like it was added with all the other movies.
 					</div>
 						<aside class="notes">
 						Once again, you won't be able to push your changes - but that's ok.
@@ -1624,10 +1626,11 @@
 						```
 						```bash
 						# This will be more complex, from within this command you'll need to:
+						#   $ echo '* Highlander II' >> lists/movies.txt
 						#   $ git add lists/movies.txt
 						#   $ git commit --amend
 						#   $ git rebase --continue
-						$ git rebase --interactive 6a624b3
+						$ git rebase --interactive b9fb9c8
 						```
 					</div>
 					</section>
@@ -1680,12 +1683,12 @@
 					<div data-markdown>
 						## Problem 4
 						###	Github
-						Please create a github account, then fork the repository
+						Please create a github account, then 'fork' the repository
 						'https://github.com/catalyst-training/example3'
 
 						Then make a change, and create a pull request so I can accept your work.
 
-						You can do the whole thing in your browser.
+						You can do the whole thing in your browser!
 					</div>
 						<aside class="notes">
 						This will take a bit more time, help with<br>
@@ -1709,27 +1712,10 @@
 						$ cd /tmp
 						$ git clone https://github.com/YOURNAME/example3.git
 						$ cd /tmp/example3
-						$ echo 'Sean Connery' > lists/stars.txt
+						$ echo 'Sean Connery' > $YOURNAME.txt
 						$ git gui
 						```
 					</div>
-						<aside class="notes">
-						Did you notive that you couldn't push? We'll sort that out soon
-						</aside>
-					</section>
-					<section>
-					<div data-markdown>
-						## Problem 4c
-						### SSH keys
-						Did you notice that you couldn't push your commit?
-
-						Lets get that sorted.
-					</div>
-						<aside class="notes">
-						We'll need to<br>
-						- create an SSH key, and upload it to github.<br>
-						- Add or change the remote so it has a git URL
-						</aside>
 					</section>
 					<section>
 					<div data-markdown>
