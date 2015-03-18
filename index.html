@@ -1,408 +1,1894 @@
 <!doctype html>
+
+<!-- vim: set noexpandtab: -->
+
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+        <title>Git.  Revision control for humans</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+        <meta name="author" content="Catalyst">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/catalyst.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+        <!-- For syntax highlighting -->
+        <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+        <link rel="stylesheet" href="lib/css/catalyst-syntax.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+        <style>
+            /* Add the ability to omit slides from the printed version (has to be after the print include)*/
+            @media print {
+                .reveal .slides section.no-print {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+            }
+        </style>
 
-	<body>
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
 
-		<div class="reveal">
+        <!-- Please put any custom styles here -->
+        <style>
 
-			<!-- Any section element inside of this container is displayed as a slide -->
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
-				</section>
-
-				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
-				</section>
-
-				<!-- Example of nested vertical slides -->
-				<section>
+				<section> <!-- Introduction -->
 					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
-
+						<h1>Git</h1>
+						<h2>Revision control for humans</h2>
+						<hr>
+						<small>
+						<!-- Well lit room? Light theme -->
+						Theme: <a href="?theme=moon">Dark</a>
+							/ <a href="?theme=solarized">Light</a>
+						</small>
 						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
+							# Make sure the server has a working SSH daemon running
+							<br>
+							<br># Set up shared git repo
+							<br>mkdir /tmp/test3.git
+							<br>cd /tmp/test3.git
+							<br>git init --bare
+							<br>cd /tmp
+							<br>git clone /tmp/test3.git /tmp/work
+							<br>cd /tmp/work
+							<br>echo 'evanwashere' > evan.txt
+							<br>git add  evan.txt
+							<br>git commit -m 'initial commit - one file'
+							<br>git push origin master
+						</aside>
+					</section>
+					<section data-markdown>
+						## Introduction
+						* The format of this course is mostly a tutorial
+						  (with some lecturing thrown in)
+						* The tutorial uses a linux command line, but git
+						  is available on other platforms
+						* The tutorial is designed to uncover the concepts
+						* Not necessarily to provide all the command syntax
+						 * Hopefully if you are armed with the concepts, the
+						   internet will help you find the specifics you need
+					</section>
+				</section>
+
+				<section> <!-- Why -->
+					<section data-markdown>
+						## Why use revision control software?
+						#### You (should) want it if...
+						* You are sick of keeping *.bak files
+						* You want to look at how something used to be
+						* You want to know why something changed
+						* You want to review what you have just changed
+					</section>
+					<section data-markdown>
+						## Why use revision control software?
+						#### You need it if...
+						* You are working with other people who use it
+						* You want to maintain multiple versions of the same thing
+						* You need to make a single change which covers several files - and keep things in sync
+					</section>
+					<section data-markdown>
+						## What does revision control provide?
+						* Track changes (to almost anything)
+						* View history
+						* Look back to find when bugs were created
+						* Find the reasoning behind why something is how it is
+						* Roll back changes
+						* Apply kudos for effort
+						* Backups of your important stuff
+					</section>
+					<section data-markdown>
+						## What options are there?
+						* RCS
+						* CVS
+						* Subversion
+						* Darcs
+						* Perforce
+						* Bzr
+						* ...
+					</section>
+					<section data-markdown>
+						## Why should you use Git?
+						* It is fast
+						* Branching is trivial
+						* Merging of branches actually makes sense
+						* You can be disconnected from the network, yet still continue working
+						* It does not dictate your workflow
+						* [It protects your data](http://git-scm.com/about/info-assurance)
+						* Once you master the concepts, you can do some really creative (and useful!) stuff
+						* The cool kids use it
+					</section>
+				</section>
+
+				<section> <!-- Installing -->
+					<section data-markdown data-separator-notes="^Note:">
+						## Installing
+						```bash
+						# Required
+						$ sudo aptitude install git
+						```
+						```bash
+						# Recommended
+						$ sudo aptitude install gitk git-gui
+						```
+						```bash
+						# FYI...
+						$ sudo aptitude search git
+						```
+						Note:
+						Pause here to explain the way we are showing commands
+						- talk about '$' as the prompt, etc
+					</section>
+					<section>
+					<div data-markdown>
+						## Installing (alternative OS)
+						* Go to [git-scm.org](http://git-scm.org "The home of git") 
+						* Find the [Download link](http://git-scm.com/downloads "install instructions")
+						* Follow the intrsuctions for your OS
+						* For MS Win, you are looking for "Git BASH"
+					</div>
+					</section>
+				</section>
+
+
+
+				<section> <!-- Init -->
+					<section>
+					<div data-markdown>
+						## Create a new repository
+						```git init```
+						```bash
+						$ mkdir /tmp/test
+						```
+						```bash
+						$ cd /tmp/test
+						```
+						```bash
+						$ git init
+						Initialized empty Git repository in .git/
+						```
+						Check the status with ```git status```
+						```bash
+						$ git status
+						# On branch master
+						#
+						# Initial commit
+						#
+						nothing to commit (create/copy files and use "git add" to track)
+						```
+					</div>
+					</section>
+					<section>
+						<div data-markdown>
+						## What did that do?
+						Git is just a bit different from other revision control systems
+						![overview](images/local-remote-small.png "overview")
+
+						</div>
+						<aside class="notes">
+							The 'staging area' is often called the 'index'
 						</aside>
 					</section>
 					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
+						<div data-markdown>
+						## Getting help
+						```bash
+						# git help COMMAND
+						$ git help status
+
+						# man git-COMMAND
+						$ man git-status
+						```
+						</div>
+						<aside class="notes">
+							The COMMANDs we have used so far are 'init' and 'status', so....
+						</aside>
 					</section>
 				</section>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
+				<section> <!-- Configuring -->
+					<section>
+						<div data-markdown>
+						## Global configuration settings
+						Before we start, we need to tell git who you are
+						```bash
+						# But it's OK to lie....
+						$ git config --global user.name "Jed I. Night"
+						$ git config --global user.email "null@catalyst.net.nz"
+						```
+						```bash
+						# If you think nano``` is crap, you can choose vim, or gedit
+						$ git config --global core.editor gedit
+						```
+						</div>
+					</section>
+					<section>
+						<div data-markdown>
+						## Project configuration settings
+						This will tell Git you like to see pretty colours on the screen
+						```bash
+						$ git config color.ui auto
+						$ git config --global log.decorate full
+						```
+						</div>
+						<aside class="notes">
+						These settings will override the global settings
 
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
+						- but only within the current repository (which is /tmp/test)
+						</aside>
+					</section>
+					<section>
+						<div data-markdown>
+						## Accessing the configuration settings
+						Global data is stored in ```$HOME/.gitconfig```
 
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
+						Project data is stored in ```$PROJECT/.git/config```
+
+						Use ```git config``` to see it
+						```bash
+						$ git config -l
+						```
+						..or just edit the files
+						```bash
+						$ gedit ~/.gitconfig /tmp/test/.git/config
+						```
 						</div>
 					</section>
 				</section>
 
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
+				<section> <!-- Basic use ... -->
+					<section>
+					<div data-markdown>
+						## Managing Files
+						Make some changes...
+						```bash
+						$ touch super-script.pl
+						```
+						```bash
+						$ git status
+						# On branch master
+						#
+						# Initial commit
+						#
+						# Untracked files:
+						#   (use "git add &lt;file>..." to include in what will be committed)
+						#
+						#	super-script.pl
+						nothing added to commit but untracked files present (use "git add" to track)
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Tell Git to track those files
+						```git add```
+						```bash
+						$ git add super-script.pl 
+						```
+						```bash
+						$ git status
+						# On branch master
+						#
+						# Initial commit
+						#
+						# Changes to be committed:
+						#   (use "git rm --cached &lt;file>..." to unstage)
+						#
+						#	new file: super-script.pl
+						#
+						```
+					</div>
+						<aside class="notes">
+						This actually adds the file to the 'index'
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Change an existing file
+						Make some changes...
+						```bash
+						$ echo DATA > super-script.pl
+						```
+						```bash
+						$ git status
+						# On branch master
+						#
+						# Initial commit
+						#
+						# Changes to be committed:
+						#   (use "git rm --cached &lt;file>..." to unstage)
+						#
+						#	new file:   super-script.pl
+						#
+						# Changed but not updated:
+						#   (use "git add &lt;file>..." to update what will be committed)
+						#   (use "git checkout -- &lt;file>..." to discard changes in working directory)
+						#
+						#	modified:   super-script.pl
+						#
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## See what you have done
+						```git diff```
+						```bash
+						$ git diff
+						--- a/super-script.pl
+						+++ b/super-script.pl
+						@@ -0,0 +1 @@
+						+DATA
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Change an existing file
+						We need to tell Git that you intend to commit the checked out
+						version, with ```git add```
+						```bash
+						$ git add super-script.pl 
+						```
+						```bash
+						$ git status
+						# On branch master
+						#
+						# Initial commit
+						#
+						# Changes to be committed:
+						#   (use "git rm --cached &lt;file>..." to unstage)
+						#
+						#	new file:   super-script.pl
+						#
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Committing changes
+						Commit your work with ```git commit```
+						```bash
+						$ git commit super-script.pl 
+						Created commit ae54011: Add a message.
+						1 files changed, 3 insertions(+), 0 deletions(-)
+						create mode 100644 super-script.pl
+						```
+						You will be stuck in an editor so you can input a commit message
+						Normally, you WILL make your commit message meaningful!
+					</div>
+						<aside class="notes">
+						We have told git about our changes, but
+						we haven't actually committed anything yet.<br>
+
+						This is deliberate - so you can build up more complex commits.
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Committing changes - some options
+						You don't have to ```git add``` all your changes manually
+						```bash
+						# Add <file>, and then commit
+						$ git commit <file>
+						```
+						```bash
+						# Add all your changes, and then commit
+						$ git commit -a
+						```
+						You can have an easier editor...
+						```bash
+						$ EDITOR=gedit git commit -a
+						```
+						You don't have to use an editor at all...
+						```bash
+						$ git commit -m 'commit message goes here'
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Managing Files - Permissions
+						Oops, that file isn't executable
+						```bash
+						$ chmod 755 super-script.pl 
+						```
+						```bash
+						$ git commit super-script.pl 
+						Created commit 378af93: Make it executable.
+						0 files changed, 0 insertions(+), 0 deletions(-)
+						mode change 100644 => 100755 super-script.pl
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Managing Files - Move
+						To rename a file use ```git mv```
+						```bash
+						$ git mv super-script.pl silly-script.pl
+						```
+						```bash
+						$ git status
+						# On branch master
+						# Changes to be committed:
+						#   (use "git reset HEAD &lt;file>..." to unstage)
+						#
+						#	renamed: super-script.pl -> silly-script.pl
+						#
+						```
+						This has changed our checkout, and the index, so we are ready to
+						commit the change
+						```bash
+						$ git commit
+						Created commit fabd446: Rename the file.
+						1 files changed, 0 insertions(+), 0 deletions(-)
+						rename super-script.pl => silly-script.pl (100%)
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Managing Files - Delete
+						To delete a file use ```git rm```
+						```bash
+						# This won't actually work, because we haven't
+						# created "another-script.pl"
+						# ... but you can try it, if you like....
+						$ git rm -f another-script.pl 
+						```
+						```bash
+						$ git status
+						# On branch master
+						# Changes to be committed:
+						#   (use "git reset HEAD &lt;file>..." to unstage)
+						#
+						#	deleted: another-script.pl
+						#
+						```
+						<li>And commit the change</li>
+						```bash
+						$ git commit
+						Created commit bd10c5f: Remove another-script.pl
+						0 files changed, 0 insertions(+), 0 deletions(-)
+						delete mode 100644 another-script.pl
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Managing Files - ignore them
+						```bash
+						# Let's imagine your editor keeps creating '.swp' files
+						$ touch silly-script.pl.bak
+						```
+						```bash
+						$ git status
+						# On branch master
+						# Untracked files:
+						#   (use "git add <file>..." to include in what will be committed)
+						#
+						#       silly-script.pl.bak
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Managing Files - ignore them
+						```bash
+						# Add a line that conatins '*.swp'
+						$ gedit .gitignore
+						```
+						```bash
+						$ git status
+						# On branch master
+						# Untracked files:
+						#   (use "git add <file>..." to include in what will be committed)
+						#
+						#       .gitignore
+						```
+						```bash
+						# We can then commit the .gitignore file
+						$ git add .gitignore
+						$ git commit -m 'Created a .gitignore file'
+						```
+					</div>
+						<aside class="notes">
+						You can put a different .gitignore file in each directory<br>
+						...or stick to one in the root of your project<br>
+						</aside>
+					</section>
+					<section>
+						<div data-markdown>
+						## Ignoring files Locally vs. Globally
+						* Adding things to .gitignore will ignore them for all users!
+						* Instead you can ignore things locally using .git/info/exclude.
+						</div>
+						<aside class="notes">
+						You can put a different .gitignore file in each directory<br>
+						...or stick to one in the root of your project<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Tags
+						Tags work pretty much like you would expect.
+						They allow you to mark specific points in
+						history as being important.
+
+						Often people use this functionality to mark release points.
+						```bash
+						$ git tag v1.0
+						$ git tag v1.0-production -m 'this might be important later!'
+						```
+						```bash
+						$ git tag
+						$ git show v1.0
+						$ git show v1.0-production
+						```
+					</div>
+						<aside class="notes">
+						2 types of tags: lightweight and annotated<br>
+						Tags don't get shared, by default.<br>
+						<br>
+						Also, explain that you can git show anything (tag, branch, sha1, etc).<br>
+						</aside>
+					</section>
 				</section>
 
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
+				<section> <!-- Viewing changes ... -->
+					<section>
+					<div data-markdown>
+						## Change Logs
+						Use ```git log```
+						```bash
+						$ git log
+						commit 09f90bc2a74f7ca2f825c4a386e168649b9fec97
+						Author: Evan Giles <evan@catalyst.net.nz>
+						Date:   Thu Dec 16 11:53:48 2010 +1300
+
+							Rename the file.
+
+						commit f7123c5ffdccbed11b50b0b74a181186e1a13028
+						Author: Evan Giles <evan@catalyst.net.nz>
+						Date:   Thu Dec 16 11:53:25 2010 +1300
+
+							Make it executable
+
+						commit 8657bea3230587abdcbe39e6bf699c9ee8f505a6
+						Author: Evan Giles <evan@catalyst.net.nz>
+						Date:   Thu Dec 16 11:52:51 2010 +1300
+
+							Add a message.
+						```
+						By default the output is piped into $PAGER
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Change Logs
+						You can also specify a file or directory
+						```bash
+						$ git log silly-script.pl 
+						```
+					</div>
+					</section>
+
+					<section>
+					<div data-markdown>
+						## Change Logs - Annotate
+						Show who made changes to what line
+						```bash
+						$ git annotate silly-script.pl
+						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
+						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 2) 
+						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 3) print "silly script\n";
+						9c08faf4  (Bad Coder 2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
+						```
+					</div>
+						<span class="fragment">Who is this Bad Coder fella?</span>
+						<div class="fragment" data-markdown>
+						Better remembered as ```git blame```
+						```bash
+						$ git blame silly-script.pl
+						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
+						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 2) 
+						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 3) print "silly script\n";
+						9c08faf4 (Bad Coder   2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
+						```
+					</div>
+					</section>
+
+					<section>
+					<div data-markdown>
+						## Change logs - GUI
+						Not strictly change logs, but...  gitk / qgit / gitg / etc
+						![image](images/gitk.png "gitk")
+					</div>
+					</section>
+				</section>
+
+				<section> <!-- Concepts 2 ... -->
+					<section>
+					<div data-markdown>
+						## Some more concepts - commits
+						* It is important to understand that git thinks in ```commits```
+						* Each commit refers to a previous commit (its parent)
+						* Commits can be referenced by their SHA1 checksum
+							* or an abbreviation of it
+							* or by a number of things that might refer to them
+						* ```gitk``` lets you visualise the commit history, which
+							helps a lot
+					</div>
+					</section>
+					<section> 
+						<h2>Commits are....</h2>
+						<marquee style="width:650" scrollamount="650" scrolldelay="500">Totally unchangeable</marquee>
+					</section>
+				</section>
+
+				<section> <!-- branching and merging -->
+					<section>
+					<div data-markdown>
+						## Branching - List
+						To show branches use ```git branch```
+						```bash
+						$ git branch
+						* master
+						```
+						Only one branch, called ```master```
+
+						The '*' indicates that it is your current branch
+					</div>
+						<aside class="notes">
+							You can also use 'git status'
+						</aside>
+					</section>
+
+					<section>
+					<div data-markdown>
+						 ## Branching - Create
+						Use ```git branch``` (or ```git checkout -b```)
+						```bash
+						$ git checkout -b new-branch
+						Switched to a new branch "new-branch"
+						```
+						Will create "new-branch", and check it out for you
+						```bash
+						$ git branch
+						  master
+						* new-branch
+						```
+					</div>
+						<aside class="notes">
+						mention that 'git checkout' is a convenience interface
+						...it does several things in one step
+						</aside>
+					</section>
+
+					<section>
+					<div data-markdown>
+						## Branching - Create somewhere else
+						By default a new branch will be created at the commit you
+						already have checked out
+
+						You can also create a new branch at another commit
+						```bash
+						$ git checkout -b another-branch master
+						Switched to a new branch "another-branch"
+						```
+						```bash
+						$ git branch
+						* another-branch
+						  master
+						  new-branch
+						```
+					</div>
+						<aside class="notes">
+						Here, the checkout command is actually doing 3 things<br>
+						- go the the master branch<br>
+						- make a branch there (callled 'another-branch')<br>
+						- checkout the 'another-branch' branch
+						</aside>
+					</section>
+
+					<section>
+					<div data-markdown>
+						## Branching - Change Branch
+						Use ```git checkout```
+						```bash
+						$ git checkout new-branch
+						Switched to branch "new-branch"
+						```
+						```bash
+						$ git branch
+						  another-branch
+						  master
+						* new-branch
+						```
+						Don't forget to see how this is shown in ```gitk```
+					</div>
+					</section>
+
+					<section>
+					<div data-markdown>
+						## Branching - What's the deal?
+						```bash
+						# Make a change to a file (and commit that change)
+						$ echo "... From new-branch" >> silly-script.pl 
+						$ git commit silly-script.pl 
+						Created commit a6ed2cf: From new-branch
+						1 files changed, 1 insertions(+), 0 deletions(-)
+						```
+						```bash
+						# Check the file..
+						$ cat silly-script.pl 
+						DATA
+						... From new-branch
+						```
+						```bash
+						# Jump to another branch
+						$ git checkout master
+						Switched to branch "master"
+						```
+						```bash
+						# The text we added ain't there
+						$ cat silly-script.pl 
+						DATA
+						```
+					</div>
+					</section>
+
+					<section>
+					<div data-markdown>
+						## Branching - Why?
+						* Many (most) projects have a branch for each release
+						* Branches are useful for experimental features / refactoring
+						* Branches happen (without even trying) when several people try
+						  to work on the same project - but I'll explain that soon ;)
+					</div>
+						<aside class="notes">
+							It is useful to think of branches as an 'alternative reality'
+						</aside>
+					</section>
+
+					<section>
+					<div data-markdown>
+						## Merging - Simple Case
+						You should now be on the master branch
+						```bash
+						$ git status
+						# On branch master
+						nothing to commit (working directory clean)
+						```
+						Use ```git merge```
+						```bash
+						$ git merge new-branch
+						Updating e766bfb..a6ed2cf
+						Fast forward
+						silly-script.pl |	1 +
+						1 files changed, 1 insertions(+), 0 deletions(-)
+						```
+						In this case, we have done a ```fast forward``` merge
+
+						If there are no conflicts, this may make a new commit object
+
+						use ```gitk``` to see what happened
+					</div>
+						<aside class="notes">
+						* We are merging changes *IN*, from somewhere else<br>
+						* explain the fast forward bit<br>
+						* talk about merges being line by line, so not for binary data
+						</aside>
+					</section>
+
+					<section>
+					<div data-markdown>
+						## Merging - get ready for a conflict
+						Conflicts are more difficult (lets create one)
+						```bash
+						# Make a change to a file, commit that change to 'master'
+						$ echo "New value for data" > silly-script.pl
+						$ git commit -a -m 'update script with a new value'
+
+						# Change branches, make a change, and commit
+						$ git checkout new-branch
+						$ echo "different value for data" > silly-script.pl
+						$ git commit -a -m 'update script with a different value'
+
+						# Go back to the master branch, if we try to merge - there
+						# will be a problem!
+						$ git checkout master
+						```
+					</div>
+						<aside class="notes">
+							Sorry about the wall of text!
+						Also, explain the fast forward bit
+						</aside>
+					</section>
+
+					<section>
+					<div data-markdown>
+						## Merging - you can't do that
+						If there is a conflict then git will stop and make you fix it.
+						```bash
+						$ git merge new-branch
+						Auto-merged silly-script.pl
+						CONFLICT (content): Merge conflict in silly-script.pl
+						Automatic merge failed; fix conflicts and then commit the result.
+						```
+						```bash
+						$ git status
+						# On branch master
+						# Unmerged paths:
+						#   (use "git add/rm &lt;file>..." as appropriate to mark resolution)
+						#
+						#	   both modified:	  silly-script.pl
+						#
+						no changes added to commit (use "git add" and/or "git commit -a")
+						```
+						```bash
+						$ cat silly-script.pl 
+						&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:silly-script.pl
+						New value for data
+						=======
+						different value for data
+						>>>>>>> new-branch:silly-script.pl
+						```
+					</div>
+					</section>
+
+					<section>
+					<div data-markdown>
+						## Merging - Fixing conflicts
+						Lots of tools to help fix things up.  Hand edit, xxdiff,
+						smartmerge, etc
+
+						We'll just fix it by editing the file
+						```bash
+						$ gedit silly-script.pl 
+						$ cat silly-script.pl 
+						New, different value for data
+						```
+						But Git still won't allow us to continue...
+						```bash
+						$ git commit
+						U	silly-script.pl
+						fatal: 'commit' is not possible because you have unmerged files.
+						Please, fix them up in the work tree, and then use 'git add/rm &lt;file>' as
+						appropriate to mark resolution and make a commit, or use 'git commit -a'.
+						```
+					</div>
+					</section>
+
+					<section>
+					<div data-markdown>
+						## Merging - Success at last
+						We need to tell Git that it has been fixed before we commit
+						```bash
+						$ git add silly-script.pl 
+						$ git commit
+						Created commit a411f2a: Merge branch 'new-branch'
+						```
+						In this case the commit message is automatically created, but
+						you can edit it if you want.
+						```bash
+						Merge branch 'new-branch'
+
+						Conflicts:
+
+							silly-script.pl
+						```
+					</div>
+					</section>
+
+					<section>
+					<div data-markdown>
+						## Merging - How does it look?
+						Looking at the trees in gitk helps you understand stuff.
+						```bash
+						$ gitk
+						```
+					</div>
+					</section>
+				</section>
+
+				<section> <!-- Where are we? Where are we going? -->
+					<section>
+						<h2>A quick recap</h2>
+						<img src="images/local.png" alt="">
+					</section>
+					<section>
+						<h2>Sharing your changes with others</h2>
+						<img src="images/local-remote.png" alt="">
+						<aside class="notes">
+							What is the opposite of push? (it's not pull!)<br>
+							- Recommend "git fetch; git merge" in place of "git pull"<br>
+						</aside>
+					</section>
 				</section>
 
 				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+					<section>
+					<div data-markdown>
+						## Creating Repositories - Revisited
+						We already know how to create a new repositry
+						```bash
+						$ git init
+						Initialized empty Git repository in .git/
+						```
+						...but normally, you want to join in with an existing project
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Clone an existing repository
+						In practise, you're more likely to use ```git clone```.
 
-    var nodes = document.querySelectorAll( selector );
+						To check out the source code of a random project:
+						```bash
+						$ cd /tmp
+						```
+						```bash
+						$ git clone https://github.com/catalyst-training/git-basic
+						Cloning into git-basic...
+						remote: Counting objects: 90, done.
+						remote: Compressing objects: 100% (43/43), done.
+						remote: Total 90 (delta 44), reused 90 (delta 44)
+						Receiving objects: 100% (90/90), 31.62 KiB, done.
+						Resolving deltas: 100% (44/44), done.
+						```
+						```bash
+						$ cd git-basic
+						```
+						```bash
+						$ ls 
+						```
+						```bash
+						$ gitk 
+						```
+					</div>
+						<aside class="notes">
+						git remote<br>
+						git remote -v<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Remote repositories - URLs
+						```bash
+						# Clone an existing repository via HTTP
+						$ git clone https://github.com/catalyst-training/git-basic
+						```
+						```bash
+						# Clone an existing repository via SSH
+						$ git clone ssh://git.catalyst.net.nz/git/public/git.git
+						```
+						```bash
+						# Clone an existing local repository (this is only slightly mad)
+						$ git clone test test2
+						```
+						</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Remote branches
+						Remote branches are references (pointers) to the state of
+						branches in your remote repositories.
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+						They're local branches
+						that you can't move; they're moved automatically for you
+						whenever you do any network communication.
 
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+						Remote branches act
+						as bookmarks to remind you where the branches on your remote
+						repositories were the last time you connected to them.
+						</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Origin
+						You can see all branches (including the remote ones) with the
+						```git branch``` command
+						```bash
+						$ cd /tmp/git-basic/
+						$ git branch -a
+						* master
+						  remotes/origin/master
+						```
+						</div>
+						<aside class="notes">
+						you don't need to type 'remotes' to refer to these branches
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Other remotes
+						You can manipulate your view of other repositories with the ```git remote```
+						command
+						```bash
+						$ git remote add duplicate https://github.com/catalyst-training/git-basic
+						$ git remote show
+						duplicate
+						origin
+						```
+						```bash
+						$ git fetch --all
+						Fetching origin
+						Fetching duplicate
+						From https://github.com/catalyst-training/git-basic
+						 * [new branch]      gh-pages   -> duplicate/gh-pages
+						 * [new branch]      master     -> duplicate/master
+						```
+						</div>
+						<aside class="notes">
+						origin is not special, except that<br>
+						- it is created by default when you clone a repository<br>
+						- some commands (like fetch) assume you mean origin if you don't specify the remote<br>
+						- etc, etc<br>
+						</aside>
+					</section>
 				</section>
 
-				<section>
-					<h2>Marvelous List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
+				<section> <!-- Ways to work -->
+					<section>
+					<div data-markdown>
+						## Ways to work with git (1)
+						### Corporate Workflow
+						You will probably use this
+					</div>
+					<img src="images/workflow-a.png" alt="corporate">
+					</section>
+					<section>
+					<div data-markdown>
+						## Ways to work with git (2)
+						### Integration manager Workflow
+						A quick diversion: http://www.github.com
+					</div>
+					<img src="images/workflow-b.png" alt="github">
+					</section>
+					<section>
+					<div data-markdown>
+						## Ways to work with git (3)
+						### Dictator Workflow
+						This is how the Linux kernel is managed
+					</div>
+					<img src="images/workflow-c.png" alt="linux">
+					</section>
+					<section>
+					<div data-markdown>
+						## Ways to work with git (4)
+						### Peer to peer Workflow
+					</div>
+					<img src="images/workflow-d.png" alt="p2p">
+					</section>
 				</section>
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
+				<section> <!-- Alice and Bob -->
+					<section>
+					<div data-markdown>
+						### Once upon a time....
+						Alice and Bob wanted to do some work
+					</div>
+					<img src="images/lastthing1.png" alt="">
+					</section>
+
+					<section>
+					<div data-markdown>
+						So they both made some changes....
+					</div>
+					<img src="images/lastthing2.png" alt="">
+					</section>
+
+					<section>
+					<div data-markdown>
+						Alice pushes her changes...
+					</div>
+					<img src="images/lastthing3.png" alt="">
+					</section>
+
+					<section>
+					<div data-markdown>
+						But Bob has a problem...
+					</div>
+					<img src="images/lastthing3a.png" alt="">
+					</section>
+
+					<section>
+					<div data-markdown>
+						Now Bob needs to fetch the changes from Alice
+					</div>
+					<img src="images/lastthing4.png" alt="">
+					</section>
+
+					<section>
+					<div data-markdown>
+						and merge them with his work
+					</div>
+					<img src="images/lastthing5.png" alt="">
+					</section>
+
+					<section>
+					<div data-markdown>
+						They all lived happily ever after...
+					</div>
+					<img src="images/lastthing6.png" alt="">
+					</section>
+
+					<section>
+					<div data-markdown>
+						## Now we can try it out
+						```bash
+						# Clone a new repository
+						$ cd /tmp
+						$ git clone $IP:/tmp/test3.git
+						$ cd /tmp/test3
+						```
+						```bash
+						# Create a new file (and commit)
+						$ gedit $YOURNAME.txt
+						$ git add $YOURNAME.txt
+						$ git commit
+						```
+						```bash
+						# Push your changes to the shared repository
+						$ git push origin master
+						```
+						```bash
+						# You are now Bob!
+						$ git fetch
+						$ git merge origin/master
+						```
+					</div>
+						<aside class="notes">
+						Explain What is going on with "origin" and "master" here:<br>
+						- git push origin master<br>
+						- git merge origin/master <br>
+						Also introduce the idea that commands have defaults:<br>
+						- git push ... git push origin master<br>
+						- <br>
+						- <br>
+						- <br>
+						</aside>
+					</section>
 				</section>
 
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							<tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							<tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							<tr>
-						</tbody>
-					</table>
+				<section> <!-- Stuff we have missed ... -->
+					<section>
+					<div data-markdown>
+						## Changing your commits
+						You can 'change' the most recent commit using ```git commit```
+						```bash
+						$ git add something.txt
+						$ git commit --amend
+						```
+						This is quite a big deal...
+					</div>
+						<aside class="notes">
+						Will someone please pull me up on this?!<br>
+						Explain how this works<br>
+						- That you are not changing anything here<br>
+						- just making a new commit which is quite like the old one<br>
+						- and then moving the labels around<br>
+						Warning:<br>
+						- Do not change commits that exist outside your repository.<br>
+						- If you do, people will hate you, and you'll be scorned
+						  by friends and family.<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Copy a commit
+						You can copy a commit from one branch to another
+
+						You might want to do this if, for example, a bug is discovered
+						on your development branch that also needs to be applied to your
+						production branch.
+						```bash
+						$ git cherry-pick e43a6fd3e94888d76779ad79fb568ed180e5fcdf
+						```
+					</div>
+						<aside class="notes">
+						Note that the commit created will look the same, but have a
+						different commit id<br>
+						Note that the cherry-pick can fail, if there are conflicts<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Undo a commit
+						You can undo a previous commit with ```git revert```.
+
+						This makes a new commit, that is the exact opposite of a
+						previous commit in your repository.
+
+						The previous commit remains intact.
+						```bash
+						$ git revert e43a6fd3e94888d76779ad79fb568ed180e5fcdf
+						```
+						```bash
+						$ git log --pretty=oneline
+						830d77273fc24c0708403102a05a5a5ffecfce93 Revert "Introduce bug"
+						d7a1ee454168081227ee82c5f11bb08f77e2643d Unrelated change
+						e43a6fd3e94888d76779ad79fb568ed180e5fcdf Introduce bug
+						```
+					</div>
+						<aside class="notes">
+						When you revert the commit, you get dropped into an editor
+						in case you want to can edit the commit message..<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Getting serious with copying commits
+						As an alternative to merging, you can use ```git rebase```.
+
+						Instead of making a new commit which joins two branches together,
+						it copies your changes on top of the other branch...
+
+						You use it just like a merge.
+						```bash
+						$ git rebase origin/master
+						```
+					</div>
+						<aside class="notes">
+						Draw what this does, contrast it with a merge<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Rebase vs. Merge
+						### History is an audit trail
+
+						One point of view on this is that your repository's commit
+						history is a record of what actually happened. It's a historical
+					    document, valuable in its own right, and shouldn't be tampered
+						with. From this angle, changing the commit history is almost
+						blasphemous; you're lying about what actually transpired. So
+						what if there was a messy series of merge commits? That's how
+						it happened, and the repository should preserve that for
+						posterity.
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Rebase vs. Merge
+						### History is a story
+
+						The opposing point of view is that the commit history is the
+						story of how your project was made. You wouldn't publish the
+						first draft of a book, and the manual for how to maintain your
+						software deserves careful editing. This is the camp that uses
+						tools like rebase and filter-branch to tell the story in the
+						way that's best for future readers.
+					</div>
+						<aside class="notes">
+						Repeat:<br>
+						You should not change commits that have been shared with others
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## A more advanced rebase
+						```bash
+						$ git rebase --interactive origin/master
+						```
+						```bash
+						pick a3895fe Try a bit harder to return a useful value from all methods
+						pick 180e665 Release engineering (0.8)
+						pick 2a6d832 Update Build.PL for newer build tools
+						pick e1fac16 Use semantic versioning (http://semver.org/)
+
+						# Rebase aa8a695..e1fac16 onto aa8a695
+						#
+						# Commands:
+						#  p, pick = use commit
+						#  r, reword = use commit, but edit the commit message
+						#  e, edit = use commit, but stop for amending
+						#  s, squash = use commit, but meld into previous commit
+						#  f, fixup = like "squash", but discard this commit's log message
+						#  x, exec = run command (the rest of the line) using shell
+						#
+						# These lines can be re-ordered; they are executed from top to bottom.
+						#
+						# If you remove a line here THAT COMMIT WILL BE LOST.
+						# However, if you remove everything, the rebase will be aborted.
+						#
+						```
+					</div>
+					</section>
 				</section>
 
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
+				<section> <!-- Wrap up -->
+					<section>
+					<div data-markdown>
+						## Loose ends...
+						### git reset
+						In it's simplest form, it allows you to throw away changes
+						you have made locally.
+						```bash
+						$ git status
+						# On branch master
+						#
+						# Changes not staged for commit:
+						#   (use "git add <file>..." to update what will be committed)
+						#   (use "git checkout -- <file>..." to discard changes in working directory)
+						#
+						#       modified:   index.html
+						```
+						```bash
+						$ git reset --hard
+						HEAD is now at 5cc4a26 wr235825: small changes
+						$ git status
+						# On branch master
+						nothing to commit (working directory clean)
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Loose ends...
+						### git reset
+						```bash
+						# You can also change to a different commit before doing
+						# the reset
+						$ git reset --hard HEAD^^
+						HEAD is now at a51452d rewrite the 'begin' function
+						```
+					</div>
+					<div data-markdown class="fragment">
+						```bash
+						# This changes your commit, but leaves your files and index untouched
+						# - changes that you have 'added' are still ready to commit
+						# - changes to files are still ready to add
+						$ git reset --soft HEAD^^
+						```
+					</div>
+					<div data-markdown class="fragment">
+						```bash
+						# This changes your commit and the index, but leaves your filesuntouched
+						# - changes to files are now ready to add, even if you had already added them
+						$ git reset --mixed HEAD^^
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Loose ends...
+						### git stash (hide)
+						You can hide your changes away for later use
+						```bash
+						$ git status
+						# On branch master
+						#
+						#	modified:   super-script.pl
+
+						$ git stash
+						Saved working directory and index state WIP on master: 5cc4a26 added a file
+						```
+						```bash
+						$ git status
+						# On branch master
+						nothing to commit (working directory clean)
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Loose ends...
+						### git stash (restore)
+						Later on, you can restore your changes
+						```bash
+						$ git status
+						# On branch master
+						nothing to commit (working directory clean)
+
+						$ git stash pop
+						# On branch master
+						#
+						# Changes not staged for commit:
+						#   (use "git add <file>..." to update what will be committed)
+						#   (use "git checkout -- <file>..." to discard changes in working directory)
+						#
+						#       modified:   super-script.pl
+						no changes added to commit (use "git add" and/or "git commit -a")
+						Dropped refs/stash@{0} (1a69a03f554a61ea50b3a9e2eb1182608cb50c8e)
+						```
+					</div>
+						<aside class="notes">
+						You can manage multiple stashes if you want....but that gets confusing :(
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Graphical interfaces
+						### A live demo!
+						* Changes with gitk
+						* git gui
+					</div>
+						<aside class="notes">
+						Demonstrate how to:<br>
+						- gitk: change branches<br>
+						- gitk: reset<br>
+						- gitk: making a tag<br>
+						- gitk: integration with git-gui<br>
+						- git gui: making a commit<br>
+						- git gui: amend a commit<br>
+						- <br>
+						- <br>
+						</aside>
+					</section>
+
+					<section>
+						<div data-markdown>
+							##  The End
+							###  Questions?
+						</div>
+						<div class="fragment">
+						<div data-markdown>
+							The official Git site-> http://git-scm.com/about
+
+							Data Assurance-> http://git-scm.com/about/info-assurance
+
+							Cheat sheet-> http://web.archive.org/web/20090419122050/swxruby.org/git-cheat-sheet.pdf
+
+							Github-> http://github.com
+
+							---------------------
+						</div>
+						<small>The presentation content is licensed under a Creative Commons Attribution 3.0 License. (http://creativecommons.org/licenses/by/3.0)</small><br>
+
+						<small>The presentation display is licensed seperately by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						</div>
+					</section>
 				</section>
 
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
+				<section> <!-- Examples -->
+					<section>
+					<div data-markdown>
+						## Problem 1
+						### Fix a production bug
+						We have just discovered that there is a program in production that
+						is not executable - the site is down!
+
+						But we can't deploy the latest code because it's not ready...
+
+						Please find the release tag 'release-1-0' in the repository
+						'https://github.com/catalyst-training/example1.git', and fix the bug!
+					</div>
+						<aside class="notes">
+						Note that these problems are NOT a test - you haven't been given
+						enough information yet<br>
+						It is just some everyday problems that we can work through
+						together...
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 1
+						### Solution
+						```bash
+						# Clone the repository
+						$ cd /tmp
+						$ git clone https://github.com/catalyst-training/example1.git
+						$ cd /tmp/example1
+
+						# Make a new branch (at the point we want to change)
+						$ git checkout -b release-1 release-1-0
+
+						# Fix the problem
+						$ chmod +x program
+						$ git commit -a -m 'make the program executable'
+						$ # git push origin release-1
+						```
+					</div>
+						<aside class="notes">
+						Discuss<br>
+						- The fact that we can't push to that URL<br>
+						- And even if we could, we can't push to the master branch<br>
+						- What would we normally do next (cherry-pick / merge), probably not
+						  rebase<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 2
+						###	Change the past
+						I have just noticed that
+						https://github.com/catalyst-training/example2.git has a dodgey
+						commit.  The commit message is 'Oooh, this smells a bit
+						funny...'.
+
+						Please make it go away
+					</div>
+						<aside class="notes">
+						Once again, you won't be able to push your changes - but that's
+						ok.
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 2
+						###	Solution
+						```bash
+						# Clone the repository
+						$ cd /tmp
+						$ git clone https://github.com/catalyst-training/example2.git
+						$ cd /tmp/example2
+						```
+						```bash
+						# Work out what we want to do
+						$ git log --oneline
+						5c90449 Remove the README file
+						3bec061 Some more stuff
+						3114205 Oooh, this smells a bit funny...
+						510043a Another list - snakes
+						6a624b3 Add a list of lists
+						```
+						```bash
+						# Rewrite the past
+						$ git rebase --interactive 510043a
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 2b
+						###	Change the past, more!
+						Wow, now that I see what you can do to tidy up the past,
+						I realise I want more
+
+						Please add your favourite movie to the list of movies
+						- but make it look like it was added with all the other movies.
+					</div>
+						<aside class="notes">
+						Once again, you won't be able to push your changes - but that's ok.
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 2b
+						###	Solution
+						```bash
+						$ git log --oneline
+						```
+						```bash
+						# This will be more complex, from within this command you'll need to:
+						#   $ echo '* Highlander II' >> lists/movies.txt
+						#   $ git add lists/movies.txt
+						#   $ git commit --amend
+						#   $ git rebase --continue
+						$ git rebase --interactive b9fb9c8
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 3
+						###	Join 2 repositories together
+						We have been working as two teams for a while now, and we have realised
+						that the two teams are so interlinked that we should be all working from
+						the same repository,
+
+						Please join https://github.com/catalyst-training/example1.git and
+						https://github.com/catalyst-training/example2.git together!
+
+						Of course, I would like to keep all files and history from both teams intact.
+					</div>
+						<aside class="notes">
+						This is a true story
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 3
+						###	Solution
+						```bash
+						$ cd /tmp/example2
+
+						# Add another remote!
+						$ git remote add ex1 https://github.com/catalyst-training/example1.git
+
+						# Fetch the commits from example1 into this repo
+						$ git fetch ex1
+
+						# Merge ex1/master into origin/master
+						$ git merge ex1/master
+						$ # git push origin master
+						```
+					</div>
+						<aside class="notes">
+						Discuss<br>
+						- If there were conflicts, we could resolve them, or put the projects
+						  into subdirs first<br>
+						- We could have used the directory /tmp/example1/.git as the URL
+						  for ex1 - that would have allowed us to include our bugfix into the
+						  merge<br>
+						- We still could!, and we could then cherry-pick our bugfix in!<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 4
+						###	Github
+						Please create a github account, then 'fork' the repository
+						'https://github.com/catalyst-training/example3'
+
+						Then make a change, and create a pull request so I can accept your work.
+
+						You can do the whole thing in your browser!
+					</div>
+						<aside class="notes">
+						This will take a bit more time, help with<br>
+						- Github account<br>
+						- SSH keys<br>
+						- fork vs clone<br>
+						- editing inside the browser<br>
+						- pull requests<br>
+						- etc...<br>
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 4b
+						### Git Gui
+						That was great, but now lets try again, using ```git-gui``` to
+						make and push your commit.
+
+						I'll get you started...
+						```bash
+						$ cd /tmp
+						$ git clone https://github.com/YOURNAME/example3.git
+						$ cd /tmp/example3
+						$ echo 'Sean Connery' > $YOURNAME.txt
+						$ git gui
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 5
+						###	Mess with a remote branch
+						Using your github account, push a 'password' to github.
+
+						```bash
+						$ echo 'butter' > password.txt
+						$ git add password.txt
+						$ git commit -m "I may regret this...."
+						$ git push origin master
+						```
+						Now make it go away.
+
+						There are several ways to do this, but is it really gone?
+					</div>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 5
+						###	Solution
+						```bash
+						# Amend the commit and force push
+						$ echo '' > password.txt
+						$ git commit -am "Nothing to see here..."
+						$ git push -f origin master
+						```
+					</div>
+					<div data-markdown class="fragment">
+						```bash
+						# Rewind and force push
+						$ git reset --hard HEAD^
+						$ git push -f origin master
+						```
+					</div>
+					<div data-markdown class="fragment">
+						```bash
+						# Delete the remote branch and push a new one
+						$ git push origin :master
+						$ git reset --hard HEAD^
+						$ git push origin master
+						```
+					</div>
+						<aside class="notes">
+						  Note the odd syntax for deleting a branch!
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 6
+						###	Abort a merge
+						Go to your 'example2' project, and try to merge in the 'kittens'
+						branch...
+						```bash
+						# Create a conflict
+						$ cd /tmp/example2
+						$ git merge origin/kittens
+						$ git status
+						```
+						Oh, no, there are conflicts!  Get me out of here!
+					</div>
+						<aside class="notes">
+						or a rebase ...
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 6
+						###	Solution
+						```bash
+						# Too hard, I'll try again some other time
+						$ git merge --abort
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 6b
+						### Use tools to try to resolve a conflict
+						Go to your 'example2' project, and try to merge in the 'kittens'
+						branch...
+						```bash
+						# Create a conflict
+						$ cd /tmp/example2
+						$ git merge origin/kittens
+						$ git status
+						```
+						There are conflicts, but I think you can handle them!
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 6b
+						###	Solution
+						```bash
+						# Let's give it a go...
+						$ git mergetool
+						```
+					</div>
+						<aside class="notes">
+						   Also, we should try this again after installing 'meld'
+						</aside>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 7
+						### Throw away your changes
+						What if you make some changes, and you want to get back to safety?
+						```bash
+						$ cd /tmp/example2
+						$ echo 'A dragon will fix it' > lists/links.txt
+						$ rm lists/movies.txt
+						$ git status
+						```
+					</div>
+					</section>
+					<section>
+					<div data-markdown>
+						## Problem 7
+						###	Solution
+						```bash
+						$ git reset --hard
+						```
+					</div>
+						<aside class="notes">
+						   Could we use git-reset? git-checkout? gitk? git-clean?
+						</aside>
+					</section>
+					<section>
+						<div data-markdown>
+							##  The End
+							###  That's really it this time
+						</div>
+						<aside class="notes">
+						Extra things to discuss, to fill in time:<br>
+						- Setting up a bare repo<br>
+						- git add/commit -p<br>
+						- git bisect<br>
+						- git reflog<br>
+						</aside>
+					</section>
 				</section>
-
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
-
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
-
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
-
 			</div>
 
-		</div>
+            <div class="footer">
+                <div class="scarf">
+                    <div class="scarf-orange"></div>
+                    <div class="scarf-yellow"></div>
+                    <div class="scarf-blue"></div>
+                    <div class="scarf-green"></div>
+                </div>
+                <div class="footer-inner">
+                    <div>
+                        <!-- NOTE: use only one of these. open-source-technologists is the standard -->
+                        <p class="open-source-technologists">open source technologists</p>
+                        <!-- <p class="freedom-to-innovate">freedom to innovate</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
 
-		<script>
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+        <script>
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
 
-		</script>
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
 
-	</body>
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
 </html>
