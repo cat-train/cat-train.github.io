@@ -62,6 +62,7 @@
 			<div class="slides">
 				<section> <!-- Introduction -->
 					<section>
+						<h1 class="catalyst-logo">Catalyst</h1>
 						<h2>Git</h2>
 						Revision control for humans
 						<!-- Well lit room? Light theme
@@ -167,24 +168,22 @@
 						```
 						Note:
 						Pause here to explain the way we are showing commands
-						- talk about '$' as the prompt, etc
+
+						* talk about '$' as the prompt, etc
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Installing (alternative OS)
-						* Go to [git-scm.org](http://git-scm.org "The home of git") 
+						* Go to [git-scm.org](http://git-scm.org "The home of git")
 						* Find the [Download link](http://git-scm.com/downloads "install instructions")
 						* Follow the intrsuctions for your OS
 						* For MS Win, you are looking for "Git BASH"
-					</div>
 					</section>
 				</section>
 
 
 
 				<section> <!-- Init -->
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Create a new repository
 						```git init```
 						```bash
@@ -206,21 +205,16 @@
 						#
 						nothing to commit (create/copy files and use "git add" to track)
 						```
-					</div>
 					</section>
-					<section>
-						<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### What did that do?
 						Git is just a bit different from other revision control systems
 						![overview](images/local-remote-small.png "overview")
 
-						</div>
-						<aside class="notes">
-							The 'staging area' is often called the 'index'
-						</aside>
+						Note:
+						The 'staging area' is often called the 'index'
 					</section>
-					<section>
-						<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Getting help
 						```bash
 						# git help COMMAND
@@ -229,16 +223,13 @@
 						# man git-COMMAND
 						$ man git-status
 						```
-						</div>
-						<aside class="notes">
-							The COMMANDs we have used so far are 'init' and 'status', so....
-						</aside>
+						Note:
+						The COMMANDs we have used so far are 'init' and 'status', so....
 					</section>
 				</section>
 
 				<section> <!-- Configuring -->
-					<section>
-						<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Global configuration settings
 						Before we start, we need to tell git who you are
 						```bash
@@ -250,25 +241,20 @@
 						# If you think nano``` is crap, you can choose vim, or gedit
 						$ git config --global core.editor gedit
 						```
-						</div>
 					</section>
-					<section>
-						<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Project configuration settings
 						This will tell Git you like to see pretty colours on the screen
 						```bash
 						$ git config color.ui auto
 						$ git config --global log.decorate full
 						```
-						</div>
-						<aside class="notes">
+						Note:
 						These settings will override the global settings
 
 						- but only within the current repository (which is /tmp/test)
-						</aside>
 					</section>
-					<section>
-						<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Accessing the configuration settings
 						Global data is stored in ```$HOME/.gitconfig```
 
@@ -282,13 +268,11 @@
 						```bash
 						$ gedit ~/.gitconfig /tmp/test/.git/config
 						```
-						</div>
 					</section>
 				</section>
 
 				<section> <!-- Basic use ... -->
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Managing Files
 						Make some changes...
 						```bash
@@ -306,10 +290,8 @@
 						#	super-script.pl
 						nothing added to commit but untracked files present (use "git add" to track)
 						```
-					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Tell Git to track those files
 						```git add```
 						```bash
@@ -327,13 +309,10 @@
 						#	new file: super-script.pl
 						#
 						```
-					</div>
-						<aside class="notes">
+						Note:
 						This actually adds the file to the 'index'
-						</aside>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Change an existing file
 						Make some changes...
 						```bash
@@ -357,10 +336,8 @@
 						#	modified:   super-script.pl
 						#
 						```
-					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### See what you have done
 						```git diff```
 						```bash
@@ -370,10 +347,8 @@
 						@@ -0,0 +1 @@
 						+DATA
 						```
-					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Change an existing file
 						We need to tell Git that you intend to commit the checked out
 						version, with ```git add```
@@ -392,10 +367,8 @@
 						#	new file:   super-script.pl
 						#
 						```
-					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Committing changes
 						Commit your work with ```git commit```
 						```bash
@@ -406,16 +379,13 @@
 						```
 						You will be stuck in an editor so you can input a commit message
 						Normally, you WILL make your commit message meaningful!
-					</div>
-						<aside class="notes">
+						Note:
 						We have told git about our changes, but
-						we haven't actually committed anything yet.<br>
+						we haven't actually committed anything yet.
 
 						This is deliberate - so you can build up more complex commits.
-						</aside>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Committing changes - some options
 						You don't have to ```git add``` all your changes manually
 						```bash
@@ -434,10 +404,8 @@
 						```bash
 						$ git commit -m 'commit message goes here'
 						```
-					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Managing Files - Permissions
 						Oops, that file isn't executable
 						```bash
@@ -449,10 +417,8 @@
 						0 files changed, 0 insertions(+), 0 deletions(-)
 						mode change 100644 => 100755 super-script.pl
 						```
-					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Managing Files - Move
 						To rename a file use ```git mv```
 						```bash
@@ -475,10 +441,8 @@
 						1 files changed, 0 insertions(+), 0 deletions(-)
 						rename super-script.pl => silly-script.pl (100%)
 						```
-					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Managing Files - Delete
 						To delete a file use ```git rm```
 						```bash
@@ -496,17 +460,15 @@
 						#	deleted: another-script.pl
 						#
 						```
-						<li>And commit the change</li>
+						And commit the change
 						```bash
 						$ git commit
 						Created commit bd10c5f: Remove another-script.pl
 						0 files changed, 0 insertions(+), 0 deletions(-)
 						delete mode 100644 another-script.pl
 						```
-					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Managing Files - ignore them
 						```bash
 						# Let's imagine your editor keeps creating '.swp' files
@@ -520,10 +482,8 @@
 						#
 						#       silly-script.pl.bak
 						```
-					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Managing Files - ignore them
 						```bash
 						# Add a line that conatins '*.swp'
@@ -542,25 +502,16 @@
 						$ git add .gitignore
 						$ git commit -m 'Created a .gitignore file'
 						```
-					</div>
-						<aside class="notes">
-						You can put a different .gitignore file in each directory<br>
-						...or stick to one in the root of your project<br>
-						</aside>
+						Note:
+						You can put a different .gitignore file in each directory
+						...or stick to one in the root of your project
 					</section>
-					<section>
-						<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Ignoring files Locally vs. Globally
 						* Adding things to .gitignore will ignore them for all users!
 						* Instead you can ignore things locally using .git/info/exclude.
-						</div>
-						<aside class="notes">
-						You can put a different .gitignore file in each directory<br>
-						...or stick to one in the root of your project<br>
-						</aside>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Tags
 						Tags work pretty much like you would expect.
 						They allow you to mark specific points in
@@ -576,19 +527,17 @@
 						$ git show v1.0
 						$ git show v1.0-production
 						```
-					</div>
-						<aside class="notes">
-						2 types of tags: lightweight and annotated<br>
-						Tags don't get shared, by default.<br>
-						<br>
-						Also, explain that you can git show anything (tag, branch, sha1, etc).<br>
-						</aside>
+						Note:
+						2 types of tags: lightweight and annotated
+
+						Tags don't get shared, by default.
+
+						Also, explain that you can git show anything (tag, branch, sha1, etc).
 					</section>
 				</section>
 
 				<section> <!-- Viewing changes ... -->
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Change Logs
 						Use ```git log```
 						```bash
@@ -612,16 +561,13 @@
 							Add a message.
 						```
 						By default the output is piped into $PAGER
-					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Change Logs
 						You can also specify a file or directory
 						```bash
 						$ git log silly-script.pl 
 						```
-					</div>
 					</section>
 
 					<section>
@@ -636,31 +582,28 @@
 						9c08faf4  (Bad Coder 2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
 						```
 					</div>
-						<span class="fragment">Who is this Bad Coder fella?</span>
-						<div class="fragment" data-markdown>
+					<span class="fragment">Who is this Bad Coder fella?</span>
+					<div class="fragment" data-markdown>
 						Better remembered as ```git blame```
 						```bash
 						$ git blame silly-script.pl
 						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
-						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 2) 
+						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 2)
 						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 3) print "silly script\n";
 						9c08faf4 (Bad Coder   2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
 						```
 					</div>
 					</section>
 
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Change logs - GUI
 						Not strictly change logs, but...  gitk / qgit / gitg / etc
 						![image](images/gitk.png "gitk")
-					</div>
 					</section>
 				</section>
 
 				<section> <!-- Concepts 2 ... -->
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Some more concepts - commits
 						* It is important to understand that git thinks in ```commits```
 						* Each commit refers to a previous commit (its parent)
@@ -669,7 +612,6 @@
 							* or by a number of things that might refer to them
 						* ```gitk``` lets you visualise the commit history, which
 							helps a lot
-					</div>
 					</section>
 					<section> 
 						<h3>Commits are....</h3>
@@ -678,8 +620,7 @@
 				</section>
 
 				<section> <!-- branching and merging -->
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Branching - List
 						To show branches use ```git branch```
 						```bash
@@ -689,14 +630,11 @@
 						Only one branch, called ```master```
 
 						The '*' indicates that it is your current branch
-					</div>
-						<aside class="notes">
-							You can also use 'git status'
-						</aside>
+						Note:
+						You can also use 'git status'
 					</section>
 
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Branching - Create
 						Use ```git branch``` (or ```git checkout -b```)
 						```bash
@@ -709,15 +647,12 @@
 						  master
 						* new-branch
 						```
-					</div>
-						<aside class="notes">
+						Note:
 						mention that 'git checkout' is a convenience interface
 						...it does several things in one step
-						</aside>
 					</section>
 
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Branching - Create somewhere else
 						By default a new branch will be created at the commit you
 						already have checked out
@@ -733,17 +668,15 @@
 						  master
 						  new-branch
 						```
-					</div>
-						<aside class="notes">
-						Here, the checkout command is actually doing 3 things<br>
-						- go the the master branch<br>
-						- make a branch there (callled 'another-branch')<br>
+						Note:
+						Here, the checkout command is actually doing 3 things
+
+						- go the the master branch
+						- make a branch there (callled 'another-branch')
 						- checkout the 'another-branch' branch
-						</aside>
 					</section>
 
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Branching - Change Branch
 						Use ```git checkout```
 						```bash
@@ -756,23 +689,22 @@
 						  master
 						* new-branch
 						```
+						Note:
 						Don't forget to see how this is shown in ```gitk```
-					</div>
 					</section>
 
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Branching - What's the deal?
 						```bash
 						# Make a change to a file (and commit that change)
-						$ echo "... From new-branch" >> silly-script.pl 
-						$ git commit silly-script.pl 
+						$ echo "... From new-branch" >> silly-script.pl
+						$ git commit silly-script.pl
 						Created commit a6ed2cf: From new-branch
 						1 files changed, 1 insertions(+), 0 deletions(-)
 						```
 						```bash
 						# Check the file..
-						$ cat silly-script.pl 
+						$ cat silly-script.pl
 						DATA
 						... From new-branch
 						```
@@ -783,27 +715,23 @@
 						```
 						```bash
 						# The text we added ain't there
-						$ cat silly-script.pl 
+						$ cat silly-script.pl
 						DATA
 						```
-					</div>
 					</section>
 
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Branching - Why?
 						* Many (most) projects have a branch for each release
 						* Branches are useful for experimental features / refactoring
 						* Branches happen (without even trying) when several people try
 						  to work on the same project - but I'll explain that soon ;)
-					</div>
-						<aside class="notes">
-							It is useful to think of branches as an 'alternative reality'
-						</aside>
+
+						Note:
+						It is useful to think of branches as an 'alternative reality'
 					</section>
 
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Merging - Simple Case
 						You should now be on the master branch
 						```bash
@@ -824,16 +752,14 @@
 						If there are no conflicts, this may make a new commit object
 
 						use ```gitk``` to see what happened
-					</div>
-						<aside class="notes">
-						* We are merging changes *IN*, from somewhere else<br>
-						* explain the fast forward bit<br>
-						* talk about merges being line by line, so not for binary data
-						</aside>
+
+						Note:
+						- We are merging changes *IN*, from somewhere else
+						- explain the fast forward bit
+						- talk about merges being line by line, so not for binary data
 					</section>
 
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Merging - get ready for a conflict
 						Conflicts are more difficult (lets create one)
 						```bash
@@ -850,15 +776,9 @@
 						# will be a problem!
 						$ git checkout master
 						```
-					</div>
-						<aside class="notes">
-							Sorry about the wall of text!
-						Also, explain the fast forward bit
-						</aside>
 					</section>
 
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Merging - you can't do that
 						If there is a conflict then git will stop and make you fix it.
 						```bash
@@ -885,19 +805,17 @@
 						different value for data
 						>>>>>>> new-branch:silly-script.pl
 						```
-					</div>
 					</section>
 
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Merging - Fixing conflicts
 						Lots of tools to help fix things up.  Hand edit, xxdiff,
 						smartmerge, etc
 
 						We'll just fix it by editing the file
 						```bash
-						$ gedit silly-script.pl 
-						$ cat silly-script.pl 
+						$ gedit silly-script.pl
+						$ cat silly-script.pl
 						New, different value for data
 						```
 						But Git still won't allow us to continue...
@@ -908,15 +826,13 @@
 						Please, fix them up in the work tree, and then use 'git add/rm &lt;file>' as
 						appropriate to mark resolution and make a commit, or use 'git commit -a'.
 						```
-					</div>
 					</section>
 
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Merging - Success at last
 						We need to tell Git that it has been fixed before we commit
 						```bash
-						$ git add silly-script.pl 
+						$ git add silly-script.pl
 						$ git commit
 						Created commit a411f2a: Merge branch 'new-branch'
 						```
@@ -929,17 +845,14 @@
 
 							silly-script.pl
 						```
-					</div>
 					</section>
 
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Merging - How does it look?
 						Looking at the trees in gitk helps you understand stuff.
 						```bash
 						$ gitk
 						```
-					</div>
 					</section>
 				</section>
 
@@ -970,8 +883,7 @@
 						...but normally, you want to join in with an existing project
 					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Clone an existing repository
 						In practise, you're more likely to use ```git clone```.
 
@@ -992,16 +904,15 @@
 						$ cd git-basic
 						```
 						```bash
-						$ ls 
+						$ ls
 						```
 						```bash
-						$ gitk 
+						$ gitk
 						```
-					</div>
-						<aside class="notes">
-						git remote<br>
-						git remote -v<br>
-						</aside>
+						Note:
+						git remote
+
+						git remote -v
 					</section>
 					<section>
 					<div data-markdown>
@@ -1035,8 +946,7 @@
 						repositories were the last time you connected to them.
 						</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Origin
 						You can see all branches (including the remote ones) with the
 						```git branch``` command
@@ -1046,13 +956,10 @@
 						* master
 						  remotes/origin/master
 						```
-						</div>
-						<aside class="notes">
+						Note:
 						you don't need to type 'remotes' to refer to these branches
-						</aside>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Other remotes
 						You can manipulate your view of other repositories with the ```git remote```
 						command
@@ -1070,13 +977,12 @@
 						 * [new branch]      gh-pages   -> duplicate/gh-pages
 						 * [new branch]      master     -> duplicate/master
 						```
-						</div>
-						<aside class="notes">
-						origin is not special, except that<br>
-						- it is created by default when you clone a repository<br>
-						- some commands (like fetch) assume you mean origin if you don't specify the remote<br>
-						- etc, etc<br>
-						</aside>
+						Note:
+						origin is not special, except that:
+
+						- it is created by default when you clone a repository
+						- some commands (like fetch) assume you mean origin if you don't specify the remote
+						- etc, etc
 					</section>
 				</section>
 
@@ -1165,8 +1071,7 @@
 					<img src="images/lastthing6.png" alt="">
 					</section>
 
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Now we can try it out
 						```bash
 						# Clone a new repository
@@ -1189,23 +1094,23 @@
 						$ git fetch
 						$ git merge origin/master
 						```
-					</div>
-						<aside class="notes">
-						Explain What is going on with "origin" and "master" here:<br>
-						- git push origin master<br>
-						- git merge origin/master <br>
-						Also introduce the idea that commands have defaults:<br>
-						- git push ... git push origin master<br>
-						- <br>
-						- <br>
-						- <br>
-						</aside>
+						Note:
+						Explain What is going on with "origin" and "master" here:
+
+						- git push origin master
+						- git merge origin/master
+
+						Also introduce the idea that commands have defaults:
+
+						- git push ... git push origin master
+						-
+						-
+						-
 					</section>
 				</section>
 
 				<section> <!-- Stuff we have missed ... -->
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Changing your commits
 						You can 'change' the most recent commit using ```git commit```
 						```bash
@@ -1213,21 +1118,22 @@
 						$ git commit --amend
 						```
 						This is quite a big deal...
-					</div>
-						<aside class="notes">
-						Will someone please pull me up on this?!<br>
-						Explain how this works<br>
-						- That you are not changing anything here<br>
-						- just making a new commit which is quite like the old one<br>
-						- and then moving the labels around<br>
-						Warning:<br>
-						- Do not change commits that exist outside your repository.<br>
+						Note:
+						Will someone please pull me up on this?!
+
+						Explain how this works
+
+						- That you are not changing anything here
+						- just making a new commit which is quite like the old one
+						- and then moving the labels around
+
+						Warning:
+
+						- Do not change commits that exist outside your repository.
 						- If you do, people will hate you, and you'll be scorned
-						  by friends and family.<br>
-						</aside>
+						  by friends and family.
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Copy a commit
 						You can copy a commit from one branch to another
 
@@ -1237,15 +1143,13 @@
 						```bash
 						$ git cherry-pick e43a6fd3e94888d76779ad79fb568ed180e5fcdf
 						```
-					</div>
-						<aside class="notes">
-						Note that the commit created will look the same, but have a
-						different commit id<br>
-						Note that the cherry-pick can fail, if there are conflicts<br>
-						</aside>
+						Note:
+						The commit created will look the same, but have a
+						different commit id
+
+						Note that the cherry-pick can fail, if there are conflicts
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Undo a commit
 						You can undo a previous commit with ```git revert```.
 
@@ -1262,14 +1166,11 @@
 						d7a1ee454168081227ee82c5f11bb08f77e2643d Unrelated change
 						e43a6fd3e94888d76779ad79fb568ed180e5fcdf Introduce bug
 						```
-					</div>
-						<aside class="notes">
+						Note:
 						When you revert the commit, you get dropped into an editor
-						in case you want to can edit the commit message..<br>
-						</aside>
+						in case you want to can edit the commit message..
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Getting serious with copying commits
 						As an alternative to merging, you can use ```git rebase```.
 
@@ -1280,45 +1181,37 @@
 						```bash
 						$ git rebase origin/master
 						```
-					</div>
-						<aside class="notes">
-						Draw what this does, contrast it with a merge<br>
-						</aside>
+						Note:
+						Draw what this does, contrast it with a merge
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Rebase vs. Merge
-						#### History is an audit trail
+						> One point of view on this is that your repository's commit
+						> history is a record of what actually happened. It's a historical
+						> document, valuable in its own right, and shouldn't be tampered
+						> with. From this angle, changing the commit history is almost
+						> blasphemous; you're lying about what actually transpired. So
+						> what if there was a messy series of merge commits? That's how
+						> it happened, and the repository should preserve that for
+						> posterity.
 
-						One point of view on this is that your repository's commit
-						history is a record of what actually happened. It's a historical
-					    document, valuable in its own right, and shouldn't be tampered
-						with. From this angle, changing the commit history is almost
-						blasphemous; you're lying about what actually transpired. So
-						what if there was a messy series of merge commits? That's how
-						it happened, and the repository should preserve that for
-						posterity.
-					</div>
+						Note:
+						History is an audit trail
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Rebase vs. Merge
-						#### History is a story
+						> The opposing point of view is that the commit history is the
+						> story of how your project was made. You wouldn't publish the
+						> first draft of a book, and the manual for how to maintain your
+						> software deserves careful editing. This is the camp that uses
+						> tools like rebase and filter-branch to tell the story in the
+						> way that's best for future readers.
+						Note:
+						History is a story
 
-						The opposing point of view is that the commit history is the
-						story of how your project was made. You wouldn't publish the
-						first draft of a book, and the manual for how to maintain your
-						software deserves careful editing. This is the camp that uses
-						tools like rebase and filter-branch to tell the story in the
-						way that's best for future readers.
-					</div>
-						<aside class="notes">
-						Repeat:<br>
-						You should not change commits that have been shared with others
-						</aside>
+						> You should not change commits that exist outside your repository
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### A more advanced rebase
 						```bash
 						$ git rebase --interactive origin/master
@@ -1345,13 +1238,11 @@
 						# However, if you remove everything, the rebase will be aborted.
 						#
 						```
-					</div>
 					</section>
 				</section>
 
 				<section> <!-- Wrap up -->
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Loose ends...
 						#### git reset
 						In it's simplest form, it allows you to throw away changes
@@ -1373,7 +1264,6 @@
 						# On branch master
 						nothing to commit (working directory clean)
 						```
-					</div>
 					</section>
 					<section>
 					<div data-markdown>
@@ -1396,7 +1286,7 @@
 					</div>
 					<div data-markdown class="fragment">
 						```bash
-						# This changes your commit and the index, but leaves your filesuntouched
+						# This changes your commit and the index, but leaves your files untouched
 						# - changes to files are now ready to add, even if you had already added them
 						$ git reset --mixed HEAD^^
 						```
@@ -1423,8 +1313,7 @@
 						```
 					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Loose ends...
 						#### git stash (restore)
 						Later on, you can restore your changes
@@ -1444,29 +1333,25 @@
 						no changes added to commit (use "git add" and/or "git commit -a")
 						Dropped refs/stash@{0} (1a69a03f554a61ea50b3a9e2eb1182608cb50c8e)
 						```
-					</div>
-						<aside class="notes">
+						Note:
 						You can manage multiple stashes if you want....but that gets confusing :(
-						</aside>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Graphical interfaces
 						#### A live demo!
 						* Changes with gitk
-						* git gui
-					</div>
-						<aside class="notes">
-						Demonstrate how to:<br>
-						- gitk: change branches<br>
-						- gitk: reset<br>
-						- gitk: making a tag<br>
-						- gitk: integration with git-gui<br>
-						- git gui: making a commit<br>
-						- git gui: amend a commit<br>
-						- <br>
-						- <br>
-						</aside>
+						* Using git gui
+
+						Note:
+						Demonstrate how to:
+
+						- gitk: change branches
+						- gitk: reset
+						- gitk: making a tag
+						- gitk: integration with git-gui
+						- git gui: making a commit
+						- git gui: amend a commit
+						-
 					</section>
 
 					<section>
@@ -1494,8 +1379,7 @@
 				</section>
 
 				<section> <!-- Examples -->
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 1
 						#### Fix a production bug
 						We have just discovered that there is a program in production that
@@ -1505,16 +1389,14 @@
 
 						Please find the release tag 'release-1-0' in the repository
 						'https://github.com/catalyst-training/example1.git', and fix the bug!
-					</div>
-						<aside class="notes">
+						Note:
 						Note that these problems are NOT a test - you haven't been given
-						enough information yet<br>
+						enough information yet
+
 						It is just some everyday problems that we can work through
 						together...
-						</aside>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 1
 						#### Solution
 						```bash
@@ -1531,17 +1413,14 @@
 						$ git commit -a -m 'make the program executable'
 						$ # git push origin release-1
 						```
-					</div>
-						<aside class="notes">
-						Discuss<br>
-						- The fact that we can't push to that URL<br>
-						- And even if we could, we can't push to the master branch<br>
-						- What would we normally do next (cherry-pick / merge), probably not
-						  rebase<br>
-						</aside>
+						Note:
+						Discuss
+						* The fact that we can't push to that URL
+						* And even if we could, we can't push to the master branch
+						* What would we normally do next (cherry-pick / merge),
+						  probably not rebase
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 2
 						####	Change the past
 						I have just noticed that
@@ -1550,11 +1429,9 @@
 						funny...'.
 
 						Please make it go away
-					</div>
-						<aside class="notes">
+						Note:
 						Once again, you won't be able to push your changes - but that's
 						ok.
-						</aside>
 					</section>
 					<section>
 					<div data-markdown>
@@ -1581,8 +1458,7 @@
 						```
 					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 2b
 						####	Change the past, more!
 						Wow, now that I see what you can do to tidy up the past,
@@ -1590,10 +1466,8 @@
 
 						Please add your favourite movie to the list of movies
 						- but make it look like it was added with all the other movies.
-					</div>
-						<aside class="notes">
+						Note:
 						Once again, you won't be able to push your changes - but that's ok.
-						</aside>
 					</section>
 					<section>
 					<div data-markdown>
@@ -1612,8 +1486,7 @@
 						```
 					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 3
 						####	Join 2 repositories together
 						We have been working as two teams for a while now, and we have realised
@@ -1624,13 +1497,10 @@
 						https://github.com/catalyst-training/example2.git together!
 
 						Of course, I would like to keep all files and history from both teams intact.
-					</div>
-						<aside class="notes">
+						Note:
 						This is a true story
-						</aside>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 3
 						####	Solution
 						```bash
@@ -1646,19 +1516,18 @@
 						$ git merge ex1/master
 						$ # git push origin master
 						```
-					</div>
-						<aside class="notes">
-						Discuss<br>
-						- If there were conflicts, we could resolve them, or put the projects
-						  into subdirs first<br>
-						- We could have used the directory /tmp/example1/.git as the URL
-						  for ex1 - that would have allowed us to include our bugfix into the
-						  merge<br>
-						- We still could!, and we could then cherry-pick our bugfix in!<br>
-						</aside>
+						Note:
+						Discuss
+
+						* If there were conflicts, we could resolve them, or put the
+						projects into subdirs first
+
+						* We could have used the directory /tmp/example1/.git as the URL
+						  for ex1 - that would have allowed us to include our bugfix
+						  into the merge
+						* We still could!, and we could then cherry-pick our bugfix in!
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 4
 						####	Github
 						Please create a github account, then 'fork' the repository
@@ -1667,19 +1536,16 @@
 						Then make a change, and create a pull request so I can accept your work.
 
 						You can do the whole thing in your browser!
-					</div>
-						<aside class="notes">
-						This will take a bit more time, help with<br>
-						- Github account<br>
-						- SSH keys<br>
-						- fork vs clone<br>
-						- editing inside the browser<br>
-						- pull requests<br>
-						- etc...<br>
-						</aside>
+						Note:
+						This will take a bit more time, help with
+						- Github account
+						- SSH keys
+						- fork vs clone
+						- editing inside the browser
+						- pull requests
+						- etc...
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 4b
 						#### Git Gui
 						That was great, but now lets try again, using ```git-gui``` to
@@ -1693,10 +1559,8 @@
 						$ echo 'Sean Connery' > $YOURNAME.txt
 						$ git gui
 						```
-					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 5
 						####	Mess with a remote branch
 						Using your github account, push a 'password' to github.
@@ -1710,9 +1574,6 @@
 						Now make it go away.
 
 						There are several ways to do this, but is it really gone?
-					</div>
-						<aside class="notes">
-						</aside>
 					</section>
 					<section>
 					<div data-markdown>
@@ -1744,8 +1605,7 @@
 						  Note the odd syntax for deleting a branch!
 						</aside>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 6
 						####	Abort a merge
 						Go to your 'example2' project, and try to merge in the 'kittens'
@@ -1757,10 +1617,8 @@
 						$ git status
 						```
 						Oh, no, there are conflicts!  Get me out of here!
-					</div>
-						<aside class="notes">
+						Note:
 						or a rebase ...
-						</aside>
 					</section>
 					<section>
 					<div data-markdown>
@@ -1787,18 +1645,15 @@
 						There are conflicts, but I think you can handle them!
 					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 6b
 						####	Solution
 						```bash
 						# Let's give it a go...
 						$ git mergetool
 						```
-					</div>
-						<aside class="notes">
-						   Also, we should try this again after installing 'meld'
-						</aside>
+						Note:
+						Also, we should try this again after installing 'meld'
 					</section>
 					<section>
 					<div data-markdown>
@@ -1813,30 +1668,24 @@
 						```
 					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 7
 						#### Solution
 						```bash
 						$ git reset --hard
 						```
-					</div>
-						<aside class="notes">
-						   Could we use git-reset? git-checkout? gitk? git-clean?
-						</aside>
+						Note:
+						Could we use git-reset? git-checkout? gitk? git-clean?
 					</section>
-					<section>
-						<div data-markdown>
-							###  The End
-							#### That's really it this time
-						</div>
-						<aside class="notes">
-						Extra things to discuss, to fill in time:<br>
-						- Setting up a bare repo<br>
-						- git add/commit -p<br>
-						- git bisect<br>
-						- git reflog<br>
-						</aside>
+					<section data-markdown data-separator-notes="^Note:">
+						###  The End
+						#### That's really it this time
+						Note:
+						Extra things to discuss, to fill in time:
+						- Setting up a bare repo
+						- git add/commit -p
+						- git bisect
+						- git reflog
 					</section>
 				</section>
 			</div>
