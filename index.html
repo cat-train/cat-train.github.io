@@ -62,14 +62,14 @@
 			<div class="slides">
 				<section> <!-- Introduction -->
 					<section>
-						<h1>Git</h1>
-						<h2>Revision control for humans</h2>
+						<h2>Git</h2>
+						Revision control for humans
+						<!-- Well lit room? Light theme
 						<hr>
 						<small>
-						<!-- Well lit room? Light theme -->
 						Theme: <a href="?theme=moon">Dark</a>
 							/ <a href="?theme=solarized">Light</a>
-						</small>
+						</small> -->
 						<aside class="notes">
 							# Make sure the server has a working SSH daemon running
 							<br>
@@ -87,7 +87,7 @@
 						</aside>
 					</section>
 					<section data-markdown>
-						## Introduction
+						### Introduction
 						* The format of this course is mostly a tutorial
 						  (with some lecturing thrown in)
 						* The tutorial uses a linux command line, but git
@@ -101,22 +101,24 @@
 
 				<section> <!-- Why -->
 					<section data-markdown>
-						## Why use revision control software?
-						#### You (should) want it if...
+						### Why use revision control software?
+						You (should) want it if...
+
 						* You are sick of keeping *.bak files
 						* You want to look at how something used to be
 						* You want to know why something changed
 						* You want to review what you have just changed
 					</section>
 					<section data-markdown>
-						## Why use revision control software?
-						#### You need it if...
+						### Why use revision control software?
+						You need it if...
+
 						* You are working with other people who use it
 						* You want to maintain multiple versions of the same thing
 						* You need to make a single change which covers several files - and keep things in sync
 					</section>
 					<section data-markdown>
-						## What does revision control provide?
+						### What does revision control provide?
 						* Track changes (to almost anything)
 						* View history
 						* Look back to find when bugs were created
@@ -126,7 +128,7 @@
 						* Backups of your important stuff
 					</section>
 					<section data-markdown>
-						## What options are there?
+						### What options are there?
 						* RCS
 						* CVS
 						* Subversion
@@ -136,7 +138,7 @@
 						* ...
 					</section>
 					<section data-markdown>
-						## Why should you use Git?
+						### Why should you use Git?
 						* It is fast
 						* Branching is trivial
 						* Merging of branches actually makes sense
@@ -150,7 +152,7 @@
 
 				<section> <!-- Installing -->
 					<section data-markdown data-separator-notes="^Note:">
-						## Installing
+						### Installing
 						```bash
 						# Required
 						$ sudo aptitude install git
@@ -169,7 +171,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Installing (alternative OS)
+						### Installing (alternative OS)
 						* Go to [git-scm.org](http://git-scm.org "The home of git") 
 						* Find the [Download link](http://git-scm.com/downloads "install instructions")
 						* Follow the intrsuctions for your OS
@@ -183,7 +185,7 @@
 				<section> <!-- Init -->
 					<section>
 					<div data-markdown>
-						## Create a new repository
+						### Create a new repository
 						```git init```
 						```bash
 						$ mkdir /tmp/test
@@ -208,7 +210,7 @@
 					</section>
 					<section>
 						<div data-markdown>
-						## What did that do?
+						### What did that do?
 						Git is just a bit different from other revision control systems
 						![overview](images/local-remote-small.png "overview")
 
@@ -219,7 +221,7 @@
 					</section>
 					<section>
 						<div data-markdown>
-						## Getting help
+						### Getting help
 						```bash
 						# git help COMMAND
 						$ git help status
@@ -237,7 +239,7 @@
 				<section> <!-- Configuring -->
 					<section>
 						<div data-markdown>
-						## Global configuration settings
+						### Global configuration settings
 						Before we start, we need to tell git who you are
 						```bash
 						# But it's OK to lie....
@@ -252,7 +254,7 @@
 					</section>
 					<section>
 						<div data-markdown>
-						## Project configuration settings
+						### Project configuration settings
 						This will tell Git you like to see pretty colours on the screen
 						```bash
 						$ git config color.ui auto
@@ -267,7 +269,7 @@
 					</section>
 					<section>
 						<div data-markdown>
-						## Accessing the configuration settings
+						### Accessing the configuration settings
 						Global data is stored in ```$HOME/.gitconfig```
 
 						Project data is stored in ```$PROJECT/.git/config```
@@ -287,7 +289,7 @@
 				<section> <!-- Basic use ... -->
 					<section>
 					<div data-markdown>
-						## Managing Files
+						### Managing Files
 						Make some changes...
 						```bash
 						$ touch super-script.pl
@@ -308,7 +310,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Tell Git to track those files
+						### Tell Git to track those files
 						```git add```
 						```bash
 						$ git add super-script.pl 
@@ -332,7 +334,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Change an existing file
+						### Change an existing file
 						Make some changes...
 						```bash
 						$ echo DATA > super-script.pl
@@ -359,7 +361,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## See what you have done
+						### See what you have done
 						```git diff```
 						```bash
 						$ git diff
@@ -372,7 +374,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Change an existing file
+						### Change an existing file
 						We need to tell Git that you intend to commit the checked out
 						version, with ```git add```
 						```bash
@@ -394,7 +396,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Committing changes
+						### Committing changes
 						Commit your work with ```git commit```
 						```bash
 						$ git commit super-script.pl 
@@ -414,7 +416,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Committing changes - some options
+						### Committing changes - some options
 						You don't have to ```git add``` all your changes manually
 						```bash
 						# Add <file>, and then commit
@@ -436,7 +438,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Managing Files - Permissions
+						### Managing Files - Permissions
 						Oops, that file isn't executable
 						```bash
 						$ chmod 755 super-script.pl 
@@ -451,7 +453,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Managing Files - Move
+						### Managing Files - Move
 						To rename a file use ```git mv```
 						```bash
 						$ git mv super-script.pl silly-script.pl
@@ -477,7 +479,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Managing Files - Delete
+						### Managing Files - Delete
 						To delete a file use ```git rm```
 						```bash
 						# This won't actually work, because we haven't
@@ -505,7 +507,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Managing Files - ignore them
+						### Managing Files - ignore them
 						```bash
 						# Let's imagine your editor keeps creating '.swp' files
 						$ touch silly-script.pl.bak
@@ -522,7 +524,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Managing Files - ignore them
+						### Managing Files - ignore them
 						```bash
 						# Add a line that conatins '*.swp'
 						$ gedit .gitignore
@@ -548,7 +550,7 @@
 					</section>
 					<section>
 						<div data-markdown>
-						## Ignoring files Locally vs. Globally
+						### Ignoring files Locally vs. Globally
 						* Adding things to .gitignore will ignore them for all users!
 						* Instead you can ignore things locally using .git/info/exclude.
 						</div>
@@ -559,7 +561,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Tags
+						### Tags
 						Tags work pretty much like you would expect.
 						They allow you to mark specific points in
 						history as being important.
@@ -587,7 +589,7 @@
 				<section> <!-- Viewing changes ... -->
 					<section>
 					<div data-markdown>
-						## Change Logs
+						### Change Logs
 						Use ```git log```
 						```bash
 						$ git log
@@ -614,7 +616,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Change Logs
+						### Change Logs
 						You can also specify a file or directory
 						```bash
 						$ git log silly-script.pl 
@@ -624,7 +626,7 @@
 
 					<section>
 					<div data-markdown>
-						## Change Logs - Annotate
+						### Change Logs - Annotate
 						Show who made changes to what line
 						```bash
 						$ git annotate silly-script.pl
@@ -649,7 +651,7 @@
 
 					<section>
 					<div data-markdown>
-						## Change logs - GUI
+						### Change logs - GUI
 						Not strictly change logs, but...  gitk / qgit / gitg / etc
 						![image](images/gitk.png "gitk")
 					</div>
@@ -659,7 +661,7 @@
 				<section> <!-- Concepts 2 ... -->
 					<section>
 					<div data-markdown>
-						## Some more concepts - commits
+						### Some more concepts - commits
 						* It is important to understand that git thinks in ```commits```
 						* Each commit refers to a previous commit (its parent)
 						* Commits can be referenced by their SHA1 checksum
@@ -670,7 +672,7 @@
 					</div>
 					</section>
 					<section> 
-						<h2>Commits are....</h2>
+						<h3>Commits are....</h3>
 						<marquee style="width:650" scrollamount="650" scrolldelay="500">Totally unchangeable</marquee>
 					</section>
 				</section>
@@ -678,7 +680,7 @@
 				<section> <!-- branching and merging -->
 					<section>
 					<div data-markdown>
-						## Branching - List
+						### Branching - List
 						To show branches use ```git branch```
 						```bash
 						$ git branch
@@ -695,7 +697,7 @@
 
 					<section>
 					<div data-markdown>
-						 ## Branching - Create
+						### Branching - Create
 						Use ```git branch``` (or ```git checkout -b```)
 						```bash
 						$ git checkout -b new-branch
@@ -716,7 +718,7 @@
 
 					<section>
 					<div data-markdown>
-						## Branching - Create somewhere else
+						### Branching - Create somewhere else
 						By default a new branch will be created at the commit you
 						already have checked out
 
@@ -742,7 +744,7 @@
 
 					<section>
 					<div data-markdown>
-						## Branching - Change Branch
+						### Branching - Change Branch
 						Use ```git checkout```
 						```bash
 						$ git checkout new-branch
@@ -760,7 +762,7 @@
 
 					<section>
 					<div data-markdown>
-						## Branching - What's the deal?
+						### Branching - What's the deal?
 						```bash
 						# Make a change to a file (and commit that change)
 						$ echo "... From new-branch" >> silly-script.pl 
@@ -789,7 +791,7 @@
 
 					<section>
 					<div data-markdown>
-						## Branching - Why?
+						### Branching - Why?
 						* Many (most) projects have a branch for each release
 						* Branches are useful for experimental features / refactoring
 						* Branches happen (without even trying) when several people try
@@ -802,7 +804,7 @@
 
 					<section>
 					<div data-markdown>
-						## Merging - Simple Case
+						### Merging - Simple Case
 						You should now be on the master branch
 						```bash
 						$ git status
@@ -832,7 +834,7 @@
 
 					<section>
 					<div data-markdown>
-						## Merging - get ready for a conflict
+						### Merging - get ready for a conflict
 						Conflicts are more difficult (lets create one)
 						```bash
 						# Make a change to a file, commit that change to 'master'
@@ -857,7 +859,7 @@
 
 					<section>
 					<div data-markdown>
-						## Merging - you can't do that
+						### Merging - you can't do that
 						If there is a conflict then git will stop and make you fix it.
 						```bash
 						$ git merge new-branch
@@ -888,7 +890,7 @@
 
 					<section>
 					<div data-markdown>
-						## Merging - Fixing conflicts
+						### Merging - Fixing conflicts
 						Lots of tools to help fix things up.  Hand edit, xxdiff,
 						smartmerge, etc
 
@@ -911,7 +913,7 @@
 
 					<section>
 					<div data-markdown>
-						## Merging - Success at last
+						### Merging - Success at last
 						We need to tell Git that it has been fixed before we commit
 						```bash
 						$ git add silly-script.pl 
@@ -932,7 +934,7 @@
 
 					<section>
 					<div data-markdown>
-						## Merging - How does it look?
+						### Merging - How does it look?
 						Looking at the trees in gitk helps you understand stuff.
 						```bash
 						$ gitk
@@ -943,11 +945,11 @@
 
 				<section> <!-- Where are we? Where are we going? -->
 					<section>
-						<h2>A quick recap</h2>
+						<h3>A quick recap</h3>
 						<img src="images/local.png" alt="">
 					</section>
 					<section>
-						<h2>Sharing your changes with others</h2>
+						<h3>Sharing your changes with others</h3>
 						<img src="images/local-remote.png" alt="">
 						<aside class="notes">
 							What is the opposite of push? (it's not pull!)<br>
@@ -959,7 +961,7 @@
 				<section>
 					<section>
 					<div data-markdown>
-						## Creating Repositories - Revisited
+						### Creating Repositories - Revisited
 						We already know how to create a new repositry
 						```bash
 						$ git init
@@ -970,7 +972,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Clone an existing repository
+						### Clone an existing repository
 						In practise, you're more likely to use ```git clone```.
 
 						To check out the source code of a random project:
@@ -1003,7 +1005,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Remote repositories - URLs
+						### Remote repositories - URLs
 						```bash
 						# Clone an existing repository via HTTP
 						$ git clone https://github.com/catalyst-training/git-basic
@@ -1020,7 +1022,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Remote branches
+						### Remote branches
 						Remote branches are references (pointers) to the state of
 						branches in your remote repositories.
 
@@ -1035,7 +1037,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Origin
+						### Origin
 						You can see all branches (including the remote ones) with the
 						```git branch``` command
 						```bash
@@ -1051,7 +1053,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Other remotes
+						### Other remotes
 						You can manipulate your view of other repositories with the ```git remote```
 						command
 						```bash
@@ -1081,32 +1083,32 @@
 				<section> <!-- Ways to work -->
 					<section>
 					<div data-markdown>
-						## Ways to work with git (1)
-						### Corporate Workflow
+						### Ways to work with git (1)
+						#### Corporate Workflow
 						You will probably use this
 					</div>
 					<img src="images/workflow-a.png" alt="corporate">
 					</section>
 					<section>
 					<div data-markdown>
-						## Ways to work with git (2)
-						### Integration manager Workflow
+						### Ways to work with git (2)
+						#### Integration manager Workflow
 						A quick diversion: http://www.github.com
 					</div>
 					<img src="images/workflow-b.png" alt="github">
 					</section>
 					<section>
 					<div data-markdown>
-						## Ways to work with git (3)
-						### Dictator Workflow
+						### Ways to work with git (3)
+						#### Dictator Workflow
 						This is how the Linux kernel is managed
 					</div>
 					<img src="images/workflow-c.png" alt="linux">
 					</section>
 					<section>
 					<div data-markdown>
-						## Ways to work with git (4)
-						### Peer to peer Workflow
+						### Ways to work with git (4)
+						#### Peer to peer Workflow
 					</div>
 					<img src="images/workflow-d.png" alt="p2p">
 					</section>
@@ -1115,7 +1117,7 @@
 				<section> <!-- Alice and Bob -->
 					<section>
 					<div data-markdown>
-						### Once upon a time....
+						#### Once upon a time....
 						Alice and Bob wanted to do some work
 					</div>
 					<img src="images/lastthing1.png" alt="">
@@ -1165,7 +1167,7 @@
 
 					<section>
 					<div data-markdown>
-						## Now we can try it out
+						### Now we can try it out
 						```bash
 						# Clone a new repository
 						$ cd /tmp
@@ -1204,7 +1206,7 @@
 				<section> <!-- Stuff we have missed ... -->
 					<section>
 					<div data-markdown>
-						## Changing your commits
+						### Changing your commits
 						You can 'change' the most recent commit using ```git commit```
 						```bash
 						$ git add something.txt
@@ -1226,7 +1228,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Copy a commit
+						### Copy a commit
 						You can copy a commit from one branch to another
 
 						You might want to do this if, for example, a bug is discovered
@@ -1244,7 +1246,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Undo a commit
+						### Undo a commit
 						You can undo a previous commit with ```git revert```.
 
 						This makes a new commit, that is the exact opposite of a
@@ -1268,7 +1270,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Getting serious with copying commits
+						### Getting serious with copying commits
 						As an alternative to merging, you can use ```git rebase```.
 
 						Instead of making a new commit which joins two branches together,
@@ -1285,8 +1287,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Rebase vs. Merge
-						### History is an audit trail
+						### Rebase vs. Merge
+						#### History is an audit trail
 
 						One point of view on this is that your repository's commit
 						history is a record of what actually happened. It's a historical
@@ -1300,8 +1302,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Rebase vs. Merge
-						### History is a story
+						### Rebase vs. Merge
+						#### History is a story
 
 						The opposing point of view is that the commit history is the
 						story of how your project was made. You wouldn't publish the
@@ -1317,7 +1319,7 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## A more advanced rebase
+						### A more advanced rebase
 						```bash
 						$ git rebase --interactive origin/master
 						```
@@ -1350,8 +1352,8 @@
 				<section> <!-- Wrap up -->
 					<section>
 					<div data-markdown>
-						## Loose ends...
-						### git reset
+						### Loose ends...
+						#### git reset
 						In it's simplest form, it allows you to throw away changes
 						you have made locally.
 						```bash
@@ -1375,8 +1377,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Loose ends...
-						### git reset
+						### Loose ends...
+						#### git reset
 						```bash
 						# You can also change to a different commit before doing
 						# the reset
@@ -1402,8 +1404,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Loose ends...
-						### git stash (hide)
+						### Loose ends...
+						#### git stash (hide)
 						You can hide your changes away for later use
 						```bash
 						$ git status
@@ -1423,8 +1425,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Loose ends...
-						### git stash (restore)
+						### Loose ends...
+						#### git stash (restore)
 						Later on, you can restore your changes
 						```bash
 						$ git status
@@ -1449,8 +1451,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Graphical interfaces
-						### A live demo!
+						### Graphical interfaces
+						#### A live demo!
 						* Changes with gitk
 						* git gui
 					</div>
@@ -1469,8 +1471,8 @@
 
 					<section>
 						<div data-markdown>
-							##  The End
-							###  Questions?
+							###  The End
+							####  Questions?
 						</div>
 						<div class="fragment">
 						<div data-markdown>
@@ -1494,8 +1496,8 @@
 				<section> <!-- Examples -->
 					<section>
 					<div data-markdown>
-						## Problem 1
-						### Fix a production bug
+						### Problem 1
+						#### Fix a production bug
 						We have just discovered that there is a program in production that
 						is not executable - the site is down!
 
@@ -1513,8 +1515,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 1
-						### Solution
+						### Problem 1
+						#### Solution
 						```bash
 						# Clone the repository
 						$ cd /tmp
@@ -1540,8 +1542,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 2
-						###	Change the past
+						### Problem 2
+						####	Change the past
 						I have just noticed that
 						https://github.com/catalyst-training/example2.git has a dodgey
 						commit.  The commit message is 'Oooh, this smells a bit
@@ -1556,8 +1558,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 2
-						###	Solution
+						### Problem 2
+						####	Solution
 						```bash
 						# Clone the repository
 						$ cd /tmp
@@ -1581,8 +1583,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 2b
-						###	Change the past, more!
+						### Problem 2b
+						####	Change the past, more!
 						Wow, now that I see what you can do to tidy up the past,
 						I realise I want more
 
@@ -1595,8 +1597,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 2b
-						###	Solution
+						### Problem 2b
+						####	Solution
 						```bash
 						$ git log --oneline
 						```
@@ -1612,8 +1614,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 3
-						###	Join 2 repositories together
+						### Problem 3
+						####	Join 2 repositories together
 						We have been working as two teams for a while now, and we have realised
 						that the two teams are so interlinked that we should be all working from
 						the same repository,
@@ -1629,8 +1631,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 3
-						###	Solution
+						### Problem 3
+						####	Solution
 						```bash
 						$ cd /tmp/example2
 
@@ -1657,8 +1659,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 4
-						###	Github
+						### Problem 4
+						####	Github
 						Please create a github account, then 'fork' the repository
 						'https://github.com/catalyst-training/example3'
 
@@ -1678,8 +1680,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 4b
-						### Git Gui
+						### Problem 4b
+						#### Git Gui
 						That was great, but now lets try again, using ```git-gui``` to
 						make and push your commit.
 
@@ -1695,8 +1697,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 5
-						###	Mess with a remote branch
+						### Problem 5
+						####	Mess with a remote branch
 						Using your github account, push a 'password' to github.
 
 						```bash
@@ -1714,8 +1716,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 5
-						###	Solution
+						### Problem 5
+						####	Solution
 						```bash
 						# Amend the commit and force push
 						$ echo '' > password.txt
@@ -1744,8 +1746,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 6
-						###	Abort a merge
+						### Problem 6
+						####	Abort a merge
 						Go to your 'example2' project, and try to merge in the 'kittens'
 						branch...
 						```bash
@@ -1762,8 +1764,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 6
-						###	Solution
+						### Problem 6
+						####	Solution
 						```bash
 						# Too hard, I'll try again some other time
 						$ git merge --abort
@@ -1772,8 +1774,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 6b
-						### Use tools to try to resolve a conflict
+						### Problem 6b
+						#### Use tools to try to resolve a conflict
 						Go to your 'example2' project, and try to merge in the 'kittens'
 						branch...
 						```bash
@@ -1787,8 +1789,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 6b
-						###	Solution
+						### Problem 6b
+						####	Solution
 						```bash
 						# Let's give it a go...
 						$ git mergetool
@@ -1800,8 +1802,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 7
-						### Throw away your changes
+						### Problem 7
+						#### Throw away your changes
 						What if you make some changes, and you want to get back to safety?
 						```bash
 						$ cd /tmp/example2
@@ -1813,8 +1815,8 @@
 					</section>
 					<section>
 					<div data-markdown>
-						## Problem 7
-						###	Solution
+						### Problem 7
+						#### Solution
 						```bash
 						$ git reset --hard
 						```
@@ -1825,8 +1827,8 @@
 					</section>
 					<section>
 						<div data-markdown>
-							##  The End
-							###  That's really it this time
+							###  The End
+							#### That's really it this time
 						</div>
 						<aside class="notes">
 						Extra things to discuss, to fill in time:<br>
