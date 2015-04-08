@@ -87,21 +87,21 @@
 							<br>git push origin master
 						</aside>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Introduction
 						* The format of this course is mostly a tutorial
 						  (with some lecturing thrown in)
-						* The tutorial uses a linux command line, but git
-						  is available on other platforms
+						* The tutorial is based on the commandline
 						* The tutorial is designed to uncover the concepts
 						* Not necessarily to provide all the command syntax
-						 * Hopefully if you are armed with the concepts, the
-						   internet will help you find the specifics you need
+						Note:
+						Hopefully if you are armed with the concepts, the
+						internet will help you find the specifics you need
 					</section>
 				</section>
 
 				<section> <!-- Why -->
-					<section data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Why use revision control software?
 						You (should) want it if...
 
@@ -110,7 +110,7 @@
 						* You want to know why something changed
 						* You want to review what you have just changed
 					</section>
-					<section data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Why use revision control software?
 						You need it if...
 
@@ -118,7 +118,7 @@
 						* You want to maintain multiple versions of the same thing
 						* You need to make a single change which covers several files - and keep things in sync
 					</section>
-					<section data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### What does revision control provide?
 						* Track changes (to almost anything)
 						* View history
@@ -128,7 +128,7 @@
 						* Apply kudos for effort
 						* Backups of your important stuff
 					</section>
-					<section data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### What options are there?
 						* RCS
 						* CVS
@@ -138,7 +138,7 @@
 						* Bzr
 						* ...
 					</section>
-					<section data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Why should you use Git?
 						* It is fast
 						* Branching is trivial
@@ -179,8 +179,6 @@
 						* For MS Win, you are looking for "Git BASH"
 					</section>
 				</section>
-
-
 
 				<section> <!-- Init -->
 					<section data-markdown data-separator-notes="^Note:">
@@ -231,15 +229,19 @@
 				<section> <!-- Configuring -->
 					<section data-markdown data-separator-notes="^Note:">
 						### Global configuration settings
-						Before we start, we need to tell git who you are
+						Before we start...
 						```bash
-						# But it's OK to lie....
+						# We need to tell git who you are - But it's OK to lie....
 						$ git config --global user.name "Jed I. Night"
 						$ git config --global user.email "null@catalyst.net.nz"
 						```
 						```bash
-						# If you think nano``` is crap, you can choose vim, or gedit
+						# If you have a favourite editor.
 						$ git config --global core.editor gedit
+						```
+						```bash
+						# If you will be working on windows, but need to deal with unix
+						$ git config --global core.autocrlf true
 						```
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
@@ -247,7 +249,6 @@
 						This will tell Git you like to see pretty colours on the screen
 						```bash
 						$ git config color.ui auto
-						$ git config --global log.decorate full
 						```
 						Note:
 						These settings will override the global settings
@@ -616,6 +617,9 @@
 					<section> 
 						<h3>Commits are....</h3>
 						<marquee style="width:650" scrollamount="650" scrolldelay="500">Totally unchangeable</marquee>
+						<aside class="notes">
+						This means that once you have committed your work, it is really safe
+						</aside>
 					</section>
 				</section>
 
@@ -872,8 +876,7 @@
 				</section>
 
 				<section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Creating Repositories - Revisited
 						We already know how to create a new repositry
 						```bash
@@ -881,7 +884,6 @@
 						Initialized empty Git repository in .git/
 						```
 						...but normally, you want to join in with an existing project
-					</div>
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Clone an existing repository
@@ -914,8 +916,7 @@
 
 						git remote -v
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Remote repositories - URLs
 						```bash
 						# Clone an existing repository via HTTP
@@ -929,10 +930,8 @@
 						# Clone an existing local repository (this is only slightly mad)
 						$ git clone test test2
 						```
-						</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Remote branches
 						Remote branches are references (pointers) to the state of
 						branches in your remote repositories.
@@ -944,7 +943,6 @@
 						Remote branches act
 						as bookmarks to remind you where the branches on your remote
 						repositories were the last time you connected to them.
-						</div>
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Origin
@@ -1292,8 +1290,7 @@
 						```
 					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Loose ends...
 						#### git stash (hide)
 						You can hide your changes away for later use
@@ -1311,7 +1308,6 @@
 						# On branch master
 						nothing to commit (working directory clean)
 						```
-					</div>
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Loose ends...
@@ -1433,8 +1429,7 @@
 						Once again, you won't be able to push your changes - but that's
 						ok.
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 2
 						####	Solution
 						```bash
@@ -1456,7 +1451,6 @@
 						# Rewrite the past
 						$ git rebase --interactive 510043a
 						```
-					</div>
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Problem 2b
@@ -1469,8 +1463,7 @@
 						Note:
 						Once again, you won't be able to push your changes - but that's ok.
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 2b
 						####	Solution
 						```bash
@@ -1484,7 +1477,6 @@
 						#   $ git rebase --continue
 						$ git rebase --interactive b9fb9c8
 						```
-					</div>
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Problem 3
@@ -1620,18 +1612,15 @@
 						Note:
 						or a rebase ...
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 6
 						####	Solution
 						```bash
 						# Too hard, I'll try again some other time
 						$ git merge --abort
 						```
-					</div>
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 6b
 						#### Use tools to try to resolve a conflict
 						Go to your 'example2' project, and try to merge in the 'kittens'
@@ -1643,7 +1632,6 @@
 						$ git status
 						```
 						There are conflicts, but I think you can handle them!
-					</div>
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Problem 6b
@@ -1655,8 +1643,7 @@
 						Note:
 						Also, we should try this again after installing 'meld'
 					</section>
-					<section>
-					<div data-markdown>
+					<section data-markdown data-separator-notes="^Note:">
 						### Problem 7
 						#### Throw away your changes
 						What if you make some changes, and you want to get back to safety?
@@ -1666,7 +1653,6 @@
 						$ rm lists/movies.txt
 						$ git status
 						```
-					</div>
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Problem 7
