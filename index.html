@@ -286,7 +286,7 @@
 						# Initial commit
 						#
 						# Untracked files:
-						#   (use "git add &lt;file>..." to include in what will be committed)
+						#   (use "git add <file>..." to include in what will be committed)
 						#
 						#	super-script.pl
 						nothing added to commit but untracked files present (use "git add" to track)
@@ -296,7 +296,7 @@
 						### Tell Git to track those files
 						```git add```
 						```bash
-						$ git add super-script.pl 
+						$ git add super-script.pl
 						```
 						```bash
 						$ git status
@@ -305,7 +305,7 @@
 						# Initial commit
 						#
 						# Changes to be committed:
-						#   (use "git rm --cached &lt;file>..." to unstage)
+						#   (use "git rm --cached <file>..." to unstage)
 						#
 						#	new file: super-script.pl
 						#
@@ -326,13 +326,13 @@
 						# Initial commit
 						#
 						# Changes to be committed:
-						#   (use "git rm --cached &lt;file>..." to unstage)
+						#   (use "git rm --cached <file>..." to unstage)
 						#
 						#	new file:   super-script.pl
 						#
 						# Changed but not updated:
-						#   (use "git add &lt;file>..." to update what will be committed)
-						#   (use "git checkout -- &lt;file>..." to discard changes in working directory)
+						#   (use "git add <file>..." to update what will be committed)
+						#   (use "git checkout -- <file>..." to discard changes in working directory)
 						#
 						#	modified:   super-script.pl
 						#
@@ -363,7 +363,7 @@
 						# Initial commit
 						#
 						# Changes to be committed:
-						#   (use "git rm --cached &lt;file>..." to unstage)
+						#   (use "git rm --cached <file>..." to unstage)
 						#
 						#	new file:   super-script.pl
 						#
@@ -410,10 +410,10 @@
 						### Managing Files - Permissions
 						Oops, that file isn't executable
 						```bash
-						$ chmod 755 super-script.pl 
+						$ chmod 755 super-script.pl
 						```
 						```bash
-						$ git commit super-script.pl 
+						$ git commit super-script.pl
 						Created commit 378af93: Make it executable.
 						0 files changed, 0 insertions(+), 0 deletions(-)
 						mode change 100644 => 100755 super-script.pl
@@ -429,7 +429,7 @@
 						$ git status
 						# On branch master
 						# Changes to be committed:
-						#   (use "git reset HEAD &lt;file>..." to unstage)
+						#   (use "git reset HEAD <file>..." to unstage)
 						#
 						#	renamed: super-script.pl -> silly-script.pl
 						#
@@ -450,13 +450,13 @@
 						# This won't actually work, because we haven't
 						# created "another-script.pl"
 						# ... but you can try it, if you like....
-						$ git rm -f another-script.pl 
+						$ git rm -f another-script.pl
 						```
 						```bash
 						$ git status
 						# On branch master
 						# Changes to be committed:
-						#   (use "git reset HEAD &lt;file>..." to unstage)
+						#   (use "git reset HEAD <file>..." to unstage)
 						#
 						#	deleted: another-script.pl
 						#
@@ -473,7 +473,7 @@
 						### Managing Files - ignore them
 						```bash
 						# Let's imagine your editor keeps creating '.swp' files
-						$ touch silly-script.pl.bak
+						$ touch silly-script.pl.swp
 						```
 						```bash
 						$ git status
@@ -481,7 +481,7 @@
 						# Untracked files:
 						#   (use "git add <file>..." to include in what will be committed)
 						#
-						#       silly-script.pl.bak
+						#       silly-script.pl.swp
 						```
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
@@ -567,7 +567,7 @@
 						### Change Logs
 						You can also specify a file or directory
 						```bash
-						$ git log silly-script.pl 
+						$ git log silly-script.pl
 						```
 					</section>
 
@@ -578,7 +578,7 @@
 						```bash
 						$ git annotate silly-script.pl
 						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
-						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 2) 
+						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 2)
 						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 3) print "silly script\n";
 						9c08faf4  (Bad Coder 2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
 						```
@@ -614,7 +614,7 @@
 						* ```gitk``` lets you visualise the commit history, which
 							helps a lot
 					</section>
-					<section> 
+					<section>
 						<h3>Commits are....</h3>
 						<marquee style="width:650" scrollamount="650" scrolldelay="500">Totally unchangeable</marquee>
 						<aside class="notes">
@@ -795,15 +795,15 @@
 						$ git status
 						# On branch master
 						# Unmerged paths:
-						#   (use "git add/rm &lt;file>..." as appropriate to mark resolution)
+						#   (use "git add/rm <file>..." as appropriate to mark resolution)
 						#
 						#	   both modified:	  silly-script.pl
 						#
 						no changes added to commit (use "git add" and/or "git commit -a")
 						```
 						```bash
-						$ cat silly-script.pl 
-						&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:silly-script.pl
+						$ cat silly-script.pl
+						<<<<<<< HEAD:silly-script.pl
 						New value for data
 						=======
 						different value for data
@@ -827,7 +827,7 @@
 						$ git commit
 						U	silly-script.pl
 						fatal: 'commit' is not possible because you have unmerged files.
-						Please, fix them up in the work tree, and then use 'git add/rm &lt;file>' as
+						Please, fix them up in the work tree, and then use 'git add/rm <file>' as
 						appropriate to mark resolution and make a commit, or use 'git commit -a'.
 						```
 					</section>
