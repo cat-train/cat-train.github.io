@@ -337,6 +337,8 @@
 						#	modified:   super-script.pl
 						#
 						```
+						Note:
+						This is our first clue that Git tracks changes rather than files
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### See what you have done
@@ -565,9 +567,17 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Change Logs
-						You can also specify a file or directory
 						```bash
+						# You can change the output format
+						$ git log --prety=onleline
+						```
+						```bash
+						# Or specify which file or directory you are interested in
 						$ git log silly-script.pl
+						```
+						```bash
+						# There are lots of options..
+						$ git log --pretty=oneline --since='5 minutes ago'
 						```
 					</section>
 
