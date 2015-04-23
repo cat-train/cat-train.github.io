@@ -261,12 +261,12 @@
 
 						Project data is stored in ```$PROJECT/.git/config```
 
-						Use ```git config``` to see it
 						```bash
+						# Use `git config` to see it
 						$ git config -l
 						```
-						..or just edit the files
 						```bash
+						# ..or just edit the files
 						$ gedit ~/.gitconfig /tmp/test/.git/config
 						```
 					</section>
@@ -277,7 +277,7 @@
 						### Managing Files
 						Make some changes...
 						```bash
-						$ touch super-script.pl
+						$ touch myscript.pl
 						```
 						```bash
 						$ git status
@@ -288,7 +288,7 @@
 						# Untracked files:
 						#   (use "git add &lt;file>..." to include in what will be committed)
 						#
-						#	super-script.pl
+						#	myscript.pl
 						nothing added to commit but untracked files present (use "git add" to track)
 						```
 					</section>
@@ -296,7 +296,7 @@
 						### Tell Git to track those files
 						```git add```
 						```bash
-						$ git add super-script.pl
+						$ git add myscript.pl
 						```
 						```bash
 						$ git status
@@ -307,7 +307,7 @@
 						# Changes to be committed:
 						#   (use "git rm --cached &lt;file>..." to unstage)
 						#
-						#	new file: super-script.pl
+						#	new file: myscript.pl
 						#
 						```
 						Note:
@@ -317,7 +317,7 @@
 						### Change an existing file
 						Make some changes...
 						```bash
-						$ echo DATA > super-script.pl
+						$ echo DATA > myscript.pl
 						```
 						```bash
 						$ git status
@@ -328,13 +328,13 @@
 						# Changes to be committed:
 						#   (use "git rm --cached &lt;file>..." to unstage)
 						#
-						#	new file:   super-script.pl
+						#	new file:   myscript.pl
 						#
 						# Changed but not updated:
 						#   (use "git add &lt;file>..." to update what will be committed)
 						#   (use "git checkout -- &lt;file>..." to discard changes in working directory)
 						#
-						#	modified:   super-script.pl
+						#	modified:   myscript.pl
 						#
 						```
 						Note:
@@ -345,8 +345,8 @@
 						```git diff```
 						```bash
 						$ git diff
-						--- a/super-script.pl
-						+++ b/super-script.pl
+						--- a/myscript.pl
+						+++ b/myscript.pl
 						@@ -0,0 +1 @@
 						+DATA
 						```
@@ -356,7 +356,7 @@
 						We need to tell Git that you intend to commit the checked out
 						version, with ```git add```
 						```bash
-						$ git add super-script.pl 
+						$ git add myscript.pl
 						```
 						```bash
 						$ git status
@@ -367,7 +367,7 @@
 						# Changes to be committed:
 						#   (use "git rm --cached &lt;file>..." to unstage)
 						#
-						#	new file:   super-script.pl
+						#	new file:   myscript.pl
 						#
 						```
 					</section>
@@ -375,10 +375,10 @@
 						### Committing changes
 						Commit your work with ```git commit```
 						```bash
-						$ git commit super-script.pl 
+						$ git commit myscript.pl
 						Created commit ae54011: Add a message.
 						1 files changed, 3 insertions(+), 0 deletions(-)
-						create mode 100644 super-script.pl
+						create mode 100644 myscript.pl
 						```
 						You will be stuck in an editor so you can input a commit message
 						Normally, you WILL make your commit message meaningful!
@@ -412,20 +412,20 @@
 						### Managing Files - Permissions
 						Oops, that file isn't executable
 						```bash
-						$ chmod 755 super-script.pl
+						$ chmod 755 myscript.pl
 						```
 						```bash
-						$ git commit super-script.pl
+						$ git commit myscript.pl
 						Created commit 378af93: Make it executable.
 						0 files changed, 0 insertions(+), 0 deletions(-)
-						mode change 100644 => 100755 super-script.pl
+						mode change 100644 => 100755 myscript.pl
 						```
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Managing Files - Move
 						To rename a file use ```git mv```
 						```bash
-						$ git mv super-script.pl silly-script.pl
+						$ git mv myscript.pl README.txt
 						```
 						```bash
 						$ git status
@@ -433,7 +433,7 @@
 						# Changes to be committed:
 						#   (use "git reset HEAD &lt;file>..." to unstage)
 						#
-						#	renamed: super-script.pl -> silly-script.pl
+						#	renamed: myscript.pl -> README.txt
 						#
 						```
 						This has changed our checkout, and the index, so we are ready to
@@ -442,7 +442,7 @@
 						$ git commit
 						Created commit fabd446: Rename the file.
 						1 files changed, 0 insertions(+), 0 deletions(-)
-						rename super-script.pl => silly-script.pl (100%)
+						rename myscript.pl => README.txt (100%)
 						```
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
@@ -475,7 +475,7 @@
 						### Managing Files - ignore them
 						```bash
 						# Let's imagine your editor keeps creating '.swp' files
-						$ touch silly-script.pl.swp
+						$ touch README.txt.swp
 						```
 						```bash
 						$ git status
@@ -483,7 +483,7 @@
 						# Untracked files:
 						#   (use "git add &lt;file>..." to include in what will be committed)
 						#
-						#       silly-script.pl.swp
+						#       README.txt.swp
 						```
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
@@ -573,7 +573,7 @@
 						```
 						```bash
 						# Or specify which file or directory you are interested in
-						$ git log silly-script.pl
+						$ git log README.txt
 						```
 						```bash
 						# There are lots of options..
@@ -586,7 +586,7 @@
 						### Change Logs - Annotate
 						Show who made changes to what line
 						```bash
-						$ git annotate silly-script.pl
+						$ git annotate filename.pl
 						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
 						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 2)
 						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 3) print "silly script\n";
@@ -597,7 +597,7 @@
 					<div class="fragment" data-markdown>
 						Better remembered as ```git blame```
 						```bash
-						$ git blame silly-script.pl
+						$ git blame filename.pl
 						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
 						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 2)
 						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 3) print "silly script\n";
@@ -711,14 +711,14 @@
 						### Branching - What's the deal?
 						```bash
 						# Make a change to a file (and commit that change)
-						$ echo "... From new-branch" >> silly-script.pl
-						$ git commit silly-script.pl
+						$ echo "... From new-branch" >> README.txt
+						$ git commit README.txt
 						Created commit a6ed2cf: From new-branch
 						1 files changed, 1 insertions(+), 0 deletions(-)
 						```
 						```bash
 						# Check the file..
-						$ cat silly-script.pl
+						$ cat README.txt
 						DATA
 						... From new-branch
 						```
@@ -729,7 +729,7 @@
 						```
 						```bash
 						# The text we added ain't there
-						$ cat silly-script.pl
+						$ cat README.txt
 						DATA
 						```
 					</section>
@@ -758,7 +758,7 @@
 						$ git merge new-branch
 						Updating e766bfb..a6ed2cf
 						Fast forward
-						silly-script.pl |	1 +
+						README.txt |	1 +
 						1 files changed, 1 insertions(+), 0 deletions(-)
 						```
 						In this case, we have done a ```fast forward``` merge
@@ -778,12 +778,12 @@
 						Conflicts are more difficult (lets create one)
 						```bash
 						# Make a change to a file, commit that change to 'master'
-						$ echo "New value for data" > silly-script.pl
+						$ echo "New value for data" > README.txt
 						$ git commit -a -m 'update script with a new value'
 
 						# Change branches, make a change, and commit
 						$ git checkout new-branch
-						$ echo "different value for data" > silly-script.pl
+						$ echo "different value for data" > README.txt
 						$ git commit -a -m 'update script with a different value'
 
 						# Go back to the master branch, if we try to merge - there
@@ -797,8 +797,8 @@
 						If there is a conflict then git will stop and make you fix it.
 						```bash
 						$ git merge new-branch
-						Auto-merged silly-script.pl
-						CONFLICT (content): Merge conflict in silly-script.pl
+						Auto-merged README.txt
+						CONFLICT (content): Merge conflict in README.txt
 						Automatic merge failed; fix conflicts and then commit the result.
 						```
 						```bash
@@ -807,17 +807,17 @@
 						# Unmerged paths:
 						#   (use "git add/rm &lt;file>..." as appropriate to mark resolution)
 						#
-						#	   both modified:	  silly-script.pl
+						#	   both modified:	  README.txt
 						#
 						no changes added to commit (use "git add" and/or "git commit -a")
 						```
 						```bash
-						$ cat silly-script.pl
-						<<<<<<< HEAD:silly-script.pl
+						$ cat README.txt
+						<<<<<<< HEAD:README.txt
 						New value for data
 						=======
 						different value for data
-						>>>>>>> new-branch:silly-script.pl
+						>>>>>>> new-branch:README.txt
 						```
 					</section>
 
@@ -828,14 +828,14 @@
 
 						We'll just fix it by editing the file
 						```bash
-						$ gedit silly-script.pl
-						$ cat silly-script.pl
+						$ gedit README.txt
+						$ cat README.txt
 						New, different value for data
 						```
 						But Git still won't allow us to continue...
 						```bash
 						$ git commit
-						U	silly-script.pl
+						U	README.txt
 						fatal: 'commit' is not possible because you have unmerged files.
 						Please, fix them up in the work tree, and then use 'git add/rm &lt;file>' as
 						appropriate to mark resolution and make a commit, or use 'git commit -a'.
@@ -846,7 +846,7 @@
 						### Merging - Success at last
 						We need to tell Git that it has been fixed before we commit
 						```bash
-						$ git add silly-script.pl
+						$ git add README.txt
 						$ git commit
 						Created commit a411f2a: Merge branch 'new-branch'
 						```
@@ -857,7 +857,7 @@
 
 						Conflicts:
 
-							silly-script.pl
+							README.txt
 						```
 					</section>
 
@@ -1308,7 +1308,7 @@
 						$ git status
 						# On branch master
 						#
-						#	modified:   super-script.pl
+						#	modified:   myscript.pl
 
 						$ git stash
 						Saved working directory and index state WIP on master: 5cc4a26 added a file
@@ -1335,7 +1335,7 @@
 						#   (use "git add &lt;file>..." to update what will be committed)
 						#   (use "git checkout -- &lt;file>..." to discard changes in working directory)
 						#
-						#       modified:   super-script.pl
+						#       modified:   myscript.pl
 						no changes added to commit (use "git add" and/or "git commit -a")
 						Dropped refs/stash@{0} (1a69a03f554a61ea50b3a9e2eb1182608cb50c8e)
 						```
