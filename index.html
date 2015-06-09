@@ -250,6 +250,14 @@
 						# If you will be working on windows, but need to deal with unix
 						$ git config --global core.autocrlf true
 						```
+						Note:
+						Is anyone using windows, you can't use gedit, and you don't
+						want to use notepad, try:<br>
+						- notepad++
+						- wordpad
+						- ANYTHING else!
+
+						- but only within the current repository (which is /tmp/test)
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Project configuration settings
@@ -391,10 +399,21 @@
 
 						Normally, you WILL make your commit message meaningful!
 						Note:
-						We have told git about our changes, but
-						we haven't actually committed anything yet.
+						Check if everyone got a reasonable editor!
 
-						This is deliberate - so you can build up more complex commits.
+						Problems can be resolved by
+
+						- adding to your PATH var (and restarting git bash)
+						- defining an alias in your ~/.bashrc
+						```bash
+						  alias notepad="/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe"
+						```
+						- editing .gitconfig
+						```bash
+						[core]
+						  editor = \"/C/Program Files (x86)/Notepad++/notepad++.exe\" -m
+						```
+
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Committing changes - some options
@@ -518,9 +537,9 @@
 						...or stick to one in the root of your project
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
-						### Ignoring files Locally vs. Globally
-						* Adding things to .gitignore will ignore them for all users!
-						* Instead you can ignore things locally using .git/info/exclude.
+						### Ignoring files Privately vs. Publicly
+						* Adding things to .gitignore makes it part of your project...
+						* Instead *you* can ignore things using .git/info/exclude.
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Tags
@@ -600,8 +619,8 @@
 						b61863c8  (Andrew R. 2008-05-09 17:01:41 +1200 3) print "silly script\n";
 						9c08faf4  (Bad Coder 2008-05-09 17:18:18 +1200 4) I'm in ur code, breaking ur stuff.
 						```
+						Who is this Bad Coder?
 					</div>
-					<span class="fragment">Who is this Bad Coder fella?</span>
 					<div class="fragment" data-markdown>
 						Better remembered as ```git blame```
 						```bash
@@ -769,16 +788,16 @@
 						README.txt |	1 +
 						1 files changed, 1 insertions(+), 0 deletions(-)
 						```
-						In this case, we have done a ```fast forward``` merge
-
 						If there are no conflicts, this may make a new commit object
 
-						use ```gitk``` to see what happened
+						but in this case, we have done a ```fast forward``` merge
 
 						Note:
 						- We are merging changes *IN*, from somewhere else
 						- explain the fast forward bit
 						- talk about merges being line by line, so not for binary data
+						- use ```gitk``` to see what happened
+
 					</section>
 
 					<section data-markdown data-separator-notes="^Note:">
