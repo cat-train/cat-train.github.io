@@ -96,6 +96,7 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Introduction
+						* Slides: http://catalyst-training.github.io//git-basic/
 						* The format of this course is mostly a tutorial
 						  (with some lecturing thrown in)
 						* The tutorial is based on the commandline
@@ -112,10 +113,11 @@
 						### Why use revision control software?
 						You (should) want it if...
 
-						* You are sick of keeping *.bak files
+						* You want to review what you have just changed
+						* You want to go back to a previous safe point
 						* You want to look at how something used to be
 						* You want to know why something changed
-						* You want to review what you have just changed
+						* You are sick of keeping *.bak files
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Why use revision control software?
@@ -123,7 +125,7 @@
 
 						* You are working with other people who use it
 						* You want to maintain multiple versions of the same thing
-						* You need to make a single change which covers several files - and keep things in sync
+						* You need to coordinate changes accross multiple files
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### What does revision control provide?
@@ -148,9 +150,8 @@
 					<section data-markdown data-separator-notes="^Note:">
 						### Why should you use Git?
 						* It is fast
-						* Branching is trivial
-						* Merging of branches actually makes sense
-						* You can be disconnected from the network, yet still continue working
+						* Working with branches makes sense
+						* You can do meaningful work without a network connection
 						* It does not dictate your workflow
 						* [It protects your data](http://git-scm.com/about/info-assurance)
 						* Once you master the concepts, you can do some really creative (and useful!) stuff
@@ -193,8 +194,6 @@
 						```git init```
 						```bash
 						$ mkdir /tmp/test
-						```
-						```bash
 						$ cd /tmp/test
 						```
 						```bash
@@ -243,15 +242,16 @@
 						$ git config --global user.email "null@catalyst.net.nz"
 						```
 						```bash
-						# If you have a favourite editor.
+						# Choose an editor.... (this is not your IDE)
 						$ git config --global core.editor gedit
+						$ git config --global core.editor wordpad
 						```
 						```bash
 						# If you will be working on windows, but need to deal with unix
 						$ git config --global core.autocrlf true
 						```
 						Note:
-						Is anyone using windows, you can't use gedit, and you don't
+						Is anyone using windows? you can't use gedit, and you don't
 						want to use notepad, try:<br>
 						- notepad++
 						- wordpad
@@ -272,9 +272,9 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Accessing the configuration settings
-						Global data is stored in ```$HOME/.gitconfig```
+						Global data is stored in ```~/.gitconfig```
 
-						Project data is stored in ```$PROJECT/.git/config```
+						Project data is stored in ```/tmp/test/.git/config```
 
 						```bash
 						# Use `git config` to see it
@@ -390,12 +390,12 @@
 						### Committing changes
 						Commit your work with ```git commit```
 						```bash
+						# You will be stuck in an editor so you can input a commit message.
 						$ git commit myscript.pl
 						Created commit ae54011: Add a message.
 						1 files changed, 3 insertions(+), 0 deletions(-)
 						create mode 100644 myscript.pl
 						```
-						You will be stuck in an editor so you can input a commit message.
 
 						Normally, you WILL make your commit message meaningful!
 						Note:
@@ -427,8 +427,8 @@
 						$ git commit -a
 						```
 						```bash
-						# You can have an different editor...
-						$ EDITOR=gedit git commit -a
+						# You can choose different editor for this commit...
+						$ EDITOR=vim git commit -a
 						```
 						```bash
 						# You don't have to use an editor at all...
@@ -463,9 +463,9 @@
 						#	renamed: myscript.pl -> README.txt
 						#
 						```
-						This has changed our checkout, and the index, so we are ready to
-						commit the change
 						```bash
+						# This has changed our checkout, and the index
+						# so we are ready to commit the change
 						$ git commit
 						Created commit fabd446: Rename the file.
 						1 files changed, 0 insertions(+), 0 deletions(-)
@@ -543,11 +543,12 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Tags
-						Tags work pretty much like you would expect.
-						They allow you to mark specific points in
+						Tags allow you to mark specific points in
 						history as being important.
 
 						Often people use this functionality to mark release points.
+
+						They work pretty much like you would expect...
 						```bash
 						$ git tag v1.0
 						$ git tag v1.0-production -m 'this might be important later!'
@@ -604,7 +605,7 @@
 						```
 						```bash
 						# There are lots of options..
-						$ git log --pretty=oneline --since='5 minutes ago'
+						$ git log --pretty=oneline --since='5 minutes ago' --graph
 						```
 					</section>
 
@@ -622,8 +623,8 @@
 						Who is this Bad Coder?
 					</div>
 					<div class="fragment" data-markdown>
-						Better remembered as ```git blame```
 						```bash
+						# Better remembered as `git blame`
 						$ git blame filename.pl
 						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 1) #!/usr/bin/perl -w
 						b61863c8 (Andrew R.   2008-05-09 17:01:41 +1200 2)
@@ -750,7 +751,7 @@
 						... From new-branch
 						```
 						```bash
-						# Jump to another branch
+						# Switch to a different branch (master)
 						$ git checkout master
 						Switched to branch "master"
 						```
@@ -971,7 +972,7 @@
 						```
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
-						### Remote branches
+						### Terminology: Remote branches
 						Remote branches are references (pointers) to the state of
 						branches in your remote repositories.
 
@@ -984,7 +985,7 @@
 						repositories were the last time you connected to them.
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
-						### Origin
+						### Terminology: Origin
 						You can see all branches (including the remote ones) with the
 						```git branch``` command
 						```bash
@@ -1052,11 +1053,15 @@
 						![image](images/workflow-d.png "p2p")
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
-						### Ways to work with Git (GitFlow)
+						### Ways to work with Git (Git Flow)
 						http://nvie.com/posts/a-successful-git-branching-model/
 						![image](images/gitflow_1.png "gitflow")
 						Note:
-						See also -> http://alblue.bandlem.com/2011/11/git-tip-of-week-git-flow.html
+						- origin/master represents prod-ready
+						- develop is generally where things begin
+						- hotfixes, releases, features
+						- merge with '--no-ff'
+						- http://alblue.bandlem.com/2011/11/git-tip-of-week-git-flow.html
 					</section>
 				</section>
 
@@ -1110,8 +1115,8 @@
 						```bash
 						# Clone a new repository
 						$ cd /tmp
-						$ git clone $IP:/tmp/test3.git
-						$ cd /tmp/test3
+						$ git clone https://github.com/git-training-open/alice1.git
+						$ cd /tmp/alice1
 						```
 						```bash
 						# Create a new file (and commit)
@@ -1121,6 +1126,7 @@
 						```
 						```bash
 						# Push your changes to the shared repository
+						# git-training-open / openup1
 						$ git push origin master
 						```
 						```bash
