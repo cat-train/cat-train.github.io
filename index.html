@@ -1302,51 +1302,40 @@
 				<section> <!-- Wrap up -->
 					<section data-markdown data-separator-notes="^Note:">
 						### Loose ends...
-						#### git reset
-						In it's simplest form, it allows you to throw away changes
-						you have made locally.
+						#### git reset (simple)
+						If you provide a filename, it is the opposite of ```git add```
 						```bash
-						$ git status
-						# On branch master
-						#
-						# Changes not staged for commit:
-						#   (use "git add &lt;file>..." to update what will be committed)
-						#   (use "git checkout -- &lt;file>..." to discard changes in working directory)
-						#
-						#       modified:   index.html
+						# This will overwrite the index with whatever is in the
+						# latest commit
+						$ git reset README.txt
 						```
-						```bash
-						$ git reset --hard
-						HEAD is now at 5cc4a26 wr235825: small changes
-						$ git status
-						# On branch master
-						nothing to commit (working directory clean)
-						```
+						Note:
+						- `git status` has been telling us about this all along....
 					</section>
 					<section>
 					<div data-markdown>
 						### Loose ends...
-						#### git reset
+						#### git reset (interesting)
+						If you don't provide a filename, it allows you to play with your
+						'trees'
 						```bash
-						# You can also change to a different commit before doing
-						# the reset
-						$ git reset --hard HEAD^^
-						HEAD is now at a51452d rewrite the 'begin' function
+						# Move your current branch to the previous commit
+						$ git reset --soft HEAD^
 						```
 					</div>
 					<div data-markdown class="fragment">
 						```bash
-						# This changes your commit, but leaves your files and index untouched
-						# - changes that you have 'added' are still ready to commit
-						# - changes to files are still ready to add
-						$ git reset --soft HEAD^^
+						# Move your current branch to the previous commit,
+						# and reset the index to match that commit
+						$ git reset --mixed HEAD^
 						```
 					</div>
 					<div data-markdown class="fragment">
 						```bash
-						# This changes your commit and the index, but leaves your files untouched
-						# - changes to files are now ready to add, even if you had already added them
-						$ git reset --mixed HEAD^^
+						# Move your current branch to the previous commit,
+						# and reset the index to match that commit
+						# and reset your working tree to match that commit
+						$ git reset --hard HEAD^
 						```
 					</div>
 					</section>
