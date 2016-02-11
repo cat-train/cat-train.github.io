@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Git.  Revision control for humans</title>
+        <title>Git.  Version control for humans</title>
 
         <meta name="author" content="Catalyst">
 
@@ -99,7 +99,7 @@
 						* Slides: http://catalyst-training.github.io/git-basic/
 						* The format of this course is mostly a tutorial
 						  (with some lecturing thrown in)
-						* The tutorial is based on the commandline
+						* The tutorial is based on the command line
 						* The tutorial is designed to uncover the concepts
 						* Not necessarily to provide all the command syntax
 						Note:
@@ -224,6 +224,9 @@
 						#
 						nothing to commit (create/copy files and use "git add" to track)
 						```
+						Note:
+						- Run 'git status' all the time, just to see what is going on
+
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### What did that do?
@@ -231,7 +234,9 @@
 						![overview](images/local-remote-small.png "overview")
 
 						Note:
-						The 'staging area' is often called the 'index'
+						- The 'staging area' is often called the 'index'
+						- The index is the 'proposed next commit'
+
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Getting help
@@ -281,7 +286,8 @@
 						$ git config color.ui auto
 						```
 						Note:
-						These settings will override the global settings
+						- These settings will override the global settings
+						- Depending on your version of Git, this command is probably just choosing the default
 
 						- but only within the current repository (which is /tmp/test)
 					</section>
@@ -380,6 +386,9 @@
 						@@ -0,0 +1 @@
 						+DATA
 						```
+						Note:
+						- Please feel free to run commands like 'git diff'
+
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Change an existing file
@@ -400,19 +409,23 @@
 						#	new file:   myscript.pl
 						#
 						```
+						Note:
+						- This use of 'git add' SEEMS different to before, but it's really
+						  just saying 'This is my proposed next commit'
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Committing changes
 						Commit your work with ```git commit```
 						```bash
 						# You will be stuck in an editor so you can input a commit message.
+						# Normally, you WILL make your commit message meaningful!
 						$ git commit myscript.pl
 						Created commit ae54011: Add a message.
 						1 files changed, 3 insertions(+), 0 deletions(-)
 						create mode 100644 myscript.pl
 						```
+						We'll pause here to make sure everyone has this working...
 
-						Normally, you WILL make your commit message meaningful!
 						Note:
 						Check if everyone got a reasonable editor!
 
@@ -434,8 +447,8 @@
 						### Committing changes - some options
 						You don't have to ```git add``` all your changes manually
 						```bash
-						# Add &lt;file>, and then commit
-						$ git commit &lt;file>
+						# Add FILE, and then commit
+						$ git commit FILE
 						```
 						```bash
 						# Add all your changes, and then commit
@@ -560,18 +573,21 @@
 						### Tags
 						Tags allow you to mark specific points in
 						history as being important.
+						They work pretty much like you would expect...
 
 						Often people use this functionality to mark release points.
 
-						They work pretty much like you would expect...
 						```bash
-						$ git tag v1.0
-						$ git tag v1.0-production -m 'this might be important later!'
+						# This is a 'lightweight' tag
+						$ git tag v1
+
+						# This is an 'annotated' tag
+						$ git tag v2 -m 'this might be important later!'
 						```
 						```bash
 						$ git tag
-						$ git show v1.0
-						$ git show v1.0-production
+						$ git show v1
+						$ git show v2
 						```
 						Note:
 						2 types of tags: lightweight and annotated
@@ -804,8 +820,7 @@
 						README.txt |	1 +
 						1 files changed, 1 insertions(+), 0 deletions(-)
 						```
-						If there are no conflicts, this may make a new commit object
-
+						If there are no conflicts, this may make a new commit object,
 						but in this case, we have done a ```fast forward``` merge
 
 						Note:
@@ -904,6 +919,8 @@
 
 							README.txt
 						```
+						Note:
+						- Once again, 'git add' is saying 'this is the proposed next commit'
 					</section>
 
 					<section data-markdown data-separator-notes="^Note:">
@@ -951,8 +968,8 @@
 						$ cd /tmp
 						```
 						```bash
-						$ git clone https://github.com/catalyst-training/git-basic
-						Cloning into git-basic...
+						$ git clone https://github.com/catalyst-training/example1.git
+						Cloning into example1...
 						remote: Counting objects: 90, done.
 						remote: Compressing objects: 100% (43/43), done.
 						remote: Total 90 (delta 44), reused 90 (delta 44)
@@ -960,7 +977,7 @@
 						Resolving deltas: 100% (44/44), done.
 						```
 						```bash
-						$ cd git-basic
+						$ cd example1
 						```
 						```bash
 						$ ls
@@ -969,22 +986,10 @@
 						$ gitk
 						```
 						Note:
-						git remote -v
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Remote repositories - URLs
-						```bash
-						# Clone an existing repository via HTTP
-						$ git clone https://github.com/catalyst-training/git-basic
-						```
-						```bash
-						# Clone an existing repository via SSH
-						$ git clone ssh://git.catalyst.net.nz/git/public/git.git
-						```
-						```bash
-						# Clone an existing local repository (this is only slightly mad)
-						$ git clone test test2
-						```
+						- did you notice the oddly coloured branch called 'remotes/origin/master'?
+						- git branch -a
+						- git remote -v
+
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Terminology: Remote branches
@@ -1011,6 +1016,21 @@
 						```
 						Note:
 						you don't need to type 'remotes' to refer to these branches
+					</section>
+					<section data-markdown data-separator-notes="^Note:">
+						### Remote repositories - URLs
+						```bash
+						# Clone an existing repository via HTTP
+						$ git clone https://github.com/catalyst-training/git-basic
+						```
+						```bash
+						# Clone an existing repository via SSH
+						$ git clone ssh://git.catalyst.net.nz/git/public/git.git
+						```
+						```bash
+						# Clone an existing local repository (this is only slightly mad)
+						$ git clone test test2
+						```
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Other remotes
@@ -1254,7 +1274,7 @@
 						> posterity.
 
 						Note:
-						History is an audit trail
+						- History is an audit trail
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Rebase vs. Merge
@@ -1265,9 +1285,25 @@
 						> tools like rebase and filter-branch to tell the story in the
 						> way that's best for future readers.
 						Note:
-						History is a story
+						- History is a story
+					</section>
+					<section data-markdown data-separator-notes="^Note:">
+						### The Perils of Rebasing
+						> Ahh, but the bliss of rebasing isn’t without its drawbacks,
+						> which can be summed up in a single line:
 
-						> You should not change commits that exist outside your repository
+						> Do not rebase commits that exist outside your repository.
+
+						> If you follow that guideline, you’ll be fine. If you don’t,
+						> people will hate you, and you’ll be scorned by friends and family.
+
+						> When you rebase stuff, you’re abandoning existing commits and
+						> creating new ones that are similar but different. If you push
+						> commits somewhere and others pull them down and base work on
+						> them, and then you rewrite those commits with git rebase and
+						> push them up again, your collaborators will have to re-merge
+						> their work and things will get messy when you try to pull their
+						> work back into yours.
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### A more advanced rebase
@@ -1322,19 +1358,25 @@
 						# Move your current branch to the previous commit
 						$ git reset --soft HEAD^
 						```
+						Note:
+						Trees?
+
+						- HEAD:last commit, parent for next commit
+						- index: proposed next commit
+						- working directory: sandbox
 					</div>
 					<div data-markdown class="fragment">
 						```bash
 						# Move your current branch to the previous commit,
-						# and reset the index to match that commit
+						# AND reset the index to match that commit
 						$ git reset --mixed HEAD^
 						```
 					</div>
 					<div data-markdown class="fragment">
 						```bash
 						# Move your current branch to the previous commit,
-						# and reset the index to match that commit
-						# and reset your working tree to match that commit
+						# AND reset the index to match that commit
+						# AND reset your working tree to match that commit
 						$ git reset --hard HEAD^
 						```
 					</div>
