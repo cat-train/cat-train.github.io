@@ -96,7 +96,7 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Introduction
-						* Slides: http://catalyst-training.github.io/git-basic/
+						* Slides: http://training-stuff.catalyst-au.net/git-basic/
 						* The format of this course is mostly a tutorial
 						  (with some lecturing thrown in)
 						* The tutorial is based on the command line
@@ -199,7 +199,7 @@
 						   Just take the defaults
 						 * Once you have it installed, we need to find "Git BASH" on
 						   your start menu.
-						 * See also: https://github.com/catalyst-training/git-basic/wiki/Windows
+						 * See also: http://training-stuff.catalyst-au.net/git-basic/windows.txt
 					</section>
 				</section>
 
@@ -1020,11 +1020,11 @@
 					<section data-markdown data-separator-notes="^Note:">
 						### Remote repositories - URLs
 						```bash
-						# Clone an existing repository via HTTP
-						$ git clone https://github.com/catalyst-training/git-basic
+						# Clone an existing repository via HTTP (you've already done this)
+						$ git clone https://github.com/catalyst-training/example1.git
 						```
 						```bash
-						# Clone an existing repository via SSH
+						# Clone an existing repository via SSH (this won't work for you)
 						$ git clone ssh://git.catalyst.net.nz/git/public/git.git
 						```
 						```bash
@@ -1037,7 +1037,7 @@
 						You can manipulate your view of other repositories with the ```git remote```
 						command
 						```bash
-						$ git remote add duplicate https://github.com/catalyst-training/git-basic
+						$ git remote add duplicate https://github.com/catalyst-training/example1
 						$ git remote show
 						duplicate
 						origin
@@ -1046,7 +1046,7 @@
 						$ git fetch --all
 						Fetching origin
 						Fetching duplicate
-						From https://github.com/catalyst-training/git-basic
+						From https://github.com/catalyst-training/example1
 						 * [new branch]      gh-pages   -> duplicate/gh-pages
 						 * [new branch]      master     -> duplicate/master
 						```
