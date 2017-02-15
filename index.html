@@ -118,7 +118,12 @@
 					</section>
 				</section>
 
-				<section> <!-- Why -->
+				<section> <!-- What / Why -->
+					<section data-markdown data-separator-notes="^Note:">
+						### What is version control?
+						Version control software allows you to effectively manage different versions
+						of files, typically code.
+					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Why use version control software?
 						You (should) want it if...
@@ -585,7 +590,10 @@
 						$ git tag v2 -m 'this might be important later!'
 						```
 						```bash
+						# List the existing tags
 						$ git tag
+
+						# Show details of specific tags
 						$ git show v1
 						$ git show v2
 						```
@@ -806,8 +814,8 @@
 
 					<section data-markdown data-separator-notes="^Note:">
 						### Merging - Simple Case
-						You should now be on the master branch
 						```bash
+						# You should now be on the 'master' branch
 						$ git status
 						# On branch master
 						nothing to commit (working directory clean)
@@ -996,7 +1004,6 @@
 						You can see all branches (including the remote ones) with the
 						```git branch``` command
 						```bash
-						$ cd /tmp/git-basic/
 						$ git branch -a
 						* master
 						  remotes/origin/master
@@ -1158,7 +1165,7 @@
 						```
 						```bash
 						# Create a new file (and commit)
-						$ gedit $YOURNAME.txt
+						$ touch $YOURNAME.txt
 						$ git add $YOURNAME.txt
 						$ git commit
 						```
