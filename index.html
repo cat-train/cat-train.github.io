@@ -717,20 +717,15 @@
 
 					<section data-markdown data-separator-notes="^Note:">
 						### Branching - Create
-						Use ```git branch``` (or ```git checkout -b```)
 						```bash
-						$ git checkout -b new-branch
-						Switched to a new branch "new-branch"
+						# Create a new branch
+						$ git branch new-branch
 						```
-						Will create "new-branch", and check it out for you
 						```bash
 						$ git branch
-						  master
-						* new-branch
+						* master
+						  new-branch
 						```
-						Note:
-						mention that 'git checkout' is a convenience interface
-						...it does several things in one step
 					</section>
 
 					<section data-markdown data-separator-notes="^Note:">
@@ -740,25 +735,18 @@
 
 						You can also create a new branch at another commit
 						```bash
-						$ git checkout -b another-branch master
-						Switched to a new branch "another-branch"
+						$ git branch another-branch new-branch
 						```
 						```bash
 						$ git branch
-						* another-branch
-						  master
+						  another-branch
+						* master
 						  new-branch
 						```
-						Note:
-						Here, the checkout command is actually doing 3 things
-
-						- go the the master branch
-						- make a branch there (callled 'another-branch')
-						- checkout the 'another-branch' branch
 					</section>
 
 					<section data-markdown data-separator-notes="^Note:">
-						### Branching - Change Branch
+						### Branching - Change branch
 						Use ```git checkout```
 						```bash
 						$ git checkout new-branch
@@ -771,7 +759,8 @@
 						* new-branch
 						```
 						Note:
-						Don't forget to see how this is shown in ```gitk```
+						- Don't forget to see how this is shown in ```gitk```
+						- Most people use `git checkout -b` to create branches
 					</section>
 
 					<section data-markdown data-separator-notes="^Note:">
