@@ -719,12 +719,12 @@
 						### Branching - Create
 						```bash
 						# Create a new branch
-						$ git branch new-branch
+						$ git branch feature1
 						```
 						```bash
 						$ git branch
 						* master
-						  new-branch
+						  feature1
 						```
 					</section>
 
@@ -735,13 +735,13 @@
 
 						You can also create a new branch at another commit
 						```bash
-						$ git branch another-branch new-branch
+						$ git branch feature2 feature1
 						```
 						```bash
 						$ git branch
-						  another-branch
+						  feature2
 						* master
-						  new-branch
+						  feature1
 						```
 					</section>
 
@@ -749,14 +749,14 @@
 						### Branching - Change branch
 						Use ```git checkout```
 						```bash
-						$ git checkout new-branch
-						Switched to branch "new-branch"
+						$ git checkout feature1
+						Switched to branch "feature1"
 						```
 						```bash
 						$ git branch
-						  another-branch
+						  feature2
 						  master
-						* new-branch
+						* feature1
 						```
 						Note:
 						- Don't forget to see how this is shown in ```gitk```
@@ -767,16 +767,16 @@
 						### Branching - What's the deal?
 						```bash
 						# Make a change to a file (and commit that change)
-						$ echo "... From new-branch" >> README.txt
+						$ echo "... From feature1" >> README.txt
 						$ git commit README.txt
-						Created commit a6ed2cf: From new-branch
+						Created commit a6ed2cf: From feature1
 						1 files changed, 1 insertions(+), 0 deletions(-)
 						```
 						```bash
 						# Check the file..
 						$ cat README.txt
 						DATA
-						... From new-branch
+						... From feature1
 						```
 						```bash
 						# Switch to a different branch (master)
@@ -811,7 +811,7 @@
 						```
 						Use ```git merge```
 						```bash
-						$ git merge new-branch
+						$ git merge feature1
 						Updating e766bfb..a6ed2cf
 						Fast forward
 						README.txt |	1 +
@@ -837,7 +837,7 @@
 						$ git commit -a -m 'update script with a new value'
 
 						# Change branches, make a change, and commit
-						$ git checkout new-branch
+						$ git checkout feature1
 						$ echo "different value for data" > README.txt
 						$ git commit -a -m 'update script with a different value'
 
@@ -851,7 +851,7 @@
 						### Merging - you can't do that
 						If there is a conflict then git will stop and make you fix it.
 						```bash
-						$ git merge new-branch
+						$ git merge feature1
 						Auto-merged README.txt
 						CONFLICT (content): Merge conflict in README.txt
 						Automatic merge failed; fix conflicts and then commit the result.
@@ -872,7 +872,7 @@
 						New value for data
 						=======
 						different value for data
-						>>>>>>> new-branch:README.txt
+						>>>>>>> feature1:README.txt
 						```
 						Note:
 						  Mention git merge --abort
@@ -905,12 +905,12 @@
 						```bash
 						$ git add README.txt
 						$ git commit
-						Created commit a411f2a: Merge branch 'new-branch'
+						Created commit a411f2a: Merge branch 'feature1'
 						```
 						In this case the commit message is automatically created, but
 						you can edit it if you want.
 						```bash
-						Merge branch 'new-branch'
+						Merge branch 'feature1'
 
 						Conflicts:
 
