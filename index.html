@@ -1028,31 +1028,6 @@
 						$ git clone test test2
 						```
 					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Other remotes
-						You can manipulate your view of other repositories with the ```git remote```
-						command
-						```bash
-						$ git remote add duplicate https://github.com/catalyst-training/example1
-						$ git remote show
-						duplicate
-						origin
-						```
-						```bash
-						$ git fetch --all
-						Fetching origin
-						Fetching duplicate
-						From https://github.com/catalyst-training/example1
-						 * [new branch]      gh-pages   -> duplicate/gh-pages
-						 * [new branch]      master     -> duplicate/master
-						```
-						Note:
-						origin is not special, except that:
-
-						- it is created by default when you clone a repository
-						- some commands (like fetch) assume you mean origin if you don't specify the remote
-						- etc, etc
-					</section>
 				</section>
 
 				<section> <!-- Ways to work -->
