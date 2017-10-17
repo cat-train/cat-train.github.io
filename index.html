@@ -96,7 +96,7 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Introduction
-						* Slides: http://training-stuff.catalyst-au.net/git-basic/
+						* Slides: http://cat-train.github.com/
 						* The format of this course is mostly a tutorial
 						  (with some lecturing thrown in)
 						* The tutorial is based on the command line
@@ -204,7 +204,6 @@
 						   Just take the defaults
 						 * Once you have it installed, we need to find "Git BASH" on
 						   your start menu.
-						 * See also: http://training-stuff.catalyst-au.net/git-basic/windows.txt
 					</section>
 				</section>
 
@@ -965,7 +964,7 @@
 						$ cd /tmp
 						```
 						```bash
-						$ git clone https://github.com/catalyst-training/example1.git
+						$ git clone https://github.com/cat-train/example1.git
 						Cloning into example1...
 						remote: Counting objects: 90, done.
 						remote: Compressing objects: 100% (43/43), done.
@@ -1017,7 +1016,7 @@
 						### Remote repositories - URLs
 						```bash
 						# Clone an existing repository via HTTP (you've already done this)
-						$ git clone https://github.com/catalyst-training/example1.git
+						$ git clone https://github.com/cat-train/example1.git
 						```
 						```bash
 						# Clone an existing repository via SSH (this won't work for you)
@@ -1032,34 +1031,34 @@
 
 				<section> <!-- Ways to work -->
 					<section data-markdown data-separator-notes="^Note:">
-						### Git is distributed... (1)
+						### Git is a *Distributed* VCS
 						#### Corporate Workflow
 						You will probably use this
 
 						![image](images/workflow-a.png "corporate")
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
-						### Git is distributed... (2)
+						### Git is a *Distributed* VCS
 						#### Integration manager Workflow
 						A quick diversion: http://www.github.com
 
 						![image](images/workflow-b.png "github")
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
-						### Git is distributed... (3)
+						### Git is a *Distributed* VCS
 						#### Dictator Workflow
 						This is how the Linux kernel is managed
 
 						![image](images/workflow-c.png "linux")
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
-						### Git is distributed... (4)
+						### Git is a *Distributed* VCS
 						#### Peer to peer Workflow
 
 						![image](images/workflow-d.png "p2p")
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
-						### Ways to work with Git (Git Flow)
+						### Git Flow
 						http://nvie.com/posts/a-successful-git-branching-model/
 
 						![image](images/gitflow_1.png "gitflow")
@@ -1124,7 +1123,7 @@
 						```bash
 						# Clone a new repository
 						$ cd /tmp
-						$ git clone https://github.com/git-training-open/alice1.git
+						$ git clone https://github.com/git-train/alice1.git
 						$ cd /tmp/alice1
 						```
 						```bash
@@ -1394,24 +1393,6 @@
 						Note:
 						You can manage multiple stashes if you want....but that gets confusing :(
 					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Graphical interfaces
-						#### A live demo!
-						* Changes with gitk
-						* Using git gui
-
-						Note:
-						Demonstrate how to:
-
-						- gitk: change branches
-						- gitk: reset
-						- gitk: making a tag
-						- gitk: integration with git-gui
-						- git gui: making a commit
-						- git gui: amend a commit
-						- bitbucket: https://raw.githubusercontent.com/catalyst-training/git-basic/gh-pages/images/newpullrequest.png
-						- bitbucket: https://raw.githubusercontent.com/catalyst-training/git-basic/gh-pages/images/mergepullrequest.png
-					</section>
 
 					<section>
 						<div data-markdown>
@@ -1455,7 +1436,7 @@
 						But we can't deploy the latest code because it's not ready...
 
 						Please find the release tag 'release-1-0' in the repository
-						'https://github.com/catalyst-training/example1.git', and fix the bug!
+						'https://github.com/cat-train/example1.git', and fix the bug!
 						Note:
 						Note that these problems are NOT a test - you haven't been given
 						enough information yet
@@ -1469,7 +1450,7 @@
 						```bash
 						# Clone the repository
 						$ cd /tmp
-						$ git clone https://github.com/catalyst-training/example1.git
+						$ git clone https://github.com/cat-train/example1.git
 						$ cd /tmp/example1
 
 						# Make a new branch (at the point we want to change)
@@ -1491,7 +1472,7 @@
 						### Problem 2
 						####	Change the past
 						I have just noticed that
-						https://github.com/catalyst-training/example2.git has a dodgey
+						https://github.com/cat-train/example2.git has a dodgey
 						commit.  The commit message is 'Oooh, this smells a bit
 						funny...'.
 
@@ -1506,7 +1487,7 @@
 						```bash
 						# Clone the repository
 						$ cd /tmp
-						$ git clone https://github.com/catalyst-training/example2.git
+						$ git clone https://github.com/cat-train/example2.git
 						$ cd /tmp/example2
 						```
 						```bash
@@ -1556,8 +1537,8 @@
 						that the two teams are so interlinked that we should be all working from
 						the same repository,
 
-						Please join https://github.com/catalyst-training/example1.git and
-						https://github.com/catalyst-training/example2.git together!
+						Please join https://github.com/cat-train/example1.git and
+						https://github.com/cat-train/example2.git together!
 
 						Of course, I would like to keep all files and history from both teams intact.
 						Note:
@@ -1570,7 +1551,7 @@
 						$ cd /tmp/example2
 
 						# Add another remote!
-						$ git remote add ex1 https://github.com/catalyst-training/example1.git
+						$ git remote add ex1 https://github.com/cat-train/example1.git
 
 						# Fetch the commits from example1 into this repo
 						$ git fetch ex1
@@ -1594,7 +1575,7 @@
 						### Problem 4
 						####	Github
 						Please create a github account, then 'fork' the repository
-						'https://github.com/catalyst-training/example3'
+						'https://github.com/cat-train/example3'
 
 						Then make a change, and create a pull request so I can accept your work.
 
