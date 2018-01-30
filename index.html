@@ -119,41 +119,52 @@
 				</section>
 
 				<section> <!-- What / Why -->
-					<section data-markdown data-separator-notes="^Note:">
-						### What is version control?
-						Version control software allows you to effectively manage different versions
-						of files, typically code.
+					<section data-markdown>
+						## Version Control 101
 					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Why use version control software?
-						You (should) want it if...
+					<section data-markdown>
+						### What is a VCS?
+						* Software to manage different versions of files
+						* Typically (but not necessarily) source code
+					</section>
+					<section>
+						<div data-markdown>
+							### What does a VCS do?
+						</div>
+						<div data-markdown class="fragment">
+						Mechanically...
 
-						* You want to review what you have just changed
-						* You want to go back to a previous safe point
-						* You want to look at how something used to be
-						* You want to know why something changed
-						* You are sick of keeping *.bak files
-					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Why use version control software?
-						You need it if...
+						* Ordered sequence of *snapshots*
+						* Ordered sequence of *differences*
+						</div>
+						<div data-markdown class="fragment">
+						---
+						Conceptually...
 
-						* You are working with other people who use it
-						* You want to maintain multiple versions of the same thing
-						* You need to coordinate changes accross multiple files
+						* Track changes to your projects
+						* Figure out when bugs were introduced
+						* Understand the reasoning behind some code
+						* Revert changes
+						* Assign blame
+						</div>
 					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### What does version control provide?
-						* Track changes (to almost anything)
-						* View history
-						* Look back to find when bugs were created
-						* Find the reasoning behind why something is how it is
-						* Roll back changes
-						* Apply kudos for effort
-						* Backups of your important stuff
+					<section>
+						<div data-markdown>
+						### Why use a VCS?
+						* You want to **organise** your changes
+						* You want to **undo** (or **redo**) your changes
+						* You want to **share** your changes
+						* You want to know **how** something changed
+						* You want to know **why** something changed
+						* You are sick of keeping *.bak files around
+						</div>
+						<div data-markdown class="fragment">
+						---
+						* Bring **order** and **visibility** to a changing project
+						</div>
 					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### What options are there?
+					<section data-markdown>
+						### What other options are there?
 						* RCS
 						* CVS
 						* Subversion
@@ -162,19 +173,22 @@
 						* Bzr
 						* ...
 					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Why should you use Git?
-						* It is fast
-						* Working with branches makes sense
-						* You can do meaningful work without a network connection
-						* It does not dictate your workflow
-						* [It protects your data](http://git-scm.com/about/info-assurance)
-						* Once you master the concepts, you can do some really creative (and useful!) stuff
+					<section data-markdown>
+						### Why Git?
+						* It's fast
+						* You can work without a network connection
+						* It makes working with branches easy
+						* It allows for many different workflows
+						* It protects your data
+						* Once you master the concepts, you can do some really creative (and useful) stuff
 						* The cool kids use it
 					</section>
 				</section>
 
 				<section> <!-- Installing -->
+					<section data-markdown>
+						## Installation
+					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Installing
 						```bash
@@ -208,7 +222,10 @@
 				</section>
 
 				<section> <!-- Init -->
-					<section data-markdown data-separator-notes="^Note:">
+					<section data-markdown>
+						 ## Getting Started
+					</section>
+					<section data-markdown>
 						### Create a new repository
 						```git init```
 						```bash
@@ -228,19 +245,33 @@
 						#
 						nothing to commit (create/copy files and use "git add" to track)
 						```
-						Note:
-						- Run 'git status' all the time, just to see what is going on
-
 					</section>
-					<section data-markdown data-separator-notes="^Note:">
+					<section data-markdown>
 						### What did that do?
-						Git is just a bit different from other version control systems
+						Mechanically...
+
+						```bash
+						$ ls -a
+						.git
+						```
+
+						```bash
+						$ ls -a .git
+						branches
+						config
+						description
+						HEAD
+						hooks
+						info
+						objects
+						refs
+						```
+					</section>
+					<section data-markdown>
+						### What did that do?
+						Conceptually...
+
 						![overview](images/local-remote-small.png "overview")
-
-						Note:
-						- The 'staging area' is often called the 'index'
-						- The index is the 'proposed next commit'
-
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Getting help
@@ -257,6 +288,9 @@
 				</section>
 
 				<section> <!-- Configuring -->
+					<section data-markdown>
+						 ## Configuring Git
+					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Global configuration settings
 						Before we start...
@@ -313,6 +347,9 @@
 				</section>
 
 				<section> <!-- Basic use ... -->
+					<section data-markdown>
+						## Managing Files
+					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Managing Files
 						Make some changes...
@@ -573,39 +610,12 @@
 						* Adding things to .gitignore makes it part of your project...
 						* Instead *you* can ignore things using .git/info/exclude.
 					</section>
-					<section data-markdown data-separator-notes="^Note:">
-						### Tags
-						Tags allow you to mark specific points in
-						history as being important.
-						They work pretty much like you would expect...
-
-						Often people use this functionality to mark release points.
-
-						```bash
-						# This is a 'lightweight' tag
-						$ git tag v1
-
-						# This is an 'annotated' tag
-						$ git tag v2 -m 'this might be important later!'
-						```
-						```bash
-						# List the existing tags
-						$ git tag
-
-						# Show details of specific tags
-						$ git show v1
-						$ git show v2
-						```
-						Note:
-						2 types of tags: lightweight and annotated
-
-						Tags don't get shared, by default.
-
-						Also, explain that you can git show anything (tag, branch, sha1, etc).
-					</section>
 				</section>
 
 				<section> <!-- Viewing changes ... -->
+					<section data-markdown>
+						## Change Logs
+					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Change Logs
 						Use ```git log```
@@ -680,6 +690,9 @@
 				</section>
 
 				<section> <!-- Concepts 2 ... -->
+					<section data-markdown>
+						## More on Commits
+					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Some more concepts - commits
 						* It is important to understand that git thinks in ```commits```
@@ -700,6 +713,9 @@
 				</section>
 
 				<section> <!-- branching and merging -->
+					<section data-markdown>
+						## Branches
+					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Branching - List
 						To show branches use ```git branch```
@@ -927,8 +943,38 @@
 						```
 					</section>
 				</section>
+				<section>
+					<section data-markdown>
+						## Tags
+					</section>
+					<section data-markdown>
+						### Tags
+						Tags allow you to mark specific points in history as being important
+
+						Often people use this functionality to mark release points
+
+						```bash
+						# This is a 'lightweight' tag
+						$ git tag v1
+
+						# This is an 'annotated' tag
+						$ git tag v2 -m 'this might be important later!'
+						```
+						```bash
+						# List the existing tags
+						$ git tag
+
+						# Show details of specific tags
+						$ git show v1
+						$ git show v2
+						```
+					</section>
+				</section>
 
 				<section> <!-- Where are we? Where are we going? -->
+					<section data-markdown>
+						## Local vs. Remote Repositories
+					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						###  Where are we?
 
@@ -946,6 +992,9 @@
 				</section>
 
 				<section>
+					<section data-markdown>
+						## Remote Repositories
+					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Creating Repositories - Revisited
 						We already know how to create a new repositry
@@ -1030,6 +1079,9 @@
 				</section>
 
 				<section> <!-- Ways to work -->
+					<section data-markdown>
+						## Distributed Version Control
+					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Git is a *Distributed* VCS
 						#### Corporate Workflow
@@ -1074,6 +1126,9 @@
 				</section>
 
 				<section> <!-- Alice and Bob -->
+					<section data-markdown>
+						## Collaboration
+					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						Once upon a time....
 
@@ -1158,6 +1213,9 @@
 				</section>
 
 				<section> <!-- Stuff we have missed ... -->
+					<section data-markdown>
+						## Managing Commits
+					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Changing your commits
 						You can 'change' the most recent commit using ```git commit```
@@ -1306,6 +1364,9 @@
 				</section>
 
 				<section> <!-- Wrap up -->
+					<section data-markdown>
+						## Loose Ends
+					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Loose ends...
 						#### git reset (simple)
@@ -1427,6 +1488,9 @@
 				</section>
 
 				<section> <!-- Examples -->
+					<section data-markdown>
+						## Exercises
+					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Problem 1
 						#### Fix a production bug
