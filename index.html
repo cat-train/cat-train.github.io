@@ -313,9 +313,11 @@
 						# Choose an editor.... (this is not your IDE)
 						$ git config --global core.editor gedit
 						$ git config --global core.editor wordpad
+						$ git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
 						```
 						```bash
 						# If you will be working on windows, but need to deal with unix
+						$ git help config
 						$ git config --global core.autocrlf true
 						```
 						Note:
@@ -341,17 +343,20 @@
 					</section>
 					<section data-markdown data-separator-notes="^Note:">
 						### Accessing the configuration settings
-						Global data is stored in ```~/.gitconfig```
-
-						Project data is stored in ```/tmp/test/.git/config```
 
 						```bash
 						# Use `git config` to see it
 						$ git config -l
+						$ git config --global -l
+						$ git config --local -l
 						```
 						```bash
-						# ..or just edit the files
-						$ gedit ~/.gitconfig /tmp/test/.git/config
+						# Or just edit the files
+						# ..Global data is stored in "~/.gitconfig"
+						$ gedit ~/.gitconfig
+						
+						# ..Project data is stored in "/tmp/test/.git/config"
+						$ gedit /tmp/test/.git/config
 						```
 					</section>
 				</section>
@@ -487,10 +492,9 @@
 						```bash
 						  alias notepad="/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe"
 						```
-						- editing .gitconfig
+						- additional config
 						```bash
-						[core]
-						  editor = \"/C/Program Files (x86)/Notepad++/notepad++.exe\" -m
+						git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
 						```
 
 					</section>
